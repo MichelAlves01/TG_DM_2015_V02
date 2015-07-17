@@ -1,0 +1,40 @@
+<!--código responsável pelo cabelho(Logo, status e configurações )-->			
+	<div id="cabecalho">
+		<table class="cabecalho-table">
+			<tr>
+				<td class="logo">
+					<label><font size="5"><b>Delivery Gerenciador</b></font></label>
+				</td>
+				
+				<td class="status-fechado">
+					<label><font>
+						 Fechado
+					</font></label>
+				</td>
+				<td class="status-aberto">
+					<label><font>
+						 Aberto
+					</font></label>
+				</td>
+				<td>
+					<a  href="#"  rel="tooltip" title="clique aqui para Abrir">
+						<div id="status-desligado"  ><img class="fechado" onclick="mudarStatus(1);" src="../img/desligado.jpg" /><div>
+					</a>
+					<a  href="#" rel="tooltip" title="clique aqui para fechar">
+						<div id="status-ligado" ><img class="aberto" onclick="mudarStatus(2);" src="../img/ligado.jpg" /><div>
+					</a>
+					
+				</td>
+				<td class="conta-config">
+						<div class="dropdown">
+						  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/tres-barras.png" /></a>
+						  	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						    	<li> <a ng-click="getEmpresaController()" href="#"><i class="icon-pencil"></i> Editar conta</a></li>
+						    	<li> <a href="#"><i class="icon-trash"></i> Desativar conta</a></li>
+						  	</ul>
+						</div>		
+				</td>				
+			</tr>
+		</table>
+	</div>
+

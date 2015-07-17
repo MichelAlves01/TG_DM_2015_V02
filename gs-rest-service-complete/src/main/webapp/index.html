@@ -1,0 +1,459 @@
+<html ng-app="PrincipalCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>Delivery</title>
+			<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+			<script type="text/javascript" src="js/angular.min.js"></script>
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/jquery.blockUI.js"></script>
+			<script type="text/javascript" src="angular/controller/PrincipalController.js"></script>
+			<script type="text/javascript" src="angular/controller/cadastroEmpresaController.js"></script>
+			<script type="text/javascript" src="angular/service/empresaService.js"></script>
+			<script type="text/javascript" src="angular/service/produtoService.js"></script>
+			<script type="text/javascript" src="angular/service/cidadeEstadoService.js"></script>
+			<script type="text/javascript" src="angular/directives/directiveCadastroEmpresa.js"></script>
+			<script type="text/javascript" src="angular/directives/directivePrincipal.js"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+			<script type='text/javascript' src="../js/jquery-ui-1.8.11.custom.min.js"></script>
+			<script type="text/javascript" src="../js/date.js"></script>
+			<script type='text/javascript' src="../js/jquery.weekcalendar.js"></script>
+
+			<link rel="stylesheet" type="text/css" href=" css/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href=" css/bootstrap-responsive.min.css">
+			<link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href=" css/principal.css">
+
+			<script type='text/javascript'>
+
+
+			  var year = new Date().getFullYear();
+			  var month = new Date().getMonth();
+			  var day = new Date().getDate();
+
+			  var eventData1 = {
+				options: {
+				  timeslotsPerHour: 4,
+				  timeslotHeight: 20
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 30),'title':'Lunch with Mike'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 45),'title':'Dev Meeting'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 45),'title':'Hair cut'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 30),'title':'Team breakfast'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
+				]
+			  };
+
+			  var eventData2 = {
+				options: {
+				  timeslotsPerHour: 3,
+				  timeslotHeight: 30
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Sarah'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Meeting'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Joe'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alison'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
+				]
+			  };
+
+
+					// data set 3 : using event delete features
+			  var eventData3 = {
+				options: {
+				  allowEventDelete: true,
+				  eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
+					if (confirm('You want to delete this event?')) {
+					  calendar.weekCalendar('removeEvent',calEvent.id);
+					}
+				  },
+				  deletable: function(calEvent, element) {
+					return calEvent.start > Date.today();
+				  }
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Ashley'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Picnic'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Cathy'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alyssa'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product kickoff'}
+				]
+			  };
+
+			  $(document).ready(function() {
+				var $calendar = $('#calendar').weekCalendar({
+				  timeslotsPerHour: 4,
+				  scrollToHourMillis : 0,
+				  height: function($calendar){
+					return $(window).height() - $('h1').outerHeight(true);
+				  },
+				  eventRender : function(calEvent, $event) {
+					if(calEvent.end.getTime() < new Date().getTime()) {
+					  $event.css('backgroundColor', '#aaa');
+					  $event.find('.time').css({'backgroundColor': '#999', 'border':'1px solid #888'});
+					}
+				  },
+				  eventNew : function(calEvent, $event) {
+					alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
+				  },
+				  data: function(start, end, callback) {
+					var dataSource = $('#data_source').val();
+
+					if (dataSource === '1') {
+					  callback(eventData1);
+					} else if(dataSource === '2') {
+					  callback(eventData2);
+					} else if(dataSource === '3') {
+					  callback(eventData3);
+					} else {
+					  callback([]);
+					}
+				  }
+				});
+
+				$('#data_source').change(function() {
+				  $calendar.weekCalendar('refresh');
+				  updateMessage();
+				});
+
+				function updateMessage() {
+				  var dataSource = $('#data_source').val();
+				  $('#message').fadeOut(function(){
+					if(dataSource === '1') {
+					  $('#message').text('Displaying event data set 1 with timeslots per hour of 4 and timeslot height of 20px');
+					} else if(dataSource === '2') {
+					  $('#message').text('Displaying event data set 2 with timeslots per hour of 3 and timeslot height of 30px');
+					} else if(dataSource === '3') {
+					  $('#message').text('Displaying event data set 3 with allowEventDelete enabled. Events before today will not be deletable. A confirmation dialog is opened when you delete an event.');
+					} else {
+					  $('#message').text('Displaying no events.');
+					}
+					$(this).fadeIn();
+				  });
+				}
+
+				updateMessage();
+			  });
+			  </script>
+
+			  <script type="text/javascript">
+					/*Inicia o com o status da empresa como fechado*/
+					$(document).ready(function(){
+						$(".aberto").hide();
+					$(".status-aberto").hide();
+				});
+				
+				/*Gerencia o efeito sanfona*/
+				$(function() {
+				    $( "#accordion" ).accordion();
+				  });
+				
+				/*Responsavel pelo efeito de Aberto e fechado mudando a cor da bolinha*/
+				function mudarStatus(tipo){
+					if(tipo == 1){
+						$(".status-aberto").show();
+						$(".status-fechado").hide();
+						$(".aberto").show();
+						$(".fechado").hide();
+					} 
+					if(tipo == 2){
+						$(".status-aberto").hide();
+						$(".status-fechado").show();
+						$(".aberto").hide();
+						$(".fechado").show();
+					}
+					tipo = 0;
+				}
+
+				
+
+				 $(function() {
+				    $( "#chat" ).resizable();
+				  });
+			</script>
+
+			<script type="text/javascript">
+						$(".dropdown-toggle").dropdown();
+						$('#element').tooltip('show');
+						$(".collapse").collapse('dropdown-toggle');	
+						$(".collapse").collapse('dropdown-toggle2');
+
+						
+			</script>
+
+			<script>
+					
+
+			/*
+
+				$(document).ready(function(){
+					$('#address').keyup(function(){
+						alert("foi");
+						mainMap();
+					});
+					$('#raio').keyup(function(){
+						alert("foi");
+						mainMap();
+					});
+				});
+				
+
+				function getZoom(raio){
+					var zoom; 
+					if(raio >= 4){
+						minus = Math.round( (raio / 10)  + 2);
+				  		zoom = 14 - minus; 		
+				  	}
+
+				  	if(raio > 50){
+				  		zoom = 4;
+				  	}
+				  	return zoom;
+				}
+
+				function getRaio(){
+					var raio = document.getElementById('raio').value;
+					if(raio != null){
+							return raio;
+						} else {
+							return 0;
+						}	
+							
+						
+				}
+
+				function iniciaCirculo(latLong){
+					
+					 var citymap = {};
+						citymap['Sorocaba'] = {
+					  	center: new google.maps.LatLng(latLong),
+					  	population: 2714856
+						};
+						return citymap ;
+				}
+					    
+				var geocoder;
+				var map;
+				function initialize(citymap , latLong, raio, zoom) {
+					
+				  // Create the map.
+				  geocoder = new google.maps.Geocoder();
+				  var latlng = latLong;
+				  var mapOptions = {
+				    zoom: zoom,
+				    center: latlng,
+				    mapTypeId: google.maps.MapTypeId.TERRAIN
+				  };
+
+				  map = new google.maps.Map(document.getElementById('map-canvas'),
+				      mapOptions);
+
+				  // Construct the circle for each value in citymap.
+				  // Note: We scale the area of the circle based on the population.
+				  if(latLong != null){
+				  for (var city in citymap) {
+				    var populationOptions = {
+				      strokeColor: '#FF0000',
+				      strokeOpacity: 0.8,
+				      strokeWeight: 2,
+				      fillColor: '#FF0000',
+				      fillOpacity: 0.35,
+				      map: map,
+				      center: latLong ,
+				      radius: Math.sqrt(citymap[city].population) * raio
+				    };
+				    // Add the circle for this city to the map.
+				    
+				    	cityCircle = new google.maps.Circle(populationOptions);
+				    }
+				  }
+				  if(latLong != null){
+				  var marker = new google.maps.Marker({
+				      map: map,
+				      position: latLong
+				      });
+					}
+				}
+
+				function codeAddress() {
+
+				  var cidade = document.getElementById('cidade').value;
+				  var bairro = document.getElementById('bairro').value;
+				  var rua = document.getElementById('rua').value;
+				  var numero = document.getElementById('numero').value;
+
+				  var address = cidade + ", " + bairro + ", " + rua + ", " + numero;
+
+				  alert(address);
+
+				  geocoder.geocode( { 'address': address}, function(results, status) {
+
+				    if (status == google.maps.GeocoderStatus.OK) {
+				      map.setCenter(results[0].geometry.location);
+				   		
+				   
+				   		 mainMap(results[0].geometry.location)
+				    } else {
+				      alert('Geocode was not successful for the following reason: ' + status);
+				    }
+				  });
+				 
+				}
+
+				function mainMap(latLong){
+
+					var citymap = iniciaCirculo(latLong);
+				
+					var raio = getRaio();
+					
+					
+				
+					var zoom = 13;
+					if(raio != null && raio >= 4){
+						zoom = getZoom(raio);
+					}
+					alert(zoom);
+					initialize(citymap , latLong, raio, zoom)
+					
+
+				}
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+*/
+	</script>
+</head>
+<body ng-controller="EmpresaCtrl" >
+	<!--Todo codigo da pagina de cadastro-->
+	<div id="cadastro-page" ng-hide="depoisCadastro()">
+		<div id="cabecalho">
+				<label><font>Delivery Gerenciador</font></label>
+			</div>
+			<div id="centro" data-ng-init="starting()">
+			<div id="sub-cabecalho"></div>
+				   <div id="form">
+				   		<div id="form-title"> 
+				   			<label><font color="#ffffff">Cadastro</font></label>
+				   		</div>
+				   		
+				   			<div class="tabbable tabs-left" >
+							  <ul class="nav nav-tabs" id="painel-esquerda-cadastro" >
+							    
+							    <li class="" id="cadastro">
+							    	<a href="#tab-cadastro" data-toggle="tab">
+							    		<font color="#48990E"><i class="icon-pencil"></i> Cadastrar </font>
+							    	</a>
+							    </li>
+	    						
+	    						<li class="" id="atualizar">
+	    							<a href="#tab-update" data-toggle="tab">
+	    								<font color="#48990E"><i class="icon-edit"></i> Atualizar</font>
+	    							</a>
+	    						</li>
+	    						
+	    						<li class="" id="excluir">
+	    							<a href="#tab-excluir" data-toggle="tab">
+	    								<font color="#48990E"><i class="icon-eye-open"></i> Conta</font>
+	    							</a>
+	    						</li>
+
+							  </ul>
+			
+							  <div class="tab-content">
+							  <div class="tab-pane" id="tab-cadastro"  data-ng-init="getLatitudeLongitude()">
+								 <div preenchido></div>
+								  <table>
+								  	<tr>
+								  		<td>  
+										   	<div id="form-cadastro" cadastro></div>
+								  		</td>
+								  		<td>
+								  			<div id="mapa-cadastro">
+												<div id="map-canvas" style="height: 100%; margin: 0px; padding: 0px;"> </div>
+											</div>
+								  		</td>
+								  	</tr>
+								  </table>
+								  <div buttons></div>
+							  </div>
+							   <div class="tab-pane" id="tab-update" data-ng-init="getLatitudeLongitude()" >
+								  <table>
+								  	<tr>
+								  		<td>  
+										   	<div id="form-cadastro" atualizar></div>
+								  		</td>
+								  		<td>
+								  			<div id="mapa-cadastro">
+												<div id="map-canvas2" style="height: 100%; margin: 0px; padding: 0px;"> </div>
+											</div>
+								  		</td>
+								  	</tr>
+								  </table>
+								  <div ebuttons></div>
+							   </div>
+							   <div class="tab-pane" id="tab-excluir">
+							   		<div dados style="border: 1px solid #555555; width: 100%; heigth: 100%;"></div>
+							   </div>
+							  </div>
+
+							</div>			   		
+					</div>
+		</div>
+	</div>
+
+<!--Todo codigo da pagina principal-->
+	<div id="principal-page" ng-show="depoisCadastro()">
+	  	<div cabecalho></div>
+		<div id="centro-principal">
+		<!--espaço entre o cabecalho e o form -->
+			<div id="sub-cabecalho"></div>
+				<!--Código formulario principal-->
+				<div id="form-main">
+				   	<div id="form-title"> 
+				   		<label><font color="#ffffff">Delivery Gerenciador</font></label>
+				   	</div>	
+				   	<div class="tabbable tabs-left">
+						<ul class="nav nav-tabs" id="painel-esquerda" >
+							<li>
+								<a href="#tab1" data-toggle="tab" id="tab-pedido">
+									<font color="#48990E"><i class="icon-share-alt"></i> Pedidos</font>
+								</a>
+							</li>
+	    					<li>
+	    						<a href="#tab2" data-toggle="tab" id="tab-agenda">
+	    							<font color="#48990E"><i class="icon-calendar"></i> Agenda</font>
+	    						</a>
+	    					</li>
+	    					<li class="active">
+	    						<a href="#tab3" data-toggle="tab" id="tab-produtos">
+	    							<font color="#48990E"><i class=" icon-eye-open"></i> Produtos</font>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a href="#tab4" data-toggle="tab" id="tab-mapa">
+	    							<font color="#48990E"><i class="icon-map-marker"></i> Mapa</font>
+	    						</a>
+	    					</li>
+						</ul>
+					
+					<div class="tab-content">
+							<div class="tab-pane" id="tab1" >
+							  	<div pedido></div>
+							</div>
+							<div class="tab-pane active" id="tab3">
+								<div produto></div>
+							</div>
+							<div class="tab-pane" id="tab4">
+								<div mapa-tab></div>			     		 
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="cancelandoAtulizacao" style="cursor: default; display: none; height: 60px; width: 60px;">
+	<p><img src="../images/loader.gif" style="height: 50px; width: 50px;"></p>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+<script type="text/javascript">
+			/*
+				A opção cancelar pode ser executada	durante o cadastro, caso o 
+				usuario desistir e o mesmo será redirecionado para a tela de login
+			*/
+	$(document).ready(function() { 
+		$('#cancelar').click(function() {
+		   	$.blockUI({ message: $('#cancelando') }); 
+    		setTimeout(time = 1, 3000);
+    		if(time == 1){
+    			location.href = "/"
+    		} 
+
+	    }); 
+	}); 
+</script>
+<div id="buttons-cadastro-rodape">	
+	<table>
+	 	<tr>
+	 		<td><input type="checkbox" /> Li os termos e concordo</td>
+			<td>
+				<button class="btn" type="button" id="cadastrar" ng-click="executarCadastro()">Salvar</button>
+				<button class="btn" type="button" id="cancelar">Cancelar</button>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="cancelando" style="cursor: default; display: none; height: 60px; width: 60px;">
+			<p><img src="../images/loader.gif" style="height: 50px; width: 50px;"></p>
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.AgendaDAO">
+ 	
+ 	<insert id="cadastrarHorarioDAO" parameterType="delivery.model.Agenda">
+ 		insert into Agenda (
+ 							id_Pedido, 
+ 							horario, 
+ 							nome
+ 							) values (
+ 							#{idPedido},
+ 							#{horario},
+ 							#{nome}
+ 							)
+ 	</insert>
+ 	
+ 	<delete id="excluirHorarioDAO" parameterType="java.util.Date">
+ 			delete from Agenda where horario = #{horario} 
+ 	</delete>
+ 	
+ 	<select id="getHorarioDAO" parameterType="java.lang.Integer" resultType="delivery.model.Agenda">
+ 		select 	id_Pedido as idPedido, 
+ 				horario, 
+ 				nome
+ 		where 
+ 				id_Pedido = #{idPedido}
+ 	</select>
+ 
+ </mapper>

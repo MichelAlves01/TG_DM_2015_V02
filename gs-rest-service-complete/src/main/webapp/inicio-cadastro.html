@@ -1,0 +1,23 @@
+		
+		<font><center>Preencha os campos abaixo para se cadastrar</center></font>	
+			<form class="horizontal-form" ng-controller="cadastroEmpresaInicio">
+				<table>
+					<tr>	
+						<td>
+							<label>Nome da sua empresa</label>						
+							<input type="text" name="nome" class="input-xxlarge"  ng-model="nome" placeholder="Minha emoresa" class="ng-pristine ng-invalid" maxlength="200" required="true"/>
+						</td>	
+						<td>
+							<label>CNPJ ou CPF pessoa física <i class=" icon-ok" ng-show="isValidCpfCnpj()"></i></label>
+							<input type="text" name="cpfCnpj" class="input-large" ng-model="cpfCnpj" ng-keyup="validaCpfCnpj()" ng-change="validaCpfCnpj()" required="true" placeholder="somente numeros"  id="inicio" ng-keydown="$event.keyCode == 13 ? iniciaCadastroEmpresa() : null"/>
+						</td>
+						<td style="padding-top: 32px; padding-left: 5px; padding-right: 25px;">
+							<button class="btn btn-primary" ng-click="iniciaCadastroEmpresa()" >Cadastrar minha empresa</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			<div id="carregando" style="cursor: default; display: none; height: 100px; padding: 5px;">
+				<p><label>Carregando Aguarde ..</label></p>
+			</div>

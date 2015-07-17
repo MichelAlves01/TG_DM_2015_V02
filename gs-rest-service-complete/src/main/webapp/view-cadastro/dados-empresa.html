@@ -1,0 +1,137 @@
+			<script type="text/javascript">
+					$(document).ready(function() { 
+						    $('#confirmarExcluir').click(function() { 
+						        $.blockUI({ message: $('#excluirForm') }); 
+						    }); 
+
+						    $('#desistir').click(function(){
+						    	$.unblockUI();
+						    });
+						}); 
+			</script>
+			<table>
+				<tr>
+					<td style="padding: 5px; width: 16%; background-color: #eeeeee;">
+						<font>Informações da Empresa</font>
+					</td>
+				</tr>
+			</table>
+			<table>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Nome
+			 		</td>
+			 		<td class="campo">
+			 			{{nome}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+						CPF / CNPJ
+			 		</td>
+			 		<td class="campo">
+			 			{{cpfCnpj}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Email
+			 		</td>
+			 		<td class="campo">
+			 			{{email}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Telefone Fixo
+			 		</td>
+			 		<td class="campo">
+			 			{{telFixo}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Telefone Celular
+			 		</td>
+			 		<td class="campo">
+			 			{{telMovel}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Tipo
+			 		</td>
+			 		<td class="campo">
+			 			{{tipo}}
+			 		</td>
+			 	</tr>
+			</table>
+			<table>
+				<tr>
+					<td style="padding: 5px; width: 1%; background-color: #eeeeee;">
+						<font>Endereço</font>
+					</td>
+				</tr>
+			</table>
+			<table>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Endereço 
+			 		</td>
+			 		<td class="campo">
+			 			{{endereco}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Bairro 
+			 		</td>
+			 		<td class="campo">
+			 			{{bairro}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Cidade 
+			 		</td>
+			 		<td class="campo">
+			 			{{cidade.nome}}
+			 		</td>
+			 	</tr>
+			 	<tr>
+			 		<td class="subtitulo">
+			 			Estado 
+			 		</td>
+			 		<td class="campo">
+			 			{{cidade.estado.nome}}
+			 		</td>
+			 	</tr>
+			 </table>
+			 <table>
+				<tr>
+					<td style="padding: 5px; width: 1%; height: 30px; background-color: #f8f8f8;">
+						<font></font>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="subtitulo-itens">
+						<a href="" style="text-decoration: none;" ><font><i class="icon-user"></i> Adicionar usuario</font></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="subtitulo-itens">
+						<a href="" style="text-decoration: none;" id="confirmarExcluir"><font><i class=" icon-warning-sign"></i> Excluir conta</font></a>
+					</td>
+				</tr>
+			</table>
+
+			<div id="excluirForm" style="cursor: default; display: none; height: 100px; padding: 5px;">
+		            <p><label>Você esta prestes a desativar sua conta <br />
+		            			deseja realmente continuar</label></p>
+		            <button class="btn btn-danger" style="margin-left: 5px; width: 100px;" ng-click="excluirEmpresa()">Confirmar</button>
+		            <button class="btn btn-success" id="desistir" style="margin-left: 5px; width: 100px;">Voltar</button>
+		    </div>
+
+ 

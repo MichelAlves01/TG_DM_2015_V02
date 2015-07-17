@@ -1,0 +1,157 @@
+<form class="form-horizontal">
+								   			<fieldset>	
+											   <table >	
+											   		<tr style="padding: 51px;">
+															<td style="padding-right: 10px;">
+																<fieldset>
+																		<label>Nome da Empresa<font ng-hide="isValidAll()"> 
+																				<i class="icon-hand-down" ng-hide="isValidBairro()"></i><i class="icon-ok" ng-show="isValidBairro()"></i></font>
+																		</label>
+																		<input type="text" ng-model="nome" class="input-xxlarge"  placeholder="informe o nome da empresa" required/>
+																		
+																</fieldset>
+															</td>																
+													</tr>
+													<tr style="padding: 51px;">
+															<td style="padding-right: 10px;">
+																<table>
+																	<tr>
+																		<td style="padding-right: 10px;">
+																			<fieldset>
+																				<label>CPF / CNPJ </label>
+																				<font ng-hide="isValidAll()">
+																					<i class="icon-hand-down" ng-hide="isValidCep()"></i>
+																					<i class="icon-ok" ng-show="isValidCep()"></i>
+																				</font>
+																				<input type="text" ng-model="cpfCnpj" class="input-medium" disabled/>	
+																			</fieldset>
+																		</td>
+																		<td>
+																			<fieldset>
+																				<label>Tipo de Empresa 	
+																				<font ng-hide="isValidAll()">
+																					<i class="icon-hand-down" ng-hide="isValidTipo()"></i>
+																					<i class="icon-ok" ng-show="isValidTipo()"></i>
+																				</font>
+																				</label>
+																				<select ng-model="tipo" id="tipo" >
+																					<option value="A"> Alimentos </option>
+																					<option value="U"> Utilitários</option>
+																					<option value="S"> Serviços</option>
+																				</select>
+																			</fieldset>
+																		</td>
+																	</tr>
+																</table>
+															</td>																
+													</tr>																				
+													<tr>
+														<td data-ng-init="getEstados()">
+															<table style="padding-right: 10px;">
+																<tr>
+																	<td style="padding-right: 10px;">
+																		<label>Estado</label>
+																		<select  ng-options="estado.nome for estado in estados track by estado.id" ng-model="estado" ng-blur="getCidades()">
+																		</select>
+																	</td>
+																	<td>
+																		<label>Cidade 	<font ng-hide="isValidAll()">
+																							<i class="icon-hand-down" ng-hide="isValidCidade()"></i>
+																							<i class="icon-ok" ng-show="isValidCidade()"></i>
+																						</font>
+																		</label>
+																		<select ng-options="cidade.nome for cidade in cidades track by cidade.id" ng-model="cidade" ng-change="getLatitudeLongitude()">
+																			<option value=""> {{cidade.nome}}</option>
+																		</select>
+																		
+																	</td>
+																</tr>
+																
+															</table>
+														</td>
+													</tr>
+													<tr style="padding: 51px;">
+															<td style="padding-right: 10px;">
+																<fieldset>
+																		<label>Bairro <font ng-hide="isValidAll()"> 
+																				<i class="icon-hand-down" ng-hide="isValidBairro()"></i><i class="icon-ok" ng-show="isValidBairro()"></i></font>
+																		</label>
+																		<input type="text" ng-model="bairro" ng-blur="isValidBairro()" class="input-xxlarge"  placeholder="informe o bairro" required/>
+																		
+																</fieldset>
+															</td>																
+													</tr>
+													<tr>
+														<td>
+															<label>Endereço <font ng-hide="isValidAll()"><i class="icon-hand-down" ng-hide="isValidEndereco()"></i>
+																			<i class="icon-ok" ng-show="isValidEndereco()"></i>
+																			</font>
+															</label>
+															<input type="text" ng-model="endereco" ng-blur="getLatitudeLongitude()" class="input-xxlarge" placeholder="informe o endereço" required/>
+															
+														</td>
+													</tr>
+													
+													
+													<tr>
+														<td>
+															<table>
+																<tr style="padding: 51px;">
+																	<td>
+																		<fieldset>
+																			<label>Numero <font ng-hide="isValidAll()">
+																				<i class="icon-hand-down" ng-hide="isValidNumero()"></i>
+																				<i class="icon-ok" ng-show="isValidNumero()"></i>
+																				</font>
+																			</label>
+																			<input type="text" ng-model="numero" class="input-small" placeholder="informe o numero" required/>
+																			
+																		<fieldset>
+																	</td>	
+																	<td style="padding-right: 10px;">
+																		<fieldset>
+																			<label>CEP 	<font ng-hide="isValidAll()"><i class="icon-hand-down" ng-hide=""></i>
+																						<i class="icon-ok" ng-show=""></i></font>
+																			</label>
+																			<input type="text" ng-model="cep" ng-change="isValidCep()" class="input-large" placeholder="CEP apenas numeros" required/>
+																		</fieldset>
+																	</td>																	
+																</tr>
+																<tr style="padding: 51px;">
+																	<td style="padding-right: 10px;">
+																		<fieldset>
+																			<label>Telefone Fixo<font ng-hide="isValidAll()">
+																				<i class="icon-hand-down" ng-hide="isValidTelFixo(0)"></i>
+																				<i class="icon-ok" ng-show="isValidTelFixo(0)"></i></font>
+																			</label>
+																			<input type="text" ng-model="telFixo" ng-keyDown="event=$event" class="input-large" placeholder="informe o telefone fixo" required/>
+																		</fieldset>
+																	</td>
+																	<td>
+																		<fieldset>
+																			<label>Telefone Celular
+																			<p  ng-hide="isValidAll()">	
+																			<font color="red" size="1" ng-hide="isValidTelMovel(0)"><i class="icon-hand-down" ></i> informe pelo menos um numero de telefone</font>
+																				<i class="icon-ok" ng-show="isValidTelMovel(0)"></i></p>
+																			</label>
+																			<input type="text" ng-model="telMovel" ng-keyDown="isValidTelMovel(event=$event)"  class="input-large" placeholder="informe um celular" required/>
+																		<fieldset>
+																	</td>
+																</tr>
+																
+															</table>													
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<label>email 	<font ng-hide="isValidAll()"><i class="icon-hand-down" ng-hide="isValidEmail()"></i>
+																			<i class="icon-ok" ng-show="isValidEmail()"></i></font>
+															</label>
+															<input type="email" ng-model="email" class="input-xxlarge" placeholder="informe um email como nome de usuario" required/>
+														</td>
+													</tr>											
+												</table>
+												<!--espaço para ajuste -->
+												<div style="height: 74px;"></div>
+											</fieldset>
+										</form>	

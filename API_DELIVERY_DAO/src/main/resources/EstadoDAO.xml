@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.EstadoDAO">
+ 	
+ 	<select id="getEstadosDAO" resultType="delivery.model.Estado">
+ 		select 	id,
+ 				sigla,
+ 				nome_estado as nome 
+ 		from 
+ 				estado
+ 	</select>
+ 	
+ 	<select id="getEstadoDAO" parameterType="java.lang.Integer" resultType="delivery.model.Estado">
+ 		select id,
+ 				sigla,
+ 				nome_estado as nome
+ 		from 
+ 				estado
+ 		where
+ 				id = #{idEstado}
+ 	</select>
+ 	
+ </mapper>

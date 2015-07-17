@@ -1,0 +1,807 @@
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<title>Delivery</title>
+			<script type="text/javascript" src="../js/jquery.js"></script>
+			<script type="text/javascript" src="../js/bootstrap.js"></script>
+			<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+			<!--script type="text/javascript" src="../jquery-ui-1.11.4/jquery-ui.js"></script-->
+			
+				<script type='text/javascript' src="../js/jquery-1.4.4.min.js"></script>
+				<script type='text/javascript' src="../js/jquery-ui-1.8.11.custom.min.js"></script>
+			    <script type="text/javascript" src="../js/date.js"></script>
+			    <script type='text/javascript' src="../js/jquery.weekcalendar.js"></script>
+			    <script type='text/javascript'>
+
+
+			  var year = new Date().getFullYear();
+			  var month = new Date().getMonth();
+			  var day = new Date().getDate();
+
+			  var eventData1 = {
+				options: {
+				  timeslotsPerHour: 4,
+				  timeslotHeight: 20
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 30),'title':'Lunch with Mike'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 45),'title':'Dev Meeting'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 45),'title':'Hair cut'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 30),'title':'Team breakfast'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
+				]
+			  };
+
+			  var eventData2 = {
+				options: {
+				  timeslotsPerHour: 3,
+				  timeslotHeight: 30
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Sarah'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Meeting'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Joe'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alison'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
+				]
+			  };
+
+
+					// data set 3 : using event delete features
+			  var eventData3 = {
+				options: {
+				  allowEventDelete: true,
+				  eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
+					if (confirm('You want to delete this event?')) {
+					  calendar.weekCalendar('removeEvent',calEvent.id);
+					}
+				  },
+				  deletable: function(calEvent, element) {
+					return calEvent.start > Date.today();
+				  }
+				},
+				events : [
+				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Ashley'},
+				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Picnic'},
+				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Cathy'},
+				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alyssa'},
+				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product kickoff'}
+				]
+			  };
+
+			  $(document).ready(function() {
+				var $calendar = $('#calendar').weekCalendar({
+				  timeslotsPerHour: 4,
+				  scrollToHourMillis : 0,
+				  height: function($calendar){
+					return $(window).height() - $('h1').outerHeight(true);
+				  },
+				  eventRender : function(calEvent, $event) {
+					if(calEvent.end.getTime() < new Date().getTime()) {
+					  $event.css('backgroundColor', '#aaa');
+					  $event.find('.time').css({'backgroundColor': '#999', 'border':'1px solid #888'});
+					}
+				  },
+				  eventNew : function(calEvent, $event) {
+					alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
+				  },
+				  data: function(start, end, callback) {
+					var dataSource = $('#data_source').val();
+
+					if (dataSource === '1') {
+					  callback(eventData1);
+					} else if(dataSource === '2') {
+					  callback(eventData2);
+					} else if(dataSource === '3') {
+					  callback(eventData3);
+					} else {
+					  callback([]);
+					}
+				  }
+				});
+
+				$('#data_source').change(function() {
+				  $calendar.weekCalendar('refresh');
+				  updateMessage();
+				});
+
+				function updateMessage() {
+				  var dataSource = $('#data_source').val();
+				  $('#message').fadeOut(function(){
+					if(dataSource === '1') {
+					  $('#message').text('Displaying event data set 1 with timeslots per hour of 4 and timeslot height of 20px');
+					} else if(dataSource === '2') {
+					  $('#message').text('Displaying event data set 2 with timeslots per hour of 3 and timeslot height of 30px');
+					} else if(dataSource === '3') {
+					  $('#message').text('Displaying event data set 3 with allowEventDelete enabled. Events before today will not be deletable. A confirmation dialog is opened when you delete an event.');
+					} else {
+					  $('#message').text('Displaying no events.');
+					}
+					$(this).fadeIn();
+				  });
+				}
+
+				updateMessage();
+			  });
+			  </script>
+
+			
+			<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
+			<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css">
+			<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+			
+			<!--link rel="stylesheet" type="text/css" href="../jquery-ui-1.11.4/jquery-ui.css"-->
+			<link rel="stylesheet" href="../jquery-ui-1.11.4/jquery-ui.theme.min">
+			<link rel='stylesheet' type='text/css' href='../css/jquery-ui-1.8.11.custom.css' />
+			<link rel='stylesheet' type='text/css' href='../css/jquery.weekcalendar.css' />
+			<link rel="stylesheet" type="text/css" href="../css/default.css" />
+			<link rel="stylesheet" type="text/css" href="../css/principal.css">
+				
+			
+				
+			<script type="text/javascript">
+					/*Inicia o com o status da empresa como fechado*/
+					$(document).ready(function(){
+						$(".aberto").hide();
+					$(".status-aberto").hide();
+				});
+				
+				/*Gerencia o efeito sanfona*/
+				$(function() {
+				    $( "#accordion" ).accordion();
+				  });
+				
+				/*Responsavel pelo efeito de Aberto e fechado mudando a cor da bolinha*/
+				function mudarStatus(tipo){
+					if(tipo == 1){
+						$(".status-aberto").show();
+						$(".status-fechado").hide();
+						$(".aberto").show();
+						$(".fechado").hide();
+					} 
+					if(tipo == 2){
+						$(".status-aberto").hide();
+						$(".status-fechado").show();
+						$(".aberto").hide();
+						$(".fechado").show();
+					}
+					tipo = 0;
+				}
+
+				 $(function() {
+				    $( "#chat" ).resizable();
+				  });
+			</script>
+
+			<!--Gerenciamento do Mapa -->
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script>
+
+				$(document).ready(function(){
+					$('#address').keyup(function(){
+						alert("foi");
+						mainMap();
+					});
+					$('#raio').keyup(function(){
+						alert("foi");
+						mainMap();
+					});
+				});
+				
+
+				function getZoom(raio){
+					var zoom; 
+					if(raio >= 4){
+						minus = Math.round( (raio / 10)  + 2);
+				  		zoom = 14 - minus; 		
+				  	}
+
+				  	if(raio > 50){
+				  		zoom = 4;
+				  	}
+				  	return zoom;
+				}
+
+				function getRaio(){
+					var raio = document.getElementById('raio').value;
+					if(raio != null){
+							return raio;
+						} else {
+							return 0;
+						}	
+							
+						
+				}
+
+				function iniciaCirculo(latLong){
+					
+					 var citymap = {};
+						citymap['Sorocaba'] = {
+					  	center: new google.maps.LatLng(latLong),
+					  	population: 2714856
+						};
+						return citymap ;
+				}
+					    
+				var geocoder;
+				var map;
+				function initialize(citymap , latLong, raio, zoom) {
+					
+				  // Create the map.
+				  geocoder = new google.maps.Geocoder();
+				  var latlng = latLong;
+				  var mapOptions = {
+				    zoom: zoom,
+				    center: latlng,
+				    mapTypeId: google.maps.MapTypeId.TERRAIN
+				  };
+
+				  map = new google.maps.Map(document.getElementById('map-canvas'),
+				      mapOptions);
+
+				  // Construct the circle for each value in citymap.
+				  // Note: We scale the area of the circle based on the population.
+				  if(latLong != null){
+				  for (var city in citymap) {
+				    var populationOptions = {
+				      strokeColor: '#FF0000',
+				      strokeOpacity: 0.8,
+				      strokeWeight: 2,
+				      fillColor: '#FF0000',
+				      fillOpacity: 0.35,
+				      map: map,
+				      center: latLong ,
+				      radius: Math.sqrt(citymap[city].population) * raio
+				    };
+				    // Add the circle for this city to the map.
+				    
+				    	cityCircle = new google.maps.Circle(populationOptions);
+				    }
+				  }
+				  if(latLong != null){
+				  var marker = new google.maps.Marker({
+				      map: map,
+				      position: latLong
+				      });
+					}
+				}
+
+				function codeAddress() {
+
+				  var cidade = document.getElementById('cidade').value;
+				  var bairro = document.getElementById('bairro').value;
+				  var rua = document.getElementById('rua').value;
+				  var numero = document.getElementById('numero').value;
+
+				  var address = cidade + ", " + bairro + ", " + rua + ", " + numero;
+
+				  alert(address);
+
+				  geocoder.geocode( { 'address': address}, function(results, status) {
+
+				    if (status == google.maps.GeocoderStatus.OK) {
+				      map.setCenter(results[0].geometry.location);
+				   		
+				   
+				   		 mainMap(results[0].geometry.location)
+				    } else {
+				      alert('Geocode was not successful for the following reason: ' + status);
+				    }
+				  });
+				 
+				}
+
+				function mainMap(latLong){
+
+					var citymap = iniciaCirculo(latLong);
+				
+					var raio = getRaio();
+					
+					
+				
+					var zoom = 13;
+					if(raio != null && raio >= 4){
+						zoom = getZoom(raio);
+					}
+					alert(zoom);
+					initialize(citymap , latLong, raio, zoom)
+					
+
+				}
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+
+	</script>
+			
+</head>
+<body >
+
+
+			<script>
+				/*Gerencia o efeito drop dropdown list e a tooltip*/
+				$(function(){
+					$(".dropdown-toggle").dropdown();
+					$('#element').tooltip('show');
+					$(".collapse").collapse('dropdown-toggle');	
+					$(".collapse").collapse('dropdown-toggle2');	
+    				
+  
+				}); 
+
+				
+			</script>	
+			<div id="cabecalho">
+		
+
+		
+		<!--código responsável pelo cabelho(Logo, status e configurações )-->
+		<table class="cabecalho-table">
+			<tr >
+				<td class="logo">
+					<label><font size="5"><b>Delivery Gerenciador</b></font></label>
+				</td>
+				
+				<td class="status-fechado">
+					<label><font>
+						 Fechado
+					</font></label>
+				</td>
+				<td class="status-aberto">
+					<label><font>
+						 Aberto
+					</font></label>
+				</td>
+				<td>
+					<a  href="#"  rel="tooltip" title="clique aqui para Abrir">
+						<div id="status-desligado"  ><img class="fechado" onclick="mudarStatus(1);" src="../img/desligado.jpg" /><div>
+					</a>
+					<a  href="#" rel="tooltip" title="clique aqui para fechar">
+						<div id="status-ligado" ><img class="aberto" onclick="mudarStatus(2);" src="../img/ligado.jpg" /><div>
+					</a>
+					
+				</td>
+				<td class="conta-config">
+				
+					<label><font>
+						 		Configurações
+							</font></label>
+						<div class="dropdown">
+						  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/tres-barras.png" />
+						  	
+						   </a>
+						  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						    <li>configurar conta</li>
+						     <li>configurar conta 2</li>
+						  </ul>
+						</div>		
+				</td>				
+			</tr>
+		</table>
+	</div>
+
+<div id="centro">
+					<!--espaço entre o cabecalho e o form -->
+					<div id="sub-cabecalho">
+	
+					</div>
+
+
+
+
+				<!--Código formulario principal-->
+			   <div id="form-main">
+			   		<div id="form-title"> 
+			   			<label><font color="#ffffff">Delivery Gerenciador<font></label>
+			   		</div>
+			   		
+
+			   			<div class="tabbable tabs-left">
+						  <ul class="nav nav-tabs" id="painel-esquerda" >
+
+
+						    <li><a href="#tab1" data-toggle="tab" id="tab-pedido"><font color="#48990E"><i class="icon-share-alt"></i> Pedidos</font></a></li>
+    						<li><a href="#tab2" data-toggle="tab" id="tab-agenda"><font color="#48990E"><i class="icon-calendar"></i> Agenda</font></a></li>
+    						<li ><a href="#tab3" data-toggle="tab" id="tab-produtos"><font color="#48990E"><i class=" icon-eye-open"></i> Produtos</font></a></li>
+    						<li class="active" ><a href="#tab4" data-toggle="tab" id="tab-mapa"><font color="#48990E"><i class="icon-map-marker"></i> Mapa</font></a></li>
+						  </ul>
+
+
+
+						  <div class="tab-content">
+
+
+
+
+<!--Codigo pertencente a tela de Pedidos-->
+						    <div class="tab-pane" id="tab1" >
+
+						    	<table id="cabecalho-pedido" class="pedido-header">
+						    		<tr>
+						    			<td style="width: 560px;">
+						    				<font>Endereço</font>
+						    			</td>
+						    			<td style="width: 74px;">
+						    				<center><font>Aberto</font></center>
+						    			</td>
+						    			<td style="width: 74px;">
+						    				<center><font>Fechado</font></center>
+						    			</td>
+						    			<td style="width: 87px;">
+						    				<center><font>Status</font></center>
+						    			</td>
+						    			<td id="preenchimento">
+						    			</td>
+						    		</tr>	
+						    	</table>
+
+
+
+						    	<div id="pedido">
+						    	<div class="accordion" id="accordion2">
+								  <div class="accordion-group">
+								    <div class="accordion-heading" style="background-color: #eeeeee;">
+								      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+								        
+								        
+								        <table >
+								    		<tr>
+								    			<td style="width: 744px; border-right: 1px solid #999999;">
+								    				<font>Rua Alzira Camilo nº220 , Jardim São Guilherme, Sorocaba</font>
+								    			</td>
+								    			<td style="width: 100px; border-right: 1px solid #999999;">
+								    				<center><font>17:00</font></center>
+								    			</td>
+								    			<td style="width: 100px; border-right: 1px solid #999999;">
+								    				<center><font>18:00</font></center>
+								    			</td>
+								    			<td style="width: 100px;">
+								    				<center><font>concluído</font></center>
+								    			</td>
+								    		</tr>	
+								    	</table>
+
+								      </a>
+								    </div>
+
+								
+										    <div id="collapseOne" class="accordion-body collapse in">
+										      <div class="accordion-inner">
+										      		<table>
+											    		<tr>
+											    			<td>
+												      	<div id="pedido-container">
+														        <font>Itens do Pedido</font>
+														        <p>
+														 		<ul>
+														 			<li>Pizza Calabreza</li>
+														 			<li>Coca cola</li>
+														 			<li>2 pudims</li>
+														 			<li>1 X-bacon</li>
+														 	
+														 		</ul>
+														 	</fieldset>
+														 	
+														 	
+														 	<hr style="border: 1px solid #aaaaaa"></hr>	
+
+														 	<table>
+														 		<tr>
+														 			<td>
+														 										<font>forma de Pagamento : Cartão de crédito</font></td>
+														 			<!--td style="padding-left: 40px;">
+														 				<input type="checkbox" /> inserir desconto<br/>
+														 				<input type="radio" name="tipo">%
+														 				<input type="radio" name="tipo">$
+														 				<input type="text" class="input-small" />
+														 			</td-->
+														 		</tr>
+														 	</table> 
+														 	<hr style="border: 1px solid #aaaaaa"></hr>	
+
+														 		<table>
+															 		<tr>
+															 			<td class="total-pedido">
+															 				<font>Total</font> 
+															 			</td>
+															 			<td class="pedido-aceitar">
+															 				<button type="submit" class="btn btn-success">Aceitar</button>
+															 			</td>
+															 			<td class="pedido-rejeitar">
+															 				<button type="submit" class="btn btn-danger">Rejeitar</button>
+															 			</td>
+															 		</tr>
+															 	</table> 
+														 	
+												      </div>
+										  </td>
+										  <td>
+										  	<!--center><font size="4">Atendimento via chat</font></center>
+												      <div id="chat" class="ui-widget-content" style="height:278px;">
+												      		<div id="chat-typed">
+												      			
+												      		</div>
+												      		<div id="chat-type">
+																<table>
+																	<tr>
+																		<td style="margim:0px; width: 240px; height: 100% overflow:hidden;">
+																				
+																				<textarea rows="2" style="width: 248px;"></textarea>
+																			
+																		</td>
+																		<td style="margim:0px; width: 30px; height: 20px;">
+																			<button type="submit" class="btn btn-primary" align="right"/><i class="icon-chevron-right"></i></button>
+																		</td>
+																	</tr>
+																</table>
+												      		</div>
+												      		
+												      </div-->
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+								  <div class="accordion-group">
+								    <div class="accordion-heading">
+								      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+								        <table>
+								    		<tr>
+								    			<td style="width: 744px; border-right: 1px solid #999999;">
+								    				<font>Rua Alzira Camilo nº220 , Jardim São Guilherme, Sorocaba</font>
+								    			</td>
+								    			<td style="width: 100px; border-right: 1px solid #999999;">
+								    				<center><font>17:00</font></center>
+								    			</td>
+								    			<td style="width: 100px; border-right: 1px solid #999999;">
+								    				<center><font>18:00</font></center>
+								    			</td>
+								    			<td style="width: 100px;">
+								    				<center><font>concluído</font></center>
+								    			</td>
+								    		</tr>	
+								    	</table>
+								      </a>
+								    </div>
+								    <div id="collapseTwo" class="accordion-body collapse">
+								      <div class="accordion-inner">
+								        <fieldset>
+								 		<legend>Itens do Pedido</legend>
+								 		<ul>
+								 			<li>Item 1</li>
+								 			<li>Item 2</li>
+								 			<li>Item 3</li>
+								 			<li>Item 4</li>
+								 			<li>Item 5</li>
+								 		</ul>
+								 	</fieldset>
+								 	
+								 	<fieldset>
+								 		<legend>Forma de Pagamento</legend>
+								 	</fieldset>	
+								 	<hr style="border: 1px solid #aaaaaa"></hr>	 
+								 	
+
+
+								 	<table>
+								 		<tr>
+								 			<td>
+								 				<label>Total </label>
+								 			</td>
+								 			<td>
+
+								 			</td>
+								 		</tr>
+								 	</table>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+							</div>
+						    </div>
+
+<!--Codigo pertencente a tela de Agenda-->
+							<div class="tab-pane" id="tab2" style="overflow: none; width:1070; margin: 0px; padding: 0px;">
+							  <div class="clearer"></div>
+							  <div id="calendar"></div>
+						    </div>
+
+<!--Codigo pertencente a tela de Cadatro de Produtos-->
+
+						    <div class="tab-pane " id="tab3">
+
+						    	<div id="produto">
+						      	<table>
+						      		<tr>
+						      			<td class="list-produtos">
+						      				<div id="list-produtos" >
+						      					<table class="pedido-header">
+						      						<tr>
+						      							<td width="700px;">
+						      								Descrição 
+						      							</td>
+						      							<td width="15%;">
+						      								Valor
+						      							</td>
+						      						</tr>
+						      					</table>
+
+						      					<div class="accordion" id="accordion2">
+												  <div class="accordion-group">
+												    <div class="accordion-heading">
+												      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+												        <table>
+												        	<tr>
+												        		<td style="width: 697px; border-right: 1px solid #999999;">
+												        			<font>Pizza Quatro queijos</font>
+												        		</td>
+												        		<td style="width: 100px;">
+												        			<font>R$ 29,90</font>
+												        		</td>
+												        	</tr>
+												        </table>
+												      </a>
+												    </div>
+												    <div id="collapseThree" class="accordion-body collapse">
+												      <div class="accordion-inner">
+												      	itens do produto
+												          <div id="itens-produto">
+												          		queijo mussarela , 
+												          		queijo gorgonzola , 
+												          		queijo provolone, 
+												          		queijo mussarela , 
+												          		queijo gorgonzola , 
+												          		queijo provolone,
+												          		queijo mussarela , 
+												          		queijo gorgonzola , 
+												          		queijo provolone,
+												          		queijo mussarela , 
+												          		queijo gorgonzola , 
+												          		queijo provolone,
+												          		catupiry.
+
+												          </div>
+												          Adicionais
+												          <div id="adicionais-produto">
+												          		chedar
+												          		queijo parmesão
+												          </div>
+												      </div>
+												    </div>
+												  </div>
+												 
+						      				
+
+						      				<!--Colapse exemplo pode ser excluido quando implementado angular-->
+												  <div class="accordion-group">
+												    <div class="accordion-heading">
+												      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+												        <table>
+												        	<tr>
+												        		<td style="width: 697px; border-right: 1px solid #999999;">
+												        			<font>Pizza Quatro queijos</font>
+												        		</td>
+												        		<td style="width: 100px;">
+												        			<font>R$ 29,90</font>
+												        		</td>
+												        	</tr>
+												        </table>
+												      </a>
+												    </div>
+												    <div id="collapseFour" class="accordion-body collapse">
+												      <div class="accordion-inner">
+												        Anim pariatur cliche...
+												      </div>
+												    </div>
+												  </div>
+												  </div>
+												 </div>						      			
+												 </div>
+						      			</td>
+						      			<td>
+						      				<div id="produto-itens">
+						      					<button type="submit"><i class="icon-plus"></i><font></font></button>
+						      					<button type="submit"><i class="icon-pencil"></i><font></font></button>
+						      					<button type="submit"><i class="icon-trash"></i><font></font></button>
+						      					<br/>
+						      					<br/>
+						      					<br/>
+						      					<br/>
+						      					<button type="submit"><i class="icon-arrow-left"></i><font></font></button>
+						      					<button type="submit"><i class="icon-arrow-right"></i><font></font></button>
+						      				</div>
+						      			</td>	
+						      			<td class="list-itens-produtos" >
+						      				<div id="list-itens-produtos"  >
+						      						<div id="item-porduto-busca" style="padding: 5px; padding-left: 10px;">
+						      							<table>
+						      								<tr>
+						      									<td width="220px">
+						      										<input type="text" class="input-medium search-query" style="height: 30px; width: 210px;">   
+						      									</td>
+						      									<td width="20px">
+						      										<i class="icon-plus"></i>
+						      									</td>
+						      								</tr>
+						      							</table>
+						      						</div>
+						      						<div id="items-produto-list">
+						      								
+						      						</div>	
+						      				</div>
+						      			</td>
+						      		</tr>
+						      	</table>
+
+						    </div>
+						  </div>
+
+						  <div class="tab-pane active" id="tab4">
+						  			 
+						  			<table>
+						  				<tr>
+						  					<td>
+						  						
+									  			<div id="form-mapa">
+									  				<center>
+									  				<font>Definir raio de entrega</font>
+
+									  				<table>
+									  					<tr>
+									  						<td>
+									  							<p></p>
+									  							<label>Cidade :</label><input id="cidade" type="text" class="input-large" />
+									  						</td>
+									  					</tr>
+									  					<tr>
+									  						<td>	
+									  							<label>Bairro :</label><input id="bairro" type="text" class="input-large" />
+									  						</td>
+									  					</tr>
+									  					<tr>
+									  						<td>	
+									  							<label>Rua :</label><input id="rua" type="text" class="input-large" />
+									  						</td>
+									  					</tr>
+									  					<tr>
+									  						<td>	
+									  							<label>Numero:</label><input id="numero" type="text" class="input-small" />
+									  						</td>
+									  					</tr>
+									  					<tr>
+									  						<td>	
+									  							<button class="btn btn-primary" value="Encode" onclick="codeAddress();">Buscar</button>
+									  						</td>
+									  					</tr>	
+									  						<td>
+									  							<br/>
+									  							<font>raio km </font><input type="text" class="input-small" id="raio"/>
+									  						</td>	
+									  					</tr>
+									  				</table>
+									  				</center>
+									  			</div>
+									  			
+						  					</td>
+						  					<td id="mapa">
+						  						<div id="map-canvas" style="height: 100%; margin: 0px; padding: 0px;"> </div>
+						  					</td>	
+						  				</tr>
+						  			</table>			     		 
+						      		
+						  </div>
+				</div>
+	</div>
+
+	<div id="form-rodapé">
+
+	</div>
+	
+
+	
+</body>
+</html>
+

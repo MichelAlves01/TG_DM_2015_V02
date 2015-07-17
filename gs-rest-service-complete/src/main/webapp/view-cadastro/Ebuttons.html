@@ -1,0 +1,27 @@
+<script type="text/javascript">
+			/*
+				A opção cancelar pode ser executada	durante o cadastro, caso o 
+				usuario desistir e o mesmo será redirecionado para a tela de login
+			*/
+	$(document).ready(function() { 
+		$('#cancelarAtualizacao').click(function() {
+		   	$.blockUI({ message: $('#cancelandoAtulizacao') }); 
+    		setTimeout(time = 1, 3000);
+    		if(time == 1){
+    			location.href = "index.html"
+    		} 
+
+	    }); 
+	}); 
+</script>
+<div id="buttons-cadastro-rodape">	
+	<table>
+	 	<tr>
+	 		<td width="200"></td>
+			<td>
+				<button class="btn" type="button" ng-click="executaAtualizacao()">Salvar</button>
+				<button class="btn" type="button" id="cancelarAtualizacao">Cancelar</button>
+			</td>
+		</tr>
+	</table>
+</div>
