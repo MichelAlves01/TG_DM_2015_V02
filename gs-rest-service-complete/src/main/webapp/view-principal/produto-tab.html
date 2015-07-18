@@ -4,26 +4,22 @@
 			<tr>
 				<td class="list-produtos">
 					<div id="list-produtos" >
-						<table class="pedido-header">
-				      		<tr>
-				      			<td width="700px;">
-				      				Descrição 
-				      			</td>
-				      			<td width="15%;">
-				      				Valor
-				      			</td>
-				      		</tr>
-				      	</table>
 				      	<div id="form-produto-add">				      		
 				      		<div class="accordion-heading"> 
 							      <a class="accordion-toggle" ng-show="mostrarCadastro()" style="height: 18px;">
 					        			<table>
 					        				<tr>
-					        					<td style="width: 697px; border-right: 1px solid #999999;">
+					        					<td style="width: 800px; border-right: 1px solid #999999;">
 					        						<font>{{descricao}}</font>
 					        					</td>
-					        					<td style="width: 100px;">
+					        					<td style="width: 160px;">
 					        						<font>{{preco}}</font>
+					        					</td>
+					        					<td style="width: 70px;">
+					        						<i class="icon-pencil"></i>
+					        					</td>
+					        					<td style="width: 30px;">
+					        						<i class="icon-trash"></i>
 					        					</td>
 						        			</tr>
 								        </table>
@@ -35,23 +31,23 @@
 				      		<table>
 				      			<tr>
 				      				<td style="padding-right: 20px;"> 
-				      					<label>Descrição do produto
+					      					<label>Descrição do produto{{empresa.tipo}}
 				      					<font ng-hide="isValidAll()">
-				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPreco()"></i>
-											<i class="icon-ok" ng-show="validarPreco()"></i>
+				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarDesc()"></i>
+											<i class="icon-ok" ng-show="validarDesc()"></i>
 										</font></label>
-				      					<input type="text" ng-model="descricao"class="input-xxlarge"></td>
+				      					<input type="text" ng-model="descricao" ng-change="validarDesc()" class="input-xxlarge"></td>
 				      				<td>
 				      					<label>Preço
 				      					<font ng-hide="isValidAll()">
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPreco()"></i>
-											<i class="icon-ok" ng-show="validarDesc()"></i>
+											<i class="icon-ok" ng-show="validarPreco()"></i>
 										</font></label>
-				      					<input type="text" ng-model="preco" ng-change="validarDesc()" class="input-small"></td>
+				      					<input type="text" ng-model="preco" ng-change="validarPreco()" class="input-small"></td>
 				      			</tr>
 				      			<tr>
 				      				<td>
-				      					<button class="btn btn-primary" ng-click="mostrarErros()">Salvar</button>
+				      					<button class="btn btn-primary" ng-click="mostrarCamposNulos(); cadastrarProdutoController();">Salvar</button>
 				      				</td>
 				      			</tr>
 				      		</table>

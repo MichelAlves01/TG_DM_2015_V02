@@ -3,14 +3,17 @@ package delivery.service.DELIVERY_SERVICE;
 import java.util.ArrayList;
 import java.util.List;
 
+import delivery.api.mapper.ProdutoImpl;
 import delivery.model.Produto;
 
 
 public class ProdutoService {
 	
+	private static ProdutoImpl produtoImpl;
 	
 	public void cadastrarProdutoService(Produto produto){
-		System.out.println("Sucesso!!!");
+		produtoImpl = new ProdutoImpl();
+		produtoImpl.cadastrarProdutoDAO(produto);
 	}
 	
 	public void atualizarProdutoService(){

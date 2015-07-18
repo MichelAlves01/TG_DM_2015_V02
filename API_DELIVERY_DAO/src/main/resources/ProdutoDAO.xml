@@ -4,8 +4,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="delivery.api.dao.ProdutoDAO">
- 	<insert id="cadastrarProdutoDAO" parameterType="delivery.model.Produto">
- 		insert into produto (id, decricao,preco, id_empresa) values ( #{id},#{descricao}, #{preco}, #{id_empresa} )
+ 	<insert id="cadastrarProdutoDAO" useGeneratedKeys="true" parameterType="delivery.model.Produto">
+ 		insert into produto (
+ 								id, 
+ 								descricao,
+ 								preco, 
+ 								id_empresa,
+ 								status
+ 							) values ( 
+ 								#{id},
+ 								#{descricao}, 
+ 								#{preco}, 
+ 								#{empresa.cpfCnpj},
+ 								0 
+ 							)
  	</insert>
  	
  	<update id="atualizarProdutoDAO"  parameterType="delivery.model.Produto">

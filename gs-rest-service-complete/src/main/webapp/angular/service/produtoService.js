@@ -2,6 +2,8 @@
 	
 	var app = angular.module('produtoService' , []);
 
+	var urlBase = 'http://localhost:8080';
+
 	app.controller('produtoCtrl' , function($scope,$http){
 		var toggleCadastro = true;
 		var validAll = true;
@@ -57,18 +59,41 @@
 				return validAll;
 		}
 
-		$scope.mostrarErros = function(){
-			if($scope.preco != null &&
-				$scope.descricao != null){
-				validAll = true;
+		$scope.mostrarCamposNulos = function(){
+			if(validaCampos()){
+				validAll = true;	
 			} else {
 				validAll = false;
 				
 			}
 		}
 
+		$scope.cadastrarProdutoController = function(){
+			alert('deu bom');
+			if(validaCampos()){
+				var descricao = $scope.descricao;
+				var preco = $scope.preco.replace('R$ ', '');
+				alert(preco);
+				var cpfCnpj = $scope.empresa.cpfCnpj;
+				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
+				$http.post(urlBase + '/cadastrarProdutoController?' + data).success(function(data,status){
+					$scope.produto = data;
+				});
+				alert(data);
+			}
 
+		}
+
+
+		function validaCampos(){
+			if($scope.preco != null &&
+				$scope.descricao != null){
+				return true;	
+			} else {
+				return false;
+				
+			}
+		}
 	});	
-
 
 })();

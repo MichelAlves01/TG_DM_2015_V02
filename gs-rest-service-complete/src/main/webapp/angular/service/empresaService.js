@@ -153,7 +153,7 @@
 			o cadastro da empresa assim como vizualização  
 			atualização e exclusão da conta. 
 		*/
-		app.controller('EmpresaCtrl', function($scope, $http) {
+		app.controller('EmpresaCtrl', function($scope, $http , empresa) {
 			 var fieldsValid = true;
 			 var latLong = null;
 
@@ -661,6 +661,9 @@
 			}
 		
 		});
-
+	
+	app.factory('empresa', function () {
+    	return { cpfCnpj: '' };
+	});
 
 })();
