@@ -22,6 +22,7 @@ public class ProdutoImpl {
 	public void atualizarProdutoDAO(Produto produto){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ProdutoDAO produtodao = session.getMapper(ProdutoDAO.class);
+		System.out.println("2 - deu bom");
 		produtodao.atualizarProdutoDAO(produto);
 		session.commit();
 		session.close();

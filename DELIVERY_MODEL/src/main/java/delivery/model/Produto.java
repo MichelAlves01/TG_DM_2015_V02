@@ -8,6 +8,8 @@ public class Produto {
 	private String descricao;
 	private double preco;
 	private Empresa empresa;
+	private int status;
+	
 	private List<ItensPedido> itensPedido;
 	private List<ItensProduto> itensProduto;
 	
@@ -32,6 +34,14 @@ public class Produto {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}

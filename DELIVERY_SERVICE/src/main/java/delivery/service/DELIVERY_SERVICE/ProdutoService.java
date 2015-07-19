@@ -16,12 +16,15 @@ public class ProdutoService {
 		produtoImpl.cadastrarProdutoDAO(produto);
 	}
 	
-	public void atualizarProdutoService(){
-		
+	public void atualizarProdutoService(Produto produto){
+		System.out.println("1- deu bom");
+		produtoImpl = new ProdutoImpl();
+		produtoImpl.atualizarProdutoDAO(produto);
 	}
 	
 	public List<Produto> getProdutosService(){
-		final List<Produto> produtos = new ArrayList<Produto>();
+		produtoImpl = new ProdutoImpl();
+		List<Produto> produtos = produtoImpl.getProdutosDAO();
 		return produtos;
 	}
 	

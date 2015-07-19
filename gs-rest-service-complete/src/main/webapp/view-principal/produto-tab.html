@@ -31,7 +31,7 @@
 				      		<table>
 				      			<tr>
 				      				<td style="padding-right: 20px;"> 
-					      					<label>Descrição do produto{{empresa.tipo}}
+					      					<label>Descrição do produto
 				      					<font ng-hide="isValidAll()">
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarDesc()"></i>
 											<i class="icon-ok" ng-show="validarDesc()"></i>
@@ -47,7 +47,7 @@
 				      			</tr>
 				      			<tr>
 				      				<td>
-				      					<button class="btn btn-primary" ng-click="mostrarCamposNulos(); cadastrarProdutoController();">Salvar</button>
+				      					<button class="btn btn-primary" ng-click="mostrarCamposNulos(); cadastrarProdutoController(); listProdutos();">Salvar</button>
 				      				</td>
 				      			</tr>
 				      		</table>
@@ -65,24 +65,61 @@
 								
 							</div>
 						</div>
-						<div class="accordion" id="accordion2">
-							<div class="accordion-group">
-							    <div class="accordion-heading">
-							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+						<div class="accordion" id="accordion" data-ng-init="listProdutos()">
+							<div class="accordion-group" ng-repeat="produto in produtos track by produto.id">
+							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)">
+							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#{{produto.id}}">
 					        			<table>
 					        				<tr>
-					        					<td style="width: 697px; border-right: 1px solid #999999;">
-					        						<font>Pizza Quatro queijos</font>
+					        					<td style="width: 700px; border-right: 1px solid #999999;  font-weight: bold">
+					        						<font 	color="#848484">{{produto.descricao}}</font>
 					        					</td>
-					        					<td style="width: 100px;">
-					        						<font>R$ 29,90</font>
+					        					<td style="width: 130px; padding-left:10px; font-weight: bold; border-right: 1px solid #999999;" >
+					        						<font color="#2E64FE">{{ produto.preco | currency : 'R$'}}</font>
+					        					</td>
+					        					<td id="icons-td" style="width: 30px; padding-left: 10px;">
+					        						<div id="icons-td1">
+					        							<a href="#" ng-click="atualizarForm(produto.id)"><i class="icon-pencil" ></i></a>
+					        						</div>
+					        					</td>
+					        					<td id="icons-td" style="width: 20px;">
+					        						<div id="icons-td2">
+					        							<a href="#" ng-click="removerProduto(produto.id)"><i class="icon-trash"></i></a>
+					        						</div>
 					        					</td>
 						        			</tr>
 								        </table>
 						      	  </a>
 							</div>
+							<div id="update-form-{{produto.id}}" class="update-form" style="display: none;">
+								<table id="table-update">
+					      			<tr>
+					      				<td style="padding-right: 20px;"> 
+						      					<label>Descrição do produto
+					      					<font ng-hide="isValidAll()">
+					      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarDesc()"></i>
+												<i class="icon-ok" ng-show="validarDesc()"></i>
+											</font></label>
+					      					<input type="text" ng-model="produto.descricao" ng-change="validarDesc()" class="input-xxlarge"></td>
+					      				<td>
+					      					<label>Preço
+					      					<font ng-hide="isValidAll()">
+					      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPreco()"></i>
+												<i class="icon-ok" ng-show="validarPreco()"></i>
+											</font></label>
+					      					<input type="text" ng-model="produto.preco" ng-change="validarPreco()" class="input-small"></td>
+					      			</tr>
+					      			<tr>
+					      				<td>
+					      					<button class="btn btn-primary" ng-click="mostrarCamposNulos(); atualizarProdutoController(produto.id, produto.descricao, produto.preco); listProdutos();">Salvar</button>
+					      					<button class="btn btn-alert" ng-click="cancelUpdate(produto.id)">Cancel</button>
+					      				</td>
+
+					      			</tr>
+					      		</table>
+							</div>
 			
-							<div id="collapseThree" class="accordion-body collapse">
+							<div id="{{produto.id}}" class="accordion-body collapse">
 								<div class="accordion-inner">
 									itens do produto
 									  <div id="itens-produto">
@@ -109,44 +146,8 @@
 							    </div>
 							</div>
 						</div>
-				
-				  		<!--Colapse exemplo pode ser excluido quando implementado angular-->
-					  <div class="accordion-group">
-					    <div class="accordion-heading">
-					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-							<table>
-							   	<tr>
-							   		<td style="width: 697px; border-right: 1px solid #999999;">
-							   			<font>Pizza Quatro queijos</font>
-							   		</td>
-							   		<td style="width: 100px;">
-							   			<font>R$ 29,90</font>
-							   		</td>
-							   	</tr>
-							</table>
-						  </a>
-						</div>
-						<div id="collapseFour" class="accordion-body collapse">
-						    <div class="accordion-inner">
-							       ...
-						    </div>
-						</div>
-					</div>
 				</div>
 			</div>						      			
-		</div>
-	</td>
-	<td>
-		<div id="produto-itens">
-			<button type="submit"><i class="icon-plus"></i><font></font></button>
-			<button type="submit"><i class="icon-pencil"></i><font></font></button>
-			<button type="submit"><i class="icon-trash"></i><font></font></button>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<button type="submit"><i class="icon-arrow-left"></i><font></font></button>
-			<button type="submit"><i class="icon-arrow-right"></i><font></font></button>
 		</div>
 	</td>	
 	<td class="list-itens-produtos" >
