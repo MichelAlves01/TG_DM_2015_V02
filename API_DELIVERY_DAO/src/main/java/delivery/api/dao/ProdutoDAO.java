@@ -2,6 +2,7 @@ package delivery.api.dao;
 
 import java.util.List;
 
+import delivery.model.Empresa;
 import delivery.model.Produto;
 
 
@@ -15,6 +16,6 @@ public interface ProdutoDAO {
 	
 	Produto getProdutoDAO(int idProduto);
 	
-	List<Produto> getProdutosDAO();
+	List<Produto> getProdutosDAO(Empresa empresa);
 	
 }

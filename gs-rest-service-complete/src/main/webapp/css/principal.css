@@ -536,10 +536,10 @@ centro-principal{
 		padding: 2px;
 }
 
+
 #list-itens-produtos{
-		min-height: 525px;
-		max-height: 525px;
-		width: 100%;
+		height: 566px;
+		width: 336px;
 		background: rgba(255,255,255,1);
 		background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,0.96) 47%, rgba(245,251,239,0.91) 100%);
 		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,0.96)), color-stop(100%, rgba(245,251,239,0.91)));
@@ -548,13 +548,6 @@ centro-principal{
 		background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,0.96) 47%, rgba(245,251,239,0.91) 100%);
 		background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(246,246,246,0.96) 47%, rgba(245,251,239,0.91) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5fbef', GradientType=1 );
-
-}
-
-.list-itens-produtos{
-		height: 478px;
-		width: 272px;
-		border: 1px solid #999999;
 }
 
 
@@ -912,6 +905,7 @@ div.growlUI h4, div.growlUI h5 {
 }
 
 
+/*Produto */
 #form-produto-add{
 	border-top: 1px solid #04B404;
 }
@@ -973,7 +967,7 @@ div.growlUI h4, div.growlUI h5 {
 }
 
 #produto{
-		overflow: scroll;
+		overflow: hide;
 }
 
 #table-update input{
@@ -1021,4 +1015,11 @@ div.growlUI h4, div.growlUI h5 {
 .update-form{
 		padding-left: 10px;
 		padding-bottom: 5px;
+}
+
+
+/* Item */
+#input-desc{
+		height: 30px;
+		width: 200px;
 }

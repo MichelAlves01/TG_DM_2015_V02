@@ -4,7 +4,7 @@
 
 	var urlBase = 'http://localhost:8080';
 
-	app.controller('produtoCtrl' , function($scope,$http){
+	app.controller('produtoCtrl' , function($scope,$http,empresa){
 		var toggleCadastro = true;
 		var toggleUpdate = true;
 		var validAll = true;
@@ -100,9 +100,11 @@
 			}
 		}
 
-		$scope.listProdutos = function(){
-			setTimeout(function(){ 
-				$http.get(urlBase + '/getProdutosController').success(function(data , status){
+		$scope.listProdutos = function(id){
+			setTimeout(function(){
+				var cpfCnpj = $scope.empresa.cpfCnpj;
+				var data = $.param({cpfCnpj: cpfCnpj}); 
+				$http.get(urlBase + '/getProdutosController?' + data).success(function(data , status){
 					$scope.produtos = data;
 				})
 			}, 1000);
@@ -110,7 +112,8 @@
 		}
 
 		$scope.removerProduto = function(id){
-			var data = $.param({id: id});
+			var cpfCnpj = $scope.empresa.cpfCnpj;
+			var data = $.param({id: id, cpfCnpj: cpfCnpj});
 			setTimeout(function(){ 
 				$http.get(urlBase + '/excluirProdutoController?' + data).success(function(data,status){
 					$scope.produtos = data;
@@ -148,6 +151,8 @@
 						$scope.produto = data;
 						$scope.produtos.push($scope.produto);
 				});
+				var element_update = '#update-form-'+id;
+				$(element_update).hide();
     			toggleUpdate = true;
 			}
 		}

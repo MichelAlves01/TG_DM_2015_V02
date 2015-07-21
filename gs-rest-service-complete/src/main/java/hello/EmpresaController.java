@@ -50,7 +50,7 @@ public class EmpresaController {
 		return empresa;
 	}
 	
-	@RequestMapping(value="/getEmpresaController")
+	@RequestMapping(value="/getEmpresaController", method=RequestMethod.GET)
 	public Empresa getEmpresaController(@RequestParam(value="cpfCnpj")String cpfCnpj){
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);

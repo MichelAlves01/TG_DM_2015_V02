@@ -48,16 +48,16 @@
  				produto
  	</select>
  	
- 	<select id="getProdutosDAO" parameterType="java.lang.Integer" resultType="delivery.model.Produto">
+ 	<select id="getProdutosDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Produto">
  		select 	id,
  				descricao,
  				preco,
- 				id_empresa as "empresa.cpfCnpj",
+ 				id_empresa as "cpfCnpj",
  				status  
  		from 
  				produto
  		where 
- 				status = 0
+ 				status = 0 and id_empresa = #{cpfCnpj}
  		order by 
  				id desc
  	</select>

@@ -2,6 +2,7 @@ package delivery.api.dao;
 
 import java.util.List;
 
+import delivery.model.Empresa;
 import delivery.model.Item;
 
 public interface ItemDAO {
@@ -14,6 +15,6 @@ public interface ItemDAO {
 	
 	Item getItemDAO(int idItem);
 	
-	List<Item> getItensDAO();
+	List<Item> getItensDAO(Empresa empresa);
 	
 }

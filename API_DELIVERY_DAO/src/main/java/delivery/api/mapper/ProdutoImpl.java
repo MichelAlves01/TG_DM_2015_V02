@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
 import delivery.api.dao.ProdutoDAO;
+import delivery.model.Empresa;
 import delivery.model.Produto;
 
 
@@ -44,10 +45,10 @@ public class ProdutoImpl {
 		return produto;
 	}
 	
-	public List<Produto> getProdutosDAO(){
+	public List<Produto> getProdutosDAO(Empresa empresa){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ProdutoDAO produtodao = session.getMapper(ProdutoDAO.class);
-		List<Produto> produtos = produtodao.getProdutosDAO();
+		List<Produto> produtos = produtodao.getProdutosDAO(empresa);
 		session.close();
 		return produtos;
 	}

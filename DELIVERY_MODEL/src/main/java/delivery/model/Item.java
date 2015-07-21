@@ -6,6 +6,8 @@ public class Item {
 	
 	private int id;
 	private String descricao;
+	private double preco;
+	private Empresa empresa;
 	private List<ItensProduto> itensProduto;
 	private List<AdicionalProduto> adicionaisProduto;
 	
@@ -20,6 +22,19 @@ public class Item {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 	public List<ItensProduto> getItensProduto() {
 		return itensProduto;

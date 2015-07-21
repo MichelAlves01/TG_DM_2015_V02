@@ -5,7 +5,33 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-07-15T16:11:00Z</updated>
+  <updated>2015-07-20T16:04:00Z</updated>
+  <entry>
+    <title>Spring Roo 2.0.0.M1 refactors addons, structures for collaboration</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/07/20/spring-roo-2-0-0-m1-refactors-addons-structures-for-collaboration" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2015-07-20:2191</id>
+    <updated>2015-07-20T16:04:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at &lt;a href="http://www.disid.com/en/"&gt;DISID Corporation&lt;/a&gt;, I am pleased to announce that Spring Roo 2.0.0.M1 has been released!&lt;/p&gt;&lt;p&gt;This first release of Spring Roo 2.0 is a large refactoring of Spring Roo project. We have moved Roo to be a smaller and easier to maintain project:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The OSGi container has been upgraded to OSGi R5.&lt;/li&gt;
+  &lt;li&gt;Spring Roo has defined its runtime. The Roo runtime contains everything that is needed to execute addons and it doesn&amp;rsquo;t contain any addon. By not containing any addons it is easier to keep the Roo runtime more stable and backward compatible.&lt;/li&gt;
+  &lt;li&gt;Today, Spring Roo is centered in Spring technologies - so addons like GWT and JSF have been moved to their own projects in order to be maintained by the Roo community.&lt;/li&gt;
+  &lt;li&gt;The &lt;a href="http://docs.spring.io/spring-roo/docs/2.0.0.M1/reference/html/"&gt;user guide&lt;/a&gt; has been migrated to ASCIIdoc.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;If your organization would like to contribute to the Roo project by maintaining these addons please contact: springroo at disid.com. To learn more take a look at the &lt;a href="https://github.com/spring-projects/spring-roo-community-addons"&gt;Spring Roo Community addons&lt;/a&gt; source code. &lt;/p&gt;&lt;p&gt;This release also improves extensibility and increases potential for collaboration around the Spring Roo project:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;a href="http://projects.spring.io/spring-roo/marketplace"&gt;Roo Marketplace&lt;/a&gt; has been created as a place to share, to find and keep track on third party addons&lt;/li&gt;
+  &lt;li&gt;Roo provides a new way to package and distribute a set of addons together: the &amp;ldquo;Roo Addon Suite&amp;rdquo;. Roo Addon Suite is based on OSGi R5 Subsystems that provides a really convenient deployment model, without compromising the modularity of Roo.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;As always, new version of Spring Roo, includes some bug fixes and improvements reported by the community.&lt;/p&gt;&lt;p&gt;For full details on the changes made in the new Spring Roo version, please refer to the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;amp;version=14835"&gt;Spring Roo 2.0.0.M1 Release Notes&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Thanks to all of our awesome users who came up with useful bug reports and suggestions. Currently we are working on Spring Roo 2.0.0.M2 that will include the following improvements:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Update code generation to use latest versions: Spring framework 4, move from Spring framework dependencies to Spring IO Platform&lt;/li&gt;
+  &lt;li&gt;User Managed POM [&lt;a href="https://jira.spring.io/browse/ROO-3465"&gt;ROO-3465&lt;/a&gt;], [&lt;a href="https://jira.spring.io/browse/ROO-3478"&gt;ROO-3478&lt;/a&gt;]&lt;/li&gt;
+  &lt;li&gt;First version of the new Web UI [&lt;a href="https://jira.spring.io/browse/ROO-3629"&gt;ROO-3629&lt;/a&gt;]&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Additionally &lt;a href="http://spring.io/tools"&gt;Spring Tool Suite&lt;/a&gt; (STS) team is working in releasing the STS 3.7.0 which will include the Spring IDE Roo Support for Roo 2.0.0. If you want to install the updated Roo components before, you would do it manually via the Spring IDE nightly update site. &lt;/p&gt;&lt;p&gt;For more specific information about Spring Roo project please see the&lt;br/&gt;&lt;a href="http://projects.spring.io/spring-roo/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-roo"&gt;GitHub&lt;/a&gt;&lt;/p&gt;&lt;p&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow&lt;br/&gt;&lt;a href="https://www.twitter.com/springroo"&gt;@SpringRoo&lt;/a&gt; or just include #SpringRoo in&lt;br/&gt;your tweets.&lt;/p&gt;&lt;p&gt;Stay tuned to Spring Roo news!&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Framework 4.2 RC3 released / GA on July 30</title>
     <link rel="alternate" href="https://spring.io/blog/2015/07/15/spring-framework-4-2-rc3-released-ga-on-july-30" />
@@ -49,12 +75,7 @@
     </author>
     <id>tag:spring.io,2015-07-14:2190</id>
     <updated>2015-07-14T11:52:00Z</updated>
-    <content type="html">&lt;p&gt;Speaker: Erdem Gunay &lt;/p&gt;
-&lt;p&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar"&gt;http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar &lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Turkcell launched a personal cloud storage service few years ago. Adding new business features was costly in terms of time and budget on the legacy solution. The user experience needed to be improved. Finally, it was decided to build a new solution where Spring Boot and Spring Framework projects play crucial role as the backbone. The project was completed just in 6 months starting from scratch. The solution was built on top of Spring Boot and many Spring IO Platform projects, allowing the development team focus on business logic instead of configuration &amp;amp; integration details. The project has been divided into deployable modules (API, backend, migration, test automation) accessing micro services that are responsible for one task only. Join Erdem for a review of the migration effort and new architecture - all enabled by Spring Boot.&lt;/p&gt;
-&lt;p&gt;Learn about about Spring Boot at &lt;a href="http://projects.spring.io/spring-security"&gt;http://projects.spring.io/spring-boot&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Learn about about Spring Framework at &lt;a href="http://projects.spring.io/spring-framework"&gt;http://projects.spring.io/spring-framework&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt; &lt;iframe width="420" height="315" src="https://www.youtube.com/embed/a7FMb9SRpk8" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt; &lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;Webinar Replay: A Spring Showcase: Turkcell&amp;rsquo;s Personal Cloud Storage App&lt;br/&gt;&lt;p&gt;Speaker: Erdem Gunay &lt;/p&gt;&lt;br/&gt;&lt;p&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar"&gt;&lt;a href="http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar"&gt;http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar&lt;/a&gt; &lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Turkcell launched a personal cloud storage service few years ago. Adding new business features was costly in terms of time and budget on the legacy solution. The user experience needed to be improved. Finally, it was decided to build a new solution where Spring Boot and Spring Framework projects play crucial role as the backbone. The project was completed just in 6 months starting from scratch. The solution was built on top of Spring Boot and many Spring IO Platform projects, allowing the development team focus on business logic instead of configuration &amp;amp; integration details. The project has been divided into deployable modules (API, backend, migration, test automation) accessing micro services that are responsible for one task only. Join Erdem for a review of the migration effort and new architecture - all enabled by Spring Boot.&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Learn about about Spring Boot at &lt;a href="http://projects.spring.io/spring-security"&gt;&lt;a href="http://projects.spring.io/spring-boot"&gt;http://projects.spring.io/spring-boot&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Learn about about Spring Framework at &lt;a href="http://projects.spring.io/spring-framework"&gt;&lt;a href="http://projects.spring.io/spring-framework"&gt;http://projects.spring.io/spring-framework&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt; &lt;iframe width="420" height="315" src="https://www.youtube.com/embed/kAD2Q8e_iGM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt; &lt;/p&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Microservices with Spring</title>
@@ -694,29 +715,6 @@ dependencies {&#xD;
   &lt;li&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
   &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
   &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - June 23, 2015</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/23/this-week-in-spring-june-23-2015" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2015-06-23:2170</id>
-    <updated>2015-06-23T11:00:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I was in London, last week, for &lt;a href="http://www.devoxx.co.uk/"&gt;Devoxx UK&lt;/a&gt;. The show was a rousing success all around. I gave a talk, a workshop, and was delighted to participate in the closing keynote, too! This week I&amp;rsquo;m in Kraków, Poland, for &lt;a href="http://devoxx.pl/"&gt;Devoxx Poland&lt;/a&gt; (né 33rd Degree) which seems to be an amazing success as well! I want to thank the organizers (&lt;a href="http://twitter.com/mrhazell"&gt;Mark Hazell&lt;/a&gt; and &lt;a href="https://twitter.com/grzegorzduda"&gt;Grzegorz Duda&lt;/a&gt; of Devoxx UK and PL respectively) for inviting me - I haven&amp;rsquo;t had this much fun in a while and I &lt;em&gt;love&lt;/em&gt; the communities that both events serve.&lt;/p&gt;&lt;p&gt;In addition to being in the keynote, I was privileged enough to be in this keynote-selfie for a brief moment where Arun Gupta, left, took a moment to recognize recently nominated Java Champions (second-to-left) Trisha Gee, and David Blevins and myself). Thanks very much, Arun! I post it here because it&amp;rsquo;s pretty darned special to me. ;-)&lt;/p&gt;&lt;p&gt;&lt;img src ="https://pbs.twimg.com/media/CH4qGFAWoAAVTR1.jpg" width = "400"/&gt;&lt;/p&gt;&lt;p&gt;So, that said, on to that which is most special: the tide of awesome that is the great stuff in this week&amp;rsquo;s &lt;em&gt;This Week in Spring&lt;/em&gt;!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring XD ninja &lt;a href="http://spring.io/blog/2015/06/19/spring-integration-kafka-1-2-is-available-with-0-8-2-support-and-performance-enhancements"&gt;Marius Bogoevici announced Spring Integration Kafka 1.2&lt;/a&gt;. The new release includes support for Kafka 0.8.2, performance improvements and improved documentation. All in a worthwhile and recomended upgrade!&lt;/li&gt;
-  &lt;li&gt;Spring guides ninja Greg Turnquist looks at the Spring team&amp;rsquo;s Java 8-first approach and then announces that the epic &lt;a href="http://spring.io/guides"&gt;guides&lt;/a&gt; have been moved to Java 8 by default.&lt;/li&gt;
-  &lt;li&gt;There&amp;rsquo;s a nice introduction by &lt;a href="https://twitter.com/bijukunjummen"&gt;Biju Kunjummen&lt;/a&gt; to Spring Cloud Eureka and the Spring Cloud Config Server over on DZone - as succint as it is useful!&lt;/li&gt;
-  &lt;li&gt;Our resident Spring Boot sorceror, Phil Webb, &lt;a href="http://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3"&gt;looks at the &lt;code&gt;spring-boot-devtools&lt;/code&gt;&lt;/a&gt; in this amazing blog post. Seriously, go read this. I&amp;rsquo;ll wait.. (did you watch the video? isn&amp;rsquo;t that crazy cool?)&lt;/li&gt;
-  &lt;li&gt;Big-data doc Dr. Pollack just announced &lt;a href="http://spring.io/blog/2015/06/17/spring-xd-1-2-ga-spring-xd-1-1-3-and-flo-for-spring-xd-beta-released"&gt;Spring XD 1.2 GA, Spring XD 1.1.3, and the Spring XD Flo beta&lt;/a&gt;. There&amp;rsquo;s so much cool stuff in these releases! I particularly love the Spring XD Flo beta (there&amp;rsquo;s even a super cool video included)!&lt;/li&gt;
-  &lt;li&gt;Spring XD ninja &lt;a href="http://spring.io/blog/2015/06/17/spring-xd-benchmarks-part-1"&gt;Glenn Renfro has been working on benchmarking&lt;/a&gt; (not &lt;em&gt;benchmarketing&lt;/em&gt;) Spring XD and documents his journey in this first installment.&lt;/li&gt;
-  &lt;li&gt;Our pal Eugen Paraschiv is back at it again, this time &lt;a href="http://www.baeldung.com/spring-boot-application-configuration"&gt;with a list of super-convenient configuration options for Spring Boot&lt;/a&gt; applications. I&amp;rsquo;d &lt;em&gt;definitely&lt;/em&gt; give this a review!&lt;/li&gt;
-  &lt;li&gt;One of the really nice bits about being here in Poland is that I finally got to meet &lt;a href="https://twitter.com/MGrzejszczak"&gt;Marcin Grzejszczak&lt;/a&gt; and the rest of the amazing 4Finance IT team! They&amp;rsquo;re responsible for some really meaty contributions to Spring Cloud, including improvements to &lt;a href="https://github.com/spring-cloud/spring-cloud-zookeeper/pull/2"&gt;Spring Cloud Zookeeper&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud-incubator/spring-cloud-sleuth/pull/1"&gt;Spring Cloud Sleuth&lt;/a&gt; which provides tracing through microservices - exciting! These improvements are contributions from their other work - a project called micro-infra-spring - which are being merged into Spring Cloud. Dzi?kuj?, my friends!&lt;/li&gt;
-  &lt;li&gt;Not &lt;em&gt;nearly&lt;/em&gt; so awesome, but I&amp;rsquo;m pretty proud of the recently merged support &lt;a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry/commit/24aca83e9676daa74380bf903d21df055b5dfde7"&gt;for a Spring Cloud &lt;code&gt;DiscoveryClient&lt;/code&gt; implementation for Cloud Foundry&lt;/a&gt;. This means that, soon, we&amp;rsquo;ll have &lt;code&gt;DiscoveryClient&lt;/code&gt; implementations for Netflix&amp;rsquo;s Eureka, Zookeeper, Consul, Lattice and now Cloud Foundry!&lt;/li&gt;
-  &lt;li&gt;Speaking of Spring XD, I&amp;rsquo;d like to specifically call attention to these introductory videos, &lt;a href="https://www.youtube.com/watch?v=IL3XnlOI9vQ&amp;utm_content=buffer87797&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer"&gt;&lt;em&gt;Building Streams&lt;/em&gt;&lt;/a&gt; and &lt;a href="https://www.youtube.com/watch?v=os3WgPa-Axk&amp;utm_content=buffer62fca&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer"&gt;&lt;em&gt;Advanced Stream Creation&lt;/em&gt;&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;</content>
   </entry>
 </feed>

@@ -23,5 +23,6 @@
       <mapper resource='EmpresaDAO.xml' />
       <mapper resource="UserDAO.xml" />
       <mapper resource="ProdutoDAO.xml" />
+      <mapper resource="ItemDAO.xml" />
   </mappers>
 </configuration>

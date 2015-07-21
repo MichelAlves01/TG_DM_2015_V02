@@ -1,0 +1,36 @@
+package hello;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import delivery.api.mapper.EmpresaImpl;
+import delivery.model.Empresa;
+import delivery.model.Item;
+
+@RestController
+public class ItemController {
+
+	private Item item;
+	
+	private static EmpresaImpl empresaImpl;
+	
+	private Empresa empresa;
+	
+	@RequestMapping(value="/cadastrarItemController" , method=RequestMethod.POST)
+	public Item cadastrarItem(	@RequestParam(value="descricao") String descricao,
+								@RequestParam(value="preco") double preco,
+								@RequestParam(value="cpfCnpj") String cpfCnpj){
+		
+		empresaImpl = new EmpresaImpl();
+		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		
+		item = new Item();
+		item.setDescricao(descricao);
+		item.setPreco(preco);
+		item.setEmpresa(empresa);
+		
+		return null;
+	}
+}

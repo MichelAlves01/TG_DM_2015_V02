@@ -44,18 +44,23 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value="/getProdutosController" , method=RequestMethod.GET)
-	public List<Produto> getProdutos(){
+	public List<Produto> getProdutos(@RequestParam(value="cpfCnpj") String cpfCnpj){
 		produtoService = new ProdutoService();
-		List<Produto> produtos = produtoService.getProdutosService();
+		empresaImpl = new EmpresaImpl();
+		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		List<Produto> produtos = produtoService.getProdutosService(empresa);
 		return produtos;
 	}
 	
 	@RequestMapping(value="/excluirProdutoController" , method= RequestMethod.GET)
-	public List<Produto> excluirProduto(@RequestParam(value="id") int id) {
+	public List<Produto> excluirProduto(@RequestParam(value="id") int id,
+										@RequestParam(value="cpfCnpj") String cpfCnpj) {
 		produtoImpl = new ProdutoImpl();
 		produtoImpl.excluirProdutoDAO(id);
 		produtoService = new ProdutoService();
-		List<Produto> produtos = produtoService.getProdutosService();
+		empresaImpl = new EmpresaImpl();
+		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		List<Produto> produtos = produtoService.getProdutosService(empresa);
 		return produtos;
 	}
 	

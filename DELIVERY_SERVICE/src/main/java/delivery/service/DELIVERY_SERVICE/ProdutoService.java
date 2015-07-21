@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import delivery.api.mapper.ProdutoImpl;
+import delivery.model.Empresa;
 import delivery.model.Produto;
 
 
@@ -22,9 +23,9 @@ public class ProdutoService {
 		produtoImpl.atualizarProdutoDAO(produto);
 	}
 	
-	public List<Produto> getProdutosService(){
+	public List<Produto> getProdutosService(Empresa empresa){
 		produtoImpl = new ProdutoImpl();
-		List<Produto> produtos = produtoImpl.getProdutosDAO();
+		List<Produto> produtos = produtoImpl.getProdutosDAO(empresa);
 		return produtos;
 	}
 	

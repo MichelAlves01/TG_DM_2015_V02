@@ -3,10 +3,21 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
- <mapper namespace="delivery.api.dao.ItemProdutoDAO">
+ <mapper namespace="delivery.api.dao.ItemDAO">
  	
  	<insert id="cadastrarItemDAO" parameterType="delivery.model.Item">
- 		insert into Item (id , descricao, preco) values (#{id}, #{descricao}, #{preco})
+ 		INSERT INTO
+ 				 Item (
+ 				 		descricao, 
+ 				 		preco,
+ 				 		id_empresa,
+ 				 		status
+ 				 	) values (
+ 				 		#{descricao}, 
+ 				 		#{preco},
+ 				 		#{empresa.cpfCnpj},
+ 				 		0
+ 				 	)
  	</insert>
  	
  	<update id="atualizarItemDAO" parameterType="delivery.model.Item">
@@ -21,7 +32,15 @@
  		select * from produto where id = #{id} 
  	</select>
  	
- 	<select id="getItensDAO" parameterType="java.lang.Integer" resultType="delivery.model.Item">
- 		select * from produto
+ 	<select id="getItensDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Item">
+ 		select 	id,
+ 				descricao,
+ 				preco,
+ 				id_empresa as "empresa.id",
+ 				status
+ 			from 
+ 				item
+ 			where
+ 				id_empresa = #{cpfCnpj}
  	</select>
  </mapper>
