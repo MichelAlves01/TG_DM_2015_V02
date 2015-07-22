@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.ItemDAO">
+ 	
+ 	<insert id="cadastrarItemDAO" parameterType="delivery.model.Item">
+ 		INSERT INTO
+ 				 Item (
+ 				 		descricao, 
+ 				 		preco,
+ 				 		id_empresa,
+ 				 		status
+ 				 	) values (
+ 				 		#{descricao}, 
+ 				 		#{preco},
+ 				 		#{empresa.cpfCnpj},
+ 				 		0
+ 				 	)
+ 	</insert>
+ 	
+ 	<update id="atualizarItemDAO" parameterType="delivery.model.Item">
+ 		UPDATE 
+ 			Item 
+ 		SET
+ 			descricao = #{descricao}, 
+ 			preco = #{preco},
+ 		WHERE
+ 			id = #{id}
+ 			
+ 	</update>
+ 	
+ 	<update id="excluirProdutoDAO" parameterType="java.lang.Integer">
+ 		UPDATE 
+ 			Item 
+ 		SET
+ 			status = 1
+ 		WHERE
+ 			id = #{id}
+ 	</update>
+ 	
+ 	<select id="getItemDAO" parameterType="java.lang.Integer" resultType="delivery.model.Item">
+ 		select * from produto where id = #{id} 
+ 	</select>
+ 	
+ 	<select id="getItensDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Item">
+ 		select 	id,
+ 				descricao,
+ 				preco,
+ 				id_empresa as "empresa.id",
+ 				status
+ 			from 
+ 				item
+ 			where
+ 				id_empresa = #{cpfCnpj} and status = 0
+ 			order by 
+ 				id desc
+ 	</select>
+ </mapper>

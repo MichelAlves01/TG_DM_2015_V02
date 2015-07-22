@@ -102,6 +102,7 @@
 		}
 
 		$scope.listItens = function(id){
+			
 			setTimeout(function(){
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({cpfCnpj: cpfCnpj}); 
@@ -111,44 +112,33 @@
 			}, 1000);
 			
 		}
-/*
-		$scope.removerProduto = function(id){
+
+		$scope.removerItem = function(id){
 			var cpfCnpj = $scope.empresa.cpfCnpj;
 			var data = $.param({id: id, cpfCnpj: cpfCnpj});
 			setTimeout(function(){ 
-				$http.get(urlBase + '/excluirProdutoController?' + data).success(function(data,status){
-					$scope.produtos = data;
+				$http.get(urlBase + '/excluirItemController?' + data).success(function(data,status){
+					$scope.itens = data;
 				});
 			}, 50);
 		}
 
 		$scope.atualizarForm = function(id){
-			var element_accord = "#"+ id;
-			$(element_accord).hide();
 			var element_update = '#update-form-'+id;
 			$(element_update).show();
-			if(toggleUpdate == true){
-    			toggleUpdate = false;
-    		} 
 		} 
 
 		$scope.cancelUpdate = function(id){
-			var element_accord = "#"+ id;
-			$(element_accord).show();
 			var element_update = '#update-form-'+id;
 			$(element_update).hide();
-    		toggleUpdate = true;
 		}
 
-		$scope.mostrarUpdateForm = function(){
-			return toggleUpdate;
-		}
 
-		$scope.atualizarProdutoController = function(id , descricao, preco){
+		$scope.atualizarItemController = function(id , descricao, preco){
 			if(validaCamposUpdate(id,descricao,preco)){
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({id: id , descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
-				$http.get(urlBase + '/atualizarProdutoController?' + data).success(function(data,status){	
+				$http.get(urlBase + '/atualizarItemController?' + data).success(function(data,status){	
 						$scope.produto = data;
 						$scope.produtos.push($scope.produto);
 				});
@@ -167,7 +157,11 @@
 				return false;
 			}
 		}
-		*/
+
+		$scope.draggableItem = function(){		
+			$( ".accordion-group" ).draggable({ revert: "invalid" });
+		}
+	
 	});	
 
 })();

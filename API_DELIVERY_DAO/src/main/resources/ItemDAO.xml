@@ -21,11 +21,23 @@
  	</insert>
  	
  	<update id="atualizarItemDAO" parameterType="delivery.model.Item">
- 		update Item set id = #{id}, descricao = #{descricao}, preco = #{preco}
+ 		UPDATE 
+ 			Item 
+ 		SET
+ 			descricao = #{descricao}, 
+ 			preco = #{preco}
+ 		WHERE
+ 			id = #{id}
+ 			
  	</update>
  	
  	<update id="excluirProdutoDAO" parameterType="java.lang.Integer">
- 		update Item set id = #{id}, descricao = #{descricao}, preco = #{preco}, status = 1
+ 		UPDATE 
+ 			Item 
+ 		SET
+ 			status = 1
+ 		WHERE
+ 			id = #{id}
  	</update>
  	
  	<select id="getItemDAO" parameterType="java.lang.Integer" resultType="delivery.model.Item">
@@ -41,6 +53,8 @@
  			from 
  				item
  			where
- 				id_empresa = #{cpfCnpj}
+ 				id_empresa = #{cpfCnpj} and status = 0
+ 			order by 
+ 				id desc
  	</select>
  </mapper>

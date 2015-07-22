@@ -53,4 +53,37 @@ public class ItemController {
 		List<Item> itens = itemImpl.getItensDAO(empresa);
 		return itens;
 	}
+	
+	@RequestMapping(value="/excluirItemController",method=RequestMethod.GET)
+	public List<Item> excluirItem(	@RequestParam(value="id") int id,
+									@RequestParam(value="cpfCnpj") String cpfCnpj){
+		itemImpl = new ItemImpl();
+		itemImpl.excluirProdutoDAO(id);
+		
+		empresaImpl = new EmpresaImpl();
+		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		
+		List<Item> itens = itemImpl.getItensDAO(empresa);
+		return itens;
+	}
+	
+	@RequestMapping(value="/atualizarItemController", method=RequestMethod.GET)
+	public void atualizarItem(	@RequestParam(value="id") int id,
+								@RequestParam(value="descricao") String descricao,
+								@RequestParam(value="preco") double preco,
+								@RequestParam(value="cpfCnpj") String cpfCnpj){
+		
+		empresaImpl = new EmpresaImpl();
+		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		
+		item = new Item();
+		item.setId(id);
+		item.setDescricao(descricao);
+		item.setPreco(preco);
+		item.setEmpresa(empresa);
+		
+		itemService = new ItemService();
+		itemService.atualizarItemService(item);
+		
+	}
 }

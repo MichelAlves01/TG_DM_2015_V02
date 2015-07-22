@@ -15,7 +15,8 @@ public class ItemService {
 	}
 	
 	public void atualizarItemService( Item item ){
-		
+		itemImpl = new ItemImpl();
+		itemImpl.atualizarItemDAO(item);
 	}
 	
 	public void excluirItemService(int idItem){
