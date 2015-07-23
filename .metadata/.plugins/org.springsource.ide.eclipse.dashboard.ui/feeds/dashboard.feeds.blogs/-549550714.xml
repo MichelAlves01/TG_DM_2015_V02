@@ -5,7 +5,30 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-07-20T16:04:00Z</updated>
+  <updated>2015-07-22T02:53:44Z</updated>
+  <entry>
+    <title>This Week in Spring - July 21, 2015</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/07/22/this-week-in-spring-july-21-2015" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2015-07-22:2192</id>
+    <updated>2015-07-22T02:53:44Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Denver, CO, at the amazing UberConf conference! As usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring framework lead Juergen Hoeller just announced Spring framework 4.2 RC3 and a (slightly delayed!) &lt;a href="http://spring.io/blog/2015/07/15/spring-framework-4-2-rc3-released-ga-on-july-30"&gt;timeline for Spring 4.2 RELEASE: July 30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Disid corporation just &lt;a href="http://spring.io/blog/2015/07/20/spring-roo-2-0-0-m1-refactors-addons-structures-for-collaboration"&gt;announced Spring Roo 2.0.0.M1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;my pal Kenny Bastani gives a &lt;em&gt;very&lt;/em&gt; &lt;a href="http://www.kennybastani.com/2015/07/spring-cloud-docker-microservices.html"&gt;comprehensive look at building microservices with Spring Boot and Spring Cloud&lt;/a&gt;. Read this first!&lt;/li&gt;
+  &lt;li&gt;the VP of the cloud platform group, James Watters, put out a very &lt;a href="http://blog.pivotal.io/pivotal-cloud-foundry/features/mapping-the-cloud-native-journey"&gt;nice blog on the cloud-native journey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;check out Bozhidar Bozhanov&amp;rsquo;s &lt;a href="http://www.javacodegeeks.com/2015/07/tomcats-default-connectors.html"&gt;great post on Tomcat&amp;rsquo;s connectors&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Voxxed did a great interview with Spring Boot and Spring Cloud co-founder &lt;a href="http://spring.io/team/dsyer"&gt;Dr. Dave Syer &lt;/a&gt; on the power &lt;a href="https://www.voxxed.com/blog/2015/07/spring-cloud-and-the-power-of-choice/"&gt;of choice in Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Michael Nygard, who wrote one of my favorite books, &lt;em&gt;Release It!&lt;/em&gt;, put together &lt;a href="http://www.michaelnygard.com/blog/2015/07/the-fear-cycle/"&gt;a great post on the fear cycle&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;I loved this keynote from the CF Summit 2015 conference by Andy Zitney of Allstate Infrastructure Services: &lt;a href="https://www.youtube.com/watch?t=478&amp;v=04QFKBt6LCI"&gt;&lt;em&gt;Developing the Freedom to Disrupt&lt;/em&gt;&lt;/a&gt;. In it, he walks through Allstate&amp;rsquo;s need to be able to react, faster, and their embrace of Pivotal Cloud Foundry. It&amp;rsquo;s only ~20 minutes, so I won&amp;rsquo;t spoil it.&lt;/li&gt;
+  &lt;li&gt;I&amp;rsquo;m working on a talk and a blog called &lt;em&gt;The Operationalized Application&lt;/em&gt; that demonstrates some of the amazing operations-centric features in Spring Boot 1.3 and I wanted to - in advance of the finished blog - &lt;a href="https://github.com/joshlong/the-operationalized-application"&gt;share the example&lt;/a&gt;. There&amp;rsquo;s so much good stuff in Spring Boot 1.3, and this example only demonstrates a fraction of it, along with some other existing operations benefits: HATEOAS and the HAL browser; OpenTSDB metrics views, declarative HTTPS; executable &lt;code&gt;.jar&lt;/code&gt;s; Docker; Spring REST Docs-powered documentation for the Actuator endpoints; the remote shell; Git commit information in the Actuator &lt;code&gt;/info&lt;/code&gt; endpoint, and more.&lt;/li&gt;
+  &lt;li&gt;Check out this &lt;a href="http://www.infoq.com/interviews/randy-shoup-microservices?utm_source=infoq&amp;utm_medium=videos_homepage&amp;utm_campaign=videos_row3"&gt;succinct interview with Randy Shoup&lt;/a&gt; for a good discussion of the challenges of embracing microservices at scale. Randy draws from his previous experiences at Google and eBay.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Roo 2.0.0.M1 refactors addons, structures for collaboration</title>
     <link rel="alternate" href="https://spring.io/blog/2015/07/20/spring-roo-2-0-0-m1-refactors-addons-structures-for-collaboration" />
@@ -700,21 +723,5 @@ dependencies {&#xD;
     ...&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#springone-2015" class="anchor" name="springone-2015"&gt;&lt;/a&gt;SpringOne 2015&lt;/h2&gt;&lt;p&gt;I’ll be talking about Spring Cloud at this year’s SpringOne in Washington, DC. I’d love to see you there.&lt;/p&gt;&lt;h3&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h3&gt;&lt;p&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;br/&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;br/&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring REST Docs 1.0.0.M1</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/25/spring-rest-docs-1-0-0-m1" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Andy Wilkinson</name>
-    </author>
-    <id>tag:spring.io,2015-06-24:2171</id>
-    <updated>2015-06-25T12:08:00Z</updated>
-    <content type="html">&lt;p&gt;I&amp;rsquo;m delighted to announce that &lt;a href="https://github.com/spring-projects/spring-restdocs"&gt;Spring REST Docs&lt;/a&gt; has reached its first milestone and that 1.0.0.M1 is available from &lt;a href="https://repo.spring.io/milestone"&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Spring REST Docs helps you to document RESTful services. It combines hand-written documentation written with &lt;a href="http://asciidoctor.org"&gt;Asciidoctor&lt;/a&gt; and auto-generated snippets produced with &lt;a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle#spring-mvc-test-framework"&gt;Spring MVC Test&lt;/a&gt;. This approach frees you from the limitations imposed by tools like &lt;a href="http://swagger.io"&gt;Swagger&lt;/a&gt;. It helps you to produce documentation that is accurate, concise, and well-structured. This documentation then allows your users to get the information they need with a minimum of fuss.&lt;/p&gt;&lt;h1&gt;&lt;a href="#getting-started" class="anchor" name="getting-started"&gt;&lt;/a&gt;Getting started&lt;/h1&gt;&lt;p&gt;To get started with Spring REST Docs, please refer to the &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.x/reference/html5/#getting-started"&gt;getting started section&lt;/a&gt; of the &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.x/reference/html5"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;If you&amp;rsquo;d like to learn more about the thinking behind Spring REST Docs and how it can help you, this &lt;a href="https://www.youtube.com/watch?v=knH5ihPNiUs&amp;feature=youtu.be"&gt;presentation on YouTube&lt;/a&gt; may also be of interest.&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2015" class="anchor" name="springone-2015"&gt;&lt;/a&gt;SpringOne 2015&lt;/h1&gt;&lt;p&gt;I&amp;rsquo;ll be talking about &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/documenting_restful_apis.html"&gt;documenting RESTful APIs&lt;/a&gt; at this year&amp;rsquo;s &lt;a href="http://springone2gx.com"&gt;SpringOne&lt;/a&gt; in Washington, DC. I&amp;rsquo;d love to see you there.&lt;/p&gt;&lt;h3&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
-  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
-  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>

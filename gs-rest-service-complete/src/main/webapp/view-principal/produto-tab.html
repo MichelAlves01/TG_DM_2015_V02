@@ -120,33 +120,12 @@
 							</div>
 			
 							<div id="{{produto.id}}" class="accordion-body collapse">
-								<div class="accordion-inner">
+								<div class="accordion-inner" data-ng-init="droppableItens()">
 									itens do produto
 									  <div id="itens-produto" class="ui-widget-content">
-									         <div  id="accordion-heading-item" >
-											      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2">
-									        			<table class="placeholder">
-									        				<tr>
-									        					<td style="width: 700px; border-right: 1px solid #999999;  font-weight: bold">
-									        						<font 	color="#848484">{{item.descricao}}</font>
-									        					</td>
-									        					<td style="width: 130px; padding-left:10px; font-weight: bold; border-right: 1px solid #999999;" >
-									        						<font color="#2E64FE" size="2">{{ item.preco | currency : 'R$'}}</font>
-									        					</td>
-									        					<td id="icons-td" style="width: 30px; padding-left: 10px;">
-									        						<div id="icons-td1">
-									        							<a href="#" ng-click="atualizarForm(item.id)"><i class="icon-pencil" ></i></a>
-									        						</div>
-									        					</td>
-									        					<td id="icons-td" style="width: 20px;">
-									        						<div id="icons-td2">
-									        							<a href="#" ng-click="removerItem(item.id)"><i class="icon-trash"></i></a>
-									        						</div>
-									        					</td>
-										        			</tr>
-												        </table>
-										      	  </a>
-											</div>
+									  	<div id="accordion-heading-item" class="placeholder">
+									  		<div>here</div>
+									  	</div>
 							          </div>
 			
 							          Adicionais
@@ -229,7 +208,7 @@
 							</div>
 						</div>
 				      	<div class="accordion" id="accordion" data-ng-init="listItens()">
-							<div class="accordion-group" class="ui-widget-content" data-ng-init="draggableItem();" ng-repeat="item in itens track by item.id">
+							<div class="accordion-group" id="item" class="ui-widget-content" data-ng-init="draggableItem();" ng-repeat="item in itens track by item.id">
 							    <div  id="accordion-heading-item" >
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2">
 					        			<table>

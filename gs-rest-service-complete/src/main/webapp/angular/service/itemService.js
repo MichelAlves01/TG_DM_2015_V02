@@ -159,7 +159,14 @@
 		}
 
 		$scope.draggableItem = function(){		
-			$( ".accordion-group" ).draggable({ revert: "invalid" });
+			$( ".accordion-group" ).draggable({ revert: "invalid",
+												appendTo: "body",
+      											helper: "clone",
+      											cursor: "move", 
+      											cursorAt: { top: 30, left: 30 },
+      											drag: function(){
+      												$( this ).find( "font" );
+      											}});
 		}
 	
 	});	

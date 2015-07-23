@@ -168,17 +168,49 @@
 		}
 
 		$scope.droppableItens = function(){
-			$( "#itens-produto" ).droppable({
+/*
+			console.log('deu bom');
+			$( "#accordion-heading-item").droppable({
 		      activeClass: "ui-state-default",
 		      hoverClass: "ui-state-hover",
+		      accept: "#accordion-heading-item",
 		      drop: function( event, ui ) {
-		        $( this )
-		          .addClass( "ui-state-highlight" )
-		          .find( "p" )
-		            .html( "Dropped!" );
-		            alert('deu bom');
+		        $( this ).find( ".placeholder").attr(".accordion-group");
+        		$( this).attr(ui.draggable.attr(".accordion-group"));
 		      }
-		    });
+		    }).sortable({
+     			items: "div:not(.placeholder)",
+      			sort: function() {
+        		// gets added unintentionally by droppable interacting with sortable
+        		// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        			$( this ).removeClass( "ui-state-default" );
+      			}
+    		});
+
+*/
+
+		    
+			console.log("deu bom");
+			$( "#itens-produto").droppable({
+					activeClass: "ui-state-default",
+						hoverClass: "ui-state-hover",
+						accept: ":not(.ui-sortable-helper)",
+					drop: function(event, ui){
+						$( this ).find( ".placeholder" ).remove();
+						var data = ui.draggable.context.innerText.split("	");
+						console.log(data);
+						var htmlText = "<div id='itemdropped'>" + data[0] +"</div>";
+						$( "<font></font>" ).html( htmlText ).appendTo( this );
+						
+					}
+			}).sortable({
+     			 items: "div:not(.placeholder)",
+      				sort: function() {
+        			// gets added unintentionally by droppable interacting with sortable
+        			// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        			$( this ).removeClass( "ui-state-default" );
+      			}
+   			 });
 		}
 	});	
 
