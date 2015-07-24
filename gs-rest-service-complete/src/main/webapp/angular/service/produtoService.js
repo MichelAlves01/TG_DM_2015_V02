@@ -8,6 +8,8 @@
 		var toggleCadastro = true;
 		var toggleUpdate = true;
 		var validAll = true;
+		var listItens = [];
+		var itemId = null;
 		
 
 		$scope.iniciarCadastro = function(){
@@ -167,41 +169,28 @@
 			}
 		}
 
-		$scope.droppableItens = function(){
-/*
-			console.log('deu bom');
-			$( "#accordion-heading-item").droppable({
-		      activeClass: "ui-state-default",
-		      hoverClass: "ui-state-hover",
-		      accept: "#accordion-heading-item",
-		      drop: function( event, ui ) {
-		        $( this ).find( ".placeholder").attr(".accordion-group");
-        		$( this).attr(ui.draggable.attr(".accordion-group"));
-		      }
-		    }).sortable({
-     			items: "div:not(.placeholder)",
-      			sort: function() {
-        		// gets added unintentionally by droppable interacting with sortable
-        		// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-        			$( this ).removeClass( "ui-state-default" );
-      			}
-    		});
+		/*
+			###########################      funcção drag and drop ######################################### 
+			este metodo é responsável por receber os itens, assim como validar e enviar para o servidor  
 
-*/
-
-		    
-			console.log("deu bom");
+		*/
+		$scope.droppableItens = function(id){
+			console.log('id : ' + id);		    
 			$( "#itens-produto").droppable({
 					activeClass: "ui-state-default",
 						hoverClass: "ui-state-hover",
 						accept: ":not(.ui-sortable-helper)",
 					drop: function(event, ui){
+						
 						$( this ).find( ".placeholder" ).remove();
 						var data = ui.draggable.context.innerText.split("	");
 						console.log(data);
-						var htmlText = "<div id='itemdropped'>" + data[0] +"</div>";
-						$( "<font></font>" ).html( htmlText ).appendTo( this );
-						
+
+						if( listItens != null && validItem(data[0] , listItens)){
+							var htmlText = "<div id='itemdropped'>" + data[1] +"</div>";
+							$( "<font></font>" ).html( htmlText ).appendTo( this );
+						}
+						listItens.push(data);
 					}
 			}).sortable({
      			 items: "div:not(.placeholder)",
@@ -212,6 +201,33 @@
       			}
    			 });
 		}
+
+
+		function validItem(id , listItens){
+			for (var i = 0; i < listItens.length; i++) {
+				console.log(listItens[i][0]);
+				if(listItens[i][0] == id){
+					
+					//cadastrarItemProduto(id);
+					return false;
+				} 
+			};
+			itemId = id;
+			return true;
+		}
+
+			 $scope.cadastrarItemProduto = function(id){
+				
+				if(itemId != null){
+					console.log("id do produto : " + id + "\nItem Id : " + itemId );
+					var data = $.param({idItem: itemId , idProduto: id});
+					$http.post(urlBase + '/cadastrarItemProdutoController?' + data).success(function(data,status){
+					$scope.itensProduto = data;
+				});
+				}
+				
+				itemId = null;
+			}
 	});	
 
 })();

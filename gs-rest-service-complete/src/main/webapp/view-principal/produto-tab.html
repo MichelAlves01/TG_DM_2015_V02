@@ -10,6 +10,7 @@
 					        			<table>
 					        				<tr>
 					        					<td style="width: 800px; border-right: 1px solid #999999;">
+					        						<font style="display: none">{{id}}</font>
 					        						<font>{{descricao}}</font>
 					        					</td>
 					        					<td style="width: 160px;">
@@ -65,9 +66,9 @@
 								
 							</div>
 						</div>
-						<div class="accordion" id="accordion" data-ng-init="listProdutos(); droppableItens()">
+						<div class="accordion" id="accordion" data-ng-init="listProdutos(); ">
 							<div class="accordion-group" ng-repeat="produto in produtos track by produto.id">
-							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)">
+							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#{{produto.id}}">
 					        			<table>
 					        				<tr>
@@ -122,7 +123,7 @@
 							<div id="{{produto.id}}" class="accordion-body collapse">
 								<div class="accordion-inner" data-ng-init="droppableItens()">
 									itens do produto
-									  <div id="itens-produto" class="ui-widget-content">
+									  <div id="itens-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id)">
 									  	<div id="accordion-heading-item" class="placeholder">
 									  		<div>here</div>
 									  	</div>
@@ -213,8 +214,9 @@
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2">
 					        			<table>
 					        				<tr>
+					        					<td><font>{{item.id}}</font></td>
 					        					<td style="width: 700px; border-right: 1px solid #999999;  font-weight: bold">
-					        						<font 	color="#848484">{{item.descricao}}</font>
+					        						<font color="#848484">{{item.descricao}}</font>
 					        					</td>
 					        					<td style="width: 130px; padding-left:10px; font-weight: bold; border-right: 1px solid #999999;" >
 					        						<font color="#2E64FE" size="2">{{ item.preco | currency : 'R$'}}</font>

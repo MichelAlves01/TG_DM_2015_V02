@@ -3,11 +3,7 @@ package delivery.dao.api;
 import java.util.List;
 
 import delivery.api.mapper.CidadeImpl;
-import delivery.api.mapper.EstadoImpl;
-import delivery.api.mapper.UsuariosMobImpl;
 import delivery.model.Cidade;
-import delivery.model.Estado;
-import delivery.model.UsuarioMob;
 
 public class Teste {
 

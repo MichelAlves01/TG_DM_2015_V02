@@ -41,20 +41,28 @@
  	</update>
  	
  	<select id="getItemDAO" parameterType="java.lang.Integer" resultType="delivery.model.Item">
- 		select * from produto where id = #{id} 
- 	</select>
- 	
- 	<select id="getItensDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Item">
- 		select 	id,
+ 		SELECT  id,
  				descricao,
  				preco,
  				id_empresa as "empresa.id",
  				status
- 			from 
+ 		FROM 
+ 				item 
+ 		WHERE 
+ 				id = #{id} 
+ 	</select>
+ 	
+ 	<select id="getItensDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Item">
+ 		SELECT 	id,
+ 				descricao,
+ 				preco,
+ 				id_empresa as "empresa.id",
+ 				status
+ 			FROM 
  				item
- 			where
+ 			WHERE
  				id_empresa = #{cpfCnpj} and status = 0
- 			order by 
+ 			ORDER BY 
  				id desc
  	</select>
  </mapper>

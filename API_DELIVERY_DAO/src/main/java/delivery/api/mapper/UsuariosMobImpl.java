@@ -12,8 +12,6 @@ public class UsuariosMobImpl {
 	UsuarioMob usuariomob = null;
 		
 	
-	private UsuarioMob usuarioMob =  new UsuarioMob();
-	
 	public void cadastrarUsuarioMobDAO(UsuarioMob usuarioMob){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		UsuarioMobDAO usuarioMobDao = session.getMapper(UsuarioMobDAO.class);

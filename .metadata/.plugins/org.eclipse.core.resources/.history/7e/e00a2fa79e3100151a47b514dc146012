@@ -1,0 +1,11 @@
+package delivery.api.dao;
+
+import delivery.model.ItemProduto;
+
+public interface ItemProdutoDAO {
+
+	public void cadastrarItemProdutoDAO(ItemProduto itensProduto);
+	
+	public void excluirItemProduto(ItemProduto itensProduto);
+	
+}

@@ -8,7 +8,7 @@ public class Item {
 	private String descricao;
 	private double preco;
 	private Empresa empresa;
-	private List<ItensProduto> itensProduto;
+	private List<ItemProduto> itensProduto;
 	private List<AdicionalProduto> adicionaisProduto;
 	
 	public int getId() {
@@ -36,10 +36,10 @@ public class Item {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	public List<ItensProduto> getItensProduto() {
+	public List<ItemProduto> getItensProduto() {
 		return itensProduto;
 	}
-	public void setItensProduto(List<ItensProduto> itensProduto) {
+	public void setItensProduto(List<ItemProduto> itensProduto) {
 		this.itensProduto = itensProduto;
 	}
 	public List<AdicionalProduto> getAdicionaisProduto() {

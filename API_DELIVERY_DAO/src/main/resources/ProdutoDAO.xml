@@ -38,7 +38,7 @@
  			id = #{id}
  	</delete>
  	
- 	<select id="getProdutoDAO" parameterType="java.lang.Integer" >
+ 	<select id="getProdutoDAO" parameterType="java.lang.Integer" resultType="delivery.model.Produto">
  		select 	id,
  				descricao,
  				preco,
@@ -46,6 +46,8 @@
  				status  
  		from 
  				produto
+ 		where
+ 				id = #{id}
  	</select>
  	
  	<select id="getProdutosDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Produto">

@@ -11,7 +11,7 @@ public class Produto {
 	private int status;
 	
 	private List<ItensPedido> itensPedido;
-	private List<ItensProduto> itensProduto;
+	private List<ItemProduto> itensProduto;
 	
 	public int getId() {
 		return id;
@@ -51,10 +51,10 @@ public class Produto {
 	public void setItensPedido(List<ItensPedido> itensPedido) {
 		this.itensPedido = itensPedido;
 	}
-	public List<ItensProduto> getItensProduto() {
+	public List<ItemProduto> getItensProduto() {
 		return itensProduto;
 	}
-	public void setItensProduto(List<ItensProduto> itensProduto) {
+	public void setItensProduto(List<ItemProduto> itensProduto) {
 		this.itensProduto = itensProduto;
 	}
 	

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.ProdutoDAO">
+ 	<insert id="cadastrarProdutoDAO" useGeneratedKeys="true" parameterType="delivery.model.Produto">
+ 		insert into produto ( 
+ 								descricao,
+ 								preco, 
+ 								id_empresa,
+ 								status
+ 							) values ( 
+ 								#{descricao}, 
+ 								#{preco}, 
+ 								#{empresa.cpfCnpj},
+ 								0 
+ 							)
+ 	</insert>
+ 	
+ 	<update id="atualizarProdutoDAO"  parameterType="delivery.model.Produto">
+ 		UPDATE 
+ 			produto 
+ 		SET 
+ 			descricao = #{descricao}, 
+ 			preco = #{preco}
+ 		WHERE
+ 			id = #{id}
+ 			
+ 	</update>
+ 	
+ 	<delete id="excluirProdutoDAO" parameterType="java.lang.Integer">
+ 		UPDATE 
+ 			produto 
+ 		SET 
+ 			status = 1
+ 		WHERE
+ 			id = #{id}
+ 	</delete>
+ 	
+ 	<select id="getProdutoDAO" parameterType="java.lang.Integer" resultType="delivery.model.Produto">
+ 		select 	id,
+ 				descricao,
+ 				preco,
+ 				id_empresa as "empresa.cpfCnpj",
+ 				status  
+ 		from 
+ 				produto
+ 	</select>
+ 	
+ 	<select id="getProdutosDAO" parameterType="delivery.model.Empresa" resultType="delivery.model.Produto">
+ 		select 	id,
+ 				descricao,
+ 				preco,
+ 				id_empresa as "cpfCnpj",
+ 				status  
+ 		from 
+ 				produto
+ 		where 
+ 				status = 0 and id_empresa = #{cpfCnpj}
+ 		order by 
+ 				id desc
+ 	</select>
+ 	
+ </mapper>
+
+ 

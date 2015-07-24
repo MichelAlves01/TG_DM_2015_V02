@@ -6,7 +6,14 @@
  <mapper namespace="delivery.api.dao.ItemProdutoDAO">
  	
  	<insert id="cadastrarItemProdutoDAO" parameterType="delivery.model.ItemProduto">
- 		insert into Item_Produto (id_produto, id_item) values (#{idProduto}, #{idItem})
+ 		INSERT INTO
+ 				 Itens_Produto 	(
+ 				 					id_produto, 
+ 				 					id_item
+ 				 				) values (
+ 				 					#{produto.id}, 
+ 				 					#{item.id}
+ 				 				)
  	</insert>
  	
  	<delete id="excluirItemProduto" parameterType="delivery.model.ItemProduto">

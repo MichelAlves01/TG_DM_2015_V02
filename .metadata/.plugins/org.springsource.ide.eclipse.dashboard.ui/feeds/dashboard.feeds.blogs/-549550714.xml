@@ -5,7 +5,50 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-07-22T02:53:44Z</updated>
+  <updated>2015-07-23T15:22:00Z</updated>
+  <entry>
+    <title>Spring Security 3.2.8 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/07/23/spring-security-3-2-8-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2015-07-23:2194</id>
+    <updated>2015-07-23T15:22:00Z</updated>
+    <content type="html">&lt;p&gt;I&amp;rsquo;m pleased to announce the release of Spring Security 3.2.8.RELEASE. This release focusses on fixing major issues. For complete details on the release, refer to the &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20SEC%20AND%20fixVersion%20%3D%203.2.8"&gt;Change Log&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;While we will continue to support the 3.2.x line for some time, we encourage everyone to update to 4.x. To make this transition easy, we have a very detailed &lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#m3to4"&gt;migration guide&lt;/a&gt; complete with sample migrations and a diff. If you have any problems migrating, create a&lt;a href="https://stackoverflow.com/questions/tagged/spring-security"&gt; StackOverflow question with the spring-security&lt;/a&gt; tag. If you don&amp;rsquo;t get a response within a reasonable amount of time feel free to ping me at &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or in the comments below.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Security 4.0.2 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/07/23/spring-security-4-0-2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2015-07-23:2193</id>
+    <updated>2015-07-23T15:15:00Z</updated>
+    <content type="html">&lt;p&gt;I&amp;rsquo;m pleased to announce the release of Spring Security 4.0.2.RELEASE. This release is the second maintenance release of the 4.0 line and focusses on fixing any major issues that were found in the new release. For complete details on the release, refer to the &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20SEC%20AND%20fixVersion%20%3D%204.0.2"&gt;Change Log&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Along with &lt;strong&gt;lots of bug fixes&lt;/strong&gt;, the highlights of this release include:&lt;/p&gt;&lt;h2&gt;&lt;a href="#support-for-spring-framework-4-2" class="anchor" name="support-for-spring-framework-4-2"&gt;&lt;/a&gt;Support for Spring Framework 4.2&lt;/h2&gt;&lt;p&gt;Spring Framework 4.2 GA is just around the corner. Spring Security 4.0.2 fixes some issues when running with Spring Framework 4.2. We are also rerunning our entire test suite using Spring Framework 4.2.&lt;/p&gt;&lt;h2&gt;&lt;a href="#minor-improvements-to-spring-security-test" class="anchor" name="minor-improvements-to-spring-security-test"&gt;&lt;/a&gt;Minor Improvements to Spring Security Test&lt;/h2&gt;&lt;p&gt;Previously, Spring Security&amp;rsquo;s test support would fail if there was no ApplicationContext. This was inconvenient if you were just wanting to run tests as a specific user. What&amp;rsquo;s more it was inconvenient to disable other features (i.e. loading an ApplicationContext) of Spring Test. The updates in Spring Security 4.0.2 allow running tests as a specific user with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@SecurityTestExecutionListeners&#xD;
+@RunWith(SpringJUnit4ClassRunner.class)&#xD;
+public class MyTests {&#xD;
+&#xD;
+    @WithMockUser&#xD;
+    @Test&#xD;
+    public void runsAsUserWithNoApplicationContext() {&#xD;
+&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The SecurityTestExecutionListeners is a meta annotation that signals to Spring&amp;rsquo;s Test Framework to only use Spring Security related TestExecutionListeners and not to try loading the ApplicationContext.&lt;/p&gt;&lt;h2&gt;&lt;a href="#httpstatusreturninglogoutsuccesshandler" class="anchor" name="httpstatusreturninglogoutsuccesshandler"&gt;&lt;/a&gt;HttpStatusReturningLogoutSuccessHandler&lt;/h2&gt;&lt;p&gt;Spring Security 4.0.2 includes a &lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-logout-success-handler"&gt;HttpStatusReturningLogoutSuccessHandler&lt;/a&gt; which allows returning an HTTP status code when the user has successfully logged out making it easy to signal to a REST client authentication was successful.&lt;/p&gt;&lt;p&gt;You an use it with the following Java Based Configuration:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;&lt;br/&gt;http&#xD;
+    .logout()&#xD;
+        .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you are using XML Namespace configuration, you can use the &lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#nsa-logout-attributes"&gt;logout@success-handler-ref&lt;/a&gt; :&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;b:bean id=&amp;quot;successHandler&amp;quot;&#xD;
+    class=&amp;quot;org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler&amp;quot;/&amp;gt;&#xD;
+&amp;lt;http ...&amp;gt;&#xD;
+    &amp;lt;logout success-handler-ref=&amp;quot;successHandler&amp;quot;/&amp;gt;&#xD;
+&amp;lt;/http&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#changes-for-spring-cloud-security" class="anchor" name="changes-for-spring-cloud-security"&gt;&lt;/a&gt;Changes for Spring Cloud Security&lt;/h2&gt;&lt;p&gt;The release includes changes for Spring Cloud Security (i.e. AES/GCM support).&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/guides/html5/"&gt;Guides&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - July 21, 2015</title>
     <link rel="alternate" href="https://spring.io/blog/2015/07/22/this-week-in-spring-july-21-2015" />
@@ -626,102 +669,5 @@ public class AccountsWebApplication {&#xD;
     <id>tag:spring.io,2015-06-30:2173</id>
     <updated>2015-06-30T18:15:04Z</updated>
     <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;&lt;p&gt;I&amp;rsquo;m pleased to announce that the Spring Framework &lt;a href="https://jira.spring.io/browse/SPR/fixforversion/14936"&gt;4.1.7&lt;/a&gt; and &lt;a href="https://jira.spring.io/browse/SPR/fixforversion/14932"&gt;3.2.14&lt;/a&gt; maintenance releases are &lt;a href="http://projects.spring.io/spring-framework/"&gt;available now&lt;/a&gt;. Aside from fixing &lt;a href="https://jira.spring.io/issues/?jql=project%20%3D%20SPR%20AND%20fixVersion%20%3D%204.1.7"&gt;various minor issues&lt;/a&gt; across the framework, these releases also address an &lt;a href="http://pivotal.io/security/cve-2015-3192"&gt;XML parsing vulnerability&lt;/a&gt; through disabling DTD processing by default when parsing untrusted XML input in Spring MVC endpoints.&lt;/p&gt;&lt;p&gt;Note that Spring Framework 3.2.x has its End-of-Life scheduled for &lt;a href="https://spring.io/blog/2015/06/15/spring-framework-3-2-x-eol-on-dec-31-2016"&gt;December 31, 2016&lt;/a&gt;. Based on demand and vulnerability reports, further maintenance releases will be made available up until then. At the same time, we strongly recommend a &lt;a href="https://github.com/spring-projects/spring-framework/wiki/Migrating-from-earlier-versions-of-the-spring-framework"&gt;migration&lt;/a&gt; to Spring Framework 4.1.7 or the upcoming &lt;a href="https://jira.spring.io/browse/SPR/fixforversion/14954"&gt;4.2&lt;/a&gt; at this point; please plan accordingly!&lt;/p&gt;&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;&lt;p&gt;&lt;i&gt;P.S.: Stay tuned for Spring Framework 4.2 RC2, following right away!&lt;/i&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tool Suite 3.7.0 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/30/spring-tool-suite-3-7-0-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Martin Lippert</name>
-    </author>
-    <id>tag:spring.io,2015-06-30:2174</id>
-    <updated>2015-06-30T14:13:11Z</updated>
-    <content type="html">&lt;p&gt;Dear Spring Community,&lt;/p&gt;&lt;p&gt;I am happy to announce the 3.7.0 release of the Spring Tool Suite, our Eclipse-based tooling.&lt;/p&gt;&lt;p&gt;Highlights from this release include:&lt;/p&gt;
-&lt;ul&gt;&#xD;
-&lt;li&gt;updated to Eclipse Mars 4.5 GA (including many fixes and improvements for Java8)&lt;/li&gt;&#xD;
-&lt;li&gt;Spring Boot YML properties editor (including content-assist, hovers, navigation, and errors/warnings)&lt;/li&gt;&#xD;
-&lt;li&gt;improved support for Cloud Foundry&lt;/li&gt;&#xD;
-&lt;li&gt;Pivotal tc Server updated to 3.1.1&lt;/li&gt;&#xD;
-&lt;li&gt;early support for Spring Roo 2.0.0.M1 (thanks to Disid)&lt;/li&gt;&#xD;
-&lt;/ul&gt;&lt;p&gt;To download the distributions, please go visit:&lt;/p&gt;
-&lt;ul&gt;&#xD;
-&lt;li&gt;Spring Tool Suite: &lt;a href="https://spring.io/tools/sts/all"&gt;https://spring.io/tools/sts/all&lt;/a&gt;&lt;/li&gt;&#xD;
-&lt;/ul&gt;&lt;p&gt;Detailed new and noteworthy notes can be found here: &lt;a href="http://docs.spring.io/sts/nan/v370/NewAndNoteworthy.html"&gt;STS 3.7.0 New &amp;amp; Noteworthy&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;STS 3.7.1 is scheduled to ship in early October 2015, shortly after the Eclipse Mars SR1 release.&lt;/p&gt;&lt;p&gt;Enjoy!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud service release: Angel.SR3</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/26/spring-cloud-service-release-angel-sr3" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Dave Syer</name>
-    </author>
-    <id>tag:spring.io,2015-06-26:2172</id>
-    <updated>2015-06-26T12:41:00Z</updated>
-    <content type="html">&lt;p&gt;The latest version of &lt;a href="http://projects.spring.io/spring-cloud/"&gt;Spring Cloud&lt;/a&gt; is &amp;ldquo;Angel.SR3&amp;rdquo; and it is available now from the usual repositories (note the new naming convention, more detail below). Most components are now at 1.0.2.RELEASE, but spring-cloud-netflix is at 1.0.3.RELEASE. The starters and cli and also at 1.0.3.RELEASE, reflecting their dependency on Netflix. Angel.SR3 is a bugfix release for Angel.SR2 (formerly known as 1.0.2) and all existing projects are encouraged to upgrade to take advantage.&lt;/p&gt;&lt;p&gt;There are a few new features, the biggest of which is the new naming convention for the starter parent project (see below). Highlights include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;p&gt;Support for slashes in git labels (via a special character sequence in the HTTP resource paths)&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;Optional git initialization on Config Server startup&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;Additional options for config clients to handle decryption themselves, including the ability to decrypt properties in &lt;code&gt;bootstrap.yml&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;Additional cryptography configuration options for new RSA and AES algorithms&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;A strategy for key rotation with a &lt;code&gt;TextEncryptorLocator&lt;/code&gt; strategy that users can implement to look up keys dynamically.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;h2&gt;&lt;a href="#release-train" class="anchor" name="release-train"&gt;&lt;/a&gt;Release Train&lt;/h2&gt;&lt;p&gt;Spring Cloud is an umbrella project consisting of independent projects with, in principle, different release cadences. To manage the portfolio a BOM (Bill of Materials) is published with a curated set of dependencies on the individual project (see below). The release trains have names, not versions, to avoid confusion with the sub-projects. The names are an alphabetic sequence (so you can sort them chronologically) with names of London Tube stations (&amp;ldquo;Angel&amp;rdquo; is the first release, &amp;ldquo;Brixton&amp;rdquo; is the second). When point releases of the individual projects accumulate to a critical mass, or if there is a critical bug in one of them that needs to be available to everyone, the release train will push out &amp;ldquo;service releases&amp;rdquo; with names ending &amp;ldquo;.SRX&amp;rdquo;, where &amp;ldquo;X&amp;rdquo; is a number.&lt;/p&gt;&lt;p&gt;The release train is a new thing with this release (Angel.SR3) but the older releases have been re-released (same artifact, different version) as &amp;ldquo;Angel,[RELEASE,SR1,SR2]&amp;rdquo; corresponding to 1.0.0, 1.0.1, 1.0.2 respectively. The release train label is actually only used explicitly in one artifact: &amp;ldquo;spring-cloud-starter-parent&amp;rdquo; (all the others have normal &amp;ldquo;Spring&amp;rdquo; release labels tied to their parent project). The starter parent is the one you can use as a BOM for dependency management or as a parent POM (Maven only). Example using the latest version with the config client and eureka (change the artifact ids to pull in other starters), with Maven with a parent POM:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;parent&amp;gt;&#xD;
-  &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-  &amp;lt;artifactId&amp;gt;spring-cloud-starter-parent&amp;lt;/artifactId&amp;gt;&#xD;
-  &amp;lt;version&amp;gt;Angel.SR3&amp;lt;/version&amp;gt;&#xD;
-&amp;lt;/parent&amp;gt;&#xD;
-&amp;lt;dependencies&amp;gt;&#xD;
-  &amp;lt;dependency&amp;gt;&#xD;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-      &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
-  &amp;lt;/dependency&amp;gt;&#xD;
-  &amp;lt;dependency&amp;gt;&#xD;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-    &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka&amp;lt;/artifactId&amp;gt;&#xD;
-  &amp;lt;/dependency&amp;gt;&#xD;
-  ...&#xD;
-&amp;lt;/dependencies&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or as a BOM (dependency management only):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;dependencyManagement&amp;gt;&#xD;
-  &amp;lt;dependencies&amp;gt;&#xD;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-    &amp;lt;artifactId&amp;gt;spring-cloud-starter-parent&amp;lt;/artifactId&amp;gt;&#xD;
-    &amp;lt;version&amp;gt;Angel.SR3&amp;lt;/version&amp;gt;&#xD;
-    &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
-    &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
-  &amp;lt;/dependencies&amp;gt;&#xD;
-&amp;lt;/dependencyManagement&amp;gt;&#xD;
-&amp;lt;dependencies&amp;gt;&#xD;
-  &amp;lt;dependency&amp;gt;&#xD;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-    &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
-  &amp;lt;/dependency&amp;gt;&#xD;
-  &amp;lt;dependency&amp;gt;&#xD;
-    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-    &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka&amp;lt;/artifactId&amp;gt;&#xD;
-  &amp;lt;/dependency&amp;gt;&#xD;
-  ...&#xD;
-&amp;lt;/dependencies&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or with gradle:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint groovy"&gt;buildscript {&#xD;
-  dependencies {&#xD;
-    classpath &amp;quot;io.spring.gradle:dependency-management-plugin:0.4.0.RELEASE&amp;quot;&#xD;
-  }&#xD;
-}&#xD;
-&#xD;
-apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;&#xD;
-&#xD;
-dependencyManagement {&#xD;
-  imports {&#xD;
-    mavenBom &amp;#39;org.springframework.cloud:spring-cloud:Angel.SR3&amp;#39;&#xD;
-  }&#xD;
-}&#xD;
-&#xD;
-dependencies {&#xD;
-    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
-    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-eureka&amp;#39;&#xD;
-    ...&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#springone-2015" class="anchor" name="springone-2015"&gt;&lt;/a&gt;SpringOne 2015&lt;/h2&gt;&lt;p&gt;I’ll be talking about Spring Cloud at this year’s SpringOne in Washington, DC. I’d love to see you there.&lt;/p&gt;&lt;h3&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h3&gt;&lt;p&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;br/&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;br/&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/p&gt;</content>
   </entry>
 </feed>

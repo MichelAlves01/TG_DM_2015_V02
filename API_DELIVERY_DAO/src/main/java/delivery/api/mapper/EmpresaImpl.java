@@ -2,7 +2,6 @@ package delivery.api.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;

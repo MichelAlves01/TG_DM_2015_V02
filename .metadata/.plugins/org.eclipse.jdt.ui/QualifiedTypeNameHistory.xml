@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="delivery.model.Produto"/>
 <fullyQualifiedTypeName name="delivery.api.mapper.EmpresaImpl"/>
 <fullyQualifiedTypeName name="delivery.service.DELIVERY_SERVICE.ProdutoService"/>
-<fullyQualifiedTypeName name="delivery.api.mapper.ProdutoImpl"/>
 <fullyQualifiedTypeName name="org.springframework.ws.test.client.RequestXPathExpectations"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-<fullyQualifiedTypeName name="delivery.model.Item"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="delivery.service.DELIVERY_SERVICE.ItemService"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="delivery.api.mapper.ItemImpl"/>
 <fullyQualifiedTypeName name="delivery.model.Empresa"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="org.opensaml.saml2.metadata.provider.RequiredValidUntilFilter"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="delivery.model.Produto"/>
+<fullyQualifiedTypeName name="delivery.model.Item"/>
+<fullyQualifiedTypeName name="delivery.api.mapper.ItemImpl"/>
+<fullyQualifiedTypeName name="delivery.api.mapper.ProdutoImpl"/>
+<fullyQualifiedTypeName name="delivery.model.ItemProduto"/>
+<fullyQualifiedTypeName name="delivery.api.mapper.ItemProdutoImpl"/>
 </qualifiedTypeNameHistroy>
