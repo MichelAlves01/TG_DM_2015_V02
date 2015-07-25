@@ -13,6 +13,7 @@ import delivery.api.mapper.ProdutoImpl;
 import delivery.model.Item;
 import delivery.model.ItemProduto;
 import delivery.model.Produto;
+import delivery.service.DELIVERY_SERVICE.ItemService;
 
 @RestController
 public class ItemProdutoController {
@@ -29,9 +30,12 @@ public class ItemProdutoController {
 	
 	private ItemProdutoImpl itemProdutoImpl;
 	
+	private ItemService itemService;
+	
 	@RequestMapping(value="/cadastrarItemProdutoController", method=RequestMethod.POST)
 	public void cadastrarItemProduto(	@RequestParam(value="idItem") int idItem,
-										@RequestParam(value="idProduto") int idProduto){
+										@RequestParam(value="idProduto") int idProduto,
+										@RequestParam(value="itemAdicional") String itemAdicional){
 		
 		itemImpl = new ItemImpl();
 		item = itemImpl.getItemDAO(idItem);
@@ -42,23 +46,48 @@ public class ItemProdutoController {
 		itemProduto = new ItemProduto();
 		itemProduto.setItem(item);
 		itemProduto.setProduto(produto);
+		final boolean adicional = Boolean.parseBoolean(itemAdicional);
+		itemProduto.setItemAdicional(adicional);
 		
 		itemProdutoImpl = new ItemProdutoImpl();
 		itemProdutoImpl.cadastrarItemProdutoDAO(itemProduto);
 	}
 	
 	@RequestMapping(value="/getItensProdutoController" , method=RequestMethod.GET)
-	public List<ItemProduto> getItensProduto(@RequestParam(value="idProduto") int idProduto){
+	public List<ItemProduto> getItensProduto(	@RequestParam(value="idProduto") int idProduto,
+												@RequestParam(value="itemAdicional") String itemAdicional){
 											
 		produtoImpl = new ProdutoImpl();
 		produto = produtoImpl.getProdutoDAO(idProduto);
 		
 		itemProduto = new ItemProduto();
 		itemProduto.setProduto(produto);
+		final boolean adicional = Boolean.parseBoolean(itemAdicional);
+		itemProduto.setItemAdicional(adicional);
 		
 		itemProdutoImpl = new ItemProdutoImpl();
 		List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto);
-		
-		return itensProduto;
+		itemService = new ItemService();
+		return itensProduto = itemService.getItensType(itensProduto, adicional);
 	}
+	
+	@RequestMapping(value="/excluirItemProdutoController" , method=RequestMethod.GET)
+	public List<ItemProduto> excluirItemProduto(@RequestParam(value="idItem") int idItem,
+												@RequestParam(value="idProduto") int idProduto){
+		produtoImpl = new ProdutoImpl();
+		produto = produtoImpl.getProdutoDAO(idProduto);
+		
+		itemImpl = new ItemImpl();
+		item = itemImpl.getItemDAO(idItem);
+		
+		itemProduto = new ItemProduto();
+		itemProduto.setProduto(produto);
+		itemProduto.setItem(item);
+		
+		itemProdutoImpl = new ItemProdutoImpl();
+		itemProdutoImpl.excluirItemProduto(itemProduto);
+		List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto);
+		
+		return itensProduto ;
+	} 
 }

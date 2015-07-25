@@ -4,6 +4,7 @@ public class ItemProduto {
 	
 	private Produto produto;
 	private Item item;
+	private boolean itemAdicional;
 
 	public Produto getProduto() {
 		return produto;
@@ -17,6 +18,13 @@ public class ItemProduto {
 	public void setItem(Item item) {
 		this.item = item;
 	}
+	public boolean isItemAdicional() {
+		return itemAdicional;
+	}
+	public void setItemAdicional(boolean itemAdicional) {
+		this.itemAdicional = itemAdicional;
+	}
+	
 	
 	
 }

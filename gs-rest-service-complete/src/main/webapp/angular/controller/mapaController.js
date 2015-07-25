@@ -1,9 +1,66 @@
 (function(){
 	
-	var app = angular.module('mapaController' , []);
+	var app = angular.module('mapCtrl' , []);
 
-	app.controller('getMarker' , function(){
-		
+	app.controller('mapaRaio' , function($scope,$http,empresa){
+		var latLong;
+		/*
+			Obtem informações de latitude e longitude e atualiza o mapa,
+			tambem mostra o mapa na tela com um marcador no endereço informado.  
+		*/
+		$scope.getMapalocalizacaoInicial = function(){
+			setTimeout(function(){ 
+					//inicia o mapa com uma localização padrão.
+						latLong = new google.maps.LatLng($scope.empresa.latitude, $scope.empresa.longitude);
+			
+
+					var valorZoom;
+					//define o valor de zoom quando o endereço for o definido pelo usuario.
+					if($scope.estado == null){
+						valorZoom = 15;
+					} else {
+						valorZoom = 15;
+					}
+					
+					//redireciona o mapa para o endereço inicial.
+					var mapOptions = {
+					    zoom: valorZoom,
+					    center: latLong
+					  }
+
+					var map = new google.maps.Map(document.getElementById('map-canvas3'), mapOptions);
+					var geocoder = new google.maps.Geocoder();
+
+
+				   	var marker = new google.maps.Marker({
+					     position: latLong,
+					     map: map,
+					     draggable:true,
+    					animation: google.maps.Animation.DROP
+					  });
+
+			}, 1000);
+
+		}
+
+		$scope.slider = function(){
+			$(function() {
+			    $( "#slider" ).slider({
+			      value:100,
+			      min: 0,
+			      max: 500,
+			      step: 50,
+			      slide: function( event, ui ) {
+			        $( "#amount" ).val( "$" + ui.value );
+			      }
+			    });
+			    $( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
+			  });
+		}
+
+		/*
+
+	
 		$scope.getLatitudeLongitude = function(){
 					
 				var cidade = document.getElementById('cidade').value;
@@ -45,13 +102,14 @@
 				}
 
 				function getRaio(){
+					
 					var raio = document.getElementById('raio').value;
 					if(raio != null){
 							return raio;
 						} else {
 							return 0;
 						}	
-							
+						
 						
 				}
 
@@ -73,13 +131,12 @@
 				  geocoder = new google.maps.Geocoder();
 				  var latlng = latLong;
 				  var mapOptions = {
-				    zoom: zoom,
+				    zoom: 4,
 				    center: latlng,
 				    mapTypeId: google.maps.MapTypeId.TERRAIN
 				  };
 
-				  map = new google.maps.Map(document.getElementById('map-canvas'),
-				      mapOptions);
+				  map = new google.maps.Map(document.getElementById('map-canvas3'));
 
 				  // Construct the circle for each value in citymap.
 				  // Note: We scale the area of the circle based on the population.
@@ -152,6 +209,7 @@
 				}
 
 				google.maps.event.addDomListener(window, 'load', initialize);
+		*/	
 	});
 
 	

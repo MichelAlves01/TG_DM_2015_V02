@@ -553,9 +553,10 @@ centro-principal{
 
 
 #adicionais-produto{
-		height: 100%;
-		width: 100%;
-		border: 1px solid #0000CC;
+		height: 100px;
+		width: 99%;
+		background-color: #f8f8f8;
+		padding: 2px;
 }
 
 #item-produto-busca{
@@ -1059,7 +1060,7 @@ div.growlUI h4, div.growlUI h5 {
 
 #itemdropped{
 	width: 133px; 
-	height: 17px; 
+	height: 20px; 
 	padding: 3px; 
 	border-radius: 2px;
 	-webkit-box-shadow:inset -1px 0 9px 1px #9AB9ED;
@@ -1078,4 +1079,12 @@ box-shadow:inset -1px 0 9px 1px #9AB9ED;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edf6f9', endColorstr='#e4f0f4',GradientType=0 ); /* IE6-9 */
 	float: left;
 
+}
+
+#slider-container{
+	height: 20px;
+	width: 1044px;
+	padding-right: 30px;
+	padding-left: 30px;	
+	background-color: #999999;
 }

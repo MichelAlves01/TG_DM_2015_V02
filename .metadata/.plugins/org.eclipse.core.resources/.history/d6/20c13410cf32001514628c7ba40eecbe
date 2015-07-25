@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.ItemProdutoDAO">
+ 	
+ 	<insert id="cadastrarItemProdutoDAO" parameterType="delivery.model.ItemProduto">
+ 		INSERT INTO
+ 				 Itens_Produto 	(
+ 				 					id_produto, 
+ 				 					id_item
+ 				 				) values (
+ 				 					#{produto.id}, 
+ 				 					#{item.id}
+ 				 				)
+ 	</insert>
+ 	
+ 	<delete id="excluirItemProduto" parameterType="delivery.model.ItemProduto">
+ 		DELETE FROM 
+ 					Item_Produto 
+ 		WHERE 
+ 					id_item = #{idItem} 
+ 		AND 
+ 					id_Produto = #{idProduto}
+ 	</delete>
+ 	
+ 	<select id="getItensProdutoDAO" parameterType="delivery.model.ItemProduto" resultType="delivery.model.ItemProduto">
+ 		SELECT
+ 				id_produto 	as "produto.id", 
+ 				id_item 	as "Item.id"
+ 		FROM
+ 				itens_produto
+ 		WHERE
+ 				#{produto.id} = id_produto
+ 	</select>
+ </mapper>
+ 

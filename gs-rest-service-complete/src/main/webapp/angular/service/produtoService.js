@@ -197,47 +197,128 @@
    			 });
 		}
 
+	
 
-		function validItem(idItem , idProduto){
-			if($scope.listItensProduto.length == 0){
+
+		function validItem(idItem , idProduto, listItens){
+			if(listItens.length == 0 && idItem != null && idProduto != null){
 				return true;
 			} else {
-				for(i=0 ; i < $scope.listItensProduto.length ; i++){
-					if($scope.listItensProduto[i].item.id == idItem ){
+				for(i=0 ; i < listItens.length ; i++){
+					if(listItens[i].item.id == idItem ){
 						return false;
 					}
 				}
-			}	
-			itemId = idItem;
-			return true;
+			}
+
+			if(idItem != null && idProduto != null){
+				itemId = idItem;
+				return true;
+			}
+
+			return false;	
+			
 		};
 
-		$scope.getItensProduto = function(idProduto){
-			if(idProduto != null && !collapsed){
-					var data = $.param({idProduto: idProduto});
-						$http.get(urlBase + '/getItensProdutoController?' + data).success(function(data,status){
-						$scope.listItensProduto = data;
-					});
+		$scope.getItensProduto = function(idProduto, adicional){
+			if(idProduto != null && !collapsed){	
+							if(adicional == true){	
+								adicionalProduto(idProduto, adicional);	
+							} else if(adicional == false){
+								itensProduto(idProduto, adicional);
+									
+							} else {
+								adicional = false;
+								itensProduto(idProduto, adicional);
+								adicional = true;
+								adicionalProduto(idProduto, adicional);
+							}
 					collapsed = true;		
 				}
 			collapsed = false;
-			return $scope.listItensProduto;
 		}
 
-			 $scope.cadastrarItemProduto = function(idProduto){
-				
-				console.log(data);
-				if(itemId != null && validItem(itemId ,idProduto)){
-					console.log("id do produto : " + idProduto + "\nItem Id : " + itemId );
-					var data = $.param({idItem: itemId , idProduto: idProduto});
-					$http.post(urlBase + '/cadastrarItemProdutoController?' + data).success(function(data,status){
-					$scope.itensProduto = data;
+		function itensProduto(idProduto, adicional){
+			var data = $.param({idProduto: idProduto , itemAdicional: adicional});
+			setTimeout(function(){
+			$http.get(urlBase + '/getItensProdutoController?' + data).success(function(data,status){
+				$scope.listItensProduto = data;
+			});
+			}, 100);
+		}
+
+		function adicionalProduto(idProduto, adicional){
+			var data = $.param({idProduto: idProduto , itemAdicional: adicional});
+			setTimeout(function(){
+				$http.get(urlBase + '/getItensProdutoController?' + data).success(function(data,status){
+					$scope.listAdicionalProduto = data;	
 				});
-					$scope.listItensProduto = $scope.getItensProduto(idProduto);
+			}, 100);
+		}
+
+		$scope.cadastrarItemProduto = function(idProduto , adicional){
+				var valid = null;
+				console.log( "valid" + valid);
+				if(adicional == true){
+					valid = validItem(itemId ,idProduto, $scope.listAdicionalProduto);
+				} else {
+					valid = validItem(itemId ,idProduto, $scope.listItensProduto);
+				}
+				
+				if(itemId != null && valid){
+					console.log("id do produto : " + idProduto + "\nItem Id : " + itemId );
+					var data = $.param({idItem: itemId , idProduto: idProduto, itemAdicional: adicional});
+					$http.post(urlBase + '/cadastrarItemProdutoController?' + data).success(function(data,status){
+						$scope.itensProduto = data;
+					});
+					$scope.getItensProduto(idProduto,adicional);
 				}
 				
 				itemId = null;
+		}
+
+
+		$scope.excluirItemProduto = function(idProduto ,  idItem, adicional){
+			console.log('excluindo ...');
+			if(idProduto != null && idItem != null){
+				var data = $.param({idProduto: idProduto , idItem: idItem});
+				$http.get(urlBase + '/excluirItemProdutoController?' + data).success(function(data,status){
+					$scope.getItensProduto(idProduto, adicional);
+				});
+				
 			}
+		}
+
+
+		/* 
+			####################################################################################################################
+			###########################################   Itens Adicionais ######################################################
+			####################################################################################################################
+		*/
+
+		$scope.droppableAdicionais = function(id){
+			console.log('id : ' + id);		    
+			$( "#adicionais-produto").droppable({
+					activeClass: "ui-state-default",
+						hoverClass: "ui-state-hover",
+						accept: ":not(.ui-sortable-helper)",
+					drop: function(event, ui){
+						var data = ui.draggable.context.innerText.split("	");
+						itemId = data[0];
+						console.log(data[0]);
+					}
+			}).sortable({
+     			 items: "div:not(.placeholder)",
+      				sort: function() {
+        			// gets added unintentionally by droppable interacting with sortable
+        			// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        			$( this ).removeClass( "ui-state-default" );
+      			}
+   			});
+		}
+
+
+		
 	});	
 
 })();

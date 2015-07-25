@@ -25,7 +25,7 @@
     };
   });
 
-   app.directive('mapa-tab', function(){
+   app.directive('mapatab', function(){
     return{
       restrict: 'A',
       templateUrl: 'view-principal/map-tab.html'

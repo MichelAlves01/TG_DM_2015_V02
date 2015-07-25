@@ -68,7 +68,7 @@
 						</div>
 						<div class="accordion" id="accordion" data-ng-init="listProdutos(); ">
 							<div class="accordion-group" ng-repeat="produto in produtos track by produto.id">
-							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)" ng-click="getItensProduto(produto.id)">
+							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)" ng-click="getItensProduto(produto.id , 'all')">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#{{produto.id}}">
 					        			<table>
 					        				<tr>
@@ -121,18 +121,39 @@
 							</div>
 			
 							<div id="{{produto.id}}" class="accordion-body collapse">
-								<div class="accordion-inner" data-ng-init="droppableItens(produto.id);">
+								<div class="accordion-inner" data-ng-init="droppableItens(produto.id); droppableAdicionais(produto.id);">
 									itens do produto
-									  <div id="itens-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id)">
+									  <div id="itens-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id, false)">
 									  		<div ng-repeat="itemProduto in listItensProduto" class="placeholder" id="itemdropped">		
-									  			{{itemProduto.item.descricao}}
+									  			<table>
+									  				<tr>
+									  					<td  width="120px">
+									  						{{itemProduto.item.descricao}}
+									  					</td>
+									  					<td width="15px" style="width: 15px; cursor: pointer;">	
+									  						<i class="icon-remove" ng-click="excluirItemProduto(itemProduto.produto.id, itemProduto.item.id, false)"></i>
+									  					</td>
+									  				</tr>
+									  			</table>
+									  			
 									  		</div>	
 							          </div>
 			
 							          Adicionais
-							          <div id="adicionais-produto">
-							          		chedar
-							          		queijo parmesão
+							          <div id="adicionais-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id, true)">
+									  		<div ng-repeat="itemProduto in listAdicionalProduto" class="placeholder" id="itemdropped">		
+									  			<table>
+									  				<tr>
+									  					<td  width="120px">
+									  						{{itemProduto.item.descricao}}
+									  					</td>
+									  					<td width="15px" style="width: 15px; cursor: pointer;">	
+									  						<i class="icon-remove" ng-click="excluirItemProduto(itemProduto.produto.id, itemProduto.item.id,true)"></i>
+									  					</td>
+									  				</tr>
+									  			</table>
+									  			
+									  		</div>	
 							          </div>
 							    </div>
 							</div>
@@ -146,7 +167,11 @@
 		
 	</td>
 
-
+	<!--
+		###################################################################################################################################
+		################################################   		Itens do itemProduto 		###############################################
+		###################################################################################################################################
+	-->
 
 	<td class="list-itens-produtos" ng-controller="itemCtrl" >
 		<div id="list-itens-produtos">

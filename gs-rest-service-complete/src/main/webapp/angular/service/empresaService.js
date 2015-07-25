@@ -666,4 +666,8 @@
     	return { cpfCnpj: '' };
 	});
 
+	app.controller('mapCtrl' , function($scope, $http){
+
+	});
+
 })();

@@ -9,21 +9,29 @@
  		INSERT INTO
  				 Itens_Produto 	(
  				 					id_produto, 
- 				 					id_item
+ 				 					id_item,
+ 				 					item_adicional
  				 				) values (
  				 					#{produto.id}, 
- 				 					#{item.id}
+ 				 					#{item.id},
+ 				 					#{itemAdicional}
  				 				)
  	</insert>
  	
  	<delete id="excluirItemProduto" parameterType="delivery.model.ItemProduto">
- 		delete from Item_Produto where id_item = #{idItem} and id_Produto = #{idProduto}
+ 		DELETE FROM 
+ 					Itens_Produto 
+ 		WHERE 
+ 					id_item = #{item.id} 
+ 		AND 
+ 					id_Produto = #{produto.id}
  	</delete>
  	
  	<select id="getItensProdutoDAO" parameterType="delivery.model.ItemProduto" resultType="delivery.model.ItemProduto">
  		SELECT
  				id_produto 	as "produto.id", 
- 				id_item 	as "Item.id"
+ 				id_item 	as "Item.id",
+ 				item_adicional as itemAdicional
  		FROM
  				itens_produto
  		WHERE
