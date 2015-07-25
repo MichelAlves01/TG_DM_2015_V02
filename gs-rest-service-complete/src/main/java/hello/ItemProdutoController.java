@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,5 +45,20 @@ public class ItemProdutoController {
 		
 		itemProdutoImpl = new ItemProdutoImpl();
 		itemProdutoImpl.cadastrarItemProdutoDAO(itemProduto);
+	}
+	
+	@RequestMapping(value="/getItensProdutoController" , method=RequestMethod.GET)
+	public List<ItemProduto> getItensProduto(@RequestParam(value="idProduto") int idProduto){
+											
+		produtoImpl = new ProdutoImpl();
+		produto = produtoImpl.getProdutoDAO(idProduto);
+		
+		itemProduto = new ItemProduto();
+		itemProduto.setProduto(produto);
+		
+		itemProdutoImpl = new ItemProdutoImpl();
+		List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto);
+		
+		return itensProduto;
 	}
 }

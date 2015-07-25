@@ -20,5 +20,14 @@
  		delete from Item_Produto where id_item = #{idItem} and id_Produto = #{idProduto}
  	</delete>
  	
+ 	<select id="getItensProdutoDAO" parameterType="delivery.model.ItemProduto" resultType="delivery.model.ItemProduto">
+ 		SELECT
+ 				id_produto 	as "produto.id", 
+ 				id_item 	as "Item.id"
+ 		FROM
+ 				itens_produto
+ 		WHERE
+ 				#{produto.id} = id_produto
+ 	</select>
  </mapper>
  

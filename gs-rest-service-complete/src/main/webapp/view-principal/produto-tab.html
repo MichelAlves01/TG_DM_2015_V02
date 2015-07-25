@@ -68,7 +68,7 @@
 						</div>
 						<div class="accordion" id="accordion" data-ng-init="listProdutos(); ">
 							<div class="accordion-group" ng-repeat="produto in produtos track by produto.id">
-							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)">
+							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)" ng-click="getItensProduto(produto.id)">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#{{produto.id}}">
 					        			<table>
 					        				<tr>
@@ -121,12 +121,12 @@
 							</div>
 			
 							<div id="{{produto.id}}" class="accordion-body collapse">
-								<div class="accordion-inner" data-ng-init="droppableItens()">
+								<div class="accordion-inner" data-ng-init="droppableItens(produto.id);">
 									itens do produto
 									  <div id="itens-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id)">
-									  	<div id="accordion-heading-item" class="placeholder">
-									  		<div>here</div>
-									  	</div>
+									  		<div ng-repeat="itemProduto in listItensProduto" class="placeholder" id="itemdropped">		
+									  			{{itemProduto.item.descricao}}
+									  		</div>	
 							          </div>
 			
 							          Adicionais
