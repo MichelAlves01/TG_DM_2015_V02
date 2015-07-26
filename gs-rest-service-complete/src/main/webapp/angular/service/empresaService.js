@@ -309,6 +309,7 @@
 			tambem mostra o mapa na tela com um marcador no endereço informado.  
 		*/
 		$scope.getLatitudeLongitude = function(){
+			setTimeout(function() {
 					//inicia o mapa com uma localização padrão.
 					if(latLong == null){
 						latLong = new google.maps.LatLng(-23.5505199,-46.63330939999997);
@@ -372,6 +373,7 @@
 				      alert('Geocode was not successful for the following reason: ' + status);
 				    }
 				  });
+			}, 1000);
 		}
 
 		/*
