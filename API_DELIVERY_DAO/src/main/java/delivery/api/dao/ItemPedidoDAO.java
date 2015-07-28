@@ -1,13 +1,13 @@
 package delivery.api.dao;
 
-import delivery.model.ItensPedido;
+import delivery.model.ItemPedido;
 
 public interface ItemPedidoDAO {
 	
-	void cadastrarItemPedidoDAO(ItensPedido itemPedido);
+	void cadastrarItemPedidoDAO(ItemPedido itemPedido);
 	
-	void excluirItemPedido(ItensPedido itemPedido);
+	void excluirItemPedido(ItemPedido itemPedido);
 	
-	ItensPedido getItensPedido(int idPedido);
+	ItemPedido getItensPedido(int idPedido);
 	
 }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;delivery.model.ItensPedido&apos; to &apos;ItemPedido&apos;&#x0D;&#x0A;- Original project: &apos;DELIVERY_MODEL&apos;&#x0D;&#x0A;- Original element: &apos;delivery.model.ItensPedido&apos;&#x0D;&#x0A;- Renamed element: &apos;delivery.model.ItemPedido&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ItensPedido&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;delivery.model{ItensPedido.java[ItensPedido" matchStrategy="1" name="ItemPedido" qualified="false" references="true" similarDeclarations="false" stamp="1438039045287" textual="false" version="1.0"/>
+</session>

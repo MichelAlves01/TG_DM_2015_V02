@@ -9,6 +9,7 @@
 			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 			<script type="text/javascript" src="angular/controller/PrincipalController.js"></script>
 			<script type="text/javascript" src="angular/controller/cadastroEmpresaController.js"></script>
+			<script type="text/javascript" src="angular/controller/pedidoController.js"></script>
 			<script type="text/javascript" src="angular/controller/mapaController.js"></script>
 			<script type="text/javascript" src="angular/service/empresaService.js"></script>
 			<script type="text/javascript" src="angular/service/produtoService.js"></script>
@@ -309,7 +310,7 @@
 						</ul>
 					
 					<div class="tab-content">
-							<div class="tab-pane" id="tab1" >
+							<div class="tab-pane" id="tab1" ng-controller="pedidoCtrl">
 							  	<div pedido></div>
 							</div>
 							<div class="tab-pane " id="tab3">

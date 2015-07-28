@@ -6,6 +6,7 @@
 		var latLong;
 		var raio;
 		var timeOut = true;
+		var urlBase = 'http://localhost:8080';
 		/*
 			Obtem informações de latitude e longitude e atualiza o mapa,
 			tambem mostra o mapa na tela com um marcador no endereço informado.  
@@ -14,8 +15,10 @@
 			setTimeout(function(){ 
 					//inicia o mapa com uma localização padrão.
 					latLong = new google.maps.LatLng($scope.empresa.latitude, $scope.empresa.longitude);
-						
-
+					if(raio == null){
+						$('#master').val('Raio : ' + $scope.empresa.raio + 'Km');
+				   		raio = $scope.empresa.raio;
+				   	}
 					 
 					//define o valor de zoom quando o endereço for o definido pelo usuario.
 					var valorZoom = (getZoom() != null)? getZoom() : 15;
@@ -30,6 +33,8 @@
 					var map = new google.maps.Map(document.getElementById('map-canvas3'), mapOptions);
 					var geocoder = new google.maps.Geocoder();
 
+					
+
 					iniciaCirculo(map , latLong , $scope.empresa.cidade.nome);
 
 				   	var marker = new google.maps.Marker({
@@ -40,6 +45,7 @@
 					  });
 
 
+				   	$scope.definirRaio($scope.empresa.cpfCnpj , raio);
 
 			}, 1000);
 
@@ -60,10 +66,10 @@
 		}
 
 		$scope.slider = function(){
-			
+			setTimeout(function(){
 				$(function() {
 				    $( "#slider" ).slider({
-				      value: 5,
+				      value: $scope.empresa.raio,
 				      min: 0,
 				      max: 50,
 				      step: 1,
@@ -77,7 +83,7 @@
 									
 									$scope.getMapalocalizacaoInicial();
 
-							}, 3000);
+							}, 1000);
 						}
 				        	
 				        
@@ -85,6 +91,7 @@
 				    });
 				    $( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
 				  });
+			}, 100);
 
 		}
 
@@ -108,9 +115,23 @@
 						      radius: Math.sqrt(citymap[city].population) * raio
 						    };
 						    // Add the circle for this city to the map.
-				    
+				    setTimeout(function() {
 				    	cityCircle = new google.maps.Circle(populationOptions);
+				   	}, 1000);
 				    }
+		}
+
+
+		$scope.definirRaio = function(cpfCnpj , raio){
+
+			var data = $.param({cpfCnpj: cpfCnpj , raio: raio});
+			setTimeout(function() {
+				$http.get(urlBase + '/definirRaioController?' + data).success(function(data,status){
+					$scope.empresa = data;
+				})
+			}, 5000);
+			console.log("foi");
+			
 		}
 
 		/*

@@ -13,7 +13,7 @@ public class Pedido {
 	private int status;
 	private String observacao;
 	private List<AdicionalPedido> adicionaisPedido;
-	private List<ItensPedido> itensPedido;
+	private List<ItemPedido> itensPedido;
 	private List<Agenda> horariosAgendados;
 	
 	public int getId() {
@@ -65,10 +65,10 @@ public class Pedido {
 	public void setAdicionaisPedido(List<AdicionalPedido> adicionaisPedido) {
 		this.adicionaisPedido = adicionaisPedido;
 	}
-	public List<ItensPedido> getItensPedido() {
+	public List<ItemPedido> getItensPedido() {
 		return itensPedido;
 	}
-	public void setItensPedido(List<ItensPedido> itensPedido) {
+	public void setItensPedido(List<ItemPedido> itensPedido) {
 		this.itensPedido = itensPedido;
 	}
 	public List<Agenda> getHorariosAgendados() {

@@ -147,4 +147,18 @@ public class EmpresaController {
 		empresaService = new EmpresaService();
 		empresaService.excluirEmpresaService(cpfCnpj);	
 	}
+	
+	@RequestMapping(value="/definirRaioController" , method=RequestMethod.GET)
+	public Empresa definirRaio(@RequestParam(value="cpfCnpj") String cpfCnpf, 
+								@RequestParam(value="raio") double raio){
+		
+		empresa = empresaImpl.getEmpresaDAO(cpfCnpf);
+		empresa.setRaio(raio);
+		
+		empresaImpl = new EmpresaImpl();
+		empresaImpl.atualizarEmpresaDAO(empresa);
+		
+		return empresa;
+		
+	}
 }

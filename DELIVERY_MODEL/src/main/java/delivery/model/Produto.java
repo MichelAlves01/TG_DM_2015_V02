@@ -10,7 +10,7 @@ public class Produto {
 	private Empresa empresa;
 	private int status;
 	
-	private List<ItensPedido> itensPedido;
+	private List<ItemPedido> itensPedido;
 	private List<ItemProduto> itensProduto;
 	
 	public int getId() {
@@ -45,10 +45,10 @@ public class Produto {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	public List<ItensPedido> getItensPedido() {
+	public List<ItemPedido> getItensPedido() {
 		return itensPedido;
 	}
-	public void setItensPedido(List<ItensPedido> itensPedido) {
+	public void setItensPedido(List<ItemPedido> itensPedido) {
 		this.itensPedido = itensPedido;
 	}
 	public List<ItemProduto> getItensProduto() {

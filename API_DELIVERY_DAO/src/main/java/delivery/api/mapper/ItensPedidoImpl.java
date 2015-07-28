@@ -4,11 +4,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
 import delivery.api.dao.ItemPedidoDAO;
-import delivery.model.ItensPedido;
+import delivery.model.ItemPedido;
 
 public class ItensPedidoImpl {
 	
-	public void cadastrarItemPedidoDAO(ItensPedido itemPedido){
+	public void cadastrarItemPedidoDAO(ItemPedido itemPedido){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ItemPedidoDAO itensPedidoDao = session.getMapper(ItemPedidoDAO.class);
 		itensPedidoDao.cadastrarItemPedidoDAO(itemPedido);
@@ -16,7 +16,7 @@ public class ItensPedidoImpl {
 		session.close();
 	}
 	
-	public void excluirItemPedido(ItensPedido itemPedido){
+	public void excluirItemPedido(ItemPedido itemPedido){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ItemPedidoDAO itensPedidoDao = session.getMapper(ItemPedidoDAO.class);
 		itensPedidoDao.excluirItemPedido(itemPedido);
@@ -24,10 +24,10 @@ public class ItensPedidoImpl {
 		session.close();
 	}
 	
-	public ItensPedido getItensPedido(int idPedido){
+	public ItemPedido getItensPedido(int idPedido){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ItemPedidoDAO itensPedidoDao = session.getMapper(ItemPedidoDAO.class);
-		ItensPedido itensPedido = itensPedidoDao.getItensPedido(idPedido);
+		ItemPedido itensPedido = itensPedidoDao.getItensPedido(idPedido);
 		session.close();
 		return itensPedido;
 	}

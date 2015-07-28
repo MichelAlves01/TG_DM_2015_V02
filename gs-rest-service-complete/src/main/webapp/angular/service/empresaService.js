@@ -376,6 +376,7 @@
 			}, 1000);
 		}
 
+		
 		/*
 			Validaçoes de todos campos no cadastro de empresas, se
 			e quando for false mostra os icones e mensagem, mostrando 
