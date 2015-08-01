@@ -570,7 +570,7 @@
 		    		$('#tab-update').toggleClass( "active" );
 
 				var data = $.param({cpfCnpj: cpfCnpj});
-				$http.post(urlBase + '/getEmpresaController?' + data).success(function(data,status){
+				$http.get(urlBase + '/getEmpresaController?' + data).success(function(data,status){
 					$scope.nome = data.nome;
 					$scope.cpfCnpj = data.cpfCnpj;
 					$scope.tipo = data.tipo;

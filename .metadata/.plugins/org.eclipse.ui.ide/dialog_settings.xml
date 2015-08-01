@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="CleanDialogSettings">
 		<item value="500" key="DIALOG_WIDTH"/>
-		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
 		<item value="377" key="DIALOG_HEIGHT"/>
 		<item value="433" key="DIALOG_X_ORIGIN"/>
 		<item value="113" key="DIALOG_Y_ORIGIN"/>
@@ -12,6 +12,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Michel\Desktop\Workspace_TG\DeliveryMobile"/>
 			<item value="C:\Users\Michel\Desktop\Workspace_TG\gs-rest-service-complete"/>
 			<item value="C:\Users\Michel\Desktop\Workspace_TG\API_DELIVERY_DAO"/>
 			<item value="C:\Users\Michel\Desktop\Workspace_TG\DELIVERY_SERVICE"/>
