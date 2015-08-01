@@ -23,4 +23,5 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="delivery.model.ItemPedido"/>
 <fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="org.apache.cordova.DroidGap"/>
 </qualifiedTypeNameHistroy>

@@ -17,24 +17,59 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
+<html ng-app="principalMobile">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/principal.css">
+        <link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <title>Delivery Market</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+
+        <div data-role="page">
+
+            <div data-role="header" ng-controller="usuarioCtrl">
+                <div class="ui-grid-d center">
+                    <div class="ui-block-a" style="width: 100px;">
+                        <a class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-carat-l" style="height: 25px;"></a>
+                    </div>
+                    <div class="ui-block-b" style="width: 350px;"><h1 class="ui-title" role="heading" aria-level="1">Delivery market</h1></div>
+                    <div class="ui-block-c" style="width: 200px;">
+                        <a class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user ui-btn-inline" ng-click="showUsuario()" style="height: 25px; width: 100%;">
+                            <font class="ui-title" role="heading" aria-level="1" >username</font>
+                        </a>
+                    </div>
+                </div>
+                
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content" id="container" principal>  
+            </div><!-- /content -->
+            <div role="main" class="ui-content" id="containerMobile" usuario>  
+            </div><!-- /content -->
+            <div data-role="footer">
+                <h4>Page Footer</h4>
+            </div><!-- /footer -->
+        </div><!-- /page -->
+        <!--div class="app">
+            <div id="container">
+                <div id="cabecalho">
+                    
+                </div>
             </div>
-        </div>
+        </div-->
         <script type="text/javascript" src="cordova-2.7.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
+        <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
+        <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
