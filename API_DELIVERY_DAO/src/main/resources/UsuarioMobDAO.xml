@@ -5,7 +5,16 @@
     
  <mapper namespace="delivery.api.dao.UsuarioMobDAO">
  	<insert id="cadastrarUsuarioMobDAO" parameterType="delivery.model.UsuarioMob">
- 		insert into usuarios_Mob (email , nome , sobrenome) values (#{email} , #{nome}, #{sobrenome})
+ 		INSERT INTO 
+ 				usuarios_Mob (
+ 								email , 
+ 								nome , 
+ 								senha
+ 							) values (
+ 								#{email} , 
+ 								#{nome}, 
+ 								#{senha}
+ 							)
  	</insert>
  	
  	<select id="getUsuarioMobDAO" parameterType="java.lang.String" resultType="delivery.model.UsuarioMob">

@@ -25,5 +25,6 @@
       <mapper resource="ProdutoDAO.xml" />
       <mapper resource="ItemDAO.xml" />
       <mapper resource="ItemProdutoDAO.xml" />
+      <mapper resource="UsuarioMobDAO.xml" />
   </mappers>
 </configuration>

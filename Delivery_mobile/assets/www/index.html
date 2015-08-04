@@ -46,9 +46,41 @@
                 
             </div><!-- /header -->
 
-            <div role="main" class="ui-content" id="container" principal>  
+            <div role="main" class="ui-content" id="container">  
             </div><!-- /content -->
-            <div role="main" class="ui-content" id="containerMobile" usuario>  
+            <div role="main" class="ui-content" id="containerMobile"> 
+                <div id="usuario-form" ng-controller="usuarioCtrl">
+                <table style="margin: 0 auto;">
+                    <tr>
+                        <td style="height: 300px;">
+                            <img src="img/Darth_Vader.png" class="img-circle">  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="text-basic">Nome</label>
+                            <input type="text" ng-model="nomeUsuario" name="text-basic" id="text-basic"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="text-basic">Email</label>
+                            <input type="text" ng-model="email" name="text-basic" id="text-basic"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Password:</label>
+                            <input type="password" ng-model="senha" name="password" id="password" value="" autocomplete="off">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button"  data-icon="delete" data-theme="a" id="btn-usuario-add" ng-click="cadastrarUsuarioMobile()"><font>Salvar</font></button>
+                        </td>
+                    </tr>
+                    </table>
+                </div> 
             </div><!-- /content -->
             <div data-role="footer">
                 <h4>Page Footer</h4>
@@ -66,7 +98,7 @@
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/angular.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
         <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
         <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>

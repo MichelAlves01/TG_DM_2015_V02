@@ -6,7 +6,7 @@ public class UsuarioMob {
 	
 	private String email;
 	private String nome;
-	private String sobrenome;
+	private String senha;
 	private List<Pedido> pedidos;
 	
 	public String getEmail() {
@@ -21,12 +21,11 @@ public class UsuarioMob {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public String getSobrenome() {
-		return sobrenome;
+	public String getSenha() {
+		return senha;
 	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public List<Pedido> getPedidos() {
 		return pedidos;
