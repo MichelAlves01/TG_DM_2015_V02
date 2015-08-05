@@ -1,5 +1,6 @@
 package delivery.api.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -65,6 +66,17 @@ public class EmpresaImpl {
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		List<Empresa> empresas = empresaDao.getEmpresasPorTipoDAO(tipo);
+		session.close();
+		return empresas;
+	}
+	
+	public List<Empresa> getEmpresaPorLatLong(double latitude,double longitude){
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+		HashMap<String,Double> coordenadas = new HashMap<String,Double>();
+		coordenadas.put("latitude", latitude);
+		coordenadas.put("longitude", longitude);
+		List<Empresa> empresas = empresaDao.getEmpresaPorLatLong(coordenadas);
 		session.close();
 		return empresas;
 	}

@@ -19,7 +19,6 @@ public class UsuarioMobController {
 	private UsuarioMob usuarioMob;
 	
 	
-	@c
 	@RequestMapping(value="/cadastrarUsuarioMobileController" , method=RequestMethod.GET)
 	public UsuarioMob cadastrarUsuarioMob(	@RequestParam(value="nomeUsuario")String nome,
 											@RequestParam(value="email")String email,

@@ -129,5 +129,32 @@
  				status
  	</select>
  	
+ 	<select id="getEmpresaPorLatLong" parameterType="java.util.Map" resultType="delivery.model.Empresa">
+ 	    select cnpj_cpf AS cpfCnpj, 
+ 				nome, 
+ 				endereco, 
+ 				id_Cidade AS idCidade , 
+ 				telefone_fixo AS telefoneFixo, 
+ 				telefone_movel AS telefoneMovel, 
+ 				cep, 
+ 				email, 
+ 				tipo_empresa AS tipo, 
+ 				raio_entrega, 
+ 				usa_agenda AS usaAgenda, 
+ 				latitude, 
+ 				longitude, 
+ 				avaliacao,
+ 				status
+ 		FROM 
+ 				empresa 
+ 		WHERE
+ 				latitude + (raio_entrega/110.574) >= #{latitude} and 
+ 				#{latitude} >= latitude - (raio_entrega/110.574) and 
+ 				longitude + (raio_entrega/111.320 * cos(#{longitude}) * -1) >= #{longitude} and
+ 				#{longitude} >= longitude - (raio_entrega/111.320 * cos(#{longitude}) * -1)
+ 				
+ 				
+ 	</select>
+ 	
  	
  </mapper>

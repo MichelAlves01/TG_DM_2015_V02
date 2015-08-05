@@ -1,0 +1,21 @@
+package delivery.api.dao;
+
+import java.util.List;
+
+import delivery.model.Empresa;
+
+public interface EmpresaDAO {
+
+	public void cadastrarEmpresaDAO(Empresa empresa);
+	
+	public void atualizarEmpresaDAO(Empresa empresa);
+	
+	public void excluirEmpresaDAO(String cpfCnpj);
+	
+	Empresa getEmpresaDAO(String cpfCnpj);
+	
+	List<Empresa> getEmpresasDAO();
+	
+	List<Empresa> getEmpresasPorTipoDAO(String tipo);
+	
+}

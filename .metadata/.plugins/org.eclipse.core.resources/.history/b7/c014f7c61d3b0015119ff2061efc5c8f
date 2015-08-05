@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.EmpresaDAO">
+ 	
+ 	<insert id="cadastrarEmpresaDAO" parameterType="delivery.model.Empresa">
+ 		insert into empresa (	cnpj_cpf, 
+ 								nome, 
+ 								endereco, 
+ 								id_cidade, 
+ 								telefone_fixo, 
+ 								telefone_movel, 
+ 								cep, 
+ 								email, 
+ 								tipo_empresa, 
+ 								raio_entrega, 
+ 								usa_agenda, 
+ 								latitude, 
+ 								longitude, 
+ 								avaliacao,
+ 								status
+ 							) values (
+ 								#{cpfCnpj},
+ 								#{nome},
+ 								#{endereco},
+ 								#{cidade.id},
+ 								#{telefoneFixo},
+ 								#{telefoneMovel},
+ 								#{cep},
+ 								#{email},
+ 								#{tipo},
+ 								#{raio},
+ 								#{usaAgenda},
+ 								#{latitude},
+ 								#{longitude},
+ 								#{avaliacao},
+ 								0
+ 							)
+ 	</insert>
+ 	
+ 	<update id="atualizarEmpresaDAO" parameterType="delivery.model.Empresa">
+ 		update Empresa set  
+ 								nome = #{nome}, 
+ 								endereco = #{endereco}, 
+ 								id_cidade = #{cidade.id}, 
+ 								telefone_fixo = #{telefoneFixo}, 
+ 								telefone_movel = #{telefoneMovel}, 
+ 								cep = #{cep}, 
+ 								email = #{email}, 
+ 								tipo_empresa = #{tipo}, 
+ 								raio_entrega = #{raio}, 
+ 								usa_agenda = #{usaAgenda}, 
+ 								latitude = #{latitude}, 
+ 								longitude = #{longitude}, 
+ 								avaliacao = #{avaliacao},
+ 								status = 0
+ 							where
+ 								cnpj_cpf = #{cpfCnpj}
+ 	</update>
+ 	
+ 	<update id="excluirEmpresaDAO" parameterType="java.lang.String">
+ 		update 
+ 			Empresa 
+ 		set 
+ 			status = 1
+ 		WHERE
+ 			cnpj_cpf = #{cpfCnpj}
+ 	</update>
+ 	
+ 	<select id="getEmpresaDAO" parameterType="java.lang.String" resultType="delivery.model.Empresa">
+ 		SELECT 	cnpj_cpf AS cpfCnpj, 
+ 				nome, 
+ 				endereco, 
+ 				id_Cidade AS "cidade.id", 
+ 				telefone_fixo AS telefoneFixo, 
+ 				telefone_movel AS telefoneMovel, 
+ 				cep, 
+ 				email, 
+ 				tipo_empresa AS tipo, 
+ 				raio_entrega AS raio, 
+ 				usa_agenda AS usaAgenda, 
+ 				latitude, 
+ 				longitude, 
+ 				avaliacao,
+ 				status
+ 		FROM
+ 				empresa
+ 		WHERE
+ 				cnpj_cpf = #{cpfCnpj}
+ 	</select>
+ 	
+ 	<select id="getEmpresasDAO" resultType="delivery.model.Empresa">
+ 		select 	cnpj_cpf AS cpfCnpj, 
+ 				nome, 
+ 				endereco, 
+ 				id_Cidade AS idCidade , 
+ 				telefone_fixo AS telefoneFixo, 
+ 				telefone_movel AS telefoneMovel, 
+ 				cep, 
+ 				email, 
+ 				tipo_empresa AS tipo, 
+ 				raio_entrega, 
+ 				usa_agenda AS usaAgenda, 
+ 				latitude, 
+ 				longitude, 
+ 				avaliacao,
+ 				status
+ 		FROM
+ 				empresa
+ 	</select>
+ 	
+ 	<select id="getEmpresasPorTipoDAO" parameterType="java.lang.String" resultType="delivery.model.Empresa">
+ 		select 	cpf_cnpj as cpfCnpj, 
+ 				nome, 
+ 				endereco, 
+ 				id_Cidade as idCidade , 
+ 				telefone_fixo as telefoneFixo, 
+ 				telefone_movel as telefoneMovel, 
+ 				cep, 
+ 				email, 
+ 				tipo_empresa as tipo, 
+ 				raio, 
+ 				usa_agenda as usaAgenda, 
+ 				latitude, 
+ 				longitude, 
+ 				avaliacao,
+ 				status
+ 	</select>
+ 	
+ 	<select id="getEmpresaPorLatLong" parameterType="java.util.Map" resultType="delivery.model.Empresa">
+ 	    select cnpj_cpf AS cpfCnpj, 
+ 				nome, 
+ 				endereco, 
+ 				id_Cidade AS idCidade , 
+ 				telefone_fixo AS telefoneFixo, 
+ 				telefone_movel AS telefoneMovel, 
+ 				cep, 
+ 				email, 
+ 				tipo_empresa AS tipo, 
+ 				raio_entrega, 
+ 				usa_agenda AS usaAgenda, 
+ 				latitude, 
+ 				longitude, 
+ 				avaliacao,
+ 				status
+ 		FROM 
+ 				empresa 
+ 		WHERE
+ 				latitude + (raio_entrega/110.574) >= #{latitude} and 
+ 				#{latitude} >= latitude - (raio_entrega/110.574) and 
+ 				longitude + (raio_entrega/111.320 * cos(#{longitude}) * -1) >= #{longitude} and
+ 				#{longitude}  >= longitude - (raio_entrega/111.320 * cos(#{longitude}) * -1)
+ 				
+ 				
+ 	</select>
+ 	
+ 	
+ </mapper>

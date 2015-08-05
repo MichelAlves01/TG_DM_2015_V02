@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -160,5 +162,13 @@ public class EmpresaController {
 		
 		return empresa;
 		
+	}
+	
+	@RequestMapping(value="/getEmpresasPorLatLong" , method=RequestMethod.GET)
+	public List<Empresa> getEmpresaPorLatLong(	@RequestParam(value="latitude") double latitude,
+										@RequestParam(value="longitude") double longitude){
+		empresaImpl = new EmpresaImpl();
+		List<Empresa> empresas = empresaImpl.getEmpresaPorLatLong(latitude,longitude);
+		return empresas;
 	}
 }

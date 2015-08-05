@@ -1,0 +1,36 @@
+package hello;
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.server.ServerHttpRequest;
+import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.util.ReflectionUtils.FieldFilter;
+import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.servlet.HttpServletBean;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+
+@Component
+public class SimpleCORSFilter implements FieldFilter {
+
+	public void doFilter(ServerHttpRequest req, ServerHttpResponse res, org.springframework.context.annotation.ComponentScan.Filter chain) throws IOException, ServletRequestBindingException {
+		HttpServletBean response = (HttpServletBean) res;
+		((Object) response).setHeader("Access-Control-Allow-Origin", "*");
+		((Object) response).setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+		response.setHeader("Access-Control-Max-Age", "3600");
+		response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+		chain.doFilter(req, res);
+	}
+
+	public void init(FreeMarkerConfig filterConfig) {}
+
+	public void destroy() {}
+
+}
