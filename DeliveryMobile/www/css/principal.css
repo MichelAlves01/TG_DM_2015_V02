@@ -23,7 +23,7 @@ body{
 		height: 40px;
 		width: 100%;
 		border: 1px solid #999999;
-		margin: 0px;
+		margin: 3px;
 		font-size: 20px;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
 		background: #eeeeee; /* Old browsers */
@@ -156,4 +156,12 @@ body{
 
 .ui-header .ui-title, .ui-footer .ui-title{
 		margin: 0px;
+}
+
+.ui-collapsible-inset.ui-collapsible-themed-content .ui-collapsible-content{
+    padding: 2px;
+}
+
+.ui-collapsible-content ui-body-a{
+    height: 20px;
 }
