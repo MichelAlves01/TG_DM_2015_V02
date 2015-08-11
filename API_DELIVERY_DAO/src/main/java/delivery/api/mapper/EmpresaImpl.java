@@ -7,12 +7,18 @@ import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
 import delivery.api.dao.EmpresaDAO;
+import delivery.api.dao.ProdutoDAO;
 import delivery.model.Cidade;
 import delivery.model.Empresa;
+import delivery.model.Produto;
 
 public class EmpresaImpl {
 	
 	private static CidadeImpl cidadeImpl;
+	
+	private static ProdutoImpl produtoImpl;
+	
+	private Produto produto;
 	
 	private Cidade cidade;
 	
@@ -70,13 +76,18 @@ public class EmpresaImpl {
 		return empresas;
 	}
 	
-	public List<Empresa> getEmpresaPorLatLong(double latitude,double longitude){
+	public List<Empresa> getEmpresaPorLatLong(final double latitude,final double longitude){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		HashMap<String,Double> coordenadas = new HashMap<String,Double>();
 		coordenadas.put("latitude", latitude);
 		coordenadas.put("longitude", longitude);
-		List<Empresa> empresas = empresaDao.getEmpresaPorLatLong(coordenadas);
+		final List<Empresa> empresas = empresaDao.getEmpresaPorLatLong(coordenadas);
+		
+		for(Empresa emp : empresas){
+			List<Produto> produtos = produtoImpl.getProdutosDAO(emp);
+			emp.setProduto(produtos);
+		}
 		session.close();
 		return empresas;
 	}

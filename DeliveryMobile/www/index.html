@@ -18,18 +18,25 @@
         @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
     </style>
+       
+
+    
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+               
+        <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
+        <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
+        <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>
+    
         <link rel="stylesheet" type="text/css" href="css/principal.css">
         <link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/angular.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
-        <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
-        <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
-        <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>
 </head>
 
 
@@ -54,26 +61,77 @@
             <div role="main" class="ui-content" id="containerPrincipal" ng-controller="principalCtrl"> 
                 <div principal></div>
             </div><!-- /content -->
+            
         
-        
-            <div id="containerProdutos" style="display: none;" ng-controller="principalCtrl" data-ng-init="getEmpresasProdutosController()">
-                <!--Acordeon pertencente a empresa  --> 
-                <div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a" >
-                    <!--Acordeon pertencente aos produtos da empresa  -->
-                     <div data-role="collapsible" ng-repeat="empresa in empresas track by empresa.cpfCnpj" style="height: 200px;">
-                        <h3>{{empresa.nome}}</h3>
-                        <p>
-                            <div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a">
-                            <div data-role="collapsible">
-                                <h3>{{empresa.cpfCnpj}}</h3>
-                                <p>Collapsible content</p>
-                                </div>
-                            </div> 
-                            </div>
-                        </p> 
+            <div id="containerProdutos" style="display: none;" ng-controller="principalCtrl" data-ng-init="getEmpresasProdutosController()" height: 20px; >
+                <div class="accordion" id="accordion2">
+                  <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+                    <div class="accordion-heading">
+                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
+                        <font style="font-size: 16px;">{{empresa.nome}}</font>
+                      </a>
                     </div>
-                 </div>
-            </div><!-- /content -->
+                    <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
+                      <div class="accordion-inner">
+                        <div class="accordion" id="accordion2">
+                          <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+                            <div class="accordion-heading">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
+                                <font style="font-size: 16px; color: #55555;">{{empresa.nome}}</font>
+                              </a>
+                            </div>
+                            <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
+                              <div class="accordion-inner">
+                                teste
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                
+                <!--div class="accordion" id="accordion" data-ng-init="listProdutos();">
+							<div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+							    <div class="accordion-heading" >
+							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="{{empresa.cpfCnpj}}">
+					        			<h3>{{empresa.nome}}</h3>
+						      	  </a>
+							     </div>
+                                
+                                <div id="{{empresa.cpfCnpj}}" class="accordion-body collapse">
+								    <div class="accordion-inner">
+                                            teste
+                                    </div>
+                                </div>
+	
+                    </div>
+               </div><!-- /content -->  
+                
+        </div>    
+                
+                
+                
+                <!--Acordeon pertencente a empresa > 
+                <!--div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a">
+                    <!--Acordeon pertencente aos produtos da empresa  -->
+                         <!--div data-role="collapsible" style="height: 200px;" class="ui-collapsible ui-collapsible-inset ui-collapsible-themed-content ui-collapsible-collapsed" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+                             <h3><font>{{empresa.nome}}</font></h3>
+                            <p>
+                                <div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a">
+                                <div data-role="collapsible">
+                                    <h3><font>{{empresa.cpfCnpj}}</font></h3>
+                                    <p>Collapsible content</p>
+                                 </div>
+                                </div> 
+                            
+                            </p> 
+                        </div-->
+
+           
                    
             <div role="main" class="ui-content" id="containerUsuario" style="display: none;">     
                <div usuario></div>
@@ -90,7 +148,9 @@
     <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
     <script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
-    
+    <script>
+        $(".collapse").collapse('dropdown-toggle');	
+    </script>
         
 
 </body>

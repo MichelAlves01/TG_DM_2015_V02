@@ -8,6 +8,7 @@
             $("#containerPrincipal").hide();
             $("#containerUsuario").hide();
             $("#containerProdutos").show();
+           
             if( produtoTipo == 'Alimentos'){
                  
             }
@@ -17,7 +18,6 @@
             var data = $.param({latitude: -23.4534596 , longitude: -47.4900411});
             $http.get(urlBase + '/getEmpresasPorLatLong?'+ data).success(function( data , status){
                 $scope.empresas = data;
-                alert( $scope.empresas[0].nome);
             });
         }
     });
