@@ -37,5 +37,17 @@
  		WHERE
  				#{produto.id} = id_produto
  	</select>
+ 	
+ 	<select id="getItensProdutoPorProduto" parameterType="delivery.model.Produto" resultType="delivery.model.ItemProduto">
+ 	    SELECT
+ 				id_produto 	as "produto.id", 
+ 				id_item 	as "Item.id",
+ 				item_adicional as itemAdicional
+ 		FROM
+ 				itens_produto
+ 		WHERE
+ 				id_produto = #{id}
+ 	    		
+ 	</select>
  </mapper>
  

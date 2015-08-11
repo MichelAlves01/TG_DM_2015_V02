@@ -5,7 +5,50 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-08-10T17:48:05Z</updated>
+  <updated>2015-08-11T11:37:00Z</updated>
+  <entry>
+    <title>Spring Roo 1.3.2 RC1 maintenance release now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/08/11/spring-roo-1-3-2-rc1-maintenance-release-now-available" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2015-08-11:2210</id>
+    <updated>2015-08-11T11:37:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at DISID Corporation, I am pleased to announce&lt;br/&gt;that Spring Roo 1.3.2 RC1 released candidate is out.&lt;/p&gt;&lt;p&gt;Spring Roo is a rapid application development tool for Java,&lt;br/&gt;allowing you to create full enterprise applications in just minutes.&lt;/p&gt;&lt;p&gt;Spring Roo jar files have been published to Maven Central.&lt;br/&gt;As always, the release is available in the Spring IO repository.&lt;/p&gt;&lt;p&gt;The candidate release fixes the following issues:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Error adding InnerType constructor on ITD Generation &lt;a href="https://jira.spring.io/browse/ROO-3583"&gt;ROO-3583&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;JavaBean implementing Interface defining getters and setters &lt;a href="https://jira.spring.io/browse/ROO-3584"&gt;ROO-3584&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;JavaBean implementing Interface and overriding getter causing null pointer &lt;a href="https://jira.spring.io/browse/ROO-3585"&gt;ROO-3585&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Request loose additional parameters when change language &lt;a href="https://jira.spring.io/browse/ROO-3595"&gt;ROO-3595&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add support to generate Generic Methods &lt;a href="https://jira.spring.io/browse/ROO-3648"&gt;ROO-3648&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Update Selenium to support later versions of Firefox &lt;a href="https://jira.spring.io/browse/ROO-3634"&gt;ROO-3634&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add renderLabel attribute in form fields tags &lt;a href="https://jira.spring.io/browse/ROO-3639"&gt;ROO-3639&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;JpaActiveRecord entity implementing interface with getId(): double generation &lt;a href="https://jira.spring.io/browse/ROO-3587"&gt;ROO-3587&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Update Tomcat7 Maven plugin version &lt;a href="https://jira.spring.io/browse/ROO-3652"&gt;ROO-3652&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Generate command &amp;ldquo;selenium all&amp;rdquo; &lt;a href="https://jira.spring.io/browse/ROO-3636"&gt;ROO-3636&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add support to generate Generic Methods &lt;a href="https://jira.spring.io/browse/ROO-3648"&gt;ROO-3648&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;It is highly recommended that all Spring Roo users upgrade to this version.&lt;/p&gt;&lt;p&gt;For full details on the changes made in the release, please refer to the&lt;br/&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;version=15266"&gt;Release Note in Jira&lt;/a&gt;&lt;/p&gt;&lt;p&gt;For more project specific information please see the&lt;br/&gt;&lt;a href="http://projects.spring.io/spring-roo/"&gt;Site&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-roo"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/ROO-3655"&gt;Issues in Jira&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Thanks to the awesome users who came up with useful bug reports and suggestions.&lt;br/&gt;This is a candidate release, please try out the updates and provide feedback.&lt;br/&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow @SpringRoo or just include #SpringRoo in your tweets.&lt;/p&gt;&lt;p&gt;Stay tuned!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 1.3.0.M3 Available Now</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/08/11/spring-boot-1-3-0-m3-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2015-08-11:2209</id>
+    <updated>2015-08-11T11:36:09Z</updated>
+    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Boot v1.3.0.M3 is available now from the &lt;a href="http://repo.springsource.org/milestone/"&gt;Spring milestone repository&lt;/a&gt;. This release includes &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.0.M3+is%3Aissue+is%3Aclosed"&gt;90 fixes and improvements&lt;/a&gt; and merges &lt;a href="https://github.com/spring-projects/spring-boot/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+is%3Aclosed+milestone%3A1.3.0.M3"&gt;38 pull-requests&lt;/a&gt;! Thanks &lt;em&gt;again&lt;/em&gt; to everyone that has contributed.&lt;/p&gt;&lt;p&gt;Highlights of the new release include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTTP session persistence (enabled automatically with Devtools)&lt;/li&gt;
+  &lt;li&gt;Configuration improvements for JMS and AMQP endpoints&lt;/li&gt;
+  &lt;li&gt;Various Logback and log4j 2 improvements&lt;/li&gt;
+  &lt;li&gt;Auto-configuration classes can now be excluded via configuration&lt;/li&gt;
+  &lt;li&gt;Auto-configuration for embedded MongoDB&lt;/li&gt;
+  &lt;li&gt;Auto-configuration for H2 web console&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Spring Boot 1.3 Release Notes&lt;/a&gt; on the wiki and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M3/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC&lt;/a&gt; soon. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Join Brian and myself for an &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/intro_to_spring_boot_for_the_web_tier.html"&gt;intro to Spring Boot for the web tier&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Batch 3.0.5.RELEASE is now available</title>
     <link rel="alternate" href="https://spring.io/blog/2015/08/10/spring-batch-3-0-5-release-is-now-available" />
@@ -422,39 +465,5 @@ public class MyTests {&#xD;
     <id>tag:spring.io,2015-07-13:2188</id>
     <updated>2015-07-15T16:11:00Z</updated>
     <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;&lt;p&gt;Spring Framework 4.2 is not going GA today quite yet, but it&amp;rsquo;s almost there: RC3 is available from &lt;a href="http://repo.spring.io"&gt;repo.spring.io&lt;/a&gt; now, as a last release candidate before we reach &lt;a href="https://jira.spring.io/browse/SPR/fixforversion/15244"&gt;GA&lt;/a&gt; on the 30th of July. This release includes &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=14954"&gt;50 fixes and improvements&lt;/a&gt; over RC2, waiting for you to try them!&lt;/p&gt;&lt;p&gt;We decided to do another release candidate for several reasons: e.g. our continued wait for &lt;a href="https://github.com/FasterXML/jackson"&gt;Jackson&lt;/a&gt; 2.6 final and &lt;a href="http://hibernate.org/orm/"&gt;Hibernate ORM&lt;/a&gt; 5.0 final but also our recent build upgrade to &lt;a href="http://gradle.org/"&gt;Gradle&lt;/a&gt; 2.5 and some last-minute refinements within our 4.2 web story (based on RC1/RC2 feedback).&lt;/p&gt;&lt;p&gt;I&amp;rsquo;m pleased to announce that this is in fact the first release of Spring which builds fine not only on JDK 8 but also on &lt;a href="https://jdk9.java.net/download/"&gt;current JDK 9 snapshots&lt;/a&gt;! Our master build script is capable of running in both environments, so simply update your JAVA_HOME and trigger the framework build&amp;hellip;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note that Spring Framework 4.2 is runtime-compatible with Java 6, 7, 8 (including the upcoming 8u60) and early 9 (JDK 9 build 72) at this point, using the very same standard framework jars. However, for executing the framework build, you&amp;rsquo;ll have to use JDK 8 or 9.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Next stop: 4.2 GA on July 30, 2015! The countdown has started already&amp;hellip;&lt;/p&gt;&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - July 14th 2015</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/07/14/this-week-in-spring-july-14th-2015" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2015-07-14:2189</id>
-    <updated>2015-07-14T17:43:04Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring!&lt;/em&gt;&lt;/p&gt;&lt;p&gt;This week in I&amp;rsquo;m in Shanghai, China and Hangzhou, China and Shenzhen, China, talking to some of the world&amp;rsquo;s largest websites (of the same scale of Netflix!) about their use of Spring Boot and Spring Cloud. (More on that later!)&lt;/p&gt;&lt;p&gt;Anyway, without further ado..&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Paul Chapman put together a nice walkthrough Spring Cloud today. &lt;a href="https://spring.io/blog/2015/07/14/microservices-with-spring"&gt;Way to go Paul&lt;/a&gt;!&lt;/li&gt;
-  &lt;li&gt;Andy Wilkinson just &lt;a href="https://spring.io/blog/2015/07/13/spring-io-platform-1-1-3-released"&gt;announced the Spring IO Platform BOM 1.1.3 has been released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2015/07/10/spring-boot-1-3-0-m2-available-now"&gt;Spring Boot 1.3M2&lt;/a&gt; - along with new support for JOOQ, &lt;code&gt;/flyway&lt;/code&gt; and &lt;code&gt;/liquibase&lt;/code&gt; Actuator endpoints, ANSI colored &lt;code&gt;banner.txt&lt;/code&gt;, and Apache Artemis integration (among &lt;em&gt;many&lt;/em&gt; other things) is now available! Check it out.&lt;/li&gt;
-  &lt;li&gt;If you missed Spring rockstar and Spring Boot ninja Greg Turnquist&amp;rsquo;s talk on debugging and maintaing Spring Boot applications (why would you miss it??), &lt;a href="https://spring.io/blog/2015/07/09/webinar-replay-debug-and-maintain-your-spring-boot-app"&gt;then check it out&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This is a nice &lt;a href="https://dzone.com/articles/using-the-h2-database-console-in-spring-boot-with"&gt;post on using Spring Boot with the H2 database console&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I only just noticed DZone has a refcard &lt;a href="https://dzone.com/refcardz/cloud-foundry"&gt;on Cloud Foundry which seems like a worthy read&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;this is a great (Chinese-language) post on what Spring Boot is and how it works. I&amp;rsquo;ve asked a &lt;a href="http://twitter.com/resouer"&gt;friend&lt;/a&gt; and he - a native Mandarin Chinese speaker - insists it&amp;rsquo;s a good read. Enjoy!&lt;/li&gt;
-  &lt;li&gt;check out this &lt;a href="http://wanderbishty.blogspot.in/2015/07/spring-boot-using-boot-for-your.html"&gt;jumpstart into Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;our pal &lt;a href="http://twitter.com/making"&gt;@making&lt;/a&gt; is at it again, this time with a nice look at &lt;a href="https://blog.ik.am/#/entries/349"&gt;the upcoming Spring Boot 1.3&amp;rsquo;s DevTools integration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;the &lt;em&gt;Codes and Notes&lt;/em&gt; blog has a nice post on &lt;a href="http://www.codesandnotes.be/2015/07/12/angularjs-web-apps-for-spring-based-rest-services-security-the-server-side-part-1/"&gt;using AngularJS web apps for Spring-based REST services&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar Replay: A Spring Showcase: Turkcell's Personal Cloud Storage App</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/07/14/webinar-replay-a-spring-showcase-turkcell-s-personal-cloud-storage-app" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-07-14:2190</id>
-    <updated>2015-07-14T11:52:00Z</updated>
-    <content type="html">&lt;p&gt;Webinar Replay: A Spring Showcase: Turkcell&amp;rsquo;s Personal Cloud Storage App&lt;br/&gt;&lt;p&gt;Speaker: Erdem Gunay &lt;/p&gt;&lt;br/&gt;&lt;p&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar"&gt;&lt;a href="http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar"&gt;http://www.slideshare.net/SpringCentral/erdem-gunay-springshowcasewebinar&lt;/a&gt; &lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Turkcell launched a personal cloud storage service few years ago. Adding new business features was costly in terms of time and budget on the legacy solution. The user experience needed to be improved. Finally, it was decided to build a new solution where Spring Boot and Spring Framework projects play crucial role as the backbone. The project was completed just in 6 months starting from scratch. The solution was built on top of Spring Boot and many Spring IO Platform projects, allowing the development team focus on business logic instead of configuration &amp;amp; integration details. The project has been divided into deployable modules (API, backend, migration, test automation) accessing micro services that are responsible for one task only. Join Erdem for a review of the migration effort and new architecture - all enabled by Spring Boot.&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Learn about about Spring Boot at &lt;a href="http://projects.spring.io/spring-security"&gt;&lt;a href="http://projects.spring.io/spring-boot"&gt;http://projects.spring.io/spring-boot&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt;Learn about about Spring Framework at &lt;a href="http://projects.spring.io/spring-framework"&gt;&lt;a href="http://projects.spring.io/spring-framework"&gt;http://projects.spring.io/spring-framework&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;&lt;br/&gt;&lt;p&gt; &lt;iframe width="420" height="315" src="https://www.youtube.com/embed/kAD2Q8e_iGM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt; &lt;/p&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

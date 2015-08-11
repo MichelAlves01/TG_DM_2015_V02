@@ -5,9 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
+import delivery.api.dao.ItemProdutoDAO;
 import delivery.api.dao.ProdutoDAO;
 import delivery.model.Empresa;
 import delivery.model.Item;
+import delivery.model.ItemProduto;
 import delivery.model.Produto;
 
 
@@ -15,7 +17,7 @@ public class ProdutoImpl {
 	
 	private ItemImpl itemImpl;
 	
-	private ItemProdutoImpl itemProdutoImpl; 
+	private Item item;
 	
 	
 	public void cadastrarProdutoDAO(Produto produto){
@@ -52,17 +54,20 @@ public class ProdutoImpl {
 	}
 	
 	public List<Produto> getProdutosDAO(Empresa empresa){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		ProdutoDAO produtodao = session.getMapper(ProdutoDAO.class);
-		List<Produto> produtos = produtodao.getProdutosDAO(empresa);
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final ProdutoDAO produtodao = session.getMapper(ProdutoDAO.class);
+		final List<Produto> produtos = produtodao.getProdutosDAO(empresa);
 		itemImpl = new ItemImpl();
 		List<Item> itens = itemImpl.getItensDAO(empresa);
-		itemProdutoImpl = new ItemProdutoImpl();
-		List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto)
+		itemImpl = new ItemImpl();
+		item = new Item();
+		final ItemProdutoImpl itemProdutoImpl = new ItemProdutoImpl();
 		for(Produto prod : produtos){
-			for(Item item : itens){
-				if(item.get){
-					
+			List<ItemProduto> itensProduto = itemProdutoImpl.getItensProdutoPorProduto(prod);
+			for(ItemProduto itensProd : itensProduto ){
+				if(itensProd.getProduto().getId() == prod.getId()){
+					item = itemImpl.getItemDAO(itensProd.getItem().getId());
+					prod.addItem(item);
 				}
 			}
 			

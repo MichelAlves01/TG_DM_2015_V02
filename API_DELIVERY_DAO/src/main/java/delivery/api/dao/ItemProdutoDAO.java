@@ -3,6 +3,7 @@ package delivery.api.dao;
 import java.util.List;
 
 import delivery.model.ItemProduto;
+import delivery.model.Produto;
 
 public interface ItemProdutoDAO {
 
@@ -12,4 +13,5 @@ public interface ItemProdutoDAO {
 	
 	public List<ItemProduto> getItensProdutoDAO(ItemProduto itemProduto);
 	
+	public List<ItemProduto> getItensProdutoPorProduto(Produto produto);
 }

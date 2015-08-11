@@ -1,5 +1,6 @@
 package delivery.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Produto {
@@ -9,6 +10,7 @@ public class Produto {
 	private double preco;
 	private Empresa empresa;
 	private int status;
+	private List<Item> itens = new ArrayList<Item>();
 	
 	private List<ItemPedido> itensPedido;
 	private List<ItemProduto> itensProduto;
@@ -56,6 +58,16 @@ public class Produto {
 	}
 	public void setItensProduto(List<ItemProduto> itensProduto) {
 		this.itensProduto = itensProduto;
+	}
+	public List<Item> getItens() {
+		return itens;
+	}
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
+	
+	public void addItem(Item item){
+		this.itens.add(item);
 	}
 	
 }

@@ -14,12 +14,6 @@ import delivery.model.Produto;
 
 public class EmpresaImpl {
 	
-	private static CidadeImpl cidadeImpl;
-	
-	private static ProdutoImpl produtoImpl;
-	
-	private Produto produto;
-	
 	private Cidade cidade;
 	
 	public void cadastrarEmpresaDAO(Empresa empresa){
@@ -47,12 +41,11 @@ public class EmpresaImpl {
 	}
 	
 	public Empresa getEmpresaDAO(String cpfCnpj){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
-		Empresa empresa = empresaDao.getEmpresaDAO(cpfCnpj);
-		
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+		final Empresa empresa = empresaDao.getEmpresaDAO(cpfCnpj);
+		final CidadeImpl cidadeImpl = new CidadeImpl();
 		//busca informações da cidade no banco de dados e preenche campos nulo
-		cidadeImpl = new CidadeImpl();
 		cidade = cidadeImpl.geCidadeDAO(empresa.getCidade().getId());
 		empresa.setCidade(cidade);
 		
@@ -77,13 +70,13 @@ public class EmpresaImpl {
 	}
 	
 	public List<Empresa> getEmpresaPorLatLong(final double latitude,final double longitude){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
-		HashMap<String,Double> coordenadas = new HashMap<String,Double>();
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+		final HashMap<String,Double> coordenadas = new HashMap<String,Double>();
 		coordenadas.put("latitude", latitude);
 		coordenadas.put("longitude", longitude);
 		final List<Empresa> empresas = empresaDao.getEmpresaPorLatLong(coordenadas);
-		
+		final ProdutoImpl produtoImpl = new ProdutoImpl();
 		for(Empresa emp : empresas){
 			List<Produto> produtos = produtoImpl.getProdutosDAO(emp);
 			emp.setProduto(produtos);

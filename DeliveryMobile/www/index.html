@@ -74,10 +74,10 @@
                     <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
                       <div class="accordion-inner">
                         <div class="accordion" id="accordion2">
-                          <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+                          <div class="accordion-group" ng-repeat="produto in empresas.produto track by empresa.produto.id">
                             <div class="accordion-heading">
                               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
-                                <font style="font-size: 16px; color: #55555;">{{empresa.nome}}</font>
+                                <font style="font-size: 16px; color: #55555;">{{empresa.produto.descricao}}</font>
                               </a>
                             </div>
                             <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">

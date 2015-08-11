@@ -57,6 +57,13 @@ public class ItemProdutoImpl {
 		return itensProduto;
 	}
 	
-	
+	public List<ItemProduto> getItensProdutoPorProduto(Produto produto){
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		ItemProdutoDAO itemProdutoDAO = session.getMapper(ItemProdutoDAO.class);
+		List<ItemProduto> itensProduto = itemProdutoDAO.getItensProdutoPorProduto(produto);
+		session.commit();
+		session.close();
+		return itensProduto;
+	}
 	
 }

@@ -9,8 +9,6 @@
 <fullyQualifiedTypeName name="delivery.api.mapper.ProdutoImpl"/>
 <fullyQualifiedTypeName name="delivery.api.mapper.ItemProdutoImpl"/>
 <fullyQualifiedTypeName name="delivery.api.dao.ItemDAO"/>
-<fullyQualifiedTypeName name="delivery.model.ItemProduto"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="delivery.service.DELIVERY_SERVICE.ItemService"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="delivery.model.ItemPedido"/>
@@ -29,6 +27,9 @@
 <fullyQualifiedTypeName name="com.fasterxml.classmate.Filter"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="delivery.api.dao.ProdutoDAO"/>
-<fullyQualifiedTypeName name="delivery.model.Produto"/>
 <fullyQualifiedTypeName name="delivery.model.Item"/>
+<fullyQualifiedTypeName name="delivery.model.Produto"/>
+<fullyQualifiedTypeName name="delivery.api.dao.ItemProdutoDAO"/>
+<fullyQualifiedTypeName name="delivery.model.ItemProduto"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
