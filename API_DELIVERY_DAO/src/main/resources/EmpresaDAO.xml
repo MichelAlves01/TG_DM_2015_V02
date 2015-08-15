@@ -133,13 +133,13 @@
  	    select cnpj_cpf AS cpfCnpj, 
  				nome, 
  				endereco, 
- 				id_Cidade AS idCidade , 
+ 				id_Cidade AS "cidade.id" , 
  				telefone_fixo AS telefoneFixo, 
  				telefone_movel AS telefoneMovel, 
  				cep, 
  				email, 
  				tipo_empresa AS tipo, 
- 				raio_entrega, 
+ 				raio_entrega as raio, 
  				usa_agenda AS usaAgenda, 
  				latitude, 
  				longitude, 
@@ -148,10 +148,10 @@
  		FROM 
  				empresa 
  		WHERE
- 				latitude + (raio_entrega/110.574) >= #{latitude} and 
- 				#{latitude} >= latitude - (raio_entrega/110.574) and 
- 				longitude + (raio_entrega/111.320 * cos(#{longitude}) * -1) >= #{longitude} and
- 				#{longitude} >= longitude - (raio_entrega/111.320 * cos(#{longitude}) * -1)
+ 				(latitude * 110.574) + raio_entrega >= (#{latitude} * 110.574) and 
+ 				(#{latitude} * 110.574) >= (latitude * 110.574) - raio_entrega and 
+ 				((longitude * 111.320) * cos(longitude) * -1) + raio_entrega >= (#{longitude} * 111.320) * cos(longitude) * -1 and
+ 				(#{longitude} * 111.320) * cos(longitude) * -1 >= ((longitude * 111.320) * cos(longitude) * -1) - raio_entrega
  				
  				
  	</select>

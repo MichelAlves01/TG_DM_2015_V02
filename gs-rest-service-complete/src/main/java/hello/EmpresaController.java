@@ -155,6 +155,7 @@ public class EmpresaController {
 	public Empresa definirRaio(@RequestParam(value="cpfCnpj") String cpfCnpf, 
 								@RequestParam(value="raio") double raio){
 		
+		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpf);
 		empresa.setRaio(raio);
 		
@@ -168,7 +169,6 @@ public class EmpresaController {
 	@RequestMapping(value="/getEmpresasPorLatLong" , method=RequestMethod.GET)
 	public List<Empresa> getEmpresaPorLatLong(	@RequestParam(value="latitude") double latitude,
 							@RequestParam(value="longitude") double longitude){
-		System.out.println("lat : " + latitude + "\nlong : " + longitude); 
 		empresaImpl = new EmpresaImpl();
 		List<Empresa> empresas = empresaImpl.getEmpresaPorLatLong(latitude,longitude);
 		return empresas;

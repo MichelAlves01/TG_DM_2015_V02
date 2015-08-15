@@ -1,0 +1,63 @@
+<div id="containerProdutos" style="display: none;" ng-controller="principalCtrl" data-ng-init="getEmpresasProdutosController()" height: 20px; >
+                <div class="accordion" id="accordion2">
+                  <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj" id="emp{{empresa.cpfCnpj}}tipo">
+                    <div class="accordion-heading">
+                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
+                        <font style="font-size: 16px;">{{empresa.nome}}</font>
+                      </a>
+                    </div>
+                    <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse">
+                      <div class="accordion-inner">
+                        <div class="accordion" id="accordion2">
+                          <div class="accordion-group" ng-repeat="produto in empresa.produto track by produto.id">
+                            <div class="accordion-heading">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord">
+                                <font style="font-size: 16px; color: #55555;">{{produto.descricao}}</font>
+                              </a>
+                            </div>
+                            <div id="emp{{produto.id}}id" class="accordion-body collapse">
+                              <div class="accordion-inner">
+                                
+                                  <!--######################  Conteudo do produto ########################################-->
+                                  <center>
+                                      <img src="img/cubo-magico.jpg" style="height: 100px; width: 100px;" class="img-rounded">
+                                  </center>
+                                  
+                                  <div>
+                                    <font size="3">Itens</font>
+                                    <ul>
+                                        <li ng-repeat="itens in produto.itens track by itens.id">{{itens.descricao}}</li>
+                                    </ul>
+                                  </div>
+                                  
+                                  
+                                  
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                
+                <!--div class="accordion" id="accordion" data-ng-init="listProdutos();">
+							<div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+							    <div class="accordion-heading" >
+							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="{{empresa.cpfCnpj}}">
+					        			<h3>{{empresa.nome}}</h3>
+						      	  </a>
+							     </div>
+                                
+                                <div id="{{empresa.cpfCnpj}}" class="accordion-body collapse">
+								    <div class="accordion-inner">
+                                            teste
+                                    </div>
+                                </div>
+	
+                    </div>
+               </div><!-- /content -->  
+                
+        </div>  

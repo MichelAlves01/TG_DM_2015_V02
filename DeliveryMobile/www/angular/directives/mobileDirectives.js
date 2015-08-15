@@ -22,6 +22,12 @@
 		};
 	});
     
+    app.directive('carrinho' , function(){
+        return{
+            restrict: 'A',
+            templateUrl: 'view/comanda.html'
+        };
+    });
     
     
 })();

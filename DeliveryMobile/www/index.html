@@ -36,14 +36,14 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/app.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    
+
 </head>
 
 
 <body>
-    <div data-role="page">
+    <div data-role="page" id="containerPr">
 
-            <div data-role="header" ng-controller="usuarioCtrl" style="margin 0px;">
+            <div data-role="header" id="cabecalho" ng-controller="usuarioCtrl" style="margin 0px;">
                 <div class="ui-grid-d center" >
                     <div class="ui-block-a" style="width: 10%;">
                         <a class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-carat-l" style="height: 15px;"></a>
@@ -63,87 +63,10 @@
             </div><!-- /content -->
             
         
-            <div id="containerProdutos" style="display: none;" ng-controller="principalCtrl" data-ng-init="getEmpresasProdutosController()" height: 20px; >
-                <div class="accordion" id="accordion2">
-                  <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj" id="emp{{empresa.cpfCnpj}}tipo">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
-                        <font style="font-size: 16px;">{{empresa.nome}}</font>
-                      </a>
-                    </div>
-                    <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
-                      <div class="accordion-inner">
-                        <div class="accordion" id="accordion2">
-                          <div class="accordion-group" ng-repeat="produto in empresa.produto track by produto.id">
-                            <div class="accordion-heading">
-                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord">
-                                <font style="font-size: 16px; color: #55555;">{{produto.descricao}}</font>
-                              </a>
-                            </div>
-                            <div id="emp{{produto.id}}id" class="accordion-body collapse">
-                              <div class="accordion-inner">
-                                
-                                  <!--######################  Conteudo do produto ########################################-->
-                                  <center>
-                                      <img src="img/cubo-magico.jpg" style="height: 100px; width: 100px;" class="img-rounded">
-                                  </center>
-                                  
-                                  <div>
-                                    <font size="3">Itens</font>
-                                    <ul>
-                                        <li ng-repeat="itens in produto.itens track by itens.id">{{itens.descricao}}</li>
-                                    </ul>
-                                  </div>
-                                  
-                                  
-                                  
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                
-                <!--div class="accordion" id="accordion" data-ng-init="listProdutos();">
-							<div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
-							    <div class="accordion-heading" >
-							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="{{empresa.cpfCnpj}}">
-					        			<h3>{{empresa.nome}}</h3>
-						      	  </a>
-							     </div>
-                                
-                                <div id="{{empresa.cpfCnpj}}" class="accordion-body collapse">
-								    <div class="accordion-inner">
-                                            teste
-                                    </div>
-                                </div>
-	
-                    </div>
-               </div><!-- /content -->  
-                
-        </div>    
+            <div id="produtosContainer" ng-controller="principalCtrl" produtos>
+            </div>
                 
                 
-                
-                <!--Acordeon pertencente a empresa > 
-                <!--div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a">
-                    <!--Acordeon pertencente aos produtos da empresa  -->
-                         <!--div data-role="collapsible" style="height: 200px;" class="ui-collapsible ui-collapsible-inset ui-collapsible-themed-content ui-collapsible-collapsed" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
-                             <h3><font>{{empresa.nome}}</font></h3>
-                            <p>
-                                <div data-role="collapsibleset" data-corners="false" data-theme="a" data-content-theme="a">
-                                <div data-role="collapsible">
-                                    <h3><font>{{empresa.cpfCnpj}}</font></h3>
-                                    <p>Collapsible content</p>
-                                 </div>
-                                </div> 
-                            
-                            </p> 
-                        </div-->
 
            
                    
@@ -154,8 +77,7 @@
             
             
            
-            <div data-role="footer">
-                <h4>Page Footer</h4>
+            <div data-role="footer" id="carrinho" carrinho>
             </div><!-- /footer -->
         </div><!-- /page --> 
 
@@ -166,7 +88,7 @@
         $(".collapse").collapse('dropdown-toggle');	
         $(".collapse2").collapse('dropdown-toggle');	
     </script>
-        
+    
 
 </body>
 </html>

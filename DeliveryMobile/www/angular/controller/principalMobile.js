@@ -38,8 +38,9 @@
             for(var i=0 ; i < empresasJson.length ; i++){
                 
                 var distancia = calcDistancia(empresasJson[i].latitude, empresasJson[i].longitude, latitude, longitude);
+                
                 if(distancia > empresasJson[i].raio){
-                    empresasJson.splice(i,1);
+                    $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                 }
             }
             
@@ -47,12 +48,20 @@
         };
         
         $scope.getEmpresasProdutosController = function(){
+                var deviceheight = window.orientation == 0 ? window.screen.height : window.screen.width;
+            if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
+                deviceheight = deviceheight / window.devicePixelRatio;
+            }
+                var carrinho = deviceheight/5;
+                $('#carrinho').css('height', carrinho);
+                $('#containerPr').css('height', deviceheight);
+                $('#containerPr').css('height', deviceheight);
+
             var onSuccess = function(position) {
                 latitude = position.coords.latitude;
                 longitude =  position.coords.longitude;
                 console.log(latitude + ' ' + longitude);
-                var data = $.param({latitude: position.coords.latitude , longitude:  position.coords.longitude});
-                alert(data);
+                var data = $.param({latitude: -23.4534596 , longitude:  -47.4900411});
                 setTimeout(function(){
                     $http.get(urlBase + '/getEmpresasPorLatLong?'+ data).success(function( data , status){
                         $scope.empresas = data;
@@ -78,21 +87,29 @@
             
         }
         
-        function calcDistancia(latMob, longMob, latEmp, longEmp){
-            latMobKm = latMob / 110.574;
-            longMobKm = longMob / (111.320 * Math.cos(longEmp));
-            latEmpKm = latEmp / 110.574;
-            longEmpKm = longEmp / (111.320 * Math.cos(longEmp));
+        function calcDistancia(latEmp, longEmp, latMob, longMob){
+            latMobKm = latMob * 110.574;
+            longMobKm = longMob * (111.320 * Math.cos(longEmp));
+            latEmpKm = latEmp * 110.574;
+            longEmpKm = longEmp * (111.320 * Math.cos(longEmp));
             latEmpKm = convertPositivo(latEmpKm);
             latMobKm = convertPositivo(latMobKm);
+            var distLat = latEmpKm - latMobKm;
+            var distLong = longEmpKm - longMobKm; 
+
             
-            var distLong = latEmpKm - latMobKm;
-            console.log(latEmpKm +" - "+ latMobKm);
-            if(distLong < 0){
-                distLong = distLong * -1;
-            }
-            console.log(distLong);
-            return distLong;
+            
+            
+            /*################################## Pitagoras ###############################################*/
+                var catetoAdj = convertPositivo(distLong);
+                var catetoOpt = convertPositivo(distLat);
+                
+                var hipotenusa = Math.pow(catetoAdj,2) + Math.pow(catetoOpt,2);
+                hipotenusa = Math.sqrt(hipotenusa);
+
+                                        /*##############################################################################################*/
+            
+            return hipotenusa;
         }
         
         function convertPositivo(valor){
@@ -101,5 +118,11 @@
             }
             return valor;
         }
+        
+        $scope.comandaConteudo = function(){
+            $('comanda-conteudo').animate({height: '80%'});
+        };
     });
+    
+
 })();

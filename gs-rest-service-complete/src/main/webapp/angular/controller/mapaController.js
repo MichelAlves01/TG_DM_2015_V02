@@ -112,7 +112,7 @@
 						      fillOpacity: 0.05,
 						      map: map,
 						      center: latLong ,
-						      radius: Math.sqrt(citymap[city].population) * raio
+						      radius: 1000 * raio
 						    };
 						    // Add the circle for this city to the map.
 				    setTimeout(function() {
