@@ -65,7 +65,7 @@
         
             <div id="containerProdutos" style="display: none;" ng-controller="principalCtrl" data-ng-init="getEmpresasProdutosController()" height: 20px; >
                 <div class="accordion" id="accordion2">
-                  <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj">
+                  <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj" id="emp{{empresa.cpfCnpj}}tipo">
                     <div class="accordion-heading">
                       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
                         <font style="font-size: 16px;">{{empresa.nome}}</font>
@@ -74,15 +74,29 @@
                     <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
                       <div class="accordion-inner">
                         <div class="accordion" id="accordion2">
-                          <div class="accordion-group" ng-repeat="produto in empresas.produto track by empresa.produto.id">
+                          <div class="accordion-group" ng-repeat="produto in empresa.produto track by produto.id">
                             <div class="accordion-heading">
-                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
-                                <font style="font-size: 16px; color: #55555;">{{empresa.produto.descricao}}</font>
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord">
+                                <font style="font-size: 16px; color: #55555;">{{produto.descricao}}</font>
                               </a>
                             </div>
-                            <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse in">
+                            <div id="emp{{produto.id}}id" class="accordion-body collapse">
                               <div class="accordion-inner">
-                                teste
+                                
+                                  <!--######################  Conteudo do produto ########################################-->
+                                  <center>
+                                      <img src="img/cubo-magico.jpg" style="height: 100px; width: 100px;" class="img-rounded">
+                                  </center>
+                                  
+                                  <div>
+                                    <font size="3">Itens</font>
+                                    <ul>
+                                        <li ng-repeat="itens in produto.itens track by itens.id">{{itens.descricao}}</li>
+                                    </ul>
+                                  </div>
+                                  
+                                  
+                                  
                               </div>
                             </div>
                           </div>
@@ -150,6 +164,7 @@
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
     <script>
         $(".collapse").collapse('dropdown-toggle');	
+        $(".collapse2").collapse('dropdown-toggle');	
     </script>
         
 
