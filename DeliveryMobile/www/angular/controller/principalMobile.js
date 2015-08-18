@@ -4,6 +4,8 @@
     var empresasJson = null;
     var latitude = null;
     var longitude = null;
+    var showCar = false;
+    
     app.controller('principalCtrl' , function($scope,$http){
         $scope.empresas = [];
         var produtos = [];
@@ -52,9 +54,8 @@
             if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
                 deviceheight = deviceheight / window.devicePixelRatio;
             }
-                var carrinho = deviceheight/5;
+                var carrinho = deviceheight/6;
                 $('#carrinho').css('height', carrinho);
-                $('#containerPr').css('height', deviceheight);
                 $('#containerPr').css('height', deviceheight);
 
             var onSuccess = function(position) {
@@ -120,9 +121,30 @@
         }
         
         $scope.comandaConteudo = function(){
-            $('comanda-conteudo').animate({height: '80%'});
+            if(showCar == false){
+                $('#comandaConteudo').animate({height: '80%'});
+                $('#containerPrincipal').animate({height: '0px'});
+                showCar = true;
+            } else {
+                $('#comandaConteudo').animate({height: '0px'});
+                $('#containerPrincipal').animate({height: '80%'});
+                showCar = false;
+            }
+            
+        };
+
+         $scope.addProduto = function(empresa, produto ){
+            
+            if($scope.carrinho == null){
+                $scope.carrinho = jQuery.extend({}, empresa);
+                $scope.carrinho.produto = [];
+            }
+             
+                $scope.carrinho.produto.push(produto);                       
         };
     });
+    
+
     
 
 })();

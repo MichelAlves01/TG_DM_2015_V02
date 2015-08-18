@@ -23,14 +23,25 @@
                                       <img src="img/cubo-magico.jpg" style="height: 100px; width: 100px;" class="img-rounded">
                                   </center>
                                   
-                                  <div>
+                                  <div id="itensDetalhes">
                                     <font size="3">Itens</font>
                                     <ul>
                                         <li ng-repeat="itens in produto.itens track by itens.id">{{itens.descricao}}</li>
                                     </ul>
                                   </div>
-                                  
-                                  
+                                  <div id="btnComprar">
+                                      <table align="right">
+                                            <tr>
+                                                <td style="padding: 10px;">
+                                                    {{produto.preco | currency}}
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-success" ng-click="addProduto(empresa, produto)">Adicionar</button>
+                                                </td>
+                                            </tr>
+                                      </table>
+                                    </div>      
+                                      
                                   
                               </div>
                             </div>
