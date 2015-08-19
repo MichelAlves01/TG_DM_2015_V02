@@ -22,26 +22,30 @@
 
     
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
          <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="js/angular.min.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-               
+        
+        <script type="text/javascript" src="angular/service/mobileService.js"></script>      
         <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
         <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
         <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>
+        
     
         <link rel="stylesheet" type="text/css" href="css/principal.css">
         <link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/app.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+            <script>
+        $( "#draggable2" ).draggable({ axis: "x" });
+    </script>
 </head>
 
 
 <body>
-    <div data-role="page" id="containerPr">
+    <div data-role="page" id="containerPr" ng-controller="principalCtrl">
 
             <div data-role="header" id="cabecalho" ng-controller="usuarioCtrl" style="margin 0px;">
                 <div class="ui-grid-d center" >
@@ -58,12 +62,12 @@
                 
             </div><!-- /header -->
 
-            <div role="main" class="ui-content" id="containerPrincipal" ng-controller="principalCtrl"> 
+            <div role="main" class="ui-content" id="containerPrincipal" > 
                 <div principal></div>
             </div><!-- /content -->
             
         
-            <div id="produtosContainer" ng-controller="principalCtrl" produtos>
+            <div id="produtosContainer" produtos>
             </div>
                 
                 
@@ -74,10 +78,12 @@
                <div usuario></div>
             </div><!-- /content -->
             
-            
+            <div role="main" class="ui-content" id="containerPedido" style="display: none;">     
+               <div ></div>
+            </div><!-- /content -->
             
            
-            <div data-role="footer" id="carrinho" ng-controller="principalCtrl" carrinho>
+            <div data-role="footer" id="carrinho"  carrinho>
                 
             </div><!-- /footer -->
         </div><!-- /page --> 
@@ -87,9 +93,9 @@
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
     <script>
         $(".collapse").collapse('dropdown-toggle');	
-        $(".collapse2").collapse('dropdown-toggle');	
+        $(".collapse2").collapse('dropdown-toggle');
+        
     </script>
-    
 
 </body>
 </html>

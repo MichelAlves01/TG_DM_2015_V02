@@ -1,0 +1,39 @@
+package hello;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.ws.RequestWrapper;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import delivery.model.Empresa;
+import delivery.model.ItemPedido;
+import delivery.model.Produto;
+
+
+@RestController
+public class PedidoController {
+
+	@RequestMapping(value="/cadastrarPedidoController" , method=RequestMethod.POST)
+	public void cadastrarPedido(@RequestParam(value="nome") String nome,
+								@RequestParam(value="cpfCnpj") String cpfCnpj,
+								@RequestParam (value="produto") String produto){
+		
+		Gson gson = new Gson();
+		java.lang.reflect.Type collectionType = new TypeToken<List<Produto>>() {
+	    }.getType();
+		List<Produto> produtos = gson.fromJson(produto, collectionType);
+		System.out.println("emp nome : " + nome);
+										
+	}
+}

@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('mobileDirectives' , []);
+	var app = angular.module('mobileDirectives' , ['mobService']);
 
 	app.directive('principal' , function(){
 		return{

@@ -9,6 +9,8 @@
     app.controller('principalCtrl' , function($scope,$http){
         $scope.empresas = [];
         var produtos = [];
+        
+        
        $http.defaults.headers.post["Content-Type"] = "application/jsonp";
         $scope.showProdutos = function(produtoTipo){
             $("#containerPrincipal").hide();
@@ -54,7 +56,7 @@
             if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
                 deviceheight = deviceheight / window.devicePixelRatio;
             }
-                var carrinho = deviceheight/6;
+                var carrinho = deviceheight/5;
                 $('#carrinho').css('height', carrinho);
                 $('#containerPr').css('height', deviceheight);
 
@@ -140,10 +142,30 @@
                 $scope.carrinho.produto = [];
             }
              
-                $scope.carrinho.produto.push(produto);                       
+                $scope.carrinho.produto.push(produto);
+                if($scope.carrinho.produto.length > 0){
+                    $scope.total = 0;
+                    for(var i=0 ; i<$scope.carrinho.produto.length ; i++){
+                        $scope.total += $scope.carrinho.produto[i].preco; 
+                    }
+                }
         };
+        
+        $scope.limparCarrinho = function(){
+            $scope.carrinho = null;
+            $scope.total = 0;
+        }
+        
+        $scope.finalizarCompra = function(){
+            var data = $.param({nome: $scope.carrinho.nome , 
+                                cpfCnpj: $scope.carrinho.cpfCnpj,
+                                produto: JSON.stringify($scope.carrinho.produto)});
+           
+            this.cadastrarPedido(data);
+        }
     });
     
+  
 
     
 

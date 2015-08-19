@@ -1,4 +1,12 @@
-<div id="comanda"></div>
+
+<div id="draggable2" class="draggable ui-widget-content">
+    <div  id="comanda" style=" height: 60px;  overflow: scroll;">
+        
+            <img src="img/prod.jpg" style="height: 100%; width: 100px; float: left;" ng-repeat="prod in carrinho.produto track by prod.id">
+
+    </div>
+</div>
+
                 <div id="comanda-btn" ng-click="comandaConteudo()" >
                     <table>
                         <tr>
@@ -8,10 +16,24 @@
                     </table>
                     <table>
                         <tr>
-                            <td>Total {{carrinho.produto[0].descricao}}</td>
+                            <td>{{total | currency : "R$"}}</td>
                         </tr>
                     </table>
                 </div>
                 <div id="comandaConteudo" style="border: 1px solid #bbbbbb;">
-                    Aqui : {{empresas[0].nome}}
+                    <div id="itens-comanda" ng-repeat="prod in carrinho.produto track by prod.id" >
+                        <table>
+                            <tr>
+                                <td style="width: 90%">{{prod.descricao}}</td>
+                                <td style="width: 10%">{{prod.preco | currency : "R$"}}</td>
+                            </tr>
+                        </table>   
+                    </div>
+                     <table align="right">
+                            <tr>
+                                <td><button class="btn btn-warning" ng-click="limparCarrinho()">Limpar carrinho</button></td>
+                                <td><button class="btn btn-primary" ng-click="finalizarCompra()">Finalizar compra</button></td>
+                            </tr>
+                        </table>
                 </div>
+                

@@ -27,7 +27,7 @@
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
         $( this ).find( ".placeholder" ).remove();
-
+        $( "<div></div>" ).text( ui.draggable.text() ).appendTo( this );
       }
     }).sortable({
       items: "div:not(.placeholder)",

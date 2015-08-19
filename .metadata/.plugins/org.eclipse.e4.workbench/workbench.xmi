@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_2BdrcEOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_2BdrcUOgEeWpc4txTU4LCw" bindingContexts="_2Be6XkOgEeWpc4txTU4LCw">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Empresa.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;EmpresaDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Produto.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/EmpresaImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/EmpresaImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ItemProdutoDAO.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/dao/ItemProdutoDAO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/dao/ItemProdutoDAO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;ItemProdutoDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;ProdutoDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/ProdutoDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/ProdutoDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ItemProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ProdutoDAO.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/dao/ProdutoDAO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/dao/ProdutoDAO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.m2e.editor.MavenPomEditor&quot; name=&quot;pom.xml&quot; tooltip=&quot;gs-rest-service-complete/pom.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/pom.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CidadeController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/CidadeController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/CidadeController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SimpleCORSFilter.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/SimpleCORSFilter.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/SimpleCORSFilter.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaDAO.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/dao/EmpresaDAO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/dao/EmpresaDAO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.m2e.editor.MavenPomEditor&quot; name=&quot;pom.xml&quot; tooltip=&quot;gs-rest-service-complete/pom.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/pom.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.m2e.editor.MavenPomEditor&quot; name=&quot;pom.xml&quot; tooltip=&quot;DELIVERY_MODEL/pom.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/DELIVERY_MODEL/pom.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;PedidoController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/PedidoController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/PedidoController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Greeting.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/Greeting.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/gs-rest-service-complete/src/main/java/hello/Greeting.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Empresa.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;EmpresaDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Produto.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/EmpresaImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/EmpresaImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ItemProdutoDAO.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/dao/ItemProdutoDAO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/dao/ItemProdutoDAO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;ItemProdutoDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;ProdutoDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/ProdutoDAO.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/resources/ProdutoDAO.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ItemProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ProdutoDAO.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/dao/ProdutoDAO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/dao/ProdutoDAO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_2BdrcUOgEeWpc4txTU4LCw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_2BdrckOgEeWpc4txTU4LCw" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
@@ -83,15 +83,16 @@
           <tags>persp.newWizSC:com.springsource.sts.wizard.template</tags>
           <tags>persp.newWizSC:org.springsource.ide.eclipse.commons.gettingstarted.wizard.boot.NewSpringBootWizard</tags>
           <tags>persp.newWizSC:org.springsource.ide.eclipse.gettingstarted.wizards.import.generic.newalias</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_2BdrdUOgEeWpc4txTU4LCw" selectedElement="_2Bdre0OgEeWpc4txTU4LCw" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_2BdrdUOgEeWpc4txTU4LCw" selectedElement="_2BdrdkOgEeWpc4txTU4LCw" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_2BdrdkOgEeWpc4txTU4LCw" elementId="topLeft" containerData="2500" selectedElement="_2Bdrd0OgEeWpc4txTU4LCw">
               <tags>newtablook</tags>
+              <tags>active</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_2Bdrd0OgEeWpc4txTU4LCw" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_2BeSiEOgEeWpc4txTU4LCw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_2BdreEOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_2BeS5EOgEeWpc4txTU4LCw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_2BdreUOgEeWpc4txTU4LCw" elementId="org.eclipse.jdt.ui.TypeHierarchy" toBeRendered="false" ref="_2BeS5UOgEeWpc4txTU4LCw"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_2BdrekOgEeWpc4txTU4LCw" elementId="org.eclipse.jdt.ui.PackagesView" toBeRendered="false" ref="_2BeS5kOgEeWpc4txTU4LCw"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_2Bdre0OgEeWpc4txTU4LCw" containerData="7500" selectedElement="_2BdrgUOgEeWpc4txTU4LCw">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_2Bdre0OgEeWpc4txTU4LCw" containerData="7500" selectedElement="_2BdrfEOgEeWpc4txTU4LCw">
               <children xsi:type="basic:PartSashContainer" xmi:id="_2BdrfEOgEeWpc4txTU4LCw" containerData="4743" selectedElement="_2BdrfUOgEeWpc4txTU4LCw" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_2BdrfUOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_2Bds10OgEeWpc4txTU4LCw"/>
                 <children xsi:type="basic:PartStack" xmi:id="_2BdrfkOgEeWpc4txTU4LCw" elementId="topRight" visible="false" containerData="3000" selectedElement="_2Bdrf0OgEeWpc4txTU4LCw">
@@ -101,10 +102,10 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_2BdrgEOgEeWpc4txTU4LCw" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" ref="_2BeTH0OgEeWpc4txTU4LCw"/>
                 </children>
               </children>
-              <children xsi:type="basic:PartStack" xmi:id="_2BdrgUOgEeWpc4txTU4LCw" elementId="bottomRight" containerData="5257" selectedElement="_2BdriUOgEeWpc4txTU4LCw">
+              <children xsi:type="basic:PartStack" xmi:id="_2BdrgUOgEeWpc4txTU4LCw" elementId="bottomRight" visible="false" containerData="5257" selectedElement="_2BdriUOgEeWpc4txTU4LCw">
                 <tags>newtablook</tags>
                 <tags>org.eclipse.e4.secondaryDataStack</tags>
-                <tags>active</tags>
+                <tags>Minimized</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_2BdrgkOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.views.AllMarkersView" ref="_2BeS50OgEeWpc4txTU4LCw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_2Bdrg0OgEeWpc4txTU4LCw" elementId="org.eclipse.ui.views.PropertySheet" ref="_2BeS6kOgEeWpc4txTU4LCw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_2BdrhEOgEeWpc4txTU4LCw" elementId="org.eclipse.wst.server.ui.ServersView" ref="_2BeS60OgEeWpc4txTU4LCw"/>
@@ -147,12 +148,12 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_2Bds10OgEeWpc4txTU4LCw" elementId="org.eclipse.ui.editorss" selectedElement="_2Bds2EOgEeWpc4txTU4LCw">
-      <children xsi:type="basic:PartStack" xmi:id="_2Bds2EOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_2Bds2UOgEeWpc4txTU4LCw">
+      <children xsi:type="basic:PartStack" xmi:id="_2Bds2EOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_a2eaAEaDEeWM-6x5v6QgOA">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <children xsi:type="basic:Part" xmi:id="_2Bds2UOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="EmpresaController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaController.java&quot; partName=&quot;EmpresaController.java&quot; title=&quot;EmpresaController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;5835&quot; selectionTopPixel=&quot;2627&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;EmpresaController.java&quot; partName=&quot;EmpresaController.java&quot; title=&quot;EmpresaController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/gs-rest-service-complete/src/main/java/hello/EmpresaController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;95&quot; selectionOffset=&quot;3471&quot; selectionTopPixel=&quot;1856&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -195,82 +196,8 @@
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_2Bds4UOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="EmpresaDAO.xml" iconURI="platform:/plugin/com.android.ide.eclipse.adt/icons/android_file.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;EmpresaDAO.xml&quot; partName=&quot;EmpresaDAO.xml&quot; title=&quot;EmpresaDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/API_DELIVERY_DAO/src/main/resources/EmpresaDAO.xml&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>com.android.ide.eclipse.editors.CommonXmlEditor</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2Bds4kOgEeWpc4txTU4LCw" elementId="org.eclipse.core.runtime.xml.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.core.runtime.xml.source.EditorContext</tags>
-            <tags>popup:.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2Bds40OgEeWpc4txTU4LCw" elementId="org.eclipse.core.runtime.xml.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.core.runtime.xml.source.RulerContext</tags>
-            <tags>popup:.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2Bds5EOgEeWpc4txTU4LCw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2Bds5UOgEeWpc4txTU4LCw" elementId="org.eclipse.core.runtime.xml.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.core.runtime.xml.source.EditorContext</tags>
-            <tags>popup:.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.EditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2Bds5kOgEeWpc4txTU4LCw" elementId="org.eclipse.core.runtime.xml.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.core.runtime.xml.source.RulerContext</tags>
-            <tags>popup:.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.RulerContext</tags>
-          </menus>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_2Bds50OgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ProdutoImpl.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ProdutoImpl.java&quot; partName=&quot;ProdutoImpl.java&quot; title=&quot;ProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ProdutoImpl.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1876&quot; selectionTopPixel=&quot;753&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_2Bds6EOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ItemProdutoImpl.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ItemProdutoImpl.java&quot; partName=&quot;ItemProdutoImpl.java&quot; title=&quot;ItemProdutoImpl.java&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/API_DELIVERY_DAO/src/main/java/delivery/api/mapper/ItemProdutoImpl.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2207&quot; selectionTopPixel=&quot;789&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_2Bds6UOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ItemProdutoDAO.xml" iconURI="platform:/plugin/com.android.ide.eclipse.adt/icons/android_file.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;ItemProdutoDAO.xml&quot; partName=&quot;ItemProdutoDAO.xml&quot; title=&quot;ItemProdutoDAO.xml&quot; tooltip=&quot;API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/API_DELIVERY_DAO/src/main/resources/ItemProdutoDAO.xml&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>com.android.ide.eclipse.editors.CommonXmlEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_2BeSgEOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Produto.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Produto.java&quot; partName=&quot;Produto.java&quot; title=&quot;Produto.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Produto.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;206&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2BeSgUOgEeWpc4txTU4LCw" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2BeSgkOgEeWpc4txTU4LCw" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_2BeSg0OgEeWpc4txTU4LCw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-        </children>
         <children xsi:type="basic:Part" xmi:id="_2BeShEOgEeWpc4txTU4LCw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Empresa.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Empresa.java&quot; partName=&quot;Empresa.java&quot; title=&quot;Empresa.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;4&quot; selectionOffset=&quot;292&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Empresa.java&quot; partName=&quot;Empresa.java&quot; title=&quot;Empresa.java&quot; tooltip=&quot;DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DELIVERY_MODEL/src/main/java/delivery/model/Empresa.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;7&quot; selectionOffset=&quot;468&quot; selectionTopPixel=&quot;198&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -291,12 +218,26 @@
             <tags>popup:#OverviewRulerContext</tags>
           </menus>
         </children>
+        <children xsi:type="basic:Part" xmi:id="_a2eaAEaDEeWM-6x5v6QgOA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="PedidoController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;PedidoController.java&quot; partName=&quot;PedidoController.java&quot; title=&quot;PedidoController.java&quot; tooltip=&quot;gs-rest-service-complete/src/main/java/hello/PedidoController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/gs-rest-service-complete/src/main/java/hello/PedidoController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;712&quot; selectionTopPixel=&quot;182&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_tfGCgEalEeWM-6x5v6QgOA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="gs-rest-service-complete/pom.xml" iconURI="platform:/plugin/org.eclipse.m2e.editor/icons/editor-pom.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.m2e.editor.MavenPomEditor&quot; name=&quot;pom.xml&quot; partName=&quot;gs-rest-service-complete/pom.xml&quot; title=&quot;gs-rest-service-complete/pom.xml&quot; tooltip=&quot;gs-rest-service-complete/pom.xml&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/gs-rest-service-complete/pom.xml&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.m2e.editor.MavenPomEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_2BeSiEOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.navigator.ProjectExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Project Explorer" iconURI="platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.gif" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;1&quot; currentWorkingSetName=&quot;Aggregate for window 1436923901209&quot; org.eclipse.cdt.ui.cview.groupincludes=&quot;false&quot; org.eclipse.cdt.ui.cview.groupmacros=&quot;false&quot; org.eclipse.cdt.ui.editor.CUChildren=&quot;true&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_2BeSiUOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.navigator.ProjectExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -371,8 +312,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_2BeS80OgEeWpc4txTU4LCw" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -464,7 +403,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2BeTKUOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ohGlB0UlEeWV54lrpGffXg" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_2Bh9p0OgEeWpc4txTU4LCw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_9I_ed0Z3EeWM-6x5v6QgOA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_2Bh9p0OgEeWpc4txTU4LCw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2BeTNkOgEeWpc4txTU4LCw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -497,7 +436,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2BeTjEOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ohZf9EUlEeWV54lrpGffXg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_2Bh9TkOgEeWpc4txTU4LCw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_9JJPdEZ3EeWM-6x5v6QgOA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_2Bh9TkOgEeWpc4txTU4LCw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2BeTl0OgEeWpc4txTU4LCw" elementId="com.android.ide.eclipse.editors.CommonXmlEditor" visible="false">
         <tags>Draggable</tags>
@@ -534,11 +473,11 @@
         <tags>Draggable</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_2BeTrkOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.trim.vertical1" toBeRendered="false" side="Left">
+    <trimBars xmi:id="_2BeTrkOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.trim.vertical1" side="Left">
       <children xsi:type="menu:ToolControl" xmi:id="_2BeTr0OgEeWpc4txTU4LCw" elementId="topLeft(org.eclipse.jst.j2ee.J2EEPerspective)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <tags>TrimStack</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_2BeTsEOgEeWpc4txTU4LCw" elementId="bottomRight(org.eclipse.jst.j2ee.J2EEPerspective)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+      <children xsi:type="menu:ToolControl" xmi:id="_2BeTsEOgEeWpc4txTU4LCw" elementId="bottomRight(org.eclipse.jst.j2ee.J2EEPerspective)" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <tags>TrimStack</tags>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_2BeTsUOgEeWpc4txTU4LCw" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
