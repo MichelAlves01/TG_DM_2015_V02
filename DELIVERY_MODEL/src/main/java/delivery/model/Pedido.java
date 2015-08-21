@@ -7,11 +7,12 @@ public class Pedido {
 
 	private int id;
 	private String endereco;
-	private Date horaAberto;
-	private Date horaFechado;
+	private String horaAberto;
+	private String horaFechado;
 	private UsuarioMob usuariosMob;
 	private int status;
 	private String observacao;
+	private String idEmpresa;
 	private List<AdicionalPedido> adicionaisPedido;
 	private List<ItemPedido> itensPedido;
 	private List<Agenda> horariosAgendados;
@@ -28,16 +29,16 @@ public class Pedido {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public Date getHoraAberto() {
+	public String getHoraAberto() {
 		return horaAberto;
 	}
-	public void setHoraAberto(Date horaAberto) {
+	public void setHoraAberto(String horaAberto) {
 		this.horaAberto = horaAberto;
 	}
-	public Date getHoraFechado() {
+	public String getHoraFechado() {
 		return horaFechado;
 	}
-	public void setHoraFechado(Date horaFechado) {
+	public void setHoraFechado(String horaFechado) {
 		this.horaFechado = horaFechado;
 	}
 	public UsuarioMob getUsuariosMob() {
@@ -58,7 +59,12 @@ public class Pedido {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-
+	public String getIdEmpresa() {
+		return idEmpresa;
+	}
+	public void setIdEmpresa(String idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
 	public List<AdicionalPedido> getAdicionaisPedido() {
 		return adicionaisPedido;
 	}
@@ -77,7 +83,6 @@ public class Pedido {
 	public void setHorariosAgendados(List<Agenda> horariosAgendados) {
 		this.horariosAgendados = horariosAgendados;
 	}
-	
 	
 	
 	

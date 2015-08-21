@@ -29,5 +29,12 @@
         };
     });
     
+    app.directive('pedido' , function(){
+        return{
+            restrict: 'A',
+            templateUrl: 'view/pedido.html'
+        };     
+    });
+    
     
 })();

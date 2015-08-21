@@ -29,7 +29,6 @@
 <fullyQualifiedTypeName name="delivery.model.Item"/>
 <fullyQualifiedTypeName name="delivery.api.dao.ItemProdutoDAO"/>
 <fullyQualifiedTypeName name="delivery.model.ItemProduto"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="delivery.model.Empresa"/>
 <fullyQualifiedTypeName name="delivery.model.Produto"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
@@ -38,4 +37,10 @@
 <fullyQualifiedTypeName name="com.google.common.reflect.TypeToken"/>
 <fullyQualifiedTypeName name="ch.qos.logback.core.subst.Token.Type"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonSubTypes.Type"/>
+<fullyQualifiedTypeName name="delivery.model.Pedido"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="delivery.service.DELIVERY_SERVICE.PedidoService"/>
+<fullyQualifiedTypeName name="delivery.api.mapper.PedidoImpl"/>
 </qualifiedTypeNameHistroy>

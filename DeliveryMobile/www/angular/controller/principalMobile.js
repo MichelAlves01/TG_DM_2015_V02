@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives']);
+	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives','mobService']);
     var urlBase = 'http://192.168.0.11:8080';
     var empresasJson = null;
     var latitude = null;
@@ -9,14 +9,16 @@
     app.controller('principalCtrl' , function($scope,$http){
         $scope.empresas = [];
         var produtos = [];
-        
+        $scope.enderecos = [];
         
        $http.defaults.headers.post["Content-Type"] = "application/jsonp";
         $scope.showProdutos = function(produtoTipo){
             $("#containerPrincipal").hide();
             $("#containerUsuario").hide();
             $("#containerProdutos").show();
-           
+            
+            
+            
             if( produtoTipo == 'Alimentos'){
                 for(var i=0 ; i < empresasJson.length ; i++){
                     if(empresasJson[i].tipo !== 'A'){
@@ -63,14 +65,42 @@
             var onSuccess = function(position) {
                 latitude = position.coords.latitude;
                 longitude =  position.coords.longitude;
+                
+                var latlng = new google.maps.LatLng(latitude, longitude);
+                var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        
+                        var endereco = results[0].formatted_address.split(",");
+                        
+                        $scope.end = "";
+                        for(var i=0 ; i<endereco.length ; i++){
+                            if(i == 1){
+                                var bairro = endereco[i].split("-");
+                                $scope.end = $scope.end + "," + bairro[1];
+                            } else {
+                                $scope.end = $scope.end + "," + endereco[i]; 
+                            }
+                        }
+                        
+                        $scope.end = $scope.end.substring(1,$scope.end.length);
+                        console.log($scope.end);
+                        for(var i=0 ; i<results.length ; i++){
+                            console.log("enderecos : " + results[i].formatted_address);
+                        }
+                    }
+                });
+                
                 console.log(latitude + ' ' + longitude);
                 var data = $.param({latitude: -23.4534596 , longitude:  -47.4900411});
                 setTimeout(function(){
                     $http.get(urlBase + '/getEmpresasPorLatLong?'+ data).success(function( data , status){
                         $scope.empresas = data;
                         empresasJson = data;
+                        
                     });
                 },2000);
+                
             }
             
             // onError Callback receives a PositionError object
@@ -157,8 +187,37 @@
         }
         
         $scope.finalizarCompra = function(){
-            var data = $.param({nome: $scope.carrinho.nome , 
-                                cpfCnpj: $scope.carrinho.cpfCnpj,
+             $("#containerPrincipal").hide();
+            $("#containerUsuario").hide();
+            $("#containerProdutos").hide();
+            
+        }
+        
+        $scope.enviarPedido = function(){
+       
+            alert("numero : " + $scope.numero +"\npagto : " + $scope.pgtoTipo + "\ntroco : " +$scope.troco 
+                 + "observacao : " + $scope.observacao +"$scope.cartao :  "+ $scope.cartao);
+            var endereco = $scope.end.split(",");
+            $scope.end = "";
+            for(var i=0 ; i<endereco.length ; i++){
+                if(i == 0){
+                    $scope.end = $scope.end + "," + endereco[i] + ", nº" + $scope.numero; 
+                } else {
+                    $scope.end = $scope.end + "," + endereco[i];
+                }
+            }
+             $scope.end = $scope.end.substring(1,$scope.end.length);
+            if($scope.troco != null){
+                var pgtoObs = $scope.troco;
+            } else {
+                var pgtoObs = $scope.cartao;
+            }
+            
+            var data = $.param({cpfCnpj: $scope.carrinho.cpfCnpj,
+                                endereco: $scope.end,
+                                pgtoTipo: $scope.pgtoTipo,
+                                pgtoObs: pgtoObs,
+                                observacao: $scope.observacao,
                                 produto: JSON.stringify($scope.carrinho.produto)});
            
             this.cadastrarPedido(data);

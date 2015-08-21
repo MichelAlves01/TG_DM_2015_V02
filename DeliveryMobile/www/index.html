@@ -31,7 +31,7 @@
         <script type="text/javascript" src="angular/controller/principalMobile.js"></script>
         <script type="text/javascript" src="angular/controller/usuarioMobileController.js"></script>
         <script type="text/javascript" src="angular/directives/mobileDirectives.js"></script>
-        
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     
         <link rel="stylesheet" type="text/css" href="css/principal.css">
         <link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
@@ -78,8 +78,8 @@
                <div usuario></div>
             </div><!-- /content -->
             
-            <div role="main" class="ui-content" id="containerPedido" style="display: none;">     
-               <div ></div>
+            <div role="main" class="ui-content" id="containerPedido" >     
+               <div pedido></div>
             </div><!-- /content -->
             
            
@@ -87,7 +87,7 @@
                 
             </div><!-- /footer -->
         </div><!-- /page --> 
-
+    <script src="cordova.js"></script>
     <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
     <script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->

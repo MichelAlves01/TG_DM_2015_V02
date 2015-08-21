@@ -7,22 +7,18 @@
  	
  	<insert id="cadastrarPedidoDAO" parameterType="delivery.model.Pedido">
  			insert into Pedido (
- 						id,
  						endereco,
  						hora_aberto,
  						hora_fechado,
- 						hora_atendimento,
- 						id_usuario,
+ 						id_empresa,
  						status,
  						observacao,
  						id_usuario
  					) values (
- 						#{id},
  						#{endereco},
- 						#horaAberto),
+ 						#{horaAberto),
  						#{horaFechado},
- 						#{horaAtendimento},
- 						#{idUsuario},
+ 						#{idEmpresa},
  						#{status},
  						#{observacao},
  						#{idusuario}

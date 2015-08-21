@@ -1,12 +1,55 @@
 <div id="endereco" >
     <label>Endereço para entrega</label>
-    <font size="3"></font>
+    <font size="2"></font>
     <table>
         <tr>
             <td>
-                <font>Confirme seu endereço</font>
+                <font size="2">Confirme seu endereço</font>
             </td>
+        </tr>
+        <tr>
             <td>
+                <div>
+                    <font size="2">{{end}}</font>
+                    <label>Numero</label>
+                    <input type="number" class="input-medium"  ng-model="numero" placeholder="informe o numero"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <label>Forma de pagamento</label>
+    <font size="3"></font>
+    <table>
+        <tr style="height: 30px; border-bottom: 1px solid #dddddd;">
+            <td style="padding: 10px;">
+                <input type="radio" name="pgto" ng-model="pgtoTipo" value="cartão" id="pgtoCartao"/> <font size="2">Cartão</font>
+            </td>
+            <label>Cartões</label>
+            <td style="padding: 10px;">
+                <select ng-model="cartao">
+                    <option value="Visa">Visa</option>
+                    <option value="Master">Master</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+        </tr>
+        <tr style="height: 30px; padding: 5px; border-bottom: 1px solid #dddddd;">
+            <td style="padding: 10px; padding-top: 5px; width: 50%;">
+                <input type="radio" name="pgto" ng-model="pgtoTipo" value="dinheiro" id="pgtoDinheiro"/> <font size="2">Dinheiro</font>
+            </td>
+            <td style="padding: 10px; padding-top: 5px;">
+                <input type="text" class="input-medium" ng-model="troco" placeholder="troco para ..."/>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <label> Observação </label>
+    <textarea cols="100" lins="10" ng-model="observacao"></textarea>
+    <table align="right">
+        <tr>
+            <td>
+                <button class="btn btn-success" ng-click="enviarPedido()" >Enviar pedido</button>
             </td>
         </tr>
     </table>
