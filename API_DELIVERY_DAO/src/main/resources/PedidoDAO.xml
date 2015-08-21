@@ -7,21 +7,19 @@
  	
  	<insert id="cadastrarPedidoDAO" parameterType="delivery.model.Pedido">
  			insert into Pedido (
+ 						id,
  						endereco,
- 						hora_aberto,
- 						hora_fechado,
  						id_empresa,
+ 						id_usuario,
  						status,
- 						observacao,
- 						id_usuario
+ 						observacao
  					) values (
+ 						#{id},
  						#{endereco},
- 						#{horaAberto),
- 						#{horaFechado},
  						#{idEmpresa},
+ 						#{usuariosMob.email},
  						#{status},
- 						#{observacao},
- 						#{idusuario}
+ 						#{observacao}
  					)
  	</insert>
 	
@@ -34,11 +32,14 @@
  						endereco,
  						hora_aberto as horaAberto,
  						hora_fechado as horaFechado,
- 						hora_atendimento as horaAtendimento,
  						id_usuario as idUsuario,
+ 						id_empresa as idEmpresa,
  						status,
- 						observacao,
- 						id_usuario as idUsuario
+ 						observacao
+ 			from 
+ 						pedido
+ 			where 
+ 						id = #{id}
  	</select>
  	
  	<select id="getPedidosDAO" parameterType="java.lang.String" resultType="delivery.model.Pedido">
@@ -46,10 +47,13 @@
  						endereco,
  						hora_aberto as horaAberto,
  						hora_fechado as horaFechado,
- 						hora_atendimento as horaAtendimento,
- 						id_usuario as idUsuario,
+ 						id_usuario as "usuariosMob.email",
  						status,
- 						observacao,
- 						id_usuario as idUsuario
+ 						observacao
+ 			from 
+ 						pedido
+ 			where 
+ 						id_empresa = #{cpfCnpj}
+ 						
  	</select>
  </mapper>

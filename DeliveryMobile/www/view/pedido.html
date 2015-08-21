@@ -46,7 +46,7 @@
     <hr />
     <label> Observação </label>
     <textarea cols="100" lins="10" ng-model="observacao"></textarea>
-    <table align="right">
+    <table align="right" ng-controller="CarrinhoCtrl">
         <tr>
             <td>
                 <button class="btn btn-success" ng-click="enviarPedido()" >Enviar pedido</button>

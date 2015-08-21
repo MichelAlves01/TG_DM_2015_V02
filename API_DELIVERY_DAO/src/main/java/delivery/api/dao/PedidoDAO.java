@@ -12,6 +12,6 @@ public interface PedidoDAO {
 	
 	Pedido getPedidoDAO(int idPedido);
 	
-	List<Pedido> getPedidosDAO();
+	List<Pedido> getPedidosDAO(String cpfCnpj);
 	
 }

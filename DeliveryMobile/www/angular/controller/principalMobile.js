@@ -17,8 +17,7 @@
             $("#containerUsuario").hide();
             $("#containerProdutos").show();
             
-            
-            
+
             if( produtoTipo == 'Alimentos'){
                 for(var i=0 ; i < empresasJson.length ; i++){
                     if(empresasJson[i].tipo !== 'A'){
@@ -187,7 +186,7 @@
         }
         
         $scope.finalizarCompra = function(){
-             $("#containerPrincipal").hide();
+            $("#containerPrincipal").hide();
             $("#containerUsuario").hide();
             $("#containerProdutos").hide();
             
@@ -223,9 +222,6 @@
             this.cadastrarPedido(data);
         }
     });
-    
-  
-
     
 
 })();

@@ -5,22 +5,23 @@ import java.util.List;
 
 public class Pedido {
 
-	private int id;
+	private String id;
 	private String endereco;
 	private String horaAberto;
 	private String horaFechado;
+	private String idEmpresa;
 	private UsuarioMob usuariosMob;
 	private int status;
-	private String observacao;
-	private String idEmpresa;
+	private String observacao;	
 	private List<AdicionalPedido> adicionaisPedido;
 	private List<ItemPedido> itensPedido;
 	private List<Agenda> horariosAgendados;
 	
-	public int getId() {
+
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getEndereco() {

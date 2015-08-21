@@ -1,5 +1,7 @@
 package delivery.api.dao;
 
+import java.util.List;
+
 import delivery.model.ItemPedido;
 
 public interface ItemPedidoDAO {
@@ -8,6 +10,6 @@ public interface ItemPedidoDAO {
 	
 	void excluirItemPedido(ItemPedido itemPedido);
 	
-	ItemPedido getItensPedido(int idPedido);
+	List<ItemPedido> getItensPedido(String idPedido);
 	
 }

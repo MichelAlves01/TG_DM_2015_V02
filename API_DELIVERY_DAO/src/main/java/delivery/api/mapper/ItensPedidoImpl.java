@@ -1,5 +1,7 @@
 package delivery.api.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
@@ -24,10 +26,10 @@ public class ItensPedidoImpl {
 		session.close();
 	}
 	
-	public ItemPedido getItensPedido(int idPedido){
+	public List<ItemPedido> getItensPedido(String idPedido){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		ItemPedidoDAO itensPedidoDao = session.getMapper(ItemPedidoDAO.class);
-		ItemPedido itensPedido = itensPedidoDao.getItensPedido(idPedido);
+		List<ItemPedido> itensPedido = itensPedidoDao.getItensPedido(idPedido);
 		session.close();
 		return itensPedido;
 	}
