@@ -287,7 +287,7 @@
 				   	</div>	
 				   	<div class="tabbable tabs-left">
 						<ul class="nav nav-tabs" id="painel-esquerda" >
-							<li>
+							<li class="active">
 								<a href="#tab1" data-toggle="tab" id="tab-pedido">
 									<font color="#48990E"><i class="icon-share-alt"></i> Pedidos</font>
 								</a>
@@ -302,7 +302,7 @@
 	    							<font color="#48990E"><i class=" icon-eye-open"></i> Produtos</font>
 	    						</a>
 	    					</li>
-	    					<li class="active">
+	    					<li >
 	    						<a href="#tab4" data-toggle="tab" id="tab-mapa">
 	    							<font color="#48990E"><i class="icon-map-marker"></i> Mapa</font>
 	    						</a>
@@ -310,13 +310,13 @@
 						</ul>
 					
 					<div class="tab-content">
-							<div class="tab-pane" id="tab1" ng-controller="pedidoCtrl">
+							<div class="tab-pane active" id="tab1" ng-controller="pedidoCtrl">
 							  	<div pedido></div>
 							</div>
 							<div class="tab-pane " id="tab3">
 								<div produto></div>
 							</div>
-							<div class="tab-pane active" id="tab4" ng-controller="mapaRaio">
+							<div class="tab-pane" id="tab4" ng-controller="mapaRaio">
 								<div data-ng-init="getMapalocalizacaoInicial()" mapatab></div>			     		 
 							</div>
 					</div>

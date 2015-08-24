@@ -4,7 +4,7 @@
 
 	var urlBase = 'http://localhost:8080';
 
-	app.controller('produtoCtrl' , function($scope,$http,empresa){
+	app.controller('produtoCtrl' , function($scope,$http, empresa){
 		var toggleCadastro = true;
 		var toggleUpdate = true;
 		var validAll = true;

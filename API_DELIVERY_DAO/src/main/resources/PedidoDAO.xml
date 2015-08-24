@@ -27,13 +27,12 @@
 			update Pedido set status = #{status}
 	</update>
  	
- 	<select id="getPedidoDAO" parameterType="java.lang.Integer" resultType="delivery.model.Pedido">
+ 	<select id="getPedidoDAO" parameterType="java.lang.String" resultType="delivery.model.Pedido">
  			select 		id,
  						endereco,
  						hora_aberto as horaAberto,
  						hora_fechado as horaFechado,
- 						id_usuario as idUsuario,
- 						id_empresa as idEmpresa,
+ 						id_usuario as "usuariosMob.email",
  						status,
  						observacao
  			from 
@@ -53,7 +52,7 @@
  			from 
  						pedido
  			where 
- 						id_empresa = #{cpfCnpj}
+ 						id_empresa = #{cpfCnpj} and status != 2
  						
  	</select>
  </mapper>

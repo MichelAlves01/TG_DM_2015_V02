@@ -10,7 +10,7 @@ public interface PedidoDAO {
 	
 	void atualizarStatusPedidoDAO(Pedido pedido);
 	
-	Pedido getPedidoDAO(int idPedido);
+	Pedido getPedidoDAO(String idPedido);
 	
 	List<Pedido> getPedidosDAO(String cpfCnpj);
 	

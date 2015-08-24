@@ -37,7 +37,7 @@ public class PedidoImpl {
 		session.close();
 	}
 	
-	public Pedido getPedidoDAO(int idPedido){
+	public Pedido getPedidoDAO(String idPedido){
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
 		Pedido pedido = pedidoDao.getPedidoDAO(idPedido);
@@ -57,6 +57,7 @@ public class PedidoImpl {
 					Produto produto = produtoImpl.getProdutoDAO(item.getProduto().getId());
 					item.setProduto(produto);
 				}
+			pedido.setItensPedido(itens);
 		}
 		session.close();
 		return pedidos;

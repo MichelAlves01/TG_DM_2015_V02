@@ -27,9 +27,10 @@ import delivery.model.Pedido;
 import delivery.model.Produto;
 import delivery.service.DELIVERY_SERVICE.PedidoService;
 
-
+@Controller
 @RestController
 public class PedidoController {
+	
 	
 	@RequestMapping(value="/getPedidoController" , method=RequestMethod.GET)
 	public List<Pedido> getPedido(@RequestParam(value="cpfCnpj") String cpfCnpj){
@@ -98,5 +99,20 @@ public class PedidoController {
 		PedidoService pedidoService = new PedidoService();
 		pedidoService.cadastrarPedidoService(pedido);
 		
+	}
+	
+	@RequestMapping(value="/atualizarStatusPedidoController", method=RequestMethod.POST)
+	public List<Pedido> aceitarPedido(	@RequestParam(value="idPedido") String idPedido,
+										@RequestParam(value="status") int status,
+										@RequestParam(value="cpfCnpj") String cpfCnpj){
+		
+		PedidoImpl pedidoImpl = new PedidoImpl();
+		Pedido pedido = new Pedido();
+		pedido = pedidoImpl.getPedidoDAO(idPedido);
+		pedido.setStatus(status);
+		pedidoImpl.atualizarStatusPedidoDAO(pedido);
+		
+		List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
+		return pedidos;
 	}
 }

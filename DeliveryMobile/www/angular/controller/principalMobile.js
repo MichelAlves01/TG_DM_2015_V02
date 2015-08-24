@@ -205,6 +205,7 @@
                     $scope.end = $scope.end + "," + endereco[i];
                 }
             }
+           
              $scope.end = $scope.end.substring(1,$scope.end.length);
             if($scope.troco != null){
                 var pgtoObs = $scope.troco;
@@ -220,6 +221,7 @@
                                 produto: JSON.stringify($scope.carrinho.produto)});
            
             this.cadastrarPedido(data);
+            $scope.numero = "";
         }
     });
     

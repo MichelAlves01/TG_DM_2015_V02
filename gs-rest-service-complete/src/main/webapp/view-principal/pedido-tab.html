@@ -18,29 +18,29 @@
 			</tr>	
 		</table>
 <div id="pedido">
-   	<div class="accordion" id="accordion2" data-ng-init="cadastrarPedido()">
-		<div class="accordion-group">
+   	<div class="accordion" id="accordion2" data-ng-init="getPedidosController()">
+		<div class="accordion-group" ng-repeat="pedido in pedidos track by pedido.id">
 		    <div class="accordion-heading" style="background-color: #eeeeee;">
 		      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">						        
 					<table >
 			    		<tr>
 			    			<td style="width: 744px; border-right: 1px solid #999999;">
-			    				<font>Rua Alzira Camilo nº220 , Jardim São Guilherme, Sorocaba</font>
+			    				<font>{{pedido.endereco}}</font>
 							</td>
 							<td style="width: 100px; border-right: 1px solid #999999;">
-								<center><font>17:00</font></center>
+								<center><font>{{pedido.horaAberto}}</font></center>
 							</td>
 							<td style="width: 100px; border-right: 1px solid #999999;">
-								<center><font>18:00</font></center>
+								<center><font>{{pedido.horaFechado}}</font></center>
 							</td>
 							<td style="width: 100px;">
-								<center><font>concluído</font></center>
+								<center><font>{{pedido.status}}</font></center>
 							</td>
 						</tr>	
 					</table>
 			   </a>
 			</div>
-		    <div id="collapseOne" class="accordion-body collapse in">
+		    <div id="collapseOne" class="accordion-body collapse">
 		      <div class="accordion-inner">
 		      		<table>
 			    		<tr>
@@ -48,18 +48,15 @@
 						      	<div id="pedido-container">
 							        <font>Itens do Pedido</font>
 							        <p>
-								 		<ul>
-								 			<li>Pizza Calabreza</li>
-								 			<li>Coca cola</li>
-								 			<li>2 pudims</li>
-								 			<li>1 X-bacon</li>													 	
+								 		<ul ng-repeat="itens in pedido.itensPedido track by itens.produto.id">
+								 			<li>{{itens.produto.descricao}}</li>												 	
 										</ul>
 									</p>				 		
 									<hr style="border: 1px solid #aaaaaa"></hr>	
 									<table>
 										<tr>
 											<td>
-												<font>forma de Pagamento : Cartão de crédito</font></td>
+												<font>Observações : {{pedido.observacao}}</font></td>
 										 	<!--td style="padding-left: 40px;">
 									 			<input type="checkbox" /> inserir desconto<br/>
 									 			<input type="radio" name="tipo">%
@@ -75,10 +72,10 @@
 												<font>Total</font> 
 											</td>
 											<td class="pedido-aceitar">
-												<button type="submit" class="btn btn-success">Aceitar</button>
+												<button type="submit" class="btn btn-success" ng-click="aceitarPedido(pedido.id)">Aceitar</button>
 											</td>
 											<td class="pedido-rejeitar">
-												<button type="submit" class="btn btn-danger">Rejeitar</button>
+												<button type="submit" class="btn btn-danger" ng-click="rejeitarPedido(pedido.id)">Rejeitar</button>
 											</td>
 										</tr>
 									</table> 					 	
