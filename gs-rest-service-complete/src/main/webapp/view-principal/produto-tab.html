@@ -1,8 +1,8 @@
 <!--Codigo pertencente a tela de Cadatro de Produtos-->
-    <div id="produto">
+    <div id="produto" ng-controller="produtoCtrl">
 		<table>
 			<tr>
-				<td class="list-produtos" ng-controller="produtoCtrl">
+				<td class="list-produtos">
 					<div id="list-produtos" >
 				      	<div id="form-produto-add">				      		
 				      		<div class="accordion-heading"> 
@@ -66,7 +66,7 @@
 								
 							</div>
 						</div>
-						<div class="accordion" id="accordion" data-ng-init="listProdutos(); ">
+						<div class="accordion" id="accordion">
 							<div class="accordion-group" ng-repeat="produto in produtos track by produto.id">
 							    <div class="accordion-heading" ng-load="atualizarFormStart(produto.id)" data-ng-init="droppableItens(produto.id)" ng-click="getItensProduto(produto.id , 'all')">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#{{produto.id}}">
@@ -173,7 +173,7 @@
 		###################################################################################################################################
 	-->
 
-	<td class="list-itens-produtos" ng-controller="itemCtrl" >
+	<td class="list-itens-produtos" ng-controller="itemCtrl">
 		<div id="list-itens-produtos">
 		  <div id="form-item-add">	
 			<div id="accordion-heading-item"> 
@@ -233,7 +233,7 @@
 								
 							</div>
 						</div>
-				      	<div class="accordion" id="accordion" data-ng-init="listItens()">
+				      	<div class="accordion" id="accordion">
 							<div class="accordion-group" id="item" class="ui-widget-content" data-ng-init="draggableItem();" ng-repeat="item in itens track by item.id">
 							    <div  id="accordion-heading-item" >
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2">

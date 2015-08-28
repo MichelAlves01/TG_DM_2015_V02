@@ -45,6 +45,7 @@ public class EmpresaImpl {
 		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		final Empresa empresa = empresaDao.getEmpresaDAO(cpfCnpj);
 		final CidadeImpl cidadeImpl = new CidadeImpl();
+		cidade = new Cidade();
 		//busca informações da cidade no banco de dados e preenche campos nulo
 		cidade = cidadeImpl.geCidadeDAO(empresa.getCidade().getId());
 		empresa.setCidade(cidade);

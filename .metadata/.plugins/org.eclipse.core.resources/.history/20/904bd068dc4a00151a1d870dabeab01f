@@ -1,0 +1,32 @@
+package hello;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+import delivery.api.mapper.UserImpl;
+import delivery.model.Users;
+import delivery.model.UserRole;
+
+@Service("userDetailsService")
+public abstract class MyUserDetailsService implements UserDetailsService {
+	
+	UserImpl userImpl = new UserImpl();
+	
+	@Override
+	public UserDetails loadUserByUsername(final String username){
+		Users users = new Users();
+		users = userImpl.getUserDAO(username);
+		
+		List<GrantedAuthority> authorities = buildUserAuthority(users.getUserRole());
+	}
+	
+	private List<GrantedAuthority> buildUserAuthority(set<UserRole> userRoles){
+		
+	}
+	
+}

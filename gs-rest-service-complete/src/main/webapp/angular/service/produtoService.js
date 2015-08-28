@@ -103,14 +103,11 @@
 			}
 		}
 
-		$scope.listProdutos = function(id){
-			setTimeout(function(){
-				var cpfCnpj = $scope.empresa.cpfCnpj;
-				var data = $.param({cpfCnpj: cpfCnpj}); 
+		$scope.listProdutos = function(){
+				var data = $.param({cpfCnpj: $scope.empresa.cpfCnpj}); 
 				$http.get(urlBase + '/getProdutosController?' + data).success(function(data , status){
 					$scope.produtos = data;
 				})
-			}, 1000);
 			
 		}
 

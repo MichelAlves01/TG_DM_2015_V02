@@ -14,7 +14,7 @@ import delivery.api.mapper.UserImpl;
 import delivery.model.Cidade;
 import delivery.model.Empresa;
 import delivery.model.UserRole;
-import delivery.model.Users;
+import delivery.model.User;
 import delivery.service.DELIVERY_SERVICE.EmpresaService;
 
 @RestController
@@ -28,7 +28,7 @@ public class EmpresaController {
 	
 	private static EmpresaService empresaService;
 	
-	private Users user;
+	private User user;
 	
 	private Cidade cidade;
 	
@@ -76,7 +76,7 @@ public class EmpresaController {
 		double lon = Double.parseDouble(longitude);
 		cidadeImpl = new CidadeImpl();
 		cidade = cidadeImpl.geCidadeDAO(idCidade);
-		user = new Users();
+		user = new User();
 		
 		empresa.setTipo(tipo);
 		empresa.setEmail(email);

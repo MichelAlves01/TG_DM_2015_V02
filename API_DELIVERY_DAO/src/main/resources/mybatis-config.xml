@@ -22,6 +22,7 @@
       <mapper resource='cidadeDAO.xml' />
       <mapper resource='EmpresaDAO.xml' />
       <mapper resource="UserDAO.xml" />
+      <mapper resource="UserRoleDAO.xml" />
       <mapper resource="ProdutoDAO.xml" />
       <mapper resource="ItemDAO.xml" />
       <mapper resource="ItemProdutoDAO.xml" />

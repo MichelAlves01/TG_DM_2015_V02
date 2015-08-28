@@ -1,0 +1,32 @@
+package hello;
+
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import delivery.model.User;
+
+@RestController
+public class LoginController {
+
+	  @RequestMapping(value="/", method=RequestMethod.GET)
+	    public ModelAndView getTerms() {
+	        return new ModelAndView(new RedirectView("DeliveryApp.html", true));
+	    }
+	  
+	  @RequestMapping(value="/login", method=RequestMethod.GET)
+	  public void login(@RequestParam(value="username") String username,
+			  			@RequestParam(value="password") String password){
+		  MyUserDetailsService myUserDetailService = new MyUserDetailsService();
+		  myUserDetailService.loadUserByUsername(username);
+		  System.out.println("Deu bom login");
+		  SecurityContextHolder.getContext().setAuthentication(
+					new UsernamePasswordAuthenticationToken(username, password, AuthorityUtils.createAuthorityList("ADMIN")));
+	  }
+}

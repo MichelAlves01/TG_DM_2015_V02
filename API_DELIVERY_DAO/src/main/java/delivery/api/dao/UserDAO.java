@@ -1,15 +1,15 @@
 package delivery.api.dao;
 
-import delivery.model.Users;
+import delivery.model.User;
 
 public interface UserDAO {
 	
-	void cadastrarUsuarioDAO(Users user);
+	void cadastrarUsuarioDAO(User user);
 	
-	void atualizarUserDAO(Users user);
+	void atualizarUserDAO(User user);
 	
 	void excluirUserDAO(String username);
 	
-	Users getUserDAO(String username);
+	User getUserDAO(String username);
 	
 }

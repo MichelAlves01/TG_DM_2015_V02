@@ -46,7 +46,7 @@
 
 
 				   	$scope.definirRaio($scope.empresa.cpfCnpj , raio);
-
+				   	$scope.slider();
 			}, 1000);
 
 		}

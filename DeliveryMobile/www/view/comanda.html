@@ -1,13 +1,13 @@
 
 <div id="draggable2" class="draggable ui-widget-content">
-    <div  id="comanda" style=" height: 60px;  overflow: scroll;">
+    <div  id="comanda">
         
             <img src="img/prod.jpg" style="height: 100%; width: 100px; float: left;" ng-repeat="prod in carrinho.produto track by prod.id">
 
     </div>
 </div>
-
-                <div id="comanda-btn" ng-click="comandaConteudo()" >
+        
+                <div id="comanda-btn" ng-click="comandaConteudo()">
                     <table>
                         <tr>
                             <td style="padding: 5px;"><img src="img/shopping-cart.png" style="height: 20px; width: 20px; " /></td>
@@ -20,7 +20,8 @@
                         </tr>
                     </table>
                 </div>
-                <div id="comandaConteudo" style="border: 1px solid #bbbbbb;">
+
+                <div id="comandaConteudo" style="border: 1px solid #bbbbbb; display: none;" >
                     <div id="itens-comanda" ng-repeat="prod in carrinho.produto track by prod.id" >
                         <table>
                             <tr>
@@ -36,4 +37,5 @@
                             </tr>
                         </table>
                 </div>
+
                 

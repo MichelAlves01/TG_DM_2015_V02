@@ -47,17 +47,22 @@
     <div data-role="page" id="containerPr" ng-controller="principalCtrl">
 
             <div data-role="header" id="cabecalho" ng-controller="usuarioCtrl" style="margin 0px;">
-                <div class="ui-grid-d center" >
-                    <div class="ui-block-a" style="width: 10%;">
-                        <a class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-carat-l" style="height: 15px;"></a>
-                    </div>
-                    <div class="ui-block-b" style="width: 40%;"><font size="2" style="padding-left: 20px;">Delivery market</font></div>
-                    <div class="ui-block-c" style="width: 30%;">
-                        <a class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user ui-btn-inline" ng-click="showUsuario()" style="height: 15px; width: 100%; margin: 0.2em 0px;">
-                            <font >username</font>
-                        </a>
-                    </div>
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn" style="margin: 0px; width: 60px;" ng-click="voltar()"><img src="img/chevron-left.png" style="height: 20px;"/></button>
+                        </td>
+                        <td style="width: 50%">
+                            <center><h4>
+                                 Delivery market 
+                            </h4></center>
+                        </td>
+                        <td>
+                            
+                            <button class="btn" style="margin: 0px; width: 120px;"><img src="img/user.png" style="height: 20px;"> username</button>
+                        </td>
+                    </tr>
+                </table>
                 
             </div><!-- /header -->
 
@@ -77,7 +82,7 @@
                <div usuario></div>
             </div><!-- /content -->
             
-            <div role="main" class="ui-content" id="containerPedido" >     
+            <div role="main" class="ui-content" id="containerPedido" style="display: none;">     
                <div pedido></div>
             </div><!-- /content -->
             

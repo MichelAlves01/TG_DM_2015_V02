@@ -101,15 +101,11 @@
 			}
 		}
 
-		$scope.listItens = function(id){
-			
-			setTimeout(function(){
-				var cpfCnpj = $scope.empresa.cpfCnpj;
+		$scope.listItens = function(cpfCnpj){
 				var data = $.param({cpfCnpj: cpfCnpj}); 
 				$http.get(urlBase + '/getItensController?' + data).success(function(data , status){
 					$scope.itens = data;
 				})
-			}, 1000);
 			
 		}
 

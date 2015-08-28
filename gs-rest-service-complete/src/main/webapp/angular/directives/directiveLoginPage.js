@@ -3,21 +3,21 @@
   app.directive('login', function(){
   	return{
   		restrict: 'A',
-  		templateUrl: 'login.html'
+  		templateUrl: 'view-login/login.html'
   	};
   });
 
   app.directive('inicioCadastro', function(){
   	return{
   		restrict: 'A',
-  		templateUrl: 'inicio-cadastro.html'
+  		templateUrl: 'view-login/inicio-cadastro.html'
   	};
   });
 
   app.directive('banner', function(){
   	return{
   		restrict: 'A',
-  		templateUrl: 'banner.html'
+  		templateUrl: 'view-login/banner.html'
   	};
   });
 })();

@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('empresaService' , []);
+	var app = angular.module('empresaService' , ['pedido',]);
 	var urlBase = 'http://localhost:8080';
 	var depoisCadastro = true;
 	var cpfCnpj;
@@ -7,33 +7,48 @@
 	var cepValue = null;
 	var cidades;
 	var msgErro = "";
-	
+	var isLogin = true;
+	var isCadastro = false;
+	var repeat = 0;
 	/*
 		Controller que contem todas funções 
 		utilizadas na pagina de login e cadastro inicial
 	*/
-	app.controller('cadastroEmpresaInicio', function($scope, $http) {
+	app.controller('cadastroEmpresaInicio', function($scope, $http, $rootScope, empresa) {
 		    $http.defaults.headers.post["Content-Type"] = "application/jsonp";
 		    var statusCpfCnpj = false;
 		    var longitude = null;
 		    var latitude = null;
 		    var latLongTest = null;
 			var cpfExiste = false;
+			$rootScope.tabLoaderControl = 'login';
 			
 			//Acessa o servidor e adiciona as informações iniciais da empresa 
 		    $scope.iniciaCadastroEmpresa = function (){
+		    	isLogin = false;
+		    	isCadastro = true;
 		    	var data = $.param({nome: $scope.nome , cpfCnpj: $scope.cpfCnpj})
 		    	if(statusCpfCnpj && $scope.nome != null && $scope.tipo == null){
 		    	//envia os primeiros parametros do cadastro(Nome e CPF/CNPJ)
 		    	$http.post(urlBase + '/iniciaCadastroEmpresa?'+ data).
 	        													success(function(data,status) {
 	        														$scope.empresa = data;
+	        														visibilityControl('cadastro')
+
 	        													if($scope.empresa.status == 1){
 																	$growlUI('Erro ao enviar','CPF ou CNPJ ja esta cadastrado','E');
 																} else {
-																	location.href="index.html";
+																		depoisCadastro = false;
+														    			$("#cadastro").removeAttr("disabled");
+														    			$("#atualizar").hide();
+														    			$("#excluir").hide();
+														    			$('#tab-update').removeClass( "active" );
+														    			$('#tab-cadastro').toggleClass( "active" );
+														    			$scope.getEstados();
 																	if($scope.empresa.tipo != null){
 																		depoisCadastro = true;
+
+																		latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
 																	}
 																}	
 	           													 
@@ -44,6 +59,8 @@
 	            	}
 	        	}
 		    }	
+
+
 
 		    /*	Esta função recebe como parametro o cpf ou cnpj
 		    	e verica se existe ou não 
@@ -147,7 +164,23 @@
 		    }
 	  });
 
-		
+		function visibilityControl(visible){
+
+				if(visible == 'login'){
+					$('.login').show();
+					$('.cadastro').hide();
+					$('.principal').hide();
+				} else if(visible == 'cadastro'){
+					$('.login').hide();
+					$('.cadastro').show();
+					$('.principal').hide();
+				} else if(visible == 'principal'){
+					$('.login').hide();
+					$('.cadastro').hide();
+					$('.principal').show();
+				}
+			}
+
 		/*
 			Controller que executa as funções finais para 
 			o cadastro da empresa assim como vizualização  
@@ -156,38 +189,104 @@
 		app.controller('EmpresaCtrl', function($scope, $http , empresa) {
 			 var fieldsValid = true;
 			 var latLong = null;
+			 var isLogin;
 
+
+			 $scope.login = function(){
+
+			      var data = $.param({username: $scope.username , password: $scope.password});
+			      $http.get(urlBase + '/login?' + data).success(function(data , status) {
+			      			setTimeout(function(){
+			      				$scope.empresa = data;
+								cpfCnpj = data.cpfCnpj;
+								if($scope.empresa != ""){
+									visibilityControl('principal');
+									$scope.getPedidosController(cpfCnpj);
+								} else {
+									$.growlUI('Senha ou usuario incorreto', 'verifique e tente novamente', 'E'); 
+								}
+								
+								/*
+								 	se o tipo ainda estiver nulo ativas apenas aba de cadastro
+									pois a empresa ainda não esta cadastrada senão vai para a tela 
+									principal.
+								*/
+								if($scope.empresa.tipo == null){
+									isLogin = false;
+									depoisCadastro = false;
+					    			$("#cadastro").removeAttr("disabled");
+					    			$("#atualizar").hide();
+					    			$("#excluir").hide();
+					    			$('#tab-update').removeClass( "active" );
+					    			$('#tab-cadastro').toggleClass( "active" );
+					    		}
+
+
+					    			depoisCadastro = true;
+					    			$('#tab-cadastro').removeClass( "active" );
+					    			latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
+					    			
+					    	
+			     			
+			      			}, 1000);	
+			      		
+			      });
+
+			      
+			      
+			  }
+
+			  $scope.getPedidosController = function(cpfCnpj){
+			
+						if(repeat == 0){
+							setTimeout(function(){
+								var data = $.param({cpfCnpj: $scope.empresa.cpfCnpj});
+								$http.get(urlBase + '/getPedidoController?' + data ).success(function(data,status){
+									$scope.pedidos = data;
+								});
+							}, 100);
+							repeat = 1;
+						}
+						setTimeout(function(){
+							var data = $.param({cpfCnpj: $scope.empresa.cpfCnpj});
+							$http.get(urlBase + '/getPedidoController?' + data ).success(function(data,status){
+								$scope.pedidos = data;
+							});
+							$scope.getPedidosController();
+						}, 10000);
+			}
 			/*
 				verifica quais abas devem estar ativas 
 				durante o cadastro e recupera os dados iniciais do 
 				cadastro informados anteriormente na pagina de login.
 			*/
-			$scope.starting = function(){
-					$http.get(urlBase + '/getEmpresaCadastro').success(function(data){
-					$scope.empresa = data;
-					cpfCnpj = data.cpfCnpj;
+			
 
+			$scope.tabLoaderControl = function(){
+
+			}
+
+			$scope.starting = function(){
+					visibilityControl('login');
+					
 					/*
 					 	se o tipo ainda estiver nulo ativas apenas aba de cadastro
 						pois a empresa ainda não esta cadastrada senão vai para a tela 
 						principal.
 					*/
-					if($scope.empresa.tipo == null){
-						depoisCadastro = false;
-		    			$("#cadastro").removeAttr("disabled");
-		    			$("#atualizar").hide();
-		    			$("#excluir").hide();
-		    			$('#tab-update').removeClass( "active" );
-		    			$('#tab-cadastro').toggleClass( "active" );
-		    		} else {
+
+						
+	
 		    			depoisCadastro = true;
 		    			$('#tab-cadastro').removeClass( "active" );
-		    			latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
+		    			
 
-		    		}
 					
-				});
-			}
+				}
+
+
+
+			 
 
 			/*
 				verifica se todos os campos estão validos e retorna 
@@ -242,15 +341,25 @@
 										senha: senha});
 								
 								console.log("enviando para o servidor");
-								$http.post(urlBase + '/cadastrarEmpresaController?' + data).success(function(data,status){
-									$scope.empresa = data;
-									$scope.nome = data.nome;
-									$scope.cpfCnpj = data.cpfCnpj;
-									$.growlUI('Cadastrado com sucesso' , '', 'C');
-								});
+								
+									$http.post(urlBase + '/cadastrarEmpresaController?' + data).success(function(data,status){
+										setTimeout(function(){
+										$scope.empresa = data;
+										$scope.nome = data.nome;
+										$scope.cpfCnpj = data.cpfCnpj;
+										$.growlUI('Cadastrado com sucesso' , '', 'C');
+										$('#popOverMapa').popover('show')
+									} , 100);
+									});
 
-								depoisCadastro = true;
-
+									depoisCadastro = true;
+									$('#pedidoOp').toggleClass('active');
+									$('#tab3').removeClass('active');
+									$('#tab4').removeClass('active');
+									visibilityControl('principal');
+									$scope.getLatitudeLongitude();
+								
+								
 				} else {
 					console.log("Existem campos não preenchido");
 					$.growlUI('Erro ao cadastrar','Preencha todos os campos', 'E');
@@ -562,7 +671,7 @@
 			Esta função permite recuperar os dados da empresa 
 			de acordo com o cpf ou cnpj informado.
 		*/
-		$scope.getEmpresaController = function(){
+		$scope.getEmpresaController = function(cpfCnpj){
 					depoisCadastro = false;
 			 		$("#cadastro").hide();
 		    		$("#atualizar").toggleClass( "active" );
@@ -672,5 +781,9 @@
 	app.controller('mapCtrl' , function($scope, $http){
 
 	});
+
+
+ 
+
 
 })();

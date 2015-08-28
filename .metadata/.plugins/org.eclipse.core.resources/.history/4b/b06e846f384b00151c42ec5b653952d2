@@ -1,0 +1,30 @@
+package delivery.api.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import delivery.api.connection.ConnectionFactory;
+import delivery.api.dao.UserDAO;
+import delivery.api.dao.UserRoleDAO;
+import delivery.model.UserRole;
+
+public class UserRoleImpl {
+	
+	public void cadastrarUserRoleImpl(UserRole userRole){
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		UserRoleDAO userRoleDao = session.getMapper(UserRoleDAO.class);
+		userRoleDao.cadastrarUserRoleDao(userRole);
+		session.commit();
+		session.close();
+	}
+	
+	public List<UserRole> getUserRoleImpl(UserRole userRole){
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		UserRoleDAO userRoleDao = session.getMapper(UserRoleDAO.class);
+		List<UserRole> userRoles = userRoleDao.getUserRoleDao();
+		session.commit();
+		session.close();
+		return userRoles; 
+	}
+}

@@ -17,11 +17,11 @@
 				</td>
 			</tr>	
 		</table>
-<div id="pedido">
-   	<div class="accordion" id="accordion2" data-ng-init="getPedidosController()">
+<div id="pedido" >
+   	<div class="accordion" id="accordion2">
 		<div class="accordion-group" ng-repeat="pedido in pedidos track by pedido.id">
 		    <div class="accordion-heading" style="background-color: #eeeeee;">
-		      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">						        
+		      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{pedido.id}}">						        
 					<table >
 			    		<tr>
 			    			<td style="width: 744px; border-right: 1px solid #999999;">
@@ -40,7 +40,7 @@
 					</table>
 			   </a>
 			</div>
-		    <div id="collapseOne" class="accordion-body collapse">
+		    <div id="{{pedido.id}}" class="accordion-body collapse">
 		      <div class="accordion-inner">
 		      		<table>
 			    		<tr>

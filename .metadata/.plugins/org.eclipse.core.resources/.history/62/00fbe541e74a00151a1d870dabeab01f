@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.UserDAO">
+ 	
+ 	<insert id="cadastrarUsuarioDAO" parameterType="delivery.model.User">
+ 			insert into User_role (
+ 								username, 
+ 								password, 
+ 								cnpj_cpf,
+ 								status) 
+ 						values (
+ 								#{username} , 
+ 								#{password}, 
+ 								#{empresa.cpfCnpj},
+ 								#{status})
+ 	</insert>
+ 	
+ 	<update id="atualizarUserDAO" parameterType="delivery.model.User">
+ 		update User_role set 
+ 			username = #{username},
+ 			password = #{password},
+ 			cpf_cnpj = #{empresa.cpfCnpj},
+ 			status = 0 
+ 	</update>
+ 	
+ 	<update id="excluirUserDAO" parameterType="java.lang.String">
+ 		update User_role set status = 1
+ 	</update>
+ 	
+ 	<select id="getUserDAO" parameterType="java.lang.String">
+ 		select username, 
+ 				password, 
+ 				cpf_cnpj as "empresa.cpfCnpj", 
+ 				status
+ 		from 
+ 				User_role
+ 		where
+ 				username = #{username} 
+ 	</select>
+ 	
+ </mapper>

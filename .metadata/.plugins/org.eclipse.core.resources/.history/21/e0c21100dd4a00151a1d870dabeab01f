@@ -1,0 +1,45 @@
+package hello;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+import delivery.api.mapper.UserImpl;
+import delivery.model.Users;
+import delivery.model.UserRole;
+
+@Service("userDetailsService")
+public abstract class MyUserDetailsService implements UserDetailsService {
+	
+	UserImpl userImpl = new UserImpl();
+	
+	@Override
+	public UserDetails loadUserByUsername(final String username){
+		Users users = new Users();
+		users = userImpl.getUserDAO(username);
+		
+		List<GrantedAuthority> authorities = buildUserAuthority(users.getUserRole());
+	}
+	
+	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles){
+		
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+		
+		for(UserRole userRole : userRoles){
+			setAuths.add(new SimpleGrantedAuthority(userRole.getUserRole()));
+		}
+		
+		List<GrantedAuthority> results = new ArrayList<GrantedAuthority>(setAuths);
+		
+		return results;
+	}
+	
+}

@@ -5,7 +5,7 @@
     
  <mapper namespace="delivery.api.dao.UserDAO">
  	
- 	<insert id="cadastrarUsuarioDAO" parameterType="delivery.model.Users">
+ 	<insert id="cadastrarUsuarioDAO" parameterType="delivery.model.User">
  			insert into User_role (
  								username, 
  								password, 
@@ -18,7 +18,7 @@
  								#{status})
  	</insert>
  	
- 	<update id="atualizarUserDAO" parameterType="delivery.model.Users">
+ 	<update id="atualizarUserDAO" parameterType="delivery.model.User">
  		update User_role set 
  			username = #{username},
  			password = #{password},
@@ -30,10 +30,10 @@
  		update User_role set status = 1
  	</update>
  	
- 	<select id="getUserDAO" parameterType="java.lang.String">
- 		select username, 
+ 	<select id="getUserDAO" parameterType="java.lang.String" resultType="delivery.model.User">
+ 		select 	username, 
  				password, 
- 				cpf_cnpj as cpfCnpj, 
+ 				cnpj_cpf as "empresa.cpfCnpj", 
  				status
  		from 
  				User_role

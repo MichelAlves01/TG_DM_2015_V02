@@ -5,7 +5,31 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-08-20T14:03:00Z</updated>
+  <updated>2015-08-25T21:22:14Z</updated>
+  <entry>
+    <title>This Week in Spring - August 25th, 2015</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/08/25/this-week-in-spring-august-25th-2015" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2015-08-25:2219</id>
+    <updated>2015-08-25T21:22:14Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Rio de Janeiro, Brazil for the lovely QCon Rio conference, and then I&amp;rsquo;m off to Tokyo, Japan for a &lt;em&gt;Spring in Summer&lt;/em&gt; conference for local Spring users!&lt;/p&gt;&lt;p&gt;The team is abuzz with excitement leading up to this year&amp;rsquo;s SpringOne2GX 2016, the biggest and best SpringOne2GX, ever! This year, you&amp;rsquo;re going to see us do &lt;em&gt;WAY&lt;/em&gt; more with &lt;em&gt;WAY&lt;/em&gt; less and get it to production, to boot! This is exciting for everyone of us and it will be for audience members, as well!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;our pal Kenny Bastani put together a followup post &lt;a href="http://www.kennybastani.com/2015/08/polyglot-persistence-spring-cloud-docker.html"&gt;in his series on Spring Cloud about polyglot persistence with Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2015/08/20/spring-for-apache-hadoop-2-3-milestone-2-released"&gt;Spring for Hadoop lead Thomas Risberg just announced 2.3M2&lt;/a&gt;, complete with support for running batch tasklets, improved Spring Boot integration, and improved YARN support&lt;/li&gt;
+  &lt;li&gt;Singaporean Guest bloggers Han Lim and Tony Nguyen have written up a &lt;em&gt;very&lt;/em&gt; cool blog on &lt;a href="https://spring.io/blog/2015/08/19/migrating-a-spring-web-mvc-application-from-jsp-to-angularjs"&gt;migrating from &lt;code&gt;.jsp&lt;/code&gt;-based applications to Angular.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;John Thompson has a nice &lt;a href="https://dzone.com/articles/spring-boot-example-of-spring-integration-and-acti"&gt;post on using Spring Boot with ActiveMQ over on DZone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Saravanan Subramanian has a &lt;a href="https://dzone.com/articles/getting-started-with-rabbitmq-cloud-based-message"&gt;nice post on getting started with RabbitMQ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Kathy Thomas has a written up and shared a presentation on building a &lt;a href="https://dzone.com/articles/building-your-own-cloud-with-suse-openstack-and-st"&gt;custom PaaS with SUSE OpenStack and Stackato Cloud Foundry &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Our pal Nicolas Frankel has a nice &lt;a href="http://blog.frankel.ch/more-devops-for-spring-boot"&gt;post on introducting more devops-friendly features with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I liked this blog on &lt;a href="https://dzone.com/articles/set-up-a-springdata-project-using-apache-cassandra"&gt;using Spring Data Cassandra&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This is a good French language post on &lt;a href="http://soat.developpez.com/tutoriels/spring/automatiser-execution-tache-scheduler/"&gt;using Spring Batch to run jobs, in lieu of CRON&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Neo4j have just announced &lt;a href="http://neo4j.com/blog/spring-data-neo4j-4-0-0-rc2-release/"&gt;Spring Data Neo4j 4.0.0.RC2 is available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Make sure you didn&amp;rsquo;t &lt;a href="https://www.youtube.com/watch?v=A1UbUNcveik&amp;feature=youtu.be"&gt;miss the latest installment of &lt;em&gt;Cloud Foundry After Dark&lt;/em&gt;&lt;/a&gt;!&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring for Apache Hadoop 2.3 Milestone 2 released</title>
     <link rel="alternate" href="https://spring.io/blog/2015/08/20/spring-for-apache-hadoop-2-3-milestone-2-released" />
@@ -585,24 +609,5 @@ var OwnerController = [&amp;#39;$scope&amp;#39;,&amp;#39;$state&amp;#39;,&amp;#3
   &lt;li&gt;Our pal at the &lt;em&gt;all and sundry&lt;/em&gt; blog are back it again! (I missed Biju&amp;rsquo;s posts of late!) This latest post &lt;a href="http://www.java-allandsundry.com/2015/07/spring-boot-configurationproperties.html"&gt;is on using Spring Boot&amp;rsquo;s &lt;code&gt;@ConfigurationProperties&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;I errantly forgot to include the link for the item above so when I was Googling to find the link again, I stumbled upon this oldie-but-a-goodie on &lt;a href="http://www.java-allandsundry.com/2015/03/using-rx-java-observable-in-spring-mvc.html"&gt;using RxJava&amp;rsquo;s &lt;code&gt;Observable&lt;/code&gt; in a Spring MVC flow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring XD 1.2.1 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/07/28/spring-xd-1-2-1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2015-07-28:2199</id>
-    <updated>2015-07-28T22:06:49Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Spring XD team, I am very pleased to announce the general availability of Spring XD 1.2.1! &lt;/p&gt;&lt;p&gt;This release includes &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=11401&amp;version=15199"&gt;bug fixes and some small enhancements&lt;/a&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Support for registering custom Kryo Serializers&lt;/li&gt;
-  &lt;li&gt;Configuration options to fine tune Kryo performance&lt;/li&gt;
-  &lt;li&gt;Update several dependencies to latest versions - Spring Integration, Boot, reactor, Groovy&lt;/li&gt;
-  &lt;li&gt;Add jars for Avro and Snappy compression to Sqoop job submission&lt;/li&gt;
-  &lt;li&gt;Fix admin UI access when security is enabled&lt;/li&gt;
-  &lt;li&gt;Improved pagination for containers and jobs&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;You can &lt;a href="http://repo.spring.io/release/org/springframework/xd/spring-xd/1.2.1.RELEASE/spring-xd-1.2.1.RELEASE-dist.zip"&gt;download the zip distribution&lt;/a&gt; or install on OSX &lt;a href="http://docs.spring.io/spring-xd/docs/1.2.0.RELEASE/reference/html/#osx-homebrew-installation"&gt;using homebrew&lt;/a&gt; On RHEL/CentOS you can &lt;a href="https://github.com/spring-projects/spring-xd/wiki/Installing-Spring-XD-using-RPM-on-RHEL-CentOS-v.-6.x"&gt;install using rpm&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Feedback is very important, so please get in touch with questions and comments via&lt;br/&gt;* &lt;a href="http://stackoverflow.com/questions/tagged/spring-xd"&gt;StackOverflow&lt;/a&gt; &lt;code&gt;spring-xd&lt;/code&gt; tag&lt;br/&gt;* &lt;a href="https://jira.spring.io/browse/XD/?selectedTab=com.atlassian.jira.jira-projects-plugin:summary-panel"&gt;Spring JIRA&lt;/a&gt; or &lt;a href="https://github.com/spring-projects/spring-xd/issues"&gt;GitHub Issues&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Check recent blog posts to see what I mean and there is more to come!&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -20,7 +20,7 @@ public class Empresa {
 	private double avaliacao;
 	private int status;
 	private List<Produto> produto;
-	private List<Users> users;
+	private List<User> users;
 	
 	
 	public Empresa(){
@@ -121,10 +121,10 @@ public class Empresa {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
-	public void setUsers(List<Users> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 	public int getStatus() {

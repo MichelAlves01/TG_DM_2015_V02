@@ -1,4 +1,4 @@
-.accordion-heading .accordion-togglebody{
+body{
 		min-height: 100%;
 		min-width: 100%;
 		display: table;
@@ -1086,5 +1086,4 @@ box-shadow:inset -1px 0 9px 1px #9AB9ED;
 	width: 1044px;
 	padding-right: 30px;
 	padding-left: 30px;	
-	background-color: #999999;
 }

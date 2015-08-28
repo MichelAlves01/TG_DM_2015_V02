@@ -7,14 +7,17 @@
 			<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+			<script type="text/javascript" src="angular/controller/empresaController.js"></script>			
 			<script type="text/javascript" src="angular/controller/PrincipalController.js"></script>
 			<script type="text/javascript" src="angular/controller/cadastroEmpresaController.js"></script>
 			<script type="text/javascript" src="angular/controller/pedidoController.js"></script>
 			<script type="text/javascript" src="angular/controller/mapaController.js"></script>
+			<script type="text/javascript" src="angular/controller/loginController.js"></script>
 			<script type="text/javascript" src="angular/service/empresaService.js"></script>
 			<script type="text/javascript" src="angular/service/produtoService.js"></script>
 			<script type="text/javascript" src="angular/service/itemService.js"></script>
 			<script type="text/javascript" src="angular/service/cidadeEstadoService.js"></script>
+			<script type="text/javascript" src="angular/directives/directiveLoginPage.js"></script>
 			<script type="text/javascript" src="angular/directives/directiveCadastroEmpresa.js"></script>
 			<script type="text/javascript" src="angular/directives/directivePrincipal.js"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
@@ -27,119 +30,7 @@
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href=" css/principal.css">
 			<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-			<script type='text/javascript'>
-
-
-			  var year = new Date().getFullYear();
-			  var month = new Date().getMonth();
-			  var day = new Date().getDate();
-
-			  var eventData1 = {
-				options: {
-				  timeslotsPerHour: 4,
-				  timeslotHeight: 20
-				},
-				events : [
-				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 30),'title':'Lunch with Mike'},
-				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 45),'title':'Dev Meeting'},
-				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 45),'title':'Hair cut'},
-				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 30),'title':'Team breakfast'},
-				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
-				]
-			  };
-
-			  var eventData2 = {
-				options: {
-				  timeslotsPerHour: 3,
-				  timeslotHeight: 30
-				},
-				events : [
-				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Sarah'},
-				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Meeting'},
-				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Joe'},
-				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alison'},
-				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
-				]
-			  };
-
-
-					// data set 3 : using event delete features
-			  var eventData3 = {
-				options: {
-				  allowEventDelete: true,
-				  eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
-					if (confirm('You want to delete this event?')) {
-					  calendar.weekCalendar('removeEvent',calEvent.id);
-					}
-				  },
-				  deletable: function(calEvent, element) {
-					return calEvent.start > Date.today();
-				  }
-				},
-				events : [
-				   {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 00),'title':'Lunch with Ashley'},
-				   {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 40),'title':'Team Picnic'},
-				   {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 40),'title':'Meet with Cathy'},
-				   {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 20),'title':'Coffee with Alyssa'},
-				   {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product kickoff'}
-				]
-			  };
-
-			  $(document).ready(function() {
-				var $calendar = $('#calendar').weekCalendar({
-				  timeslotsPerHour: 4,
-				  scrollToHourMillis : 0,
-				  height: function($calendar){
-					return $(window).height() - $('h1').outerHeight(true);
-				  },
-				  eventRender : function(calEvent, $event) {
-					if(calEvent.end.getTime() < new Date().getTime()) {
-					  $event.css('backgroundColor', '#aaa');
-					  $event.find('.time').css({'backgroundColor': '#999', 'border':'1px solid #888'});
-					}
-				  },
-				  eventNew : function(calEvent, $event) {
-					alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
-				  },
-				  data: function(start, end, callback) {
-					var dataSource = $('#data_source').val();
-
-					if (dataSource === '1') {
-					  callback(eventData1);
-					} else if(dataSource === '2') {
-					  callback(eventData2);
-					} else if(dataSource === '3') {
-					  callback(eventData3);
-					} else {
-					  callback([]);
-					}
-				  }
-				});
-
-				$('#data_source').change(function() {
-				  $calendar.weekCalendar('refresh');
-				  updateMessage();
-				});
-
-				function updateMessage() {
-				  var dataSource = $('#data_source').val();
-				  $('#message').fadeOut(function(){
-					if(dataSource === '1') {
-					  $('#message').text('Displaying event data set 1 with timeslots per hour of 4 and timeslot height of 20px');
-					} else if(dataSource === '2') {
-					  $('#message').text('Displaying event data set 2 with timeslots per hour of 3 and timeslot height of 30px');
-					} else if(dataSource === '3') {
-					  $('#message').text('Displaying event data set 3 with allowEventDelete enabled. Events before today will not be deletable. A confirmation dialog is opened when you delete an event.');
-					} else {
-					  $('#message').text('Displaying no events.');
-					}
-					$(this).fadeIn();
-				  });
-				}
-
-				updateMessage();
-			  });
-			  </script>
+			
 
 			  <script type="text/javascript">
 					/*Inicia o com o status da empresa como fechado*/
@@ -191,13 +82,36 @@
 			
 	</script>
 </head>
-<body ng-controller="EmpresaCtrl" >
+
+
+<body ng-controller="EmpresaCtrl" data-ng-init="starting()">
+	<!-- Todo codigo referente a tela de login -->
+	<div id="centro" class="login">
+		<table>
+			<tr>
+				<td style="padding-right: 40px;">
+					<!--Contem os primeiros dados a ser preenchido e o banner de apresentação do aplicativo-->
+					<div id="anuncio">
+
+						<div id="banner" banner></div>
+
+						<div inicio-cadastro></div>
+
+					</div>
+				</td>
+				<td>
+					<div id="login" login></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
 	<!--Todo codigo da pagina de cadastro-->
-	<div id="cadastro-page" ng-hide="depoisCadastro()">
+	<div id="cadastro-page" ng-hide="depoisCadastro()" class="cadastro">
 		<div id="cabecalho">
 				<label><font>Delivery Gerenciador</font></label>
 			</div>
-			<div id="centro" data-ng-init="starting()">
+			<div id="centro">
 			<div id="sub-cabecalho"></div>
 				   <div id="form">
 				   		<div id="form-title"> 
@@ -275,34 +189,29 @@
 		#################################################################################################################################
 
 		Todo codigo da pagina principal-->
-	<div id="principal-page" ng-show="depoisCadastro()">
+	<div id="principal-page" ng-show="depoisCadastro()" class="principal" ng-controller="pedidoCtrl">
 	  	<div cabecalho></div>
-		<div id="centro-principal">
+		<div id="centro-principal"  ng-controller="produtoCtrl">
 		<!--espaço entre o cabecalho e o form -->
 			<div id="sub-cabecalho"></div>
 				<!--Código formulario principal-->
-				<div id="form-main">
+				<div id="form-main"   ng-controller="itemCtrl" >
 				   	<div id="form-title"> 
 				   		<label><font color="#ffffff">Delivery Gerenciador</font></label>
 				   	</div>	
-				   	<div class="tabbable tabs-left">
+				   	<div class="tabbable tabs-left" ng-controller="mapaRaio" >
 						<ul class="nav nav-tabs" id="painel-esquerda" >
-							<li class="active">
+							<li id="pedidoOp">
 								<a href="#tab1" data-toggle="tab" id="tab-pedido">
 									<font color="#48990E"><i class="icon-share-alt"></i> Pedidos</font>
 								</a>
 							</li>
-	    					<li>
-	    						<a href="#tab2" data-toggle="tab" id="tab-agenda">
-	    							<font color="#48990E"><i class="icon-calendar"></i> Agenda</font>
-	    						</a>
-	    					</li>
-	    					<li >
+	    					<li id="produtoOp" ng-click="listProdutos(empresa.cpfCnpj); listItens(empresa.cpfCnpj);">
 	    						<a href="#tab3" data-toggle="tab" id="tab-produtos">
-	    							<font color="#48990E"><i class=" icon-eye-open"></i> Produtos</font>
+	    							<font color="#48990E"><i class="icon-eye-open"></i> Produtos</font>
 	    						</a>
 	    					</li>
-	    					<li >
+	    					<li id="mapaOp" ng-click="getMapalocalizacaoInicial(empresa.latitude , empresa.longitude , empresa.raio);">
 	    						<a href="#tab4" data-toggle="tab" id="tab-mapa">
 	    							<font color="#48990E"><i class="icon-map-marker"></i> Mapa</font>
 	    						</a>
@@ -310,14 +219,14 @@
 						</ul>
 					
 					<div class="tab-content">
-							<div class="tab-pane active" id="tab1" ng-controller="pedidoCtrl">
+							<div class="tab-pane" id="tab1" >
 							  	<div pedido></div>
 							</div>
-							<div class="tab-pane " id="tab3">
+							<div class="tab-pane" id="tab3">
 								<div produto></div>
 							</div>
-							<div class="tab-pane" id="tab4" ng-controller="mapaRaio">
-								<div data-ng-init="getMapalocalizacaoInicial()" mapatab></div>			     		 
+							<div class="tab-pane active" id="tab4">
+								<div  mapatab></div>			     		 
 							</div>
 					</div>
 				</div>

@@ -1,23 +1,48 @@
 (function(){
 	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives','mobService']);
+    
     var urlBase = 'http://192.168.0.11:8080';
     var empresasJson = null;
     var latitude = null;
     var longitude = null;
     var showCar = false;
+    nivel = 1;
+    
     
     app.controller('principalCtrl' , function($scope,$http){
+        $http.defaults.headers.post["Content-Type"] = "application/jsonp";
         $scope.empresas = [];
         var produtos = [];
         $scope.enderecos = [];
         
-       $http.defaults.headers.post["Content-Type"] = "application/jsonp";
+        
+        function visibilityControle( nivelOp ){
+            if(nivelOp == 1){
+                $("#containerPrincipal").show();
+                $("#containerUsuario").hide();
+                $("#containerProdutos").hide();
+                $("#containerPedido").hide();
+                nivel = 1;
+            } else if(nivelOp == 2){
+                 $("#containerPrincipal").hide();
+                $("#containerUsuario").hide();
+                $("#containerProdutos").show();
+                $("#containerPedido").hide();
+                nivel = 2;
+            } 
+            else if(nivelOp == 3){
+                $("#containerPrincipal").hide();
+                $("#containerUsuario").hide();
+                $("#containerProdutos").hide();
+                $("#containerPedido").show();
+                nivel = 3;
+            }
+        }
+        
+       
         $scope.showProdutos = function(produtoTipo){
-            $("#containerPrincipal").hide();
-            $("#containerUsuario").hide();
-            $("#containerProdutos").show();
+            visibilityControle( 2 );
             
-
             if( produtoTipo == 'Alimentos'){
                 for(var i=0 ; i < empresasJson.length ; i++){
                     if(empresasJson[i].tipo !== 'A'){
@@ -155,10 +180,12 @@
             if(showCar == false){
                 $('#comandaConteudo').animate({height: '80%'});
                 $('#containerPrincipal').animate({height: '0px'});
+                $('#comandaConteudo').show();
                 showCar = true;
             } else {
                 $('#comandaConteudo').animate({height: '0px'});
                 $('#containerPrincipal').animate({height: '80%'});
+                $('#comandaConteudo').hide();
                 showCar = false;
             }
             
@@ -186,9 +213,7 @@
         }
         
         $scope.finalizarCompra = function(){
-            $("#containerPrincipal").hide();
-            $("#containerUsuario").hide();
-            $("#containerProdutos").hide();
+           visibilityControle( 3 );
             
         }
         
@@ -222,6 +247,10 @@
            
             this.cadastrarPedido(data);
             $scope.numero = "";
+        }
+        
+        $scope.voltar = function(){
+            visibilityControle(nivel - 1);
         }
     });
     
