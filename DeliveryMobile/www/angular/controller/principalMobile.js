@@ -92,6 +92,7 @@
             }
                 var carrinho = deviceheight/5;
                 $('#carrinho').css('height', carrinho);
+                $('#comanda').css('height', carrinho);
                 $('#containerPr').css('height', deviceheight);
 
             var onSuccess = function(position) {

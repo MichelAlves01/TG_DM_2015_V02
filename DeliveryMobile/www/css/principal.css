@@ -193,10 +193,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 }
 
 #comanda{
-    height: 100%;
     width: 79%;
     float: left;
     border: 1px solid #bbbbbb; 
+    height: 100%;
 }
 
 #comanda-btn{
