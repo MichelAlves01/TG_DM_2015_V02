@@ -6,9 +6,9 @@
 			<br />
 			<form class="form-horizontal">
 				<label>Nome de Usuario</label>
-				<input type="text" class="input-large" ng-model="username"/>
+				<input type="text" class="input-large" ng-model="username" required/>
 				<label>Senha</label>
-				<input type="text" class="input-large" ng-model="password" /><br /><br />
-				<button class="btn btn-primary" type="button" ng-click="login()">Entrar</button>
+				<input type="password" class="input-large" ng-model="password" required/><br /><br />
+				<button class="btn btn-primary" type="button" ng-click="login(username, password)">Entrar</button>
 			</form>
 			<label><a href="#">Esqueceu sua senha</a></label>

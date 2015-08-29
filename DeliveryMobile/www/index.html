@@ -44,7 +44,7 @@
 
 
 <body>
-    <div data-role="page" id="containerPr" ng-controller="principalCtrl">
+    <div data-role="page" id="containerPr" ng-controller="principalCtrl" data-ng-init="inicio()">
 
             <div data-role="header" id="cabecalho" ng-controller="usuarioCtrl" style="margin 0px;">
                 <table>
@@ -78,11 +78,11 @@
 
            
                    
-            <div role="main" class="ui-content" id="containerUsuario" style="display: none;">     
+            <div role="main" class="ui-content" id="containerUsuario">     
                <div usuario></div>
             </div><!-- /content -->
             
-            <div role="main" class="ui-content" id="containerPedido" style="display: none;">     
+            <div role="main" class="ui-content" id="containerPedido">     
                <div pedido></div>
             </div><!-- /content -->
             

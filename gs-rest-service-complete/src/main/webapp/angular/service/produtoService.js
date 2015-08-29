@@ -1,19 +1,18 @@
 (function(){
 	
 	var app = angular.module('produtoService' , []);
-
+	var toggleUpdate = true;
 	var urlBase = 'http://localhost:8080';
 
 	app.controller('produtoCtrl' , function($scope,$http, empresa){
 		var toggleCadastro = true;
-		var toggleUpdate = true;
 		var validAll = true;
 		var listItens = [];
 		var itemId = null;
 		var collapsed = false;
 		
 
-		$scope.iniciarCadastro = function(){
+		$scope.iniciarCadastroProduto = function(){
 			if(toggleCadastro == true){
 				$("#form-produto-add").animate({
         			height: '150px',
@@ -32,7 +31,7 @@
 			
 		}
 
-		$scope.mostrarCadastro = function(){
+		$scope.mostrarCadastroProduto = function(){
 			if(toggleCadastro == true){
 				return false;
 			} else {
@@ -40,18 +39,18 @@
 			}
 		}
 
-		$scope.validarPreco = function(){
-			if($scope.preco != null){
-				$scope.preco = "R$ " +  $scope.preco.replace(/[^0-9^()^]/g,'');;
-				$scope.preco = $scope.preco.replace('R$ R$ ', 'R$ ');
+		$scope.validarPrecoProduto = function(){
+			if($scope.precoProd != null){
+				$scope.precoProd = "R$ " +  $scope.precoProd.replace(/[^0-9^()^]/g,'');;
+				$scope.precoProd = $scope.precoProd.replace('R$ R$ ', 'R$ ');
 				return true;
 			} else {
 				return false;
 			}		  
 		}
 
-		$scope.validarDesc = function(){
-			if($scope.descricao != null){
+		$scope.validarDescProduto = function(){
+			if($scope.descricaoProd != null){
 				return true;
 			} else {
 				return false;
@@ -59,12 +58,12 @@
 
 		}
 
-		$scope.isValidAll = function(){
+		$scope.isValidAllProduto = function(){
 				return validAll;
 		}
 
-		$scope.mostrarCamposNulos = function(){
-			if(validaCampos()){
+		$scope.mostrarCamposNulosProduto = function(descricao, preco){
+			if(validaCamposProduto(descricao, preco)){
 				validAll = true;	
 			} else {
 				validAll = false;
@@ -72,10 +71,9 @@
 			}
 		}
 
-		$scope.cadastrarProdutoController = function(){
-			if(validaCampos()){
-				var descricao = $scope.descricao;
-				var preco = $scope.preco.replace('R$ ', '');
+		$scope.cadastrarProdutoController = function(descricao, preco){
+			if(validaCamposProduto(descricao, preco)){
+				var preco = preco.replace('R$ ', '');
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarProdutoController?' + data).success(function(data,status){	
@@ -93,9 +91,9 @@
 		}
 
 
-		function validaCampos(){
-			if($scope.preco != null &&
-				$scope.descricao != null){
+		function validaCamposProduto(descricao,preco){
+			if(descricao != null &&
+				preco != null){
 				return true;	
 			} else {
 				return false;
@@ -121,35 +119,33 @@
 			}, 50);
 		}
 
-		$scope.atualizarForm = function(id){
+		$scope.atualizarFormProduto = function(id){
 			var element_accord = "#"+ id;
-			$(element_accord).hide();
 			var element_update = '#update-form-'+id;
-			$(element_update).show();
-			if(toggleUpdate == true){
+			
+			if(toggleUpdate){
+				$(element_update).show();
     			toggleUpdate = false;
-    		} 
+    		} else {
+    			$(element_update).hide();
+    			toggleUpdate = true
+    		}
 		} 
 
-		$scope.cancelUpdate = function(id){
-			var element_accord = "#"+ id;
-			$(element_accord).show();
-			var element_update = '#update-form-'+id;
-			$(element_update).hide();
-    		toggleUpdate = true;
+		$scope.cancelUpdateProduto = function(id){
+
 		}
 
-		$scope.mostrarUpdateForm = function(){
+		$scope.mostrarUpdateFormProduto = function(){
 			return toggleUpdate;
 		}
 
 		$scope.atualizarProdutoController = function(id , descricao, preco){
-			if(validaCamposUpdate(id,descricao,preco)){
+			if(validaCamposUpdateProduto(id,descricao,preco)){
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({id: id , descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.get(urlBase + '/atualizarProdutoController?' + data).success(function(data,status){	
-						$scope.produto = data;
-						$scope.produtos.push($scope.produto);
+					$scope.listProdutos();
 				});
 				var element_update = '#update-form-'+id;
 				$(element_update).hide();
@@ -157,7 +153,7 @@
 			}
 		}
 
-		function validaCamposUpdate(id,descricao,preco){
+		function validaCamposUpdateProduto(id,descricao,preco){
 			if(	id != null && 
 				descricao != null &&
 				preco != null){

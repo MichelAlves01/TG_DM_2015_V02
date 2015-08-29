@@ -16,26 +16,34 @@
         $scope.enderecos = [];
         
         
-        function visibilityControle( nivelOp ){
+        function visibilityControle( nivelOp  ){
+        
             if(nivelOp == 1){
+                $('#containerPrincipal').animate({height: '0px'});
                 $("#containerPrincipal").show();
                 $("#containerUsuario").hide();
-                $("#containerProdutos").hide();
+                $("#produtosContainer").hide();
+                $("#containerProdutos").hide();               
                 $("#containerPedido").hide();
                 nivel = 1;
+                visibilityCarrinho(nivel , true);
             } else if(nivelOp == 2){
                  $("#containerPrincipal").hide();
                 $("#containerUsuario").hide();
+                $("#produtosContainer").show();
                 $("#containerProdutos").show();
                 $("#containerPedido").hide();
                 nivel = 2;
+                visibilityCarrinho(nivel , true);
             } 
             else if(nivelOp == 3){
                 $("#containerPrincipal").hide();
                 $("#containerUsuario").hide();
+                $("#produtosContainer").hide();
                 $("#containerProdutos").hide();
                 $("#containerPedido").show();
                 nivel = 3;
+                visibilityCarrinho(nivel , true);
             }
         }
         
@@ -176,21 +184,44 @@
             return valor;
         }
         
+        function visibilityCarrinho( nivelOp , showCar){
+            if(!showCar){
+                if(nivelOp == 1){
+                    $('#containerPrincipal').animate({height: '0px'});
+                } else if(nivelOp == 2) {
+                    $("#produtosContainer").animate({height: '0px'});
+                    $("#containerProdutos").hide(); 
+                } else if(nivelOp == 3) {
+                    $("#containerPedido").animate({height: '0px'});
+                }
+            } else {
+                if(nivelOp == 1){
+                    $('#containerPrincipal').animate({height: '80%'});                  
+                } else if(nivelOp == 2) {
+                    $("#produtosContainer").animate({height: '80%'});
+                    $("#containerProdutos").show();
+                } else if(nivelOp == 3) {
+                    $("#containerPedido").animate({height: '80%'});
+                }
+            }
+            
+        }
         $scope.comandaConteudo = function(){
-            if(showCar == false){
+            if(!showCar){
                 $('#comandaConteudo').animate({height: '80%'});
-                $('#containerPrincipal').animate({height: '0px'});
-                $('#comandaConteudo').show();
+                visibilityCarrinho(nivel , showCar);
+                 $('#comandaConteudo').show();
                 showCar = true;
             } else {
                 $('#comandaConteudo').animate({height: '0px'});
-                $('#containerPrincipal').animate({height: '80%'});
+                visibilityCarrinho(nivel , showCar);
                 $('#comandaConteudo').hide();
                 showCar = false;
             }
             
         };
-
+        
+       
          $scope.addProduto = function(empresa, produto ){
             
             if($scope.carrinho == null){
@@ -249,9 +280,15 @@
             $scope.numero = "";
         }
         
+        $scope.inicio = function(){
+            visibilityControle(1);
+        }
+        
         $scope.voltar = function(){
             visibilityControle(nivel - 1);
         }
+        
+        
     });
     
 

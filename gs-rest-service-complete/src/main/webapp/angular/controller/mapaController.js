@@ -12,7 +12,7 @@
 			tambem mostra o mapa na tela com um marcador no endereço informado.  
 		*/
 		$scope.getMapalocalizacaoInicial = function(){
-			setTimeout(function(){ 
+			setTimeout(function(){
 					//inicia o mapa com uma localização padrão.
 					latLong = new google.maps.LatLng($scope.empresa.latitude, $scope.empresa.longitude);
 					if(raio == null){
@@ -47,7 +47,7 @@
 
 				   	$scope.definirRaio($scope.empresa.cpfCnpj , raio);
 				   	$scope.slider();
-			}, 1000);
+			}, 100);
 
 		}
 
@@ -117,7 +117,7 @@
 						    // Add the circle for this city to the map.
 				    setTimeout(function() {
 				    	cityCircle = new google.maps.Circle(populationOptions);
-				   	}, 1000);
+				   	}, 100);
 				    }
 		}
 
@@ -125,11 +125,9 @@
 		$scope.definirRaio = function(cpfCnpj , raio){
 
 			var data = $.param({cpfCnpj: cpfCnpj , raio: raio});
-			setTimeout(function() {
 				$http.get(urlBase + '/definirRaioController?' + data).success(function(data,status){
 					$scope.empresa = data;
 				})
-			}, 5000);
 			console.log("foi");
 			
 		}

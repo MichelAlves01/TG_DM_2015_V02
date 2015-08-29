@@ -3,20 +3,21 @@ body{
 
 }
 
-#containerPrincipal, containerUsuario, containerPedido, containerProdutos{
+#containerPrincipal, #containerUsuario, #containerPedido, #produtosContainer{
 		height: 80%;
 		width: 100%;
 		margin: 0px;
         padding: 0px;
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#979797+0,3c3c3c+100 */
-		background: #979797; /* Old browsers */
-		background: -moz-linear-gradient(45deg,  #979797 0%, #3c3c3c 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#979797), color-stop(100%,#3c3c3c)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(45deg,  #979797 0%,#3c3c3c 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(45deg,  #979797 0%,#3c3c3c 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(45deg,  #979797 0%,#3c3c3c 100%); /* IE10+ */
-		background: linear-gradient(45deg,  #979797 0%,#3c3c3c 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#979797', endColorstr='#3c3c3c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+background: #45484d; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 
 }
 #cabecalho{
@@ -225,4 +226,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 #btnComprar{
     padding-top: 5px;
     padding-bottom: 5px;    
+}
+#accordion2{
+    height: 80%;
+    overflow: auto;
+}
+
+.accordion-inner{
+    background-color: #ffffff;
+}
+
+#endereco{
+    background-color: #ffffff;
 }

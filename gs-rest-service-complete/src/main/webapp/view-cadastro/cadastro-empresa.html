@@ -1,16 +1,4 @@
-										<script type="text/javascript">
-												$(document).ready(function() { 
-													    $('#cep').keypress(function(e) {
-													    	if(e.which == 13){
-													    		$.blockUI({ message: $('#esperarCep') }); 
-													    	} 
 
-													    	console.log($('#bairro').value);
-	
-													    		setTimeout($.unblockUI, 10000); 
-													    });    
-													}); 
-										</script>
 										<form class="form-horizontal">
 								   			<fieldset>	
 											   <table >											
@@ -21,7 +9,7 @@
 																			<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="isValidCep()"></i>
 																						<i class="icon-ok" ng-show="isValidCep()"></i></font>
 																			</label>
-																			<input type="text" ng-model="cep" ng-change="verificarCep()" ng-blur="verificarCep(); getLatitudeLongitude();" class="input-large" id="cep" placeholder="CEP apenas numeros" required/>
+																			<input type="text" ng-model="cep" ng-change="verificarCep(cep)" ng-blur="verificarCep(cep); getLatitudeLongitude();" class="input-large" id="cep" placeholder="CEP apenas numeros" required/>
 																		</fieldset>
 																	</td>
 														<td>

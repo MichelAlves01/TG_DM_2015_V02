@@ -76,16 +76,25 @@
 						
 			</script>
 
-			<script>
-					
+			<script type="text/javascript">
+				$(document).ready(function() { 
+					 $('#cep').keypress(function(e) {
+						if(e.which == 13){
+							$.blockUI({ message: $('#esperarCep') }); 
+						} 
 
-			
-	</script>
+						console.log($('#bairro').value);
+	
+						setTimeout($.unblockUI, 10000); 
+						});    
+				}); 
+			</script>
 </head>
 
 
 <body ng-controller="EmpresaCtrl" data-ng-init="starting()">
 	<!-- Todo codigo referente a tela de login -->
+	<div ng-controller="cadastroEmpresaInicio">
 	<div id="centro" class="login">
 		<table>
 			<tr>
@@ -182,6 +191,7 @@
 					</div>
 		</div>
 	</div>
+	</div>
 
 <!--	
 		#################################################################################################################################
@@ -195,9 +205,9 @@
 		<!--espaço entre o cabecalho e o form -->
 			<div id="sub-cabecalho"></div>
 				<!--Código formulario principal-->
-				<div id="form-main"   ng-controller="itemCtrl" >
+				<div id="form-main"   ng-controller="itemCtrl">
 				   	<div id="form-title"> 
-				   		<label><font color="#ffffff">Delivery Gerenciador</font></label>
+				   		<label><font color="#ffffff">{{empresa.nome}}</font></label>
 				   	</div>	
 				   	<div class="tabbable tabs-left" ng-controller="mapaRaio" >
 						<ul class="nav nav-tabs" id="painel-esquerda" >
@@ -225,7 +235,7 @@
 							<div class="tab-pane" id="tab3">
 								<div produto></div>
 							</div>
-							<div class="tab-pane active" id="tab4">
+							<div class="tab-pane" id="tab4">
 								<div  mapatab></div>			     		 
 							</div>
 					</div>

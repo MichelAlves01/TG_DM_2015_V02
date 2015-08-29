@@ -10,7 +10,7 @@
 		var validAll = true;
 		
 
-		$scope.iniciarCadastro = function(){
+		$scope.iniciarCadastroItem = function(){
 			if(toggleCadastro == true){
 				$("#form-item-add").animate({
         			height: '150px',
@@ -29,7 +29,7 @@
 			
 		}
 
-		$scope.mostrarCadastro = function(){
+		$scope.mostrarCadastroItem = function(){
 			if(toggleCadastro == true){
 				return false;
 			} else {
@@ -37,7 +37,7 @@
 			}
 		}
 
-		$scope.validarPreco = function(){
+		$scope.validarPrecoItem = function(){
 			if($scope.preco != null){
 				$scope.preco = "R$ " +  $scope.preco.replace(/[^0-9^()^]/g,'');;
 				$scope.preco = $scope.preco.replace('R$ R$ ', 'R$ ');
@@ -60,8 +60,8 @@
 				return validAll;
 		}
 
-		$scope.mostrarCamposNulos = function(){
-			if(validaCampos()){
+		$scope.mostrarCamposNulos = function(descricao,preco){
+			if(validaCampos(descricao,preco)){
 				validAll = true;	
 			} else {
 				validAll = false;
@@ -69,11 +69,9 @@
 			}
 		}
 
-		$scope.cadastrarItemController = function(){
-			alert('deu bom');
-			if(validaCampos()){
-				var descricao = $scope.descricao;
-				var preco = $scope.preco.replace('R$ ', '');
+		$scope.cadastrarItemController = function(descricao,preco){
+			if(validaCampos(descricao,preco)){
+				var preco = preco.replace('R$ ', '');
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarItemController?' + data).success(function(data,status){
@@ -91,9 +89,9 @@
 		}
 
 
-		function validaCampos(){
-			if($scope.preco != null &&
-				$scope.descricao != null){
+		function validaCampos(descricao,preco){
+			if(preco != null &&
+				descricao != null){
 				return true;	
 			} else {
 				return false;

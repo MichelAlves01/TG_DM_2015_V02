@@ -33,22 +33,20 @@
 		    	$http.post(urlBase + '/iniciaCadastroEmpresa?'+ data).
 	        													success(function(data,status) {
 	        														$scope.empresa = data;
-	        														visibilityControl('cadastro')
-
+	        														visibilityControl('cadastro' , true);
+	        														$scope.getLatitudeLongitude();
 	        													if($scope.empresa.status == 1){
-																	$growlUI('Erro ao enviar','CPF ou CNPJ ja esta cadastrado','E');
+																	$.growlUI('Erro ao enviar','CPF ou CNPJ ja esta cadastrado','E');
+																	visibilityControl('login' , false);
+																	$scope.cpfCnpj = "";
+																	statusCpfCnpj = false;
 																} else {
 																		depoisCadastro = false;
-														    			$("#cadastro").removeAttr("disabled");
-														    			$("#atualizar").hide();
-														    			$("#excluir").hide();
-														    			$('#tab-update').removeClass( "active" );
-														    			$('#tab-cadastro').toggleClass( "active" );
 														    			$scope.getEstados();
 																	if($scope.empresa.tipo != null){
 																		depoisCadastro = true;
-
 																		latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
+																		
 																	}
 																}	
 	           													 
@@ -164,7 +162,7 @@
 		    }
 	  });
 
-		function visibilityControl(visible){
+		function visibilityControl(visible , cadastro){
 
 				if(visible == 'login'){
 					$('.login').show();
@@ -174,12 +172,30 @@
 					$('.login').hide();
 					$('.cadastro').show();
 					$('.principal').hide();
+					visiblityCadastro(cadastro);
 				} else if(visible == 'principal'){
 					$('.login').hide();
 					$('.cadastro').hide();
 					$('.principal').show();
+					$('#pedidoOp').toggleClass('active');
+					$('#tab1').toggleClass('active');
 				}
 			}
+
+		function visiblityCadastro(cadastro){
+			if(cadastro){
+				$("#cadastro").removeAttr("disabled");
+				$("#atualizar").hide();
+				$("#excluir").hide();
+				$('#tab-update').removeClass( "active" );
+				$('#tab-cadastro').toggleClass( "active" );
+			} else {
+				$("#cadastro").hide();
+		    	$("#atualizar").toggleClass( "active" );
+		    	$("#excluir").show();
+		    	$('#tab-update').toggleClass( "active" );
+			}
+		}
 
 		/*
 			Controller que executa as funções finais para 
@@ -192,15 +208,15 @@
 			 var isLogin;
 
 
-			 $scope.login = function(){
+			 $scope.login = function(username, password){
 
-			      var data = $.param({username: $scope.username , password: $scope.password});
+			      var data = $.param({username: username , password: password});
 			      $http.get(urlBase + '/login?' + data).success(function(data , status) {
 			      			setTimeout(function(){
 			      				$scope.empresa = data;
 								cpfCnpj = data.cpfCnpj;
 								if($scope.empresa != ""){
-									visibilityControl('principal');
+									visibilityControl('principal' , false);
 									$scope.getPedidosController(cpfCnpj);
 								} else {
 									$.growlUI('Senha ou usuario incorreto', 'verifique e tente novamente', 'E'); 
@@ -267,7 +283,7 @@
 			}
 
 			$scope.starting = function(){
-					visibilityControl('login');
+					visibilityControl('login' , false);
 					
 					/*
 					 	se o tipo ainda estiver nulo ativas apenas aba de cadastro
@@ -356,7 +372,7 @@
 									$('#pedidoOp').toggleClass('active');
 									$('#tab3').removeClass('active');
 									$('#tab4').removeClass('active');
-									visibilityControl('principal');
+									visibilityControl('principal' , false);
 									$scope.getLatitudeLongitude();
 								
 								
@@ -418,19 +434,20 @@
 			tambem mostra o mapa na tela com um marcador no endereço informado.  
 		*/
 		$scope.getLatitudeLongitude = function(){
-			setTimeout(function() {
+			
 					//inicia o mapa com uma localização padrão.
 					if(latLong == null){
 						latLong = new google.maps.LatLng(-23.5505199,-46.63330939999997);
 					}
 
 					var valorZoom;
-					//define o valor de zoom quando o endereço for o definido pelo usuario.
-					if($scope.estado == null){
-						valorZoom = 4;
-					} else {
-						valorZoom = 15;
-					}
+					setTimeout(function() {
+						//define o valor de zoom quando o endereço for o definido pelo usuario.
+						if($scope.estado == null){
+							valorZoom = 4;
+						} else {
+							valorZoom = 15;
+						}
 					
 					//redireciona o mapa para o endereço inicial.
 					var mapOptions = {
@@ -439,7 +456,7 @@
 					  }
 
 					var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-					var map = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
+					var map2 = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
 					var geocoder = new google.maps.Geocoder();
 
 					//quando o estado for diferente de nulo redireciona o mapa,
@@ -460,8 +477,10 @@
 						do endereço informado. e adiciona o marcador no endereço.
 					*/
 				  	geocoder.geocode( { 'address': address}, function(results, status) {
-				    if (status == google.maps.GeocoderStatus.OK) {
+				  	setTimeout(function(){
+				  		if (status == google.maps.GeocoderStatus.OK) {
 				      	map.setCenter(results[0].geometry.location);
+				      	map2.setCenter(results[0].geometry.location);
 				   		latLong = results[0].geometry.location;
 				   		var resLatLong = latLong.toString().split(","); 
 				   		latitude = resLatLong[0].replace("(", ""); 
@@ -474,15 +493,18 @@
 					     draggable:true,
     					animation: google.maps.Animation.DROP
 					  });
-					  }
+					 }
+
+				    
 
 					
 
 				    } else {
 				      alert('Geocode was not successful for the following reason: ' + status);
 				    }
+				    } , 100);
 				  });
-			}, 1000);
+				}, 100);
 		}
 
 		
@@ -545,14 +567,14 @@
 			endereço < http://cep.correiocontrol.com.br/ > o qual
 			retornará um JSON com os dados do CEP(nome cidade, sigla estado e nome da rua)
 		*/
-		$scope.verificarCep = function(){
+		$scope.verificarCep = function(cep){
 				
-				if(cepValue != null && $scope.cep != cepValue.cep){
+				if(cepValue != null && cep != cepValue.cep){
 					cepValue = null;
 				}
 
-				if($scope.cep != null && $scope.cep.length == 8){
-					$http.get('http://cep.correiocontrol.com.br/'+ $scope.cep +'.json').success(function(data,status){
+				if(cep != null && cep.length == 8){
+					$http.get('http://cep.correiocontrol.com.br/'+ cep +'.json').success(function(data,status){
 						cepValue = data;
 					});
 
@@ -673,10 +695,7 @@
 		*/
 		$scope.getEmpresaController = function(cpfCnpj){
 					depoisCadastro = false;
-			 		$("#cadastro").hide();
-		    		$("#atualizar").toggleClass( "active" );
-		    		$("#excluir").show();
-		    		$('#tab-update').toggleClass( "active" );
+			 		visibilityControl('cadastro' , false);
 
 				var data = $.param({cpfCnpj: cpfCnpj});
 				$http.get(urlBase + '/getEmpresaController?' + data).success(function(data,status){

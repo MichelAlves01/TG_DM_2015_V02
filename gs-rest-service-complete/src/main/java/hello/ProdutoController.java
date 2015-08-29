@@ -27,7 +27,7 @@ public class ProdutoController {
 	private static ProdutoImpl produtoImpl;
 	
 	@RequestMapping(value="/cadastrarProdutoController",method=RequestMethod.POST)
-	public void cadastrarProduto(	@RequestParam(value="descricao") String descricao,
+	public Produto cadastrarProduto(	@RequestParam(value="descricao") String descricao,
 									@RequestParam(value="preco") double preco,
 									@RequestParam(value="cpfCnpj") String cpfCnpj){
 		
@@ -41,6 +41,8 @@ public class ProdutoController {
 		
 		produtoService = new ProdutoService();
 		produtoService.cadastrarProdutoService(produto);
+		
+		return produto;
 	}
 	
 	@RequestMapping(value="/getProdutosController" , method=RequestMethod.GET)
