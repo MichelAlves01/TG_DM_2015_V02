@@ -64,13 +64,13 @@ public class ProdutoImpl {
 		final ItemProdutoImpl itemProdutoImpl = new ItemProdutoImpl();
 		for(Produto prod : produtos){
 			List<ItemProduto> itensProduto = itemProdutoImpl.getItensProdutoPorProduto(prod);
-			for(ItemProduto itensProd : itensProduto ){
+			for(ItemProduto itensProd : itensProduto){
 				if(itensProd.getProduto().getId() == prod.getId()){
 					item = itemImpl.getItemDAO(itensProd.getItem().getId());
 					prod.addItem(item);
+					itensProd.addItem(item);
 				}
 			}
-			
 		}
 		session.close();
 		return produtos;

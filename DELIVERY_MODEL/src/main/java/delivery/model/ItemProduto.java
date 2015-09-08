@@ -1,11 +1,15 @@
 package delivery.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemProduto {
 	
 	private Produto produto;
 	private Item item;
 	private boolean itemAdicional;
-
+	private List<Item> itens = new ArrayList<Item>();
+	
 	public Produto getProduto() {
 		return produto;
 	}
@@ -24,7 +28,9 @@ public class ItemProduto {
 	public void setItemAdicional(boolean itemAdicional) {
 		this.itemAdicional = itemAdicional;
 	}
-	
+	public void addItem(Item item){
+		this.itens.add(item);
+	}
 	
 	
 }

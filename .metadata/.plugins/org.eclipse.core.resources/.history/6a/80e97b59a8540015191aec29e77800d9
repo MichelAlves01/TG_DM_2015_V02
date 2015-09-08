@@ -1,0 +1,4 @@
+jdbc.driverClassName=org.postgresql.Driver
+jdbc.url=jdbc:postgres://vplmkuoubakfdf:TKuNlflkb4siNWvi9cfVZb041w@ec2-54-83-58-191.compute-1.amazonaws.com:5432/d49ncn712eel2f
+jdbc.username=postgres
+jdbc.password=an121343

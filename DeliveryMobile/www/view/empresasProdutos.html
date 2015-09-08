@@ -2,8 +2,27 @@
                 <div class="accordion" id="accordion2">
                   <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj" id="emp{{empresa.cpfCnpj}}tipo">
                     <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">
-                        <font style="font-size: 16px;">{{empresa.nome}}</font>
+                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" ng-href="#emp{{empresa.cpfCnpj}}id" id="accord">             
+                          
+                        <!--Codigo pertencente a cabecalho da empresa -->
+                            <table>
+                                <tr>
+                                    <td style="width: 85%; padding: 2px;">
+                                        <font style="font-size: 16px;">{{empresa.nome}}</font>
+                                        <table>
+                                            <td><font style="font-size: 10px; color: #999999" id="emp{{empresa.cpfCnpj}}dist"></font></td>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <img src="img/neri_lanches.jpg" class="img-circle" style="height: 50px; width: 50px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                          
+                          
+                          
+                          
                       </a>
                     </div>
                     <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse">
@@ -11,7 +30,7 @@
                         <div class="accordion" id="accordion2">
                           <div class="accordion-group" ng-repeat="produto in empresa.produto track by produto.id">
                             <div class="accordion-heading">
-                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord" style="padding: 5px; 15px;">
                                 <font style="font-size: 16px; color: #55555;">{{produto.descricao}}</font>
                               </a>
                             </div>

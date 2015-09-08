@@ -11,9 +11,9 @@ public class Produto {
 	private Empresa empresa;
 	private int status;
 	private List<Item> itens = new ArrayList<Item>();
-	
+	private List<ItemProduto> itensProduto = new ArrayList<ItemProduto>();	
 	private List<ItemPedido> itensPedido;
-	private List<ItemProduto> itensProduto;
+
 	
 	public int getId() {
 		return id;
@@ -69,5 +69,8 @@ public class Produto {
 	public void addItem(Item item){
 		this.itens.add(item);
 	}
-	
+	public void addItensProd(ItemProduto itemProduto){
+		this.itensProduto.add(itemProduto);
+	}
+
 }

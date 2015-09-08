@@ -10,6 +10,7 @@
 	var isLogin = true;
 	var isCadastro = false;
 	var repeat = 0;
+	var senhaStatus = false;
 	/*
 		Controller que contem todas funções 
 		utilizadas na pagina de login e cadastro inicial
@@ -35,6 +36,7 @@
 	        														$scope.empresa = data;
 	        														visibilityControl('cadastro' , true);
 	        														$scope.getLatitudeLongitude();
+	        														$scope.setEmpresa($scope.empresa);
 	        													if($scope.empresa.status == 1){
 																	$.growlUI('Erro ao enviar','CPF ou CNPJ ja esta cadastrado','E');
 																	visibilityControl('login' , false);
@@ -168,10 +170,14 @@
 					$('.login').show();
 					$('.cadastro').hide();
 					$('.principal').hide();
+					$('#pedidoOp').removeClass('active');
+					$('#tab1').removeClass('active');
 				} else if(visible == 'cadastro'){
 					$('.login').hide();
 					$('.cadastro').show();
 					$('.principal').hide();
+					$('#pedidoOp').removeClass('active');
+					$('#tab1').removeClass('active');
 					visiblityCadastro(cadastro);
 				} else if(visible == 'principal'){
 					$('.login').hide();
@@ -283,7 +289,18 @@
 			}
 
 			$scope.starting = function(){
-					visibilityControl('login' , false);
+
+					$http.get(urlBase + '/verificarLogin').success(function(data , status){
+						
+						if(data != ""){
+							visibilityControl('principal' , false);
+							$scope.getPedidosController();
+							$scope.empresa = data;
+						} else {
+							visibilityControl('login' , false);
+						}
+					});
+					
 					
 					/*
 					 	se o tipo ainda estiver nulo ativas apenas aba de cadastro
@@ -319,7 +336,7 @@
 				$scope.telFixo != null &&
 				$scope.telMovel != null &&
 				$scope.email != null &&
-				$scope.senha != null){
+				$scope.senha != null && senhaStatus){
 
 					fieldsValid = true;
 				} else {
@@ -493,6 +510,12 @@
 					     draggable:true,
     					animation: google.maps.Animation.DROP
 					  });
+				   	var marker = new google.maps.Marker({
+					     position: latLong,
+					     map: map2,
+					     draggable:true,
+    					animation: google.maps.Animation.DROP
+					  });
 					 }
 
 				    
@@ -626,6 +649,7 @@
 			verifica se o campo telefone fixo está nulo
 		*/
 		$scope.isValidTelFixo = function(){
+
 			if($scope.telFixo != null){
 				$scope.telFixo = $scope.telFixo.replace(/[^0-9^()^ ^-]/g,'');
 				if(event.keyCode != 8 && event.keyCode != null){
@@ -642,7 +666,7 @@
 		/*
 			verifica se o campo telefone móvel está nulo
 		*/
-		$scope.isValidTelMovel = function(e){
+		$scope.isValidTelMovel = function(){
 			if($scope.telMovel != null){
 				$scope.telMovel = $scope.telMovel.replace(/[^0-9^()^ ^-]/g,'');
 				if(event.keyCode != 8 && event.keyCode != null){
@@ -672,10 +696,15 @@
 			também se as senhas são iguais.
 		*/
 		$scope.isValidSenha = function(){
-			if($scope.senha != null && $scope.senha == $scope.confirmaSenha){
+			if(	$scope.senha != null && 
+				$scope.senha == $scope.confirmaSenha && 
+				$scope.senha.length > 8 && 
+				$scope.senha.length < 64){
 				return true;
+				senhaStatus = true;
 			} else {
 				return false;
+				senhaStatus = false;
 			}
 		}
 
@@ -710,7 +739,9 @@
 					$scope.numero = enderecoS[2];
 					$scope.cep = data.cep;
 					$scope.telFixo = data.telefoneFixo;
+					$scope.isValidTelFixo();
 					$scope.telMovel = data.telefoneMovel;
+					$scope.isValidTelMovel();
 					$scope.email = data.email;
 				});
 
@@ -750,6 +781,7 @@
 
 								depoisCadastro = true;
 								$.growlUI('Atualizado com sucesso.', '', 'C');
+								visibilityControl('principal' , false);
 				} else {
 					console.log("Existem campos não preenchido");
 					$.growlUI('Erro ao Atualizar','Existem campos não preenchido','E');
@@ -789,6 +821,10 @@
 
 				});
 				location.href = "/";
+			}
+
+			$scope.setEmpresa = function(empresa){
+				$scope.empresa = empresa;
 			}
 		
 		});

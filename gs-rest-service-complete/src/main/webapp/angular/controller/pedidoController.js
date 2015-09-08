@@ -28,5 +28,19 @@
 			$('.pedido-aceitar').hide();
 			$('.pedido-rejeitar').hide();
 		}
+
+		$scope.calPrecoTotal = function(produtos){
+			$scope.total = 0;
+			for (var i=0 ; i<produtos.length ; i++) {
+				$scope.total += produtos[i].produto.preco;
+			};
+		}
+
+		$scope.splitValuesObs = function(values){
+			values = values.split(",");
+			$scope.observacao = values[0];
+			$scope.pgtoTipo = values[1];
+			$scope.pgtoTipoVal = values[2];
+		}
 	});
 })();

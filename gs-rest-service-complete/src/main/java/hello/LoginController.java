@@ -25,8 +25,8 @@ public class LoginController {
 	    }
 	  
 	  @RequestMapping(value="/login", method=RequestMethod.GET)
-	  public Empresa login(@RequestParam(value="username") String username,
-			  			@RequestParam(value="password") String password){
+	  public Empresa login(	@RequestParam(value="username") String username,
+			  				@RequestParam(value="password") String password){
 		  MyUserDetailsService myUserDetailService = new MyUserDetailsService();
 		  SecurityContextHolder.getContext().setAuthentication(
 					new UsernamePasswordAuthenticationToken(username, password, AuthorityUtils.createAuthorityList("ADMIN")));
@@ -52,5 +52,23 @@ public class LoginController {
 	      
 	      System.out.println("user logged: " + name);
 	      return empresa;
+	  }
+	  
+	  @RequestMapping(value="/verificarLogin" , method=RequestMethod.GET)
+	  public Empresa verificarLogin(){
+		  final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      final String username = auth.getName(); //get logged in username
+	      User user = new User();
+	      final UserImpl userImpl = new UserImpl();
+	      final EmpresaImpl empresaImpl = new EmpresaImpl();
+	      Empresa empresa = new Empresa();
+	      
+	      if(username != "anonymousUser"){
+	    	  user = userImpl.getUserDAO(username);
+	    	  empresa = empresaImpl.getEmpresaDAO(user.getEmpresa().getCpfCnpj());
+	    	  return empresa;
+	      } else {
+	    	  return null;
+	      }
 	  }
 }

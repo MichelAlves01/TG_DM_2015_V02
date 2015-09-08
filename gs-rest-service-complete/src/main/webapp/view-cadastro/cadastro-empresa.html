@@ -101,20 +101,20 @@
 																	<td style="padding-right: 10px;">
 																		<fieldset>
 																			<label>Telefone Fixo <font ng-hide="isValidAll()">
-																				<i id="animate7" style="position: relative;"  class="icon-hand-down" ng-hide="isValidTelFixo()"></i>
-																				<i class="icon-ok" ng-show="isValidTelFixo()"></i></font>
+																				<i id="animate7" style="position: relative;"  class="icon-hand-down" ng-hide="isValidTelFixo(0)"></i>
+																				<i class="icon-ok" ng-show="isValidTelFixo(0)"></i></font>
 																			</label>
-																			<input type="text" ng-model="telFixo" class="input-large" placeholder="informe o telefone fixo" required/>
+																			<input type="text" ng-model="telFixo" class="input-large" placeholder="informe o telefone fixo" ng-keyDown="event=$event"  required/>
 																		</fieldset>
 																	</td>
 																	<td>
 																		<fieldset>
 																			<label>Telefone Celular
 																			<p  ng-hide="isValidAll()">	
-																			<font color="red" size="1" ng-hide="isValidTelMovel()"><i id="animate8" style="position: relative;"  class="icon-hand-down" ></i> informe pelo menos um numero de telefone</font>
-																				<i class="icon-ok" ng-show="isValidTelMovel()"></i></p>
+																			<font color="red" size="1" ng-hide="isValidTelMovel(event)"><i id="animate8" style="position: relative;"  class="icon-hand-down" ></i> informe pelo menos um numero de telefone</font>
+																				<i class="icon-ok" ng-show="isValidTelMovel(event)"></i></p>
 																			</label>
-																			<input type="text" ng-model="telMovel" class="input-large" placeholder="informe um celular" required/>
+																			<input type="text" ng-model="telMovel" class="input-large" placeholder="informe um celular" ng-keyDown="isValidTelMovel(event=$event)"  required/>
 																		<fieldset>
 																	</td>
 																</tr>
@@ -124,7 +124,7 @@
 													</tr>
 													<tr>
 														<td>
-															<label>email 	<font ng-hide="isValidAll()"><i id="animate9" style="position: relative;"  class="icon-hand-down" ng-hide="isValidEmail()"></i>
+															<label>email / Nome de usuario	<font ng-hide="isValidAll()"><i id="animate9" style="position: relative;"  class="icon-hand-down" ng-hide="isValidEmail()"></i>
 																			<i class="icon-ok" ng-show="isValidEmail()"></i></font>
 															</label>
 															<input type="email" ng-model="email" class="input-xxlarge" placeholder="informe um email como nome de usuario" required/>

@@ -138,23 +138,6 @@
 									  			
 									  		</div>	
 							          </div>
-			
-							          Adicionais
-							          <div id="adicionais-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id, true)">
-									  		<div ng-repeat="itemProduto in listAdicionalProduto" class="placeholder" id="itemdropped">		
-									  			<table>
-									  				<tr>
-									  					<td  width="120px">
-									  						{{itemProduto.item.descricao}}
-									  					</td>
-									  					<td width="15px" style="width: 15px; cursor: pointer;">	
-									  						<i class="icon-remove" ng-click="excluirItemProduto(itemProduto.produto.id, itemProduto.item.id,true)"></i>
-									  					</td>
-									  				</tr>
-									  			</table>
-									  			
-									  		</div>	
-							          </div>
 							    </div>
 							</div>
 						</div>
@@ -177,7 +160,7 @@
 		<div id="list-itens-produtos">
 		  <div id="form-item-add">	
 			<div id="accordion-heading-item"> 
-				<a class="accordion-toggle" ng-show="mostrarCadastroItem()" style="height: 18px;">
+				<a ng-show="mostrarCadastroItem()" style="height: 18px;">
 					<table>
 						<tr>
 							<td style="width: 565px; border-right: 1px solid #999999;">

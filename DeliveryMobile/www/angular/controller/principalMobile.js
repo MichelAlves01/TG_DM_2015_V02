@@ -19,7 +19,6 @@
         function visibilityControle( nivelOp  ){
         
             if(nivelOp == 1){
-                $('#containerPrincipal').animate({height: '0px'});
                 $("#containerPrincipal").show();
                 $("#containerUsuario").hide();
                 $("#produtosContainer").hide();
@@ -56,30 +55,31 @@
                     if(empresasJson[i].tipo !== 'A'){
                        $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                     }
-                        
+                 
                 }                
             } else  if( produtoTipo == 'servicos'){
                 for(var i=0 ; i < empresasJson.length ; i++){
                     if(empresasJson[i].tipo !== 'S'){
                        $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                     }
-                        
+                   
                 }                
             } else  if( produtoTipo == 'utilitarios'){
                 for(var i=0 ; i < empresasJson.length ; i++){
                     if(empresasJson[i].tipo !== 'U'){
                         $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                     }
-                        
+             
                 }                
             }
-            for(var i=0 ; i < empresasJson.length ; i++){
-                
+            
+            for(var i=0 ; i < empresasJson.length ; i++){    
                 var distancia = calcDistancia(empresasJson[i].latitude, empresasJson[i].longitude, latitude, longitude);
                 
-                if(distancia > empresasJson[i].raio){
+                if(distancia > empresasJson[i].raio){                    
                     $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                 }
+                $('#emp' + empresasJson[i].cpfCnpj + 'dist').text(distancia.toPrecision(4) + " km");
             }
             
             
@@ -287,6 +287,9 @@
         
         $scope.voltar = function(){
             visibilityControle(nivel - 1);
+            for(var i=0 ; i < empresasJson.length ; i++){
+                        $('#emp' + empresasJson[i].cpfCnpj + 'tipo').show();
+            }
         }
         
         

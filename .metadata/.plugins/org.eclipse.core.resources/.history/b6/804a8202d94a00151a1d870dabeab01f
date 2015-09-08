@@ -1,5 +1,0 @@
-package delivery.service.DELIVERY_SERVICE;
-
-public class MyUserDetailsService implements UserDetailsService {
-
-}

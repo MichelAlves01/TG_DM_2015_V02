@@ -34,18 +34,20 @@
 								<center><font>{{pedido.horaFechado}}</font></center>
 							</td>
 							<td style="width: 100px;">
-								<center><font>{{pedido.status}}</font></center>
+								<center><font ng-if="pedido.status == 0">Pendente</font></center>
+								<center><font ng-if="pedido.status == 1">Aprovado</font></center>
+								<center><font ng-if="pedido.status == 2">Rejeitado</font></center>
 							</td>
 						</tr>	
 					</table>
 			   </a>
 			</div>
 		    <div id="{{pedido.id}}" class="accordion-body collapse">
-		      <div class="accordion-inner">
+		      <div class="accordion-inner" data-ng-init="splitValuesObs(pedido.observacao)">
 		      		<table>
 			    		<tr>
 			    			<td>
-						      	<div id="pedido-container">
+						      	<div id="pedido-container" data-ng-init="calPrecoTotal(pedido.itensPedido)">
 							        <font>Itens do Pedido</font>
 							        <p>
 								 		<ul ng-repeat="itens in pedido.itensPedido track by itens.produto.id">
@@ -56,7 +58,12 @@
 									<table>
 										<tr>
 											<td>
-												<font>Observações : {{pedido.observacao}}</font></td>
+												<font>Forma de Pagamento : {{pgtoTipo}} {{pgtoTipoVal}} </font></td>
+										</tr>
+										<tr>
+											<td>
+												<font>Observações : {{observacao}}</font></td>
+
 										 	<!--td style="padding-left: 40px;">
 									 			<input type="checkbox" /> inserir desconto<br/>
 									 			<input type="radio" name="tipo">%
@@ -69,12 +76,12 @@
 									<table>
 										<tr>
 											<td class="total-pedido">
-												<font>Total</font> 
+												<font>Total: </font>  <font style="color: blue">{{total | currency : 'R$'}}</font>
 											</td>
-											<td class="pedido-aceitar">
+											<td class="pedido-aceitar" ng-if="pedido.status == 0">
 												<button type="submit" class="btn btn-success" ng-click="aceitarPedido(pedido.id)">Aceitar</button>
 											</td>
-											<td class="pedido-rejeitar">
+											<td class="pedido-rejeitar" ng-if="pedido.status == 0">
 												<button type="submit" class="btn btn-danger" ng-click="rejeitarPedido(pedido.id)">Rejeitar</button>
 											</td>
 										</tr>

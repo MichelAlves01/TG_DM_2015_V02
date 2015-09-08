@@ -13,13 +13,15 @@
 		
 
 		$scope.iniciarCadastroProduto = function(){
-			if(toggleCadastro == true){
+			if(toggleCadastro){
 				$("#form-produto-add").animate({
         			height: '150px',
         			border: '-bottom: 1px solid #04B404'
     			}, 'fast');
     			$('accordion-toggle').removeAttr('style');
     			toggleCadastro = false;
+    			$( 	)
+    			$scope.precoProd = "";
     			return true;
 			} else {
 				$("#form-produto-add").animate({
@@ -79,6 +81,7 @@
 				$http.post(urlBase + '/cadastrarProdutoController?' + data).success(function(data,status){	
 						$scope.produto = data;
 						$scope.produtos.push($scope.produto);
+						$.growlUI('Cadastrado com sucesso', '', 'C');
 				});
 
 
@@ -86,6 +89,8 @@
         			height: '0px'
     			});
     			toggleCadastro = true;
+			} else {
+				$.growlUI('Erro ao cadastrar', 'verifique e tente novamente', 'E');
 			}
 
 		}
@@ -115,6 +120,7 @@
 			setTimeout(function(){ 
 				$http.get(urlBase + '/excluirProdutoController?' + data).success(function(data,status){
 					$scope.produtos = data;
+					$.growlUI('Excluido com sucesso', '', 'C');
 				});
 			}, 50);
 		}
@@ -146,10 +152,13 @@
 				var data = $.param({id: id , descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.get(urlBase + '/atualizarProdutoController?' + data).success(function(data,status){	
 					$scope.listProdutos();
+					$.growlUI('Atualizado com sucesso', '', 'C');
 				});
 				var element_update = '#update-form-'+id;
 				$(element_update).hide();
     			toggleUpdate = true;
+			} else {
+				$.growlUI('Erro ao atualizar', 'verifique e tente novamente', 'E');
 			}
 		}
 
@@ -263,9 +272,10 @@
 					var data = $.param({idItem: itemId , idProduto: idProduto, itemAdicional: adicional});
 					$http.post(urlBase + '/cadastrarItemProdutoController?' + data).success(function(data,status){
 						$scope.itensProduto = data;
+						
 					});
 					$scope.getItensProduto(idProduto,adicional);
-				}
+				} 
 				
 				itemId = null;
 		}
