@@ -41,7 +41,7 @@
 				
 				/*Gerencia o efeito sanfona*/
 				$(function() {
-				    $( "#accordion" ).accordion();
+				    $( "#accordion2" ).accordion();
 				  });
 				
 				/*Responsavel pelo efeito de Aberto e fechado mudando a cor da bolinha*/
@@ -95,10 +95,13 @@
 <body ng-controller="EmpresaCtrl" data-ng-init="starting()">
 	<!-- Todo codigo referente a tela de login -->
 	<div>
+	<div id="cabecalho-inicio">
+				<label><font style="font-size: 20px;">Delivery Market</font></label>
+			</div>
 	<div id="centro" class="login" ng-controller="cadastroEmpresaInicio">
-		<table>
+		<table style="margin: 0 auto">
 			<tr>
-				<td style="padding-right: 40px;">
+				<td style="padding-right: 30px;">
 					<!--Contem os primeiros dados a ser preenchido e o banner de apresentação do aplicativo-->
 					<div id="anuncio">
 
@@ -117,9 +120,6 @@
 
 	<!--Todo codigo da pagina de cadastro-->
 	<div id="cadastro-page" ng-hide="depoisCadastro()" class="cadastro">
-		<div id="cabecalho">
-				<label><font>Delivery Gerenciador</font></label>
-			</div>
 			<div id="centro">
 			<div id="sub-cabecalho"></div>
 				   <div id="form">

@@ -6,6 +6,7 @@
     var latitude = null;
     var longitude = null;
     var showCar = false;
+    var deviceheight = 0;
     nivel = 1;
     
     
@@ -86,7 +87,7 @@
         };
         
         $scope.getEmpresasProdutosController = function(){
-                var deviceheight = window.orientation == 0 ? window.screen.height : window.screen.width;
+            deviceheight = window.orientation == 0 ? window.screen.height : window.screen.width;
             if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
                 deviceheight = deviceheight / window.devicePixelRatio;
             }
@@ -209,9 +210,11 @@
         }
         $scope.comandaConteudo = function(){
             if(!showCar){
-                $('#comandaConteudo').animate({height: '80%'});
+                var heightComanda = deviceheight + 'px';
+                $('#comandaConteudo').animate({height: heightComanda});
                 visibilityCarrinho(nivel , showCar);
                  $('#comandaConteudo').show();
+                $('#comandaConteudo').css('overflow' , 'auto');
                 showCar = true;
             } else {
                 $('#comandaConteudo').animate({height: '0px'});

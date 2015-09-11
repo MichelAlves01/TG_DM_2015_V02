@@ -27,14 +27,18 @@ public class LoginController {
 	  @RequestMapping(value="/login", method=RequestMethod.GET)
 	  public Empresa login(	@RequestParam(value="username") String username,
 			  				@RequestParam(value="password") String password){
-		  MyUserDetailsService myUserDetailService = new MyUserDetailsService();
-		  SecurityContextHolder.getContext().setAuthentication(
-					new UsernamePasswordAuthenticationToken(username, password, AuthorityUtils.createAuthorityList("ADMIN")));
-		  myUserDetailService.loadUserByUsername(username);
-		  System.out.println("Deu bom login");
 		  
+		  MyUserDetailsService myUserDetailService = new MyUserDetailsService();
+		  
+		  myUserDetailService.loadUserByUsername(username);
 		  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	      String name = auth.getName(); //get logged in username
+		  System.out.println("user logged: " + name);
+		  SecurityContextHolder.getContext().setAuthentication(
+					new UsernamePasswordAuthenticationToken(username, password, AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS")));
+		  System.out.println("Deu bom login");
+	      Object obj = auth.getAuthorities();
+	      System.out.println("user is logged: " + obj);
 	      UserImpl userImpl = new UserImpl();
 	      User user = new User();
 	      if(!username.equals(null) && !password.equals(null)){
@@ -50,8 +54,14 @@ public class LoginController {
 	    	  return null;
 	      }
 	      
-	      System.out.println("user logged: " + name);
+	     
 	      return empresa;
+	  }
+	  
+	  @RequestMapping(value="/Logout" , method=RequestMethod.GET)
+	  public void logout(){
+		  SecurityContextHolder.getContext().setAuthentication(
+					new UsernamePasswordAuthenticationToken("anonimousUser", "", AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS")));
 	  }
 	  
 	  @RequestMapping(value="/verificarLogin" , method=RequestMethod.GET)
@@ -63,7 +73,7 @@ public class LoginController {
 	      final EmpresaImpl empresaImpl = new EmpresaImpl();
 	      Empresa empresa = new Empresa();
 	      
-	      if(username != "anonymousUser"){
+	      if(!username.equals("anonymousUser")){
 	    	  user = userImpl.getUserDAO(username);
 	    	  empresa = empresaImpl.getEmpresaDAO(user.getEmpresa().getCpfCnpj());
 	    	  return empresa;

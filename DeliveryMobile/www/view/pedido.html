@@ -1,10 +1,10 @@
-<div id="endereco" >
-    <label>Endereço para entrega</label>
+<div id="endereco" style="padding: 6px;">
+    <label><strong>Endereço para entrega</strong></label>
     <font size="2"></font>
     <table>
         <tr>
             <td>
-                <font size="2">Confirme seu endereço</font>
+                <font size="2"><strong>Confirme seu endereço</strong></font>
             </td>
         </tr>
         <tr>
@@ -18,7 +18,7 @@
         </tr>
     </table>
     <hr />
-    <label>Forma de pagamento</label>
+    <label><strong>Forma de pagamento</strong></label>
     <font size="3"></font>
     <table>
         <tr style="height: 30px; border-bottom: 1px solid #dddddd;">
@@ -27,7 +27,7 @@
             </td>
             <label>Cartões</label>
             <td style="padding: 10px;">
-                <select ng-model="cartao">
+                <select ng-model="cartao" style="width: 160px;">
                     <option value="Visa">Visa</option>
                     <option value="Master">Master</option>
                     <option value="Outros">Outros</option>
@@ -44,8 +44,8 @@
         </tr>
     </table>
     <hr />
-    <label> Observação </label>
-    <textarea cols="100" lins="10" ng-model="observacao"></textarea>
+    <label> <strong>Observação</strong> </label>
+    <textarea cols="100" lins="10" style="width: 294px;" ng-model="observacao"></textarea>
     <table align="right" ng-controller="CarrinhoCtrl">
         <tr>
             <td>

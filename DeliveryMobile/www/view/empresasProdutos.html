@@ -1,4 +1,4 @@
-<div id="containerProdutos"  style="display: none; heigth: 500px;" data-ng-init="getEmpresasProdutosController()">
+<div id="containerProdutos"  style="display: none; heigth: 500px; overflow: auto;" data-ng-init="getEmpresasProdutosController()">
                 <div class="accordion" id="accordion2">
                   <div class="accordion-group" ng-repeat="empresa in empresas track by empresa.cpfCnpj" id="emp{{empresa.cpfCnpj}}tipo">
                     <div class="accordion-heading">
@@ -17,17 +17,12 @@
                                         <img src="img/neri_lanches.jpg" class="img-circle" style="height: 50px; width: 50px;">
                                     </td>
                                 </tr>
-                            </table>
-                        
-                          
-                          
-                          
-                          
+                            </table>  
                       </a>
                     </div>
                     <div id="emp{{empresa.cpfCnpj}}id" class="accordion-body collapse">
                       <div class="accordion-inner">
-                        <div class="accordion" id="accordion2">
+                        <div class="accordion" id="accordion1">
                           <div class="accordion-group" ng-repeat="produto in empresa.produto track by produto.id">
                             <div class="accordion-heading">
                               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" ng-href="#emp{{produto.id}}id" id="accord" style="padding: 5px; 15px;">

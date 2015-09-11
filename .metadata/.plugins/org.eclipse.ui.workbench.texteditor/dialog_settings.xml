@@ -2,17 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="cadastrarPedido" key="selection"/>
+		<item value=".permitAll()" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value=".hasAnyRole(&quot;ROLE_ANONYMOUS&quot;)"/>
+			<item value="ROLE_ADMIN"/>
+			<item value="&quot;ADMIN&quot;"/>
+			<item value=".hasAnyRole(&quot;ADMIN&quot;)"/>
+			<item value="getEmpresa"/>
 			<item value="cadastrarPedido"/>
 			<item value="produto"/>
 			<item value="@RequestWrapper "/>
 		</list>
 		<list key="replacehistory">
+			<item value=".permitAll()"/>
+			<item value="ROLE_ANONYMOUS"/>
+			<item value="&quot;ROLE_ADMIN&quot;"/>
+			<item value="&quot;ROLE_ANONYMOUS&quot;"/>
+			<item value=".hasAnyRole()"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

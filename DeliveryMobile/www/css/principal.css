@@ -8,16 +8,16 @@ body{
 		width: 100%;
 		margin: 0px;
         padding: 0px;
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
-background: #45484d; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%); /* FF3.6+ */
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
-background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
-background: -o-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Opera 12+ */
-background: -ms-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* IE10+ */
-background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+        background: #45484d; /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%); /* FF3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+        background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Opera 12+ */
+        background: -ms-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* IE10+ */
+        background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    overflow: auto;
 
 }
 #cabecalho{
@@ -187,12 +187,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 
 }
 
-#carrinho{
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-     
-}
 
 #comanda{
     width: 79%;
@@ -206,15 +200,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
     width: 19%;
     border: 1px solid #bbbbbb;
     float: left;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
-    background: #eeeeee; /* Old browsers */
-    background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
+background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+
 
 }
 
@@ -244,4 +240,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 
 .accordion-heading .accordion-toggle{
     padding: 1px 15px;
+}
+
+#itens-comanda{
+    height: 92%;
+    padding: 5px;
+    
+}
+
+#btn-comanda{
+    height: 8%;
+    width: 100%;
+    padding: 0px;
+    background: #cccccc;
+    border: 1px solid #bbbbbb;
+}
+
+#comandaConteudo{
+    border: 2px solid #999999;
 }

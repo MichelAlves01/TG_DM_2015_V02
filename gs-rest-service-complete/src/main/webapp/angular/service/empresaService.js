@@ -172,12 +172,14 @@
 					$('.principal').hide();
 					$('#pedidoOp').removeClass('active');
 					$('#tab1').removeClass('active');
+					$('#cabecalho-inicio').show();				
 				} else if(visible == 'cadastro'){
 					$('.login').hide();
 					$('.cadastro').show();
 					$('.principal').hide();
 					$('#pedidoOp').removeClass('active');
 					$('#tab1').removeClass('active');
+					$('#cabecalho-inicio').show();
 					visiblityCadastro(cadastro);
 				} else if(visible == 'principal'){
 					$('.login').hide();
@@ -185,6 +187,7 @@
 					$('.principal').show();
 					$('#pedidoOp').toggleClass('active');
 					$('#tab1').toggleClass('active');
+					$('#cabecalho-inicio').hide();
 				}
 			}
 
@@ -252,10 +255,18 @@
 			     			
 			      			}, 1000);	
 			      		
-			      });
+			      });    
+			  }
 
-			      
-			      
+			  $scope.logout = function(){
+			  	var data = $.param({username: 'anonymousUser' , password: ''});
+			  	$http.get(urlBase + '/login?' + data).success(function(data , status){
+			  		if(status == 200){
+			  			visibilityControl('login' , false);
+			  			$scope.username = "";
+			  			$scope.password = "";
+			  		}
+			  	});
 			  }
 
 			  $scope.getPedidosController = function(cpfCnpj){
@@ -818,9 +829,10 @@
 				var data = $.param({cpfCnpj: $scope.cpfCnpj});
 
 				$http.post(urlBase + '/excluirEmpresaController?' + data).success(function(data,status){
-
+					visibilityControl('login' , false);
+					$.unblockUI();
 				});
-				location.href = "/";
+				
 			}
 
 			$scope.setEmpresa = function(empresa){

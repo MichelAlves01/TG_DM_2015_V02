@@ -2,6 +2,7 @@
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers("/").permitAll()
 			.antMatchers("/iniciaCadastroEmpresa").permitAll()
-			.antMatchers("/login").permitAll()
+			.antMatchers(HttpMethod.GET , "/login").permitAll()
 			.antMatchers("**/js/**").permitAll()
 			.antMatchers("**/css/**").permitAll()
 			.antMatchers("**/img/**").permitAll()
@@ -28,37 +29,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("**/angular/directives/**").permitAll()
 			.antMatchers("**/view-login/**").permitAll()
 			.antMatchers("**/view-cadastro/**").permitAll()
-			.antMatchers("**/view-principal/**").hasAnyRole("ADMIN")
-			.antMatchers("**/getEmpresaCadastro").hasAnyRole("ADMIN")
-			.antMatchers("**/cadastrarEmpresaController").hasAnyRole("ADMIN")
-			.antMatchers("**/atualizarEmpresaController").hasAnyRole("ADMIN")
-			.antMatchers("**/excluirEmpresaController").hasAnyRole("ADMIN")
-			.antMatchers("**/definirRaioController").hasAnyRole("ADMIN")
-			.antMatchers("**/getCidades").hasAnyRole("ADMIN")
-			.antMatchers("**/getEstados").hasAnyRole("ADMIN")
-			.antMatchers("**/cadastrarItemController").hasAnyRole("ADMIN")
-			.antMatchers("**/getItensController").hasAnyRole("ADMIN")
-			.antMatchers("**/excluirItemController").hasAnyRole("ADMIN")
-			.antMatchers("**/atualizarItemController").hasAnyRole("ADMIN")
-			.antMatchers("**/cadastrarItemProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/getItensProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/excluirItemProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/getPedidoController").hasAnyRole("ADMIN")
-			.antMatchers("**/atualizarStatusPedidoController").hasAnyRole("ADMIN")
-			.antMatchers("**/cadastrarProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/getProdutosController").hasAnyRole("ADMIN")
-			.antMatchers("**/excluirProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/atualizarProdutoController").hasAnyRole("ADMIN")
-			.antMatchers("**/cadastrarUsuarioMobileController").permitAll()
-			.antMatchers("**/cadastrarPedidoController").permitAll()
-			.antMatchers("**/getEmpresasPorLatLong").permitAll()
+			.antMatchers("**/view-principal/**").permitAll()
+			.antMatchers("/getEmpresaCadastro").permitAll()
+			.antMatchers("/getEmpresaController").permitAll()
+			.antMatchers("/cadastrarEmpresaController").permitAll()
+			.antMatchers("/atualizarEmpresaController").permitAll()
+			.antMatchers("/excluirEmpresaController").permitAll()
+			.antMatchers("/definirRaioController").permitAll()
+			.antMatchers("/getCidades").permitAll()
+			.antMatchers("/getEstados").permitAll()
+			.antMatchers("/cadastrarItemController").permitAll()
+			.antMatchers("/getItensController").permitAll()
+			.antMatchers("/excluirItemController").permitAll()
+			.antMatchers("/atualizarItemController").permitAll()
+			.antMatchers("/cadastrarItemProdutoController").permitAll()
+			.antMatchers("/getItensProdutoController").permitAll()
+			.antMatchers("/excluirItemProdutoController").permitAll()
+			.antMatchers(HttpMethod.GET, "/getPedidoController").permitAll()
+			.antMatchers("/atualizarStatusPedidoController").permitAll()
+			.antMatchers("/cadastrarProdutoController").permitAll()
+			.antMatchers("/getProdutosController").permitAll()
+			.antMatchers("/excluirProdutoController").permitAll()
+			.antMatchers("/atualizarProdutoController").permitAll()
+			.antMatchers("/cadastrarUsuarioMobileController").permitAll()
+			.antMatchers("/cadastrarPedidoController").permitAll()
+			.antMatchers("/getEmpresasPorLatLong").permitAll()
 			.and()
-			.httpBasic()
-			.and()
-			.formLogin()
-			.loginPage("/")
-			.permitAll();
-		
+			.logout();
 		if ("true".equals(System.getProperty("httpsOnly"))) {
 		      http.requiresChannel().anyRequest().requiresSecure();
 		  } 

@@ -20,21 +20,25 @@
                     </table>
                 </div>
 
-                <div id="comandaConteudo" style="border: 1px solid #bbbbbb; padding: 10px; display: none;" >
-                    <div id="itens-comanda" ng-repeat="prod in carrinho.produto track by prod.id" >
-                        <table>
-                            <tr>
-                                <td style="width: 90%">{{prod.descricao}}</td>
-                                <td style="width: 10%">{{prod.preco | currency : "R$"}}</td>
-                            </tr>
-                        </table>   
-                    </div>
-                     <table align="right">
-                            <tr>
-                                <td><button class="btn btn-warning" ng-click="limparCarrinho()">Limpar carrinho</button></td>
-                                <td><button class="btn btn-primary" ng-click="finalizarCompra()">Finalizar compra</button></td>
-                            </tr>
-                        </table>
-                </div>
+                <div id="comandaConteudo" style="border: 1px solid #bbbbbb; padding: 0px; display: none;" >
+                    <div id="itens-comanda">
+                        <div ng-repeat="prod in carrinho.produto track by prod.id" >
+                            <table>
+                                <tr>
+                                    <td style="width: 90%">{{prod.descricao}}</td>
+                                    <td style="width: 10%">{{prod.preco | currency : "R$"}}</td>
+                                </tr>
+                            </table>   
+                        </div>
+                        </div>
+                            <div id="btn-comanda">
+                             <table align="right">
+                                    <tr>
+                                        <td><button class="btn btn-warning" ng-click="limparCarrinho()">Limpar carrinho</button></td>
+                                        <td><button class="btn btn-primary" ng-click="finalizarCompra()">Finalizar compra</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 
                 
