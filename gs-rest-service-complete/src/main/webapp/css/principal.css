@@ -1,5 +1,5 @@
 body{
-		min-height: 100%;
+		min-height: 110%;
 		min-width: 100%;
 		display: table;
 		padding: 0;
@@ -10,8 +10,6 @@ body{
 
 	
 }
-
-
 
 #cabecalho{
 			height: 30px;

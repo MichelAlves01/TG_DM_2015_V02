@@ -231,6 +231,8 @@
             if($scope.carrinho == null){
                 $scope.carrinho = jQuery.extend({}, empresa);
                 $scope.carrinho.produto = [];
+            } else if($scope.carrinho.cpfCnpj != empresa.cpfCnpj) {
+                $.blockUI({ message: $('#limparCarrinhoForm') }); 
             }
              
                 $scope.carrinho.produto.push(produto);
@@ -245,11 +247,14 @@
         $scope.limparCarrinho = function(){
             $scope.carrinho = null;
             $scope.total = 0;
+            $.unblockUI();
         }
         
+        $scope.cancelarBlockUIEvento = function(){
+           $.unblockUI(); 
+        }
         $scope.finalizarCompra = function(){
-           visibilityControle( 3 );
-            
+           visibilityControle( 3 ); 
         }
         
         $scope.enviarPedido = function(){
