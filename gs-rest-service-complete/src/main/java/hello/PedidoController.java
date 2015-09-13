@@ -20,11 +20,13 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
+import delivery.api.mapper.EmpresaImpl;
 import delivery.api.mapper.PedidoImpl;
 import delivery.model.Empresa;
 import delivery.model.ItemPedido;
 import delivery.model.Pedido;
 import delivery.model.Produto;
+import delivery.model.UsuarioMob;
 import delivery.service.DELIVERY_SERVICE.PedidoService;
 
 @Controller
@@ -45,6 +47,7 @@ public class PedidoController {
 								@RequestParam(value="pgtoTipo") String pgtoTipo,
 								@RequestParam(value="pgtoObs") String pgtoObs,
 								@RequestParam(value="observacao") String observacao,
+								@RequestParam(value="idUsuario") String idUsuario,
 								@RequestParam (value="produto") String produto){
 		
 		observacao = observacao + "," + pgtoTipo + "," + pgtoObs;
@@ -73,8 +76,14 @@ public class PedidoController {
 		final Pedido pedido = new Pedido();
 		pedido.setId(id);
 		pedido.setEndereco(endereco);
-		pedido.setIdEmpresa(cpfCnpj);
+		EmpresaImpl empresaImpl = new EmpresaImpl();
+			Empresa empresa = new Empresa();
+			empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		pedido.setEmpresa(empresa);
 		pedido.setObservacao(observacao);
+		UsuarioMob usuario = new UsuarioMob();
+		usuario.setEmail(idUsuario);
+		pedido.setUsuariosMob(usuario);
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = new Date();
@@ -113,6 +122,21 @@ public class PedidoController {
 		pedidoImpl.atualizarStatusPedidoDAO(pedido);
 		
 		List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
+		return pedidos;
+	}
+	
+	@RequestMapping(value="getPedidoPorUsuario", method=RequestMethod.GET)
+	public List<Pedido> getPedidoUsuario(@RequestParam(value="email") String email){
+		System.out.println("email : " + email);
+		PedidoImpl pedidoImpl = new PedidoImpl();
+		List<Pedido> pedidos = new ArrayList<Pedido>();
+		pedidos = pedidoImpl.getPedidosPorUsuario(email);
+		EmpresaImpl empresaImpl = new EmpresaImpl();
+		for(Pedido pedido : pedidos){
+			Empresa empresa = new Empresa();
+			empresa = empresaImpl.getEmpresaDAO(pedido.getEmpresa().getCpfCnpj());
+			pedido.setEmpresa(empresa);
+		}
 		return pedidos;
 	}
 }

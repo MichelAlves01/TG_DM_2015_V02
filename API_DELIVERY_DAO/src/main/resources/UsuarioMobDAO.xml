@@ -22,7 +22,14 @@
  	</select>
  	
  	<update id="atualizarUsuarioMobDAO" parameterType="delivery.model.UsuarioMob">
- 		update usuarios_mob set email = #{email} , nome = #{nome} , sobrenome = #{sobrenome};
+ 		update 
+ 			usuarios_mob 
+ 		set 
+ 			email = #{email}, 
+ 			nome = #{nome}, 
+ 			senha = #{senha}
+ 		where 
+ 			email = #{email}
  	</update>
  	
  	<update id="inativarUsuarioMobDAO" parameterType="java.lang.String">

@@ -16,10 +16,13 @@
         var produtos = [];
         $scope.enderecos = [];
         
+        $scope.showUsuario = function(){
+			visibilityControle(5);
+		}
         
         function visibilityControle( nivelOp  ){
         
-            if(nivelOp == 1){
+            if(nivelOp == 1 || nivelOp == 4){
                 $("#containerPrincipal").show();
                 $("#containerUsuario").hide();
                 $("#produtosContainer").hide();
@@ -43,6 +46,14 @@
                 $("#containerProdutos").hide();
                 $("#containerPedido").show();
                 nivel = 3;
+                visibilityCarrinho(nivel , true);
+            } else if(nivelOp == 5){
+                $("#containerPrincipal").hide();
+                $("#containerUsuario").show();
+                $("#produtosContainer").hide();
+                $("#containerProdutos").hide();
+                $("#containerPedido").hide();
+                nivel = 5;
                 visibilityCarrinho(nivel , true);
             }
         }
@@ -81,6 +92,9 @@
                     $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                 }
                 $('#emp' + empresasJson[i].cpfCnpj + 'dist').text(distancia.toPrecision(4) + " km");
+                var avaliacao = empresasJson[i].avaliacao.split(",");
+                $('#emp' + empresasJson[i].cpfCnpj +'estrelas').raty({ score: avaliacao[0], readOnly : true,});
+                $('#emp' + empresasJson[i].cpfCnpj + 'aval').text(avaliacao[0].substring(0,4));
             }
             
             
@@ -250,6 +264,10 @@
             $.unblockUI();
         }
         
+        $scope.avaliacao = function(){
+            
+        }
+        
         $scope.cancelarBlockUIEvento = function(){
            $.unblockUI(); 
         }
@@ -283,6 +301,7 @@
                                 pgtoTipo: $scope.pgtoTipo,
                                 pgtoObs: pgtoObs,
                                 observacao: $scope.observacao,
+                                idUsuario: localStorage.getItem('email'),
                                 produto: JSON.stringify($scope.carrinho.produto)});
            
             this.cadastrarPedido(data);

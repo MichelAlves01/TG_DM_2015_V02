@@ -9,7 +9,7 @@ public class Pedido {
 	private String endereco;
 	private String horaAberto;
 	private String horaFechado;
-	private String idEmpresa;
+	private Empresa empresa;
 	private UsuarioMob usuariosMob;
 	private int status;
 	private String observacao;	
@@ -60,11 +60,11 @@ public class Pedido {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	public String getIdEmpresa() {
-		return idEmpresa;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
-	public void setIdEmpresa(String idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 	public List<AdicionalPedido> getAdicionaisPedido() {
 		return adicionaisPedido;

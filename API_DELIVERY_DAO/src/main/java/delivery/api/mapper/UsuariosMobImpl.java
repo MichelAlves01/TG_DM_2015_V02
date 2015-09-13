@@ -20,7 +20,7 @@ public class UsuariosMobImpl {
 		session.close();
 	}
 	
-	public UsuarioMob selectUsuarioMobDAO(String email) {
+	public UsuarioMob getUsuarioMobDAO(String email) {
 		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		UsuarioMobDAO usuarioMobDao = session.getMapper(UsuarioMobDAO.class);
 		usuariomob = usuarioMobDao.getUsuarioMobDAO(email);

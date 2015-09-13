@@ -17,7 +17,7 @@ public class Empresa {
 	private String tipo;
 	private double latitude;
 	private double longitude;
-	private double avaliacao;
+	private String avaliacao;
 	private int status;
 	private List<Produto> produto;
 	private List<User> users;
@@ -109,12 +109,13 @@ public class Empresa {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	public double getAvaliacao() {
+	public String getAvaliacao() {
 		return avaliacao;
 	}
-	public void setAvaliacao(double avaliacao) {
+	public void setAvaliacao(String avaliacao) {
 		this.avaliacao = avaliacao;
 	}
+
 	public List<Produto> getProduto() {
 		return produto;
 	}

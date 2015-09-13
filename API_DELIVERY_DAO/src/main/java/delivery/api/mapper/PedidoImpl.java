@@ -63,4 +63,13 @@ public class PedidoImpl {
 		return pedidos;
 	}
 	
+	public List<Pedido> getPedidosPorUsuario(String email){
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+		List<Pedido> pedidos = pedidoDao.getPedidosPorEmail(email);
+		session.commit();
+		session.close();
+		return pedidos;
+	}
+	
 }

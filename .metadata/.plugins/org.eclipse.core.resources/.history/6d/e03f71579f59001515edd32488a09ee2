@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.UsuarioMobDAO">
+ 	<insert id="cadastrarUsuarioMobDAO" parameterType="delivery.model.UsuarioMob">
+ 		INSERT INTO 
+ 				usuarios_Mob (
+ 								email , 
+ 								nome , 
+ 								senha
+ 							) values (
+ 								#{email} , 
+ 								#{nome}, 
+ 								#{senha}
+ 							)
+ 	</insert>
+ 	
+ 	<select id="getUsuarioMobDAO" parameterType="java.lang.String" resultType="delivery.model.UsuarioMob">
+ 		select nome from usuarios_mob where email = #{email};   
+ 	</select>
+ 	
+ 	<update id="atualizarUsuarioMobDAO" parameterType="delivery.model.UsuarioMob">
+ 		update usuarios_mob set email = #{email} , nome = #{nome} , sobrenome = #{sobrenome};
+ 	</update>
+ 	
+ 	<update id="inativarUsuarioMobDAO" parameterType="java.lang.String">
+ 		update usuarios_mob set status = 1 where email = #{email}; 
+ 	</update>
+ </mapper>

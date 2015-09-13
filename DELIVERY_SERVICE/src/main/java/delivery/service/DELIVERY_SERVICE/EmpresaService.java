@@ -52,4 +52,17 @@ public class EmpresaService {
 		}
 		System.out.println("serviceStatus : " + empresa.getStatus());
 	}
+	
+	/**
+	 * Calcula a avaliação entre a nova nota e as notas anteriores
+	 * @param notaVelha
+	 * @param qtdeAvaliacao
+	 * @param novaNota
+	 * @return
+	 */
+	public String calcAvaliacao(double notaVelha, final int qtdeAvaliacao,double novaNota){
+		notaVelha = notaVelha * qtdeAvaliacao;
+		novaNota = (notaVelha + novaNota) / (qtdeAvaliacao + 1);
+		return String.valueOf(novaNota ) + "," + String.valueOf(qtdeAvaliacao + 1);
+	}
 }

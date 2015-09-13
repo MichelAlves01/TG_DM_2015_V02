@@ -1,6 +1,7 @@
 package hello;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,7 +89,7 @@ public class EmpresaController {
 		empresa.setRaio(5);
 		empresa.setStatus(0);
 		empresa.setUsaAgenda(0);
-		empresa.setAvaliacao(3);
+		empresa.setAvaliacao("0,0");
 		empresa.setLatitude(lat);
 		empresa.setLongitude(lon);
 		
@@ -135,7 +136,8 @@ public class EmpresaController {
 		empresa.setRaio(5);
 		empresa.setStatus(0);
 		empresa.setUsaAgenda(0);
-		empresa.setAvaliacao(3);
+		//To fix empresa tem um valor de avaliaçao
+		empresa.setAvaliacao("0,0");
 		empresa.setLatitude(lat);
 		empresa.setLongitude(lon);
 		
@@ -172,5 +174,19 @@ public class EmpresaController {
 		empresaImpl = new EmpresaImpl();
 		List<Empresa> empresas = empresaImpl.getEmpresaPorLatLong(latitude,longitude);
 		return empresas;
+	}
+	
+	@RequestMapping(value="/avaliarEmpresaController" , method=RequestMethod.GET)
+	public void avaliarEmpresa(@RequestParam(value="cpfCnpj") String cpfCnpj, 
+								@RequestParam(value="nota") double nota){
+		
+		empresaImpl = new EmpresaImpl();
+		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		StringTokenizer st = new StringTokenizer(empresa.getAvaliacao(), ",");
+		final double notaVelha =  Double.parseDouble(st.nextToken());
+		final int qtdeAvaliacao = Integer.parseInt(st.nextToken());
+		EmpresaService empresaService = new EmpresaService();
+		empresa.setAvaliacao(empresaService.calcAvaliacao(notaVelha, qtdeAvaliacao, nota));
+		empresaImpl.atualizarEmpresaDAO(empresa);
 	}
 }

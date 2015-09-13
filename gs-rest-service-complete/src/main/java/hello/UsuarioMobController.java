@@ -33,4 +33,20 @@ public class UsuarioMobController {
 		return usuarioMob;
 		
 	}
+	
+	@RequestMapping(value="/atualizarUsuarioMobileController" , method=RequestMethod.GET)
+	public UsuarioMob atualizarUsuarioMob(	@RequestParam(value="nomeUsuario")String nome,
+											@RequestParam(value="email")String email,
+											@RequestParam(value="senha")String senha){
+		
+		usuarioMobImpl = new UsuariosMobImpl();
+		UsuarioMob usuarioMob = usuarioMobImpl.getUsuarioMobDAO(email);
+		usuarioMob.setNome(nome);
+		usuarioMob.setEmail(email);
+		usuarioMob.setSenha(senha);
+		
+		usuarioMobImpl.atualizarUsuarioMobDAO(usuarioMob);
+		return usuarioMob;
+		
+	}
 }
