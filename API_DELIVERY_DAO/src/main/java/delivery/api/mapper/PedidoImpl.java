@@ -10,6 +10,7 @@ import delivery.model.ItemPedido;
 import delivery.model.ItemProduto;
 import delivery.model.Pedido;
 import delivery.model.Produto;
+import delivery.model.UsuarioMob;
 
 public class PedidoImpl {
 
@@ -51,6 +52,7 @@ public class PedidoImpl {
 		List<Pedido> pedidos = pedidoDao.getPedidosDAO(cpfCnpj);
 		ItensPedidoImpl itemPedidoImpl = new ItensPedidoImpl();
 		ProdutoImpl produtoImpl = new ProdutoImpl();
+		UsuariosMobImpl usuarioMobImpl = new UsuariosMobImpl();
 		for(Pedido pedido : pedidos){
 			List<ItemPedido> itens = itemPedidoImpl.getItensPedido(pedido.getId());
 				for(ItemPedido item : itens){
@@ -58,6 +60,9 @@ public class PedidoImpl {
 					item.setProduto(produto);
 				}
 			pedido.setItensPedido(itens);
+			UsuarioMob usuario = new UsuarioMob();
+			usuario = usuarioMobImpl.getUsuarioMobDAO(pedido.getUsuariosMob().getEmail());
+			pedido.setUsuariosMob(usuario);
 		}
 		session.close();
 		return pedidos;

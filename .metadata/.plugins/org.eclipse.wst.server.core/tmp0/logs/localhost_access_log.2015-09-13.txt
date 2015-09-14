@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [13/Sep/2015:12:44:09 -0300] "GET /getPedidoController?cpfCnpj=34476902839 HTTP/1.1" 404 1032
+127.0.0.1 - - [13/Sep/2015:12:44:09 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [13/Sep/2015:12:44:18 -0300] "GET /getPedidoController?cpfCnpj=34476902839 HTTP/1.1" 404 1032
+0:0:0:0:0:0:0:1 - - [13/Sep/2015:12:44:28 -0300] "GET /getPedidoController?cpfCnpj=34476902839 HTTP/1.1" 404 1032
+0:0:0:0:0:0:0:1 - - [13/Sep/2015:12:44:38 -0300] "GET /getPedidoController?cpfCnpj=34476902839 HTTP/1.1" 404 1032
+0:0:0:0:0:0:0:1 - - [13/Sep/2015:12:44:48 -0300] "GET /getPedidoController?cpfCnpj=34476902839 HTTP/1.1" 404 1032

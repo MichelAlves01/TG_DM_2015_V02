@@ -416,7 +416,7 @@ centro-principal{
 			border-right: 1px solid #999999;
 	}
 
-	.pedido-aceitar{
+	#pedido-aceitar{
 		width: 200px;
 		padding-left: 9%;
 		height: 50px;
@@ -433,7 +433,7 @@ centro-principal{
 
 	}
 
-	.pedido-rejeitar{
+	#pedido-rejeitar{
 		width: 200px;
 		padding-left: 2%;
 		height: 50px;

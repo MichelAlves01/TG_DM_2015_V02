@@ -18,7 +18,14 @@
  	</insert>
  	
  	<select id="getUsuarioMobDAO" parameterType="java.lang.String" resultType="delivery.model.UsuarioMob">
- 		select nome from usuarios_mob where email = #{email};   
+ 		select 
+ 			email, 
+ 			nome, 
+ 			senha
+ 		 from 
+ 		 	usuarios_mob 
+ 		 where 
+ 		 	email = #{email};   
  	</select>
  	
  	<update id="atualizarUsuarioMobDAO" parameterType="delivery.model.UsuarioMob">

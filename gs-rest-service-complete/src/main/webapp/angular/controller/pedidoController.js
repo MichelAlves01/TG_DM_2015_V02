@@ -16,8 +16,8 @@
 			$http.post(urlBase + '/atualizarStatusPedidoController?' + data).success(function(data,status){
 				$scope.pedidos = data;
 			});
-			$('.pedido-aceitar').hide();
-			$('.pedido-rejeitar').hide();
+			$('.pedido-aceitar' + idPedido).hide();
+			$('.pedido-rejeitar' + idPedido).hide();
 		}
 
 		$scope.rejeitarPedido = function(idPedido){
@@ -25,8 +25,8 @@
 			$http.post(urlBase + '/atualizarStatusPedidoController?' + data).success(function(data,status){
 				$scope.pedidos = data;
 			});
-			$('.pedido-aceitar').hide();
-			$('.pedido-rejeitar').hide();
+			$('.pedido-aceitar' + idPedido).hide();
+			$('.pedido-rejeitar' + idPedido).hide();
 		}
 
 		$scope.calPrecoTotal = function(produtos){

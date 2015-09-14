@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="delivery.api.dao.PedidoDAO">
+ 	
+ 	<insert id="cadastrarPedidoDAO" parameterType="delivery.model.Pedido">
+ 			insert into Pedido (
+ 						id,
+ 						endereco,
+ 						id_empresa,
+ 						id_usuario,
+ 						status,
+ 						observacao
+ 					) values (
+ 						#{id},
+ 						#{endereco},
+ 						#{empresa.cpfCnpj},
+ 						#{usuariosMob.email},
+ 						#{status},
+ 						#{observacao}
+ 					)
+ 	</insert>
+	
+	<update id="atualizarStatusPedidoDAO" parameterType="delivery.model.Pedido">
+			update Pedido set status = #{status} where id = #{id}
+	</update>
+ 	
+ 	<select id="getPedidoDAO" parameterType="java.lang.String" resultType="delivery.model.Pedido">
+ 			select 		id,
+ 						endereco,
+ 						hora_aberto as horaAberto,
+ 						hora_fechado as horaFechado,
+ 						id_usuario as "usuariosMob.email",
+ 						status,
+ 						observacao
+ 						
+ 			from 
+ 						pedido
+ 			where 
+ 						id = #{id}
+ 	</select>
+ 	
+ 	<select id="getPedidosDAO" parameterType="java.lang.String" resultType="delivery.model.Pedido">
+ 			select 		id,
+ 						endereco,
+ 						hora_aberto as horaAberto,
+ 						hora_fechado as horaFechado,
+ 						id_usuario as "usuariosMob.email",
+ 						status,
+ 						observacao
+ 			from 
+ 						pedido
+ 			where 
+ 						id_empresa = #{cpfCnpj} and status != 2
+ 						
+ 	</select>
+ 	
+ 	<select id="getPedidosPorEmail" parameterType="java.lang.String" resultType="delivery.model.Pedido">
+ 			select 		id,
+ 						endereco,
+ 						hora_aberto as horaAberto,
+ 						hora_fechado as horaFechado,
+ 						id_usuario as "usuariosMob.email",
+ 						status,
+ 						observacao,
+ 						id_empresa as "empresa.cpfCnpj"
+ 			from 
+ 						pedido
+ 			where 
+ 						id_usuario = #{email}
+ 						
+ 	</select>
+ </mapper>

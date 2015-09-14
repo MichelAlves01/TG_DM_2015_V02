@@ -34,7 +34,7 @@
  						hora_fechado as horaFechado,
  						id_usuario as "usuariosMob.email",
  						status,
- 						observacao
+ 						observacao	
  			from 
  						pedido
  			where 
