@@ -7,40 +7,44 @@ import org.apache.ibatis.session.SqlSession;
 
 import delivery.api.connection.ConnectionFactory;
 import delivery.api.dao.EmpresaDAO;
-import delivery.api.dao.ProdutoDAO;
 import delivery.model.Cidade;
 import delivery.model.Empresa;
 import delivery.model.Produto;
-
+/**
+ * Esta classe implementa a interface Empresa 
+ * Adiciona os relacionamentos de dependências de dados entre as classes
+ * @author Michel
+ *
+ */
 public class EmpresaImpl {
 	
 	private Cidade cidade;
 	
-	public void cadastrarEmpresaDAO(Empresa empresa){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+	public void cadastrarEmpresaDAO(final Empresa empresa){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		empresaDao.cadastrarEmpresaDAO(empresa);
 		session.commit();
 		session.close();
 	}
 	
-	public void atualizarEmpresaDAO(Empresa empresa){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+	public void atualizarEmpresaDAO(final Empresa empresa){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		empresaDao.atualizarEmpresaDAO(empresa);
 		session.commit();
 		session.close();
 	}
 	
-	public void excluirEmpresaDAO(String cpfCnpj){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+	public void excluirEmpresaDAO(final String cpfCnpj){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		empresaDao.excluirEmpresaDAO(cpfCnpj);
 		session.commit();
 		session.close();
 	}
 	
-	public Empresa getEmpresaDAO(String cpfCnpj){
+	public Empresa getEmpresaDAO(final String cpfCnpj){
 		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
 		final Empresa empresa = empresaDao.getEmpresaDAO(cpfCnpj);
@@ -48,28 +52,37 @@ public class EmpresaImpl {
 		cidade = new Cidade();
 		//busca informações da cidade no banco de dados e preenche campos nulo
 		cidade = cidadeImpl.geCidadeDAO(empresa.getCidade().getId());
-		empresa.setCidade(cidade);
-		
+		empresa.setCidade(cidade);		
 		session.close();
 		return empresa;
 	}
 	
 	public List<Empresa> getEmpresasDAO(){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
-		List<Empresa> empresas = empresaDao.getEmpresasDAO();
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+		final List<Empresa> empresas = empresaDao.getEmpresasDAO();
 		session.close();
 		return empresas;
 	}
 	
-	public List<Empresa> getEmpresasPorTipoDAO(String tipo){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
-		List<Empresa> empresas = empresaDao.getEmpresasPorTipoDAO(tipo);
+	public List<Empresa> getEmpresasPorTipoDAO(final String tipo){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
+		final List<Empresa> empresas = empresaDao.getEmpresasPorTipoDAO(tipo);
 		session.close();
 		return empresas;
 	}
 	
+	/**
+	 * Este metodo realiza uma busca no banco encontrando as empresas dentro 
+	 * dos limites de latitude e longitude e entre o raio definido pela empresa 
+	 * e o ponto que o usuario esta, para trazer as empresas proximas ao 
+	 * usuario.
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
 	public List<Empresa> getEmpresaPorLatLong(final double latitude,final double longitude){
 		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
 		final EmpresaDAO empresaDao = session.getMapper(EmpresaDAO.class);
@@ -79,7 +92,7 @@ public class EmpresaImpl {
 		final List<Empresa> empresas = empresaDao.getEmpresaPorLatLong(coordenadas);
 		final ProdutoImpl produtoImpl = new ProdutoImpl();
 		for(Empresa emp : empresas){
-			List<Produto> produtos = produtoImpl.getProdutosDAO(emp);
+			final List<Produto> produtos = produtoImpl.getProdutosDAO(emp);
 			emp.setProduto(produtos);
 		}
 		session.close();

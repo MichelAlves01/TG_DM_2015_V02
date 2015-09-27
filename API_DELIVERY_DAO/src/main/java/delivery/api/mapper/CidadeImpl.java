@@ -16,17 +16,17 @@ public class CidadeImpl {
 	private Estado estado;
 	
 	public List<Cidade> getCidadesDAO(int idEstado){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		CidadeDAO cidadeDao = session.getMapper(CidadeDAO.class);
-		List<Cidade> cidades = cidadeDao.getCidadesDAO(idEstado);
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final CidadeDAO cidadeDao = session.getMapper(CidadeDAO.class);
+		final List<Cidade> cidades = cidadeDao.getCidadesDAO(idEstado);
 		session.close();
 		return cidades;
 	}
 	
 	public Cidade geCidadeDAO(int idCidade){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		CidadeDAO cidadeDao = session.getMapper(CidadeDAO.class);
-		Cidade cidade = cidadeDao.getCidadeDAO(idCidade);
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final CidadeDAO cidadeDao = session.getMapper(CidadeDAO.class);
+		final Cidade cidade = cidadeDao.getCidadeDAO(idCidade);
 		estadoImpl = new EstadoImpl();
 		estado = estadoImpl.getEstadoDAO(cidade.getEstado().getId());
 		cidade.setEstado(estado);

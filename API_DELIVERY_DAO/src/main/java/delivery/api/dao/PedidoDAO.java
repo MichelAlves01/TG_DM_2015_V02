@@ -3,7 +3,11 @@ package delivery.api.dao;
 import java.util.List;
 
 import delivery.model.Pedido;
-
+/**
+ * 
+ * @author Michel
+ *
+ */
 public interface PedidoDAO {
 	
 	void cadastrarPedidoDAO(Pedido pedido);

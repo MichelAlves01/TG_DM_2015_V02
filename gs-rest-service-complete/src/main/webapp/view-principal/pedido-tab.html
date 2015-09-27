@@ -79,10 +79,13 @@
 												<font>Total: </font>  <font style="color: blue">{{total | currency : 'R$'}}</font>
 											</td>
 											<td class="pedido-aceitar{{pedido.id}}" id="pedido-aceitar" ng-if="pedido.status == 0">
-												<button type="submit" class="btn btn-success" ng-click="aceitarPedido(pedido.id)">Aceitar</button>
+												<button type="submit" class="btn btn-success" ng-click="atualizarStatusPedido(pedido.id, 1)">Aceitar</button>
 											</td>
 											<td class="pedido-rejeitar{{pedido.id}}" id="pedido-rejeitar" ng-if="pedido.status == 0">
-												<button type="submit" class="btn btn-danger" ng-click="rejeitarPedido(pedido.id)">Rejeitar</button>
+												<button type="submit" class="btn btn-danger" ng-click="atualizarStatusPedido(pedido.id, 2)">Rejeitar</button>
+											</td>
+											<td class="pedido-finalizar{{pedido.id}}" id="pedido-aceitar" ng-if="pedido.status == 1">
+												<button type="submit" class="btn btn-" ng-click="atualizarStatusPedido(pedido.id , 3)">Finalizar</button>
 											</td>
 										</tr>
 									</table> 					 	

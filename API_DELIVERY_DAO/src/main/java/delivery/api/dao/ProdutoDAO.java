@@ -4,8 +4,11 @@ import java.util.List;
 
 import delivery.model.Empresa;
 import delivery.model.Produto;
-
-
+/**
+ * 
+ * @author Michel
+ *
+ */
 public interface ProdutoDAO {
 	
 	void cadastrarProdutoDAO(Produto produto);

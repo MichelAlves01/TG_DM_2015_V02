@@ -11,32 +11,23 @@ public class EmpresaService {
 	
 	private EmpresaImpl empresaImpl;
 	
-	
-	public void cadastrarEmpresaService(final Empresa empresa){
-		
-	}
-	
-	public void excluirEmpresaService(String cpfCnpj){
+	public void excluirEmpresaService(final String cpfCnpj){
 		empresaImpl = new EmpresaImpl();
 		empresaImpl.excluirEmpresaDAO(cpfCnpj);
 	}
 	
-	public Empresa getEmpresaService( int cpfCnpj ){
-		empresa = new Empresa();
-		return empresa;
-	}
 	
 	public List<Empresa> getEmpresasService(){
-		List<Empresa> empresas = new ArrayList<Empresa>();
+		final List<Empresa> empresas = new ArrayList<Empresa>();
 		return empresas;
 	}
 	/**
 	 * esta função verifica se o cpf ou cnpj existe no banco de dados
 	 * @param empresa
 	 */
-	public void verificaCpf(Empresa empresa){
+	public void verificaCpf(final Empresa empresa){
 		empresaImpl = new EmpresaImpl();
-		List<Empresa> empresas = empresaImpl.getEmpresasDAO();
+		final List<Empresa> empresas = empresaImpl.getEmpresasDAO();
 		boolean cpfNotExiste = true;
 		
 		for (Empresa emp : empresas) {

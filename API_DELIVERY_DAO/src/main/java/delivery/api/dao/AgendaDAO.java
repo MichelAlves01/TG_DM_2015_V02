@@ -1,5 +1,8 @@
 package delivery.api.dao;
 
+/**
+ * Not used 
+ */
 import java.util.Date;
 
 import delivery.model.Agenda;

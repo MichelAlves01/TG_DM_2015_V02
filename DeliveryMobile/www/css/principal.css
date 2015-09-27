@@ -263,6 +263,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #pedido{
     width: 100%;
     height: 500px;;
-    background-color: #ffffff;
+    background-color: #eeeeee;
     overflow: auto;
 }

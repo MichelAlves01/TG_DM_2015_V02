@@ -3,7 +3,11 @@ package delivery.api.dao;
 import java.util.List;
 
 import delivery.model.Estado;
-
+/**
+ * 
+ * @author Michel
+ *
+ */
 public interface EstadoDAO {
 	
 	public List<Estado> getEstadosDAO();

@@ -1,7 +1,7 @@
 (function(){
 
 	var app = angular.module('pedido', []);
-	var urlBase = 'http://192.168.0.11:8080';
+	var urlBase = 'http://localhost:8080';
 	
 	app.controller('pedidoCtrl' , function($scope,$http, empresa){
 
@@ -10,9 +10,15 @@
 		}
 
 		
+		/*
+			pedido status = 0 -> pendente de atualização 
+			pedido status = 1 -> pedido aceito 
+			pedido status = 2 -> pedido rejeitado
+			pedido status = 3 -> pedido finalizado
+		*/
 
-		$scope.aceitarPedido = function(idPedido){
-			var data = $.param({idPedido: idPedido, status: 1, cpfCnpj: $scope.empresa.cpfCnpj});
+		$scope.atualizarStatusPedido = function(idPedido , status){
+			var data = $.param({idPedido: idPedido, status: status, cpfCnpj: $scope.empresa.cpfCnpj});
 			$http.post(urlBase + '/atualizarStatusPedidoController?' + data).success(function(data,status){
 				$scope.pedidos = data;
 			});
@@ -20,14 +26,6 @@
 			$('.pedido-rejeitar' + idPedido).hide();
 		}
 
-		$scope.rejeitarPedido = function(idPedido){
-			var data = $.param({idPedido: idPedido, status: 2 , cpfCnpj: $scope.empresa.cpfCnpj});
-			$http.post(urlBase + '/atualizarStatusPedidoController?' + data).success(function(data,status){
-				$scope.pedidos = data;
-			});
-			$('.pedido-aceitar' + idPedido).hide();
-			$('.pedido-rejeitar' + idPedido).hide();
-		}
 
 		$scope.calPrecoTotal = function(produtos){
 			$scope.total = 0;

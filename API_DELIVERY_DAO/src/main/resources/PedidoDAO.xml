@@ -52,7 +52,7 @@
  			from 
  						pedido
  			where 
- 						id_empresa = #{cpfCnpj} and status != 2
+ 						id_empresa = #{cpfCnpj} and status != 2 and status != 3
  						
  	</select>
  	

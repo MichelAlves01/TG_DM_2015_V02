@@ -27,9 +27,9 @@ public class ProdutoController {
 	private static ProdutoImpl produtoImpl;
 	
 	@RequestMapping(value="/cadastrarProdutoController",method=RequestMethod.POST)
-	public Produto cadastrarProduto(	@RequestParam(value="descricao") String descricao,
-									@RequestParam(value="preco") double preco,
-									@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public Produto cadastrarProduto(	@RequestParam(value="descricao") final String descricao,
+									@RequestParam(value="preco") final double preco,
+									@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
@@ -46,31 +46,31 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value="/getProdutosController" , method=RequestMethod.GET)
-	public List<Produto> getProdutos(@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public List<Produto> getProdutos(@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		produtoService = new ProdutoService();
 		empresaImpl = new EmpresaImpl();
-		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
-		List<Produto> produtos = produtoService.getProdutosService(empresa);
+		final Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		final List<Produto> produtos = produtoService.getProdutosService(empresa);
 		return produtos;
 	}
 	
 	@RequestMapping(value="/excluirProdutoController" , method= RequestMethod.GET)
-	public List<Produto> excluirProduto(@RequestParam(value="id") int id,
-										@RequestParam(value="cpfCnpj") String cpfCnpj) {
+	public List<Produto> excluirProduto(@RequestParam(value="id") final int id,
+										@RequestParam(value="cpfCnpj") final String cpfCnpj) {
 		produtoImpl = new ProdutoImpl();
 		produtoImpl.excluirProdutoDAO(id);
 		produtoService = new ProdutoService();
 		empresaImpl = new EmpresaImpl();
-		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
-		List<Produto> produtos = produtoService.getProdutosService(empresa);
+		final Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		final List<Produto> produtos = produtoService.getProdutosService(empresa);
 		return produtos;
 	}
 	
 	@RequestMapping(value="/atualizarProdutoController",method=RequestMethod.GET)
-	public void atualizarProduto(	@RequestParam(value="id") int id,
-									@RequestParam(value="descricao") String descricao,
-									@RequestParam(value="preco") double preco,
-									@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public void atualizarProduto(	@RequestParam(value="id") final int id,
+									@RequestParam(value="descricao") final String descricao,
+									@RequestParam(value="preco") final double preco,
+									@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);

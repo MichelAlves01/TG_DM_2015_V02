@@ -3,6 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
+ <!-- This XML doc is being used for while -->
  <mapper namespace="delivery.api.dao.AgendaDAO">
  	
  	<insert id="cadastrarHorarioDAO" parameterType="delivery.model.Agenda">

@@ -27,9 +27,9 @@ public class ItemController {
 	private Empresa empresa;
 	
 	@RequestMapping(value="/cadastrarItemController" , method=RequestMethod.POST)
-	public Item cadastrarItem(	@RequestParam(value="descricao") String descricao,
-								@RequestParam(value="preco") double preco,
-								@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public Item cadastrarItem(	@RequestParam(value="descricao") final String descricao,
+								@RequestParam(value="preco") final double preco,
+								@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
@@ -45,33 +45,33 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="/getItensController", method=RequestMethod.GET)
-	public List<Item> getProdutos(@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public List<Item> getProdutos(@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
 		
 		itemImpl = new ItemImpl();
-		List<Item> itens = itemImpl.getItensDAO(empresa);
+		final List<Item> itens = itemImpl.getItensDAO(empresa);
 		return itens;
 	}
 	
 	@RequestMapping(value="/excluirItemController",method=RequestMethod.GET)
-	public List<Item> excluirItem(	@RequestParam(value="id") int id,
-									@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public List<Item> excluirItem(	@RequestParam(value="id") final int id,
+									@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		itemImpl = new ItemImpl();
 		itemImpl.excluirProdutoDAO(id);
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
 		
-		List<Item> itens = itemImpl.getItensDAO(empresa);
+		final List<Item> itens = itemImpl.getItensDAO(empresa);
 		return itens;
 	}
 	
 	@RequestMapping(value="/atualizarItemController", method=RequestMethod.GET)
-	public void atualizarItem(	@RequestParam(value="id") int id,
-								@RequestParam(value="descricao") String descricao,
-								@RequestParam(value="preco") double preco,
-								@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public void atualizarItem(	@RequestParam(value="id") final int id,
+								@RequestParam(value="descricao") final String descricao,
+								@RequestParam(value="preco") final double preco,
+								@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);

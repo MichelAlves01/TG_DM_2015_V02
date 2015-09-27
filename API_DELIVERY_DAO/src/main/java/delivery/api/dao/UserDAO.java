@@ -1,7 +1,11 @@
 package delivery.api.dao;
 
 import delivery.model.User;
-
+/**
+ * 
+ * @author Michel
+ *
+ */
 public interface UserDAO {
 	
 	void cadastrarUsuarioDAO(User user);

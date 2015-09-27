@@ -13,23 +13,19 @@ public class ItemService {
 	
 	private static ItemImpl itemImpl;
 	
-	public void cadastrarItemService(Item item){
+	public void cadastrarItemService(final Item item){
 		itemImpl = new ItemImpl();
 		itemImpl.cadastrarItemDAO(item);
 	}
 	
-	public void atualizarItemService( Item item ){
+	public void atualizarItemService(final Item item ){
 		itemImpl = new ItemImpl();
 		itemImpl.atualizarItemDAO(item);
 	}
 	
-	public void excluirItemService(int idItem){
-		
-	}
-	
-	public List<ItemProduto> getItensType(final List<ItemProduto> itens,boolean type){
-		List<ItemProduto> adicionais = new ArrayList<ItemProduto>(); 
-		List<ItemProduto> itensProduto = new ArrayList<ItemProduto>(); 
+	public List<ItemProduto> getItensType(final List<ItemProduto> itens,final boolean type){
+		final List<ItemProduto> adicionais = new ArrayList<ItemProduto>(); 
+		final List<ItemProduto> itensProduto = new ArrayList<ItemProduto>(); 
 		for(ItemProduto item : itens){
 			if(item.isItemAdicional()){
 				adicionais.add(item);

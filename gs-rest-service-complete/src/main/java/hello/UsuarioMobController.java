@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import delivery.api.mapper.UsuariosMobImpl;
 import delivery.model.UsuarioMob;
-
+/**
+ * Spring controller usuario mobile
+ * @author Michel
+ *
+ */
 @Controller
 @RestController
 public class UsuarioMobController {
@@ -20,9 +24,9 @@ public class UsuarioMobController {
 	
 	
 	@RequestMapping(value="/cadastrarUsuarioMobileController" , method=RequestMethod.GET)
-	public UsuarioMob cadastrarUsuarioMob(	@RequestParam(value="nomeUsuario")String nome,
-											@RequestParam(value="email")String email,
-											@RequestParam(value="senha")String senha){
+	public UsuarioMob cadastrarUsuarioMob(	@RequestParam(value="nomeUsuario")final String nome,
+											@RequestParam(value="email") final String email,
+											@RequestParam(value="senha") final String senha){
 		usuarioMob = new UsuarioMob();
 		usuarioMob.setNome(nome);
 		usuarioMob.setEmail(email);
@@ -35,9 +39,9 @@ public class UsuarioMobController {
 	}
 	
 	@RequestMapping(value="/atualizarUsuarioMobileController" , method=RequestMethod.GET)
-	public UsuarioMob atualizarUsuarioMob(	@RequestParam(value="nomeUsuario")String nome,
-											@RequestParam(value="email")String email,
-											@RequestParam(value="senha")String senha){
+	public UsuarioMob atualizarUsuarioMob(	@RequestParam(value="nomeUsuario") final String nome,
+											@RequestParam(value="email") final String email,
+											@RequestParam(value="senha") final String senha){
 		
 		usuarioMobImpl = new UsuariosMobImpl();
 		UsuarioMob usuarioMob = usuarioMobImpl.getUsuarioMobDAO(email);

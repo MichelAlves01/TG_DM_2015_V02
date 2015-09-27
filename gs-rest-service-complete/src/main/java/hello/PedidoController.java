@@ -42,22 +42,22 @@ public class PedidoController {
 	}
 	
 	@RequestMapping(value="/cadastrarPedidoController" , method=RequestMethod.POST)
-	public void cadastrarPedido(@RequestParam(value="cpfCnpj") String cpfCnpj,
-								@RequestParam(value="endereco") String endereco,
-								@RequestParam(value="pgtoTipo") String pgtoTipo,
-								@RequestParam(value="pgtoObs") String pgtoObs,
+	public void cadastrarPedido(@RequestParam(value="cpfCnpj") final String cpfCnpj,
+								@RequestParam(value="endereco") final String endereco,
+								@RequestParam(value="pgtoTipo") final String pgtoTipo,
+								@RequestParam(value="pgtoObs") final String pgtoObs,
 								@RequestParam(value="observacao") String observacao,
-								@RequestParam(value="idUsuario") String idUsuario,
-								@RequestParam (value="produto") String produto){
+								@RequestParam(value="idUsuario") final String idUsuario,
+								@RequestParam (value="produto") final String produto){
 		
 		observacao = observacao + "," + pgtoTipo + "," + pgtoObs;
-		Calendar cal = Calendar.getInstance();
-		int ano = cal.get(Calendar.YEAR);
-		int semana = cal.get(Calendar.WEEK_OF_YEAR);
-		int dia = cal.get(Calendar.DATE);
-		int hora = cal.get(Calendar.HOUR);
-		int min = cal.get(Calendar.MINUTE);
-		int seg = cal.get(Calendar.SECOND);
+		final Calendar cal = Calendar.getInstance();
+		final int ano = cal.get(Calendar.YEAR);
+		final int semana = cal.get(Calendar.WEEK_OF_YEAR);
+		final int dia = cal.get(Calendar.DATE);
+		final int hora = cal.get(Calendar.HOUR);
+		final int min = cal.get(Calendar.MINUTE);
+		final int seg = cal.get(Calendar.SECOND);
 		System.out.println("year : " + ano);
 		System.out.println("week : " + semana);
 		System.out.println("dia : " + dia);
@@ -65,7 +65,7 @@ public class PedidoController {
 		System.out.println("min : " + min);
 		System.out.println("seg : " + seg);
 		
-		String id = Integer.toString(ano) + 
+		final String id = Integer.toString(ano) + 
 					Integer.toString(semana) + 
 					Integer.toString(dia) + 
 					Integer.toString(hora) + 
@@ -76,28 +76,29 @@ public class PedidoController {
 		final Pedido pedido = new Pedido();
 		pedido.setId(id);
 		pedido.setEndereco(endereco);
-		EmpresaImpl empresaImpl = new EmpresaImpl();
-			Empresa empresa = new Empresa();
-			empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		final EmpresaImpl empresaImpl = new EmpresaImpl();
+		
+		Empresa empresa = new Empresa();
+		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
 		pedido.setEmpresa(empresa);
 		pedido.setObservacao(observacao);
 		UsuarioMob usuario = new UsuarioMob();
 		usuario.setEmail(idUsuario);
 		pedido.setUsuariosMob(usuario);
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = new Date();
+		final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		final Date date = new Date();
 		pedido.setHoraAberto(dateFormat.format(date));
 		pedido.setStatus(0);
 		
-		Gson gson = new Gson();
+		final Gson gson = new Gson();
 		java.lang.reflect.Type collectionType = new TypeToken<List<Produto>>() {
 	    }.getType();
-		List<Produto> produtos = gson.fromJson(produto, collectionType);
-		List<ItemPedido> itensPedido = new ArrayList<ItemPedido>();
+		final List<Produto> produtos = gson.fromJson(produto, collectionType);
+		final List<ItemPedido> itensPedido = new ArrayList<ItemPedido>();
 		
 		for(Produto prod : produtos){
-			ItemPedido itemPedido = new ItemPedido();
+			final ItemPedido itemPedido = new ItemPedido();
 			itemPedido.setProduto(prod);
 			itensPedido.add(itemPedido);
 		}
@@ -105,33 +106,32 @@ public class PedidoController {
 		pedido.setItensPedido(itensPedido);
 		
 		System.out.println("deu bom : " + pedido.getHoraAberto());
-		PedidoService pedidoService = new PedidoService();
+		final PedidoService pedidoService = new PedidoService();
 		pedidoService.cadastrarPedidoService(pedido);
 		
 	}
 	
 	@RequestMapping(value="/atualizarStatusPedidoController", method=RequestMethod.POST)
-	public List<Pedido> aceitarPedido(	@RequestParam(value="idPedido") String idPedido,
-										@RequestParam(value="status") int status,
-										@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public List<Pedido> aceitarPedido(	@RequestParam(value="idPedido") final String idPedido,
+										@RequestParam(value="status") final int status,
+										@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
-		PedidoImpl pedidoImpl = new PedidoImpl();
+		final PedidoImpl pedidoImpl = new PedidoImpl();
 		Pedido pedido = new Pedido();
 		pedido = pedidoImpl.getPedidoDAO(idPedido);
 		pedido.setStatus(status);
 		pedidoImpl.atualizarStatusPedidoDAO(pedido);
 		
-		List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
+		final List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
 		return pedidos;
 	}
 	
 	@RequestMapping(value="getPedidoPorUsuario", method=RequestMethod.GET)
-	public List<Pedido> getPedidoUsuario(@RequestParam(value="email") String email){
-		System.out.println("email : " + email);
-		PedidoImpl pedidoImpl = new PedidoImpl();
+	public List<Pedido> getPedidoUsuario(@RequestParam(value="email") final String email){
+		final PedidoImpl pedidoImpl = new PedidoImpl();
 		List<Pedido> pedidos = new ArrayList<Pedido>();
 		pedidos = pedidoImpl.getPedidosPorUsuario(email);
-		EmpresaImpl empresaImpl = new EmpresaImpl();
+		final EmpresaImpl empresaImpl = new EmpresaImpl();
 		for(Pedido pedido : pedidos){
 			Empresa empresa = new Empresa();
 			empresa = empresaImpl.getEmpresaDAO(pedido.getEmpresa().getCpfCnpj());

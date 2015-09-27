@@ -14,7 +14,7 @@
 					        						<font>{{descricaoProd}}</font>
 					        					</td>
 					        					<td style="width: 160px;">
-					        						<font>{{precoProd}}</font>
+					        						<font>{{precoProd | currency: 'R$'}}</font>
 					        					</td>
 					        					<td style="width: 70px;">
 					        						<i class="icon-pencil"></i>
@@ -27,7 +27,7 @@
 						      	  </a>
 
 				      	</div>
-
+				      	
 				      	<div id="form-campos" ng-show="mostrarCadastroProduto()">
 				      		<table>
 				      			<tr>
@@ -37,14 +37,14 @@
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarDescProduto()"></i>
 											<i class="icon-ok" ng-show="validarDescProduto()"></i>
 										</font></label>
-				      					<input type="text" ng-model="descricaoProd" ng-change="validarDescProduto()" class="input-xxlarge"></td>
+				      					<input type="text" ng-model="descricaoProd" id="descricao" ng-change="validarDescProduto()" class="input-xxlarge"></td>
 				      				<td>
 				      					<label>Preço
 				      					<font ng-hide="isValidAllProduto()">
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPrecoProduto()"></i>
 											<i class="icon-ok" ng-show="validarPrecoProduto()"></i>
 										</font></label>
-				      					<input type="text" ng-model="precoProd" ng-change="validarPrecoProduto()" class="input-small"></td>
+				      					<input type="text" ng-model="precoProd" id="preco" ng-change="validarPrecoProduto()" class="input-small"></td>
 				      			</tr>
 				      			<tr>
 				      				<td>
@@ -113,7 +113,6 @@
 					      			<tr>
 					      				<td>
 					      					<button class="btn btn-primary" ng-click="mostrarCamposNulosProduto(produto.descricao , produto.preco); atualizarProdutoController(produto.id, produto.descricao, produto.preco); listProdutos();">Salvar</button>
-					      					<button class="btn btn-alert" ng-click="cancelUpdateProduto(produto.id)">Cancel</button>
 					      				</td>
 
 					      			</tr>
@@ -121,9 +120,10 @@
 							</div>
 			
 							<div id="{{produto.id}}" class="accordion-body collapse">
-								<div class="accordion-inner" data-ng-init="droppableItens(produto.id); droppableAdicionais(produto.id);">
+								<div class="accordion-inner">
 									itens do produto
-									  <div id="itens-produto" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id, false)">
+									  <div id="itens-produto{{produto.id}}" style="height: 100px; width: 99%; background-color: #f8f8f8; padding: 2px;" class="ui-widget-content" ng-mouseenter="cadastrarItemProduto(produto.id, false)" >
+									  <div data-ng-init="droppableItens(produto.id)">
 									  		<div ng-repeat="itemProduto in listItensProduto" class="placeholder" id="itemdropped">		
 									  			<table>
 									  				<tr>
@@ -137,13 +137,14 @@
 									  			</table>
 									  			
 									  		</div>	
+									  	<div>
 							          </div>
 							    </div>
 							</div>
 						</div>
 				</div>
-			</div>						      			
-		</div>
+			</div>
+			</td>						      			
 	</td>
 
 	<td id="separador-produto-item">
@@ -273,8 +274,8 @@
 							</div>
 						</div>
 			</div>
+			</div>
 	</td>
  </tr>
 </table>
-</div>
 </div>

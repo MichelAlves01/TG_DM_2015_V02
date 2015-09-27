@@ -33,9 +33,9 @@ public class ItemProdutoController {
 	private ItemService itemService;
 	
 	@RequestMapping(value="/cadastrarItemProdutoController", method=RequestMethod.POST)
-	public void cadastrarItemProduto(	@RequestParam(value="idItem") int idItem,
-										@RequestParam(value="idProduto") int idProduto,
-										@RequestParam(value="itemAdicional") String itemAdicional){
+	public void cadastrarItemProduto(	@RequestParam(value="idItem") final int idItem,
+										@RequestParam(value="idProduto") final int idProduto,
+										@RequestParam(value="itemAdicional") final String itemAdicional){
 		
 		itemImpl = new ItemImpl();
 		item = itemImpl.getItemDAO(idItem);
@@ -54,8 +54,8 @@ public class ItemProdutoController {
 	}
 	
 	@RequestMapping(value="/getItensProdutoController" , method=RequestMethod.GET)
-	public List<ItemProduto> getItensProduto(	@RequestParam(value="idProduto") int idProduto,
-												@RequestParam(value="itemAdicional") String itemAdicional){
+	public List<ItemProduto> getItensProduto(	@RequestParam(value="idProduto") final int idProduto,
+												@RequestParam(value="itemAdicional") final String itemAdicional){
 											
 		produtoImpl = new ProdutoImpl();
 		produto = produtoImpl.getProdutoDAO(idProduto);
@@ -72,8 +72,8 @@ public class ItemProdutoController {
 	}
 	
 	@RequestMapping(value="/excluirItemProdutoController" , method=RequestMethod.GET)
-	public List<ItemProduto> excluirItemProduto(@RequestParam(value="idItem") int idItem,
-												@RequestParam(value="idProduto") int idProduto){
+	public List<ItemProduto> excluirItemProduto(@RequestParam(value="idItem") final int idItem,
+												@RequestParam(value="idProduto") final int idProduto){
 		produtoImpl = new ProdutoImpl();
 		produto = produtoImpl.getProdutoDAO(idProduto);
 		
@@ -86,7 +86,7 @@ public class ItemProdutoController {
 		
 		itemProdutoImpl = new ItemProdutoImpl();
 		itemProdutoImpl.excluirItemProduto(itemProduto);
-		List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto);
+		final List<ItemProduto> itensProduto = itemProdutoImpl.getItemProdutoDAO(itemProduto);
 		
 		return itensProduto ;
 	} 

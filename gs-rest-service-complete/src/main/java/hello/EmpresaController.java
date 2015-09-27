@@ -35,17 +35,15 @@ public class EmpresaController {
 	
 	private static UserImpl userImpl;
 	
+	// controller para iniciar o cadastro da empresa 
 	@RequestMapping(value="/iniciaCadastroEmpresa", method=RequestMethod.POST)
-	public Empresa iniciaCadastro( 	@RequestParam(value="nome") String nome,
-									@RequestParam(value="cpfCnpj") String cpfCnpj){
-		
+	public Empresa iniciaCadastro( 	@RequestParam(value="nome") final String nome,
+									@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		empresa = new Empresa();
 		empresa.setNome(nome);
 		empresa.setCpfCnpj(cpfCnpj);
-		System.out.println("nome = " + empresa.getNome() + " e " + empresa.getCpfCnpj());
 		empresaService = new EmpresaService();
 		empresaService.verificaCpf(empresa);
-		System.out.println("status" + empresa.getStatus());
 		return empresa;
 	}
 	
@@ -55,26 +53,25 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/getEmpresaController", method=RequestMethod.GET)
-	public Empresa getEmpresaController(@RequestParam(value="cpfCnpj")String cpfCnpj){
+	public Empresa getEmpresaController(@RequestParam(value="cpfCnpj")final String cpfCnpj){
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
 		return empresa;
 	}
 	
 	@RequestMapping(value="/cadastrarEmpresaController", method=RequestMethod.POST)
-	public Empresa cadastrarEmpresa(	@RequestParam(value="tipo") String tipo,
-									@RequestParam(value="idCidade") int idCidade,
-									@RequestParam(value="endereco") String endereco,
-									@RequestParam(value="email") String email,
-									@RequestParam(value="telefoneFixo") String telefoneFixo,
-									@RequestParam(value="telefoneMovel") String telefoneMovel,
-									@RequestParam(value="cep") String cep,
-									@RequestParam(value="latitude")String latitude,
-									@RequestParam(value="longitude")String longitude,
-									@RequestParam(value="senha") String senha){
-		
-		double lat = Double.parseDouble(latitude);
-		double lon = Double.parseDouble(longitude);
+	public Empresa cadastrarEmpresa(	@RequestParam(value="tipo") final String tipo,
+									@RequestParam(value="idCidade") final int idCidade,
+									@RequestParam(value="endereco") final String endereco,
+									@RequestParam(value="email") final String email,
+									@RequestParam(value="telefoneFixo") final String telefoneFixo,
+									@RequestParam(value="telefoneMovel") final String telefoneMovel,
+									@RequestParam(value="cep") final String cep,
+									@RequestParam(value="latitude") final String latitude,
+									@RequestParam(value="longitude") final String longitude,
+									@RequestParam(value="senha") final String senha){
+		final double lat = Double.parseDouble(latitude);
+		final double lon = Double.parseDouble(longitude);
 		cidadeImpl = new CidadeImpl();
 		cidade = cidadeImpl.geCidadeDAO(idCidade);
 		user = new User();
@@ -107,22 +104,22 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/atualizarEmpresaController", method=RequestMethod.POST)
-	public Empresa atualizarEmpresa(@RequestParam(value="nome") String nome,
-									@RequestParam(value="cpfCnpj") String cpfCnpj,
-									@RequestParam(value="tipo") String tipo,
-									@RequestParam(value="idCidade") int idCidade,
-									@RequestParam(value="endereco") String endereco,
-									@RequestParam(value="email") String email,
-									@RequestParam(value="telefoneFixo") String telefoneFixo,
-									@RequestParam(value="telefoneMovel") String telefoneMovel,
-									@RequestParam(value="cep") String cep,
-									@RequestParam(value="latitude")String latitude,
-									@RequestParam(value="longitude")String longitude){
+	public Empresa atualizarEmpresa(@RequestParam(value="nome") final String nome,
+									@RequestParam(value="cpfCnpj") final String cpfCnpj,
+									@RequestParam(value="tipo") final String tipo,
+									@RequestParam(value="idCidade") final int idCidade,
+									@RequestParam(value="endereco") final String endereco,
+									@RequestParam(value="email") final String email,
+									@RequestParam(value="telefoneFixo") final String telefoneFixo,
+									@RequestParam(value="telefoneMovel") final String telefoneMovel,
+									@RequestParam(value="cep") final String cep,
+									@RequestParam(value="latitude") final String latitude,
+									@RequestParam(value="longitude") final String longitude){
 		
-		double lat = Double.parseDouble(latitude);
-		double lon = Double.parseDouble(longitude);
+		final double lat = Double.parseDouble(latitude);
+		final double lon = Double.parseDouble(longitude);
 		cidadeImpl = new CidadeImpl();
-		Cidade cidade = cidadeImpl.geCidadeDAO(idCidade);
+		final Cidade cidade = cidadeImpl.geCidadeDAO(idCidade);
 		
 		empresa.setNome(nome);
 		empresa.setCpfCnpj(cpfCnpj);
@@ -148,14 +145,14 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/excluirEmpresaController", method=RequestMethod.POST) 
-	public void excluirEmpresaController(@RequestParam(value="cpfCnpj") String cpfCnpj){
+	public void excluirEmpresaController(@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		empresaService = new EmpresaService();
 		empresaService.excluirEmpresaService(cpfCnpj);	
 	}
 	
 	@RequestMapping(value="/definirRaioController" , method=RequestMethod.GET)
-	public Empresa definirRaio(@RequestParam(value="cpfCnpj") String cpfCnpf, 
-								@RequestParam(value="raio") double raio){
+	public Empresa definirRaio(@RequestParam(value="cpfCnpj") final String cpfCnpf, 
+								@RequestParam(value="raio") final double raio){
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpf);
@@ -169,23 +166,23 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/getEmpresasPorLatLong" , method=RequestMethod.GET)
-	public List<Empresa> getEmpresaPorLatLong(	@RequestParam(value="latitude") double latitude,
-							@RequestParam(value="longitude") double longitude){
+	public List<Empresa> getEmpresaPorLatLong(	@RequestParam(value="latitude") final double latitude,
+							@RequestParam(value="longitude") final double longitude){
 		empresaImpl = new EmpresaImpl();
-		List<Empresa> empresas = empresaImpl.getEmpresaPorLatLong(latitude,longitude);
+		final List<Empresa> empresas = empresaImpl.getEmpresaPorLatLong(latitude,longitude);
 		return empresas;
 	}
 	
 	@RequestMapping(value="/avaliarEmpresaController" , method=RequestMethod.GET)
-	public void avaliarEmpresa(@RequestParam(value="cpfCnpj") String cpfCnpj, 
-								@RequestParam(value="nota") double nota){
+	public void avaliarEmpresa(@RequestParam(value="cpfCnpj") final String cpfCnpj, 
+								@RequestParam(value="nota") final double nota){
 		
 		empresaImpl = new EmpresaImpl();
-		Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
-		StringTokenizer st = new StringTokenizer(empresa.getAvaliacao(), ",");
+		final Empresa empresa = empresaImpl.getEmpresaDAO(cpfCnpj);
+		final StringTokenizer st = new StringTokenizer(empresa.getAvaliacao(), ",");
 		final double notaVelha =  Double.parseDouble(st.nextToken());
 		final int qtdeAvaliacao = Integer.parseInt(st.nextToken());
-		EmpresaService empresaService = new EmpresaService();
+		final EmpresaService empresaService = new EmpresaService();
 		empresa.setAvaliacao(empresaService.calcAvaliacao(notaVelha, qtdeAvaliacao, nota));
 		empresaImpl.atualizarEmpresaDAO(empresa);
 	}

@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import delivery.model.Empresa;
-
+/**
+ * 
+ * @author Michel
+ *
+ */
 public interface EmpresaDAO {
 
 	public void cadastrarEmpresaDAO(Empresa empresa);

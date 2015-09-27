@@ -5,6 +5,12 @@ import java.util.List;
 import delivery.model.Empresa;
 import delivery.model.Item;
 
+/**
+ * Interface Itens 
+ * 
+ * @author Michel
+ *
+ */
 public interface ItemDAO {
 	
 	void cadastrarItemDAO(Item item);

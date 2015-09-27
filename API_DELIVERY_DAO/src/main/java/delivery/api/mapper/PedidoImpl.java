@@ -11,12 +11,16 @@ import delivery.model.ItemProduto;
 import delivery.model.Pedido;
 import delivery.model.Produto;
 import delivery.model.UsuarioMob;
-
+/**
+ * Implenta a interface PedidoDAO
+ * @author Michel
+ *
+ */
 public class PedidoImpl {
 
-	public void cadastrarPedidoDAO(Pedido pedido){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+	public void cadastrarPedidoDAO(final Pedido pedido){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
 		pedidoDao.cadastrarPedidoDAO(pedido);
 		final ItensPedidoImpl itemPedidoImpl = new ItensPedidoImpl();
 		final List<ItemPedido> itensPedido = pedido.getItensPedido();
@@ -30,33 +34,33 @@ public class PedidoImpl {
 		session.close();
 	}
 	
-	public void atualizarStatusPedidoDAO(Pedido pedido){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+	public void atualizarStatusPedidoDAO(final Pedido pedido){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
 		pedidoDao.atualizarStatusPedidoDAO(pedido);
 		session.commit();
 		session.close();
 	}
 	
-	public Pedido getPedidoDAO(String idPedido){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
-		Pedido pedido = pedidoDao.getPedidoDAO(idPedido);
+	public Pedido getPedidoDAO(final String idPedido){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+		final Pedido pedido = pedidoDao.getPedidoDAO(idPedido);
 		session.close();
 		return pedido;
 	}
 	
-	public List<Pedido> getPedidosDAO(String cpfCnpj){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
-		List<Pedido> pedidos = pedidoDao.getPedidosDAO(cpfCnpj);
+	public List<Pedido> getPedidosDAO(final String cpfCnpj){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+		final List<Pedido> pedidos = pedidoDao.getPedidosDAO(cpfCnpj);
 		ItensPedidoImpl itemPedidoImpl = new ItensPedidoImpl();
-		ProdutoImpl produtoImpl = new ProdutoImpl();
-		UsuariosMobImpl usuarioMobImpl = new UsuariosMobImpl();
+		final ProdutoImpl produtoImpl = new ProdutoImpl();
+		final UsuariosMobImpl usuarioMobImpl = new UsuariosMobImpl();
 		for(Pedido pedido : pedidos){
-			List<ItemPedido> itens = itemPedidoImpl.getItensPedido(pedido.getId());
+			final List<ItemPedido> itens = itemPedidoImpl.getItensPedido(pedido.getId());
 				for(ItemPedido item : itens){
-					Produto produto = produtoImpl.getProdutoDAO(item.getProduto().getId());
+					final Produto produto = produtoImpl.getProdutoDAO(item.getProduto().getId());
 					item.setProduto(produto);
 				}
 			pedido.setItensPedido(itens);
@@ -68,10 +72,10 @@ public class PedidoImpl {
 		return pedidos;
 	}
 	
-	public List<Pedido> getPedidosPorUsuario(String email){
-		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
-		PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
-		List<Pedido> pedidos = pedidoDao.getPedidosPorEmail(email);
+	public List<Pedido> getPedidosPorUsuario(final String email){
+		final SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		final PedidoDAO pedidoDao = session.getMapper(PedidoDAO.class);
+		final List<Pedido> pedidos = pedidoDao.getPedidosPorEmail(email);
 		session.commit();
 		session.close();
 		return pedidos;
