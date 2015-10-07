@@ -15,6 +15,7 @@
         $scope.empresas = [];
         var produtos = [];
         $scope.enderecos = [];
+        $scope.quantidade = 1;  
         
         $scope.showUsuario = function(){
 			visibilityControle(5);
@@ -140,12 +141,11 @@
                 });
                 
                 console.log(latitude + ' ' + longitude);
-                var data = $.param({latitude: -23.4534596 , longitude:  -47.4900411});
+                var data = $.param({latitude: latitude , longitude:  longitude});
                 setTimeout(function(){
                     $http.get(urlBase + '/getEmpresasPorLatLong?'+ data).success(function( data , status){
                         $scope.empresas = data;
                         empresasJson = data;
-                        
                     });
                 },2000);
                 
@@ -212,12 +212,12 @@
                 }
             } else {
                 if(nivelOp == 1){
-                    $('#containerPrincipal').animate({height: '80%'});                  
+                    $('#containerPrincipal').animate({height: '79%'});                  
                 } else if(nivelOp == 2) {
-                    $("#produtosContainer").animate({height: '80%'});
+                    $("#produtosContainer").animate({height: '79%'});
                     $("#containerProdutos").show();
                 } else if(nivelOp == 3) {
-                    $("#containerPedido").animate({height: '80%'});
+                    $("#containerPedido").animate({height: '79%'});
                 }
             }
             
@@ -240,7 +240,7 @@
         };
         
        
-         $scope.addProduto = function(empresa, produto ){
+         $scope.addProduto = function(empresa, produto, quantidade ){
             
             if($scope.carrinho == null){
                 $scope.carrinho = jQuery.extend({}, empresa);
@@ -248,12 +248,12 @@
             } else if($scope.carrinho.cpfCnpj != empresa.cpfCnpj) {
                 $.blockUI({ message: $('#limparCarrinhoForm') }); 
             }
-             
+                produto.quantidade = quantidade;
                 $scope.carrinho.produto.push(produto);
                 if($scope.carrinho.produto.length > 0){
                     $scope.total = 0;
                     for(var i=0 ; i<$scope.carrinho.produto.length ; i++){
-                        $scope.total += $scope.carrinho.produto[i].preco; 
+                        $scope.total += $scope.carrinho.produto[i].preco * quantidade; 
                     }
                 }
         };
@@ -266,6 +266,15 @@
         
         $scope.avaliacao = function(){
             
+        }
+        
+        $scope.excluirItemComanda = function(produto){
+            for(var i=0 ; i<$scope.carrinho.produto.length ; i++ ){
+                if($scope.carrinho.produto[i].id == produto.id){
+                    $scope.carrinho.produto.splice(i,1);
+                    $scope.total -= produto.preco * produto.quantidade;
+                }
+            }
         }
         
         $scope.cancelarBlockUIEvento = function(){

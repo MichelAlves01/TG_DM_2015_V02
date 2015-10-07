@@ -1,6 +1,6 @@
 (function(){
 	
-	var app = angular.module('itemService' , []);
+	var app = angular.module('itemService' , ['produtoService']);
 
 	var urlBase = 'http://localhost:8080';
 
@@ -79,8 +79,7 @@
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarItemController?' + data).success(function(data,status){
-						$scope.item = data;
-						$scope.itens.push($scope.item);
+						$scope.itens = data;
 						$.growlUI('Cadastrado com sucesso', '', 'C');
 				});
 
@@ -119,12 +118,17 @@
 		$scope.removerItem = function(id){
 			var cpfCnpj = $scope.empresa.cpfCnpj;
 			var data = $.param({id: id, cpfCnpj: cpfCnpj});
+
 			setTimeout(function(){ 
 				$http.get(urlBase + '/excluirItemController?' + data).success(function(data,status){
 					$scope.itens = data;
 					$.growlUI('Excluido com sucesso' , '' , 'C');
 				});
 			}, 50);
+		}
+
+		function vericarItemEmUso(){
+
 		}
 
 		$scope.atualizarForm = function(id){

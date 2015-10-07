@@ -56,11 +56,20 @@
                                   <div id="btnComprar">
                                       <table align="right">
                                             <tr>
+                                                <td>
+                                                    quantidade : 
+                                                </td>
+                                                <td style="padding: 10px;">
+                                                    <input type="number" ng-model="quantidade" style="width: 60px; height: 30px" />
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td style="padding: 10px;">
                                                     {{produto.preco | currency}}
                                                 </td>
+                                                
                                                 <td>
-                                                    <button class="btn btn-success" ng-click="addProduto(empresa, produto)">Adicionar</button>
+                                                    <button class="btn btn-success" ng-click="addProduto(empresa, produto, quantidade)">Adicionar</button>
                                                 </td>
                                             </tr>
                                       </table>

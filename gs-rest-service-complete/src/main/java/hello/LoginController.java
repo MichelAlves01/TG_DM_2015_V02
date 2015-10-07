@@ -49,12 +49,12 @@ public class LoginController {
 	      Empresa empresa = new Empresa();
 	      if(user != null && user.getPassword().equals(password)){
 	    	  empresa = empresaImpl.getEmpresaDAO(user.getEmpresa().getCpfCnpj());
-	      } else {
-	    	  return null;
 	      }
 	      
-	     
-	      return empresa;
+	     if(empresa != null && empresa.getStatus() == 0){
+	    	 return empresa;
+	     } 
+	      return null;
 	  }
 	  
 	  @RequestMapping(value="/Logout" , method=RequestMethod.GET)

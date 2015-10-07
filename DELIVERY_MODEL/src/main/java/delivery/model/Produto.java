@@ -9,6 +9,7 @@ public class Produto {
 	private String descricao;
 	private double preco;
 	private Empresa empresa;
+	private int quantidade;
 	private int status;
 	private List<Item> itens = new ArrayList<Item>();
 	private List<ItemProduto> itensProduto = new ArrayList<ItemProduto>();	
@@ -36,7 +37,12 @@ public class Produto {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	public int getStatus() {
 		return status;
 	}

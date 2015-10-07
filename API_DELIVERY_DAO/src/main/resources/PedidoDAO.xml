@@ -24,7 +24,13 @@
  	</insert>
 	
 	<update id="atualizarStatusPedidoDAO" parameterType="delivery.model.Pedido">
-			update Pedido set status = #{status} where id = #{id}
+			UPDATE 
+				Pedido 
+			SET 
+				status = #{status}, 
+				hora_fechado = #{horaFechado} 
+			WHERE 
+				id = #{id}
 	</update>
  	
  	<select id="getPedidoDAO" parameterType="java.lang.String" resultType="delivery.model.Pedido">

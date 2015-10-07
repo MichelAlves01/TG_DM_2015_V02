@@ -4,7 +4,7 @@ body{
 }
 
 #containerPrincipal, #containerUsuario, #containerPedido, #produtosContainer{
-		height: 80%;
+		height: 79%;
 		width: 100%;
 		margin: 0px;
         padding: 0px;

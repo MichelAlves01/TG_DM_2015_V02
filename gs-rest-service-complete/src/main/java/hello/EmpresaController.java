@@ -94,8 +94,8 @@ public class EmpresaController {
 		user.setPassword(senha);
 		user.setEmpresa(empresa);
 		
-		empresaImpl = new EmpresaImpl();
-		empresaImpl.cadastrarEmpresaDAO(empresa);
+		empresaService = new EmpresaService();
+		empresaService.cadastrarEmpresaService(empresa);
 		
 		userImpl = new UserImpl();
 		userImpl.cadastrarUsuarioDAO(user);
@@ -146,8 +146,8 @@ public class EmpresaController {
 	
 	@RequestMapping(value="/excluirEmpresaController", method=RequestMethod.POST) 
 	public void excluirEmpresaController(@RequestParam(value="cpfCnpj") final String cpfCnpj){
-		empresaService = new EmpresaService();
-		empresaService.excluirEmpresaService(cpfCnpj);	
+		empresaImpl = new EmpresaImpl();
+		empresaImpl.excluirEmpresaDAO(cpfCnpj);	
 	}
 	
 	@RequestMapping(value="/definirRaioController" , method=RequestMethod.GET)

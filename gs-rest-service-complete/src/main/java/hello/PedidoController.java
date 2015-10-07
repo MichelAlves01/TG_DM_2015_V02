@@ -87,10 +87,11 @@ public class PedidoController {
 		pedido.setUsuariosMob(usuario);
 		
 		final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		final Date date = new Date();
-		pedido.setHoraAberto(dateFormat.format(date));
+		pedido.setHoraAberto(new Date());
 		pedido.setStatus(0);
 		
+		//Gson - recupera os valores de uma string em formato JSON e adiciona na
+		//classe produto.
 		final Gson gson = new Gson();
 		java.lang.reflect.Type collectionType = new TypeToken<List<Produto>>() {
 	    }.getType();
@@ -100,6 +101,7 @@ public class PedidoController {
 		for(Produto prod : produtos){
 			final ItemPedido itemPedido = new ItemPedido();
 			itemPedido.setProduto(prod);
+			itemPedido.setQuantidade(prod.getQuantidade());
 			itensPedido.add(itemPedido);
 		}
 		
@@ -120,6 +122,9 @@ public class PedidoController {
 		Pedido pedido = new Pedido();
 		pedido = pedidoImpl.getPedidoDAO(idPedido);
 		pedido.setStatus(status);
+		if(status == 2 || status == 3){
+			pedido.setHoraFechado(new Date());
+		}
 		pedidoImpl.atualizarStatusPedidoDAO(pedido);
 		
 		final List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);

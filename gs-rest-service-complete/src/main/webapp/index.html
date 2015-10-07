@@ -19,11 +19,9 @@
 			<script type="text/javascript" src="angular/directives/directiveLoginPage.js"></script>
 			<script type="text/javascript" src="angular/directives/directiveCadastroEmpresa.js"></script>
 			<script type="text/javascript" src="angular/directives/directivePrincipal.js"></script>
-			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-			
+			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>			
 			<script type="text/javascript" src="../js/date.js"></script>
 			<script type='text/javascript' src="../js/jquery.weekcalendar.js"></script>
-
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap.css">
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap-responsive.min.css">
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
@@ -31,36 +29,12 @@
 			<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 			
 
-			  <script type="text/javascript">
-					/*Inicia o com o status da empresa como fechado*/
-					$(document).ready(function(){
-						$(".aberto").hide();
-					$(".status-aberto").hide();
-				});
-				
+			<script type="text/javascript">
 				/*Gerencia o efeito sanfona*/
 				$(function() {
 				    $( "#accordion2" ).accordion();
 				  });
-				
-				/*Responsavel pelo efeito de Aberto e fechado mudando a cor da bolinha*/
-				function mudarStatus(tipo){
-					if(tipo == 1){
-						$(".status-aberto").show();
-						$(".status-fechado").hide();
-						$(".aberto").show();
-						$(".fechado").hide();
-					} 
-					if(tipo == 2){
-						$(".status-aberto").hide();
-						$(".status-fechado").show();
-						$(".aberto").hide();
-						$(".fechado").show();
-					}
-					tipo = 0;
 				}
-
-				
 
 				 $(function() {
 				    $( "#chat" ).resizable();
@@ -70,9 +44,7 @@
 			<script type="text/javascript">
 						$(".dropdown-toggle").dropdown();
 						$('#element').tooltip('show');
-						$(".collapse").collapse('dropdown-toggle');	
-
-						
+						$(".collapse").collapse('dropdown-toggle');							
 			</script>
 
 			<script type="text/javascript">
@@ -81,9 +53,7 @@
 						if(e.which == 13){
 							$.blockUI({ message: $('#esperarCep') }); 
 						} 
-
 						console.log($('#bairro').value);
-	
 						setTimeout($.unblockUI, 10000); 
 						});    
 				}); 
@@ -147,7 +117,24 @@
 			<div id="sub-cabecalho"></div>
 				   <div id="form">
 				   		<div id="form-title"> 
-				   			<label><font color="#ffffff">Cadastro</font></label>
+				   			<label>
+				   				<table>
+				   					<tr>
+				   						<td ng-if="tipoAcao == 'cad'">
+				   							<font color="#ffffff">Cadastro</font>
+				   						</td>
+				   						<td ng-if="tipoAcao == 'atual'" ng-click="starting()">
+				   							<div style="height: 20px; width: 20px">
+				   								<img src="img/chevron-left.png" style="height: 20px; padding-right: 14px;" />
+				   							</div>
+				   						</td>
+				   						<td ng-if="tipoAcao == 'atual'">
+				   							<font color="#ffffff" >Atualizar Informações</font>
+				   						</td>
+				   					</tr>
+				   				</table>
+				   				
+				   			</label>
 				   		</div>
 				   		
 				   			<div class="tabbable tabs-left" >

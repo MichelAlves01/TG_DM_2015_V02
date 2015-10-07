@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;valueOf&apos; from expression &apos;String.valueOf(new Date())&apos;&#x0D;&#x0A;- Original project: &apos;gs-rest-service-complete&apos;&#x0D;&#x0A;- Variable name: &apos;valueOf&apos;&#x0D;&#x0A;- Destination method: &apos;hello.PedidoController.aceitarPedido()&apos;&#x0D;&#x0A;- Variable expression: &apos;String.valueOf(new Date())&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;valueOf&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/main\/java&lt;hello{PedidoController.java" name="valueOf" replace="true" selection="4621 26" stamp="1443325539474" version="1.0"/>
+</session>

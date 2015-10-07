@@ -27,7 +27,7 @@ public class ItemController {
 	private Empresa empresa;
 	
 	@RequestMapping(value="/cadastrarItemController" , method=RequestMethod.POST)
-	public Item cadastrarItem(	@RequestParam(value="descricao") final String descricao,
+	public List<Item> cadastrarItem(	@RequestParam(value="descricao") final String descricao,
 								@RequestParam(value="preco") final double preco,
 								@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		
@@ -41,7 +41,9 @@ public class ItemController {
 		
 		itemService = new ItemService();
 		itemService.cadastrarItemService(item);
-		return item;
+		
+		List<Item> itens = new ItemImpl().getItensDAO(empresa);
+		return itens;
 	}
 	
 	@RequestMapping(value="/getItensController", method=RequestMethod.GET)

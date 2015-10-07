@@ -21,17 +21,17 @@
    	<div class="accordion" id="accordion2">
 		<div class="accordion-group" ng-repeat="pedido in pedidos track by pedido.id">
 		    <div class="accordion-heading" style="background-color: #eeeeee;">
-		      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{pedido.id}}">						        
+		      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{pedido.id}}">						     
 					<table >
 			    		<tr>
 			    			<td style="width: 744px; border-right: 1px solid #999999;">
 			    				<font>{{pedido.endereco}}</font>
 							</td>
 							<td style="width: 100px; border-right: 1px solid #999999;">
-								<center><font>{{pedido.horaAberto}}</font></center>
+								<center><font>{{pedido.horaAberto | date : 'dd/MM/yyyy h:mm'}}</font></center>
 							</td>
 							<td style="width: 106px; border-right: 1px solid #999999;">
-								<center><font>{{pedido.horaFechado}}</font></center>
+								<center><font>{{pedido.horaFechado | date : 'dd/MM/yyyy h:mm'}}</font></center>
 							</td>
 							<td style="width: 100px;">
 								<center><font ng-if="pedido.status == 0">Pendente</font></center>
@@ -51,7 +51,7 @@
 							        <font>Itens do Pedido</font>
 							        <p>
 								 		<ul ng-repeat="itens in pedido.itensPedido track by itens.produto.id">
-								 			<li>{{itens.produto.descricao}}</li>												 	
+								 			<li><font>{{itens.quantidade}}</font><font> - {{itens.produto.descricao}}</font></li>												 	
 										</ul>
 									</p>				 		
 									<hr style="border: 1px solid #aaaaaa"></hr>	

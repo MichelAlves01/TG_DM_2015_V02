@@ -22,14 +22,14 @@
 
                 <div id="comandaConteudo" style="border: 1px solid #bbbbbb; padding: 0px; display: none;" >
                     <div id="itens-comanda">
-                        <div ng-repeat="prod in carrinho.produto track by prod.id" >
-                            <table>
-                                <tr>
-                                    <td style="width: 90%">{{prod.descricao}}</td>
-                                    <td style="width: 10%">{{prod.preco | currency : "R$"}}</td>
-                                </tr>
-                            </table>   
-                        </div>
+                         <table>
+                                    <tr style="border-bottom: 1px solid #bbbbbb" ng-repeat="prod in carrinho.produto track by prod.id">
+                                        <td style="width: 80%; border-right: 1px solid #bbbbbb;">{{prod.descricao}}</td>
+                                        <td style="width: 80%; border-right: 1px solid #bbbbbb;">{{prod.quantidade}}</td>
+                                        <td style="width: 10% border-right: 1px solid #bbbbbb;">{{prod.quantidade * prod.preco | currency : "R$"}}</td>
+                                        <td style="width: 10%;" ng-click="excluirItemComanda(prod)"><center><i class="icon-remove"></i></center></td>
+                                    </tr>   
+                        </table> 
                         </div>
                             <div id="btn-comanda">
                              <table align="right">

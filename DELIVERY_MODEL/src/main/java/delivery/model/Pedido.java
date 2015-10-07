@@ -7,8 +7,8 @@ public class Pedido {
 
 	private String id;
 	private String endereco;
-	private String horaAberto;
-	private String horaFechado;
+	private Date horaAberto;
+	private Date horaFechado;
 	private Empresa empresa;
 	private UsuarioMob usuariosMob;
 	private int status;
@@ -29,17 +29,17 @@ public class Pedido {
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-	public String getHoraAberto() {
+	}	
+	public Date getHoraAberto() {
 		return horaAberto;
 	}
-	public void setHoraAberto(String horaAberto) {
+	public void setHoraAberto(Date horaAberto) {
 		this.horaAberto = horaAberto;
 	}
-	public String getHoraFechado() {
+	public Date getHoraFechado() {
 		return horaFechado;
 	}
-	public void setHoraFechado(String horaFechado) {
+	public void setHoraFechado(Date horaFechado) {
 		this.horaFechado = horaFechado;
 	}
 	public UsuarioMob getUsuariosMob() {

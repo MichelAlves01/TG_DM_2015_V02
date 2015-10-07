@@ -30,7 +30,7 @@
 		$scope.calPrecoTotal = function(produtos){
 			$scope.total = 0;
 			for (var i=0 ; i<produtos.length ; i++) {
-				$scope.total += produtos[i].produto.preco;
+				$scope.total += produtos[i].produto.preco * produtos[i].quantidade;
 			};
 		}
 

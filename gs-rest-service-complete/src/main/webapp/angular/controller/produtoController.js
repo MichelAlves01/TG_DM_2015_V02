@@ -1,11 +1,6 @@
-/*
-	Esse controller contem o codigo referente ao 
-	cadastro, atualizar, excluir e visulizar produto 
-	assim como cadastro de item do produto. 
-*/
 (function(){
 	
-	var app = angular.module('produtoService' , []);
+	var app = angular.module('produtoService' , ['itemService']);
 	var toggleUpdate = true;
 	var urlBase = 'http://localhost:8080';
 
@@ -16,7 +11,7 @@
 		var itemId = null;
 		var collapsed = false;
 		
-		//expandir ou retrair o formuario para cadastro de produto
+
 		$scope.iniciarCadastroProduto = function(){
 			if(toggleCadastro){
 				$("#form-produto-add").animate({
@@ -37,7 +32,6 @@
 			
 		}
 
-		//mostra ou esconde formulario
 		$scope.mostrarCadastroProduto = function(){
 			if(toggleCadastro == true){
 				return false;
@@ -46,10 +40,8 @@
 			}
 		}
 
-		//valida preco do produto se o valor esta nulo e não permite que seja inserido valores não numerico
 		$scope.validarPrecoProduto = function(){
 			if($scope.precoProd != null){
-				//usa regex para verificar se o valor digitado é numerico.
 				$scope.precoProd = "R$ " +  $scope.precoProd.replace(/[^0-9^()^]/g,'');;
 				$scope.precoProd = $scope.precoProd.replace('R$ R$ ', 'R$ ');
 				return true;
@@ -58,7 +50,6 @@
 			}		  
 		}
 
-		//valida descrição do produto.
 		$scope.validarDescProduto = function(){
 			if($scope.descricaoProd != null){
 				return true;
@@ -68,13 +59,9 @@
 
 		}
 
-		// as duas funções abaixo verica se todos os campos não estão nulos
-		// caso esteja mostra um icone identificando o campo 
-		// nulo.
 		$scope.isValidAllProduto = function(){
 				return validAll;
 		}
-
 
 		$scope.mostrarCamposNulosProduto = function(descricao, preco){
 			if(validaCamposProduto(descricao, preco)){
@@ -85,16 +72,13 @@
 			}
 		}
 
-		//realiza validações e envia o cadastro de produtos para o servidor
 		$scope.cadastrarProdutoController = function(descricao, preco){
 			if(validaCamposProduto(descricao, preco)){
 				var preco = preco.replace('R$ ', '');
-				var preco = preco.replace(',' , '.')
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarProdutoController?' + data).success(function(data,status){	
-						$scope.produto = data;
-						$scope.produtos.push($scope.produto);
+						$scope.produtos = data;
 						$.growlUI('Cadastrado com sucesso', '', 'C');
 				});
 
@@ -109,8 +93,7 @@
 
 		}
 
-		//Faz uma verificação para garantir que nenhum dado esta sendo enviado nulo 
-		// para o servidor.
+
 		function validaCamposProduto(descricao,preco){
 			if(descricao != null &&
 				preco != null){
@@ -121,7 +104,6 @@
 			}
 		}
 
-		// Realiza um busca no servidor e retorna todos os produtos da empresa. 
 		$scope.listProdutos = function(){
 				var data = $.param({cpfCnpj: $scope.empresa.cpfCnpj}); 
 				$http.get(urlBase + '/getProdutosController?' + data).success(function(data , status){
@@ -130,7 +112,6 @@
 			
 		}
 
-		// Esta função exclui um produto cadastrado.
 		$scope.removerProduto = function(id){
 			var cpfCnpj = $scope.empresa.cpfCnpj;
 			var data = $.param({id: id, cpfCnpj: cpfCnpj});
@@ -142,7 +123,6 @@
 			}, 50);
 		}
 
-		// expande ou retrair formulario do produto a ser atualizado
 		$scope.atualizarFormProduto = function(id){
 			var element_accord = "#"+ id;
 			var element_update = '#update-form-'+id;
@@ -156,12 +136,14 @@
     		}
 		} 
 
+		$scope.cancelUpdateProduto = function(id){
+
+		}
 
 		$scope.mostrarUpdateFormProduto = function(){
 			return toggleUpdate;
 		}
 
-		//Envia para o servidor os dados atualizados do produto
 		$scope.atualizarProdutoController = function(id , descricao, preco){
 			if(validaCamposUpdateProduto(id,descricao,preco)){
 				var cpfCnpj = $scope.empresa.cpfCnpj;
@@ -196,9 +178,8 @@
 		$scope.droppableItens = function(id){
 			setTimeout(function(){
 				console.log('id : ' + id);
-			var addDragDiv = '#itens-produto' + id;	
-			console.log(addDragDiv);	    
-			$( addDragDiv ).droppable({
+				var dragDicId = "#itens-produto" + id;		    
+			$( dragDicId ).droppable({
 					activeClass: "ui-state-default",
 						hoverClass: "ui-state-hover",
 						accept: ":not(.ui-sortable-helper)",
@@ -222,7 +203,7 @@
 
 	
 
-		// verifica se o item não foi cadastrado ao produto anteriormente.
+
 		function validItem(idItem , idProduto, listItens){
 			if(listItens.length == 0 && idItem != null && idProduto != null){
 				return true;
@@ -243,7 +224,6 @@
 			
 		};
 
-		// busca no servidor os itens do produto
 		$scope.getItensProduto = function(idProduto, adicional){
 			if(idProduto != null && !collapsed){	
 							if(adicional == true){	
@@ -280,7 +260,6 @@
 			}, 100);
 		}
 
-		// Executada quando um item é arrastado para o produto 
 		$scope.cadastrarItemProduto = function(idProduto , adicional){
 				var valid = null;
 				if(adicional == true){

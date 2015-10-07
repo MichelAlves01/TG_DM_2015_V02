@@ -62,7 +62,9 @@
 			 			Tipo
 			 		</td>
 			 		<td class="campo">
-			 			{{tipo}}
+			 			<font ng-if="tipo == 'A'">Alimentos</font>
+			 			<font ng-if="tipo == 'U'">Utilitarios</font>
+			 			<font ng-if="tipo == 'S'">Serviços</font>
 			 		</td>
 			 	</tr>
 			</table>

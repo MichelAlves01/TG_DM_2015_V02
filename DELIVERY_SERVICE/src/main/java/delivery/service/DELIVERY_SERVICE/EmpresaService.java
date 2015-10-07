@@ -11,11 +11,17 @@ public class EmpresaService {
 	
 	private EmpresaImpl empresaImpl;
 	
-	public void excluirEmpresaService(final String cpfCnpj){
+	public EmpresaService(){
 		empresaImpl = new EmpresaImpl();
-		empresaImpl.excluirEmpresaDAO(cpfCnpj);
 	}
 	
+	public void cadastrarEmpresaService(Empresa empresa){
+		empresaImpl.cadastrarEmpresaDAO(empresa);
+	}
+	
+	public void atualizarEmpresaService(Empresa empresa){
+		empresaImpl.atualizarEmpresaDAO(empresa);
+	}
 	
 	public List<Empresa> getEmpresasService(){
 		final List<Empresa> empresas = new ArrayList<Empresa>();
@@ -26,7 +32,6 @@ public class EmpresaService {
 	 * @param empresa
 	 */
 	public void verificaCpf(final Empresa empresa){
-		empresaImpl = new EmpresaImpl();
 		final List<Empresa> empresas = empresaImpl.getEmpresasDAO();
 		boolean cpfNotExiste = true;
 		
