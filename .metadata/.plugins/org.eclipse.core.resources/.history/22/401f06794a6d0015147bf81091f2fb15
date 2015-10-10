@@ -61,7 +61,7 @@ public class ItemController {
 									@RequestParam(value="cpfCnpj") final String cpfCnpj){
 		itemImpl = new ItemImpl();
 		itemService = new ItemService();
-		itemService.excluirItemProdutoService(id);
+		itemService.excluirItemProdutoService(idItem);
 		
 		empresaImpl = new EmpresaImpl();
 		empresa = empresaImpl.getEmpresaDAO(cpfCnpj);

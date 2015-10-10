@@ -1,4 +1,4 @@
-<div id="endereco" style="padding: 6px;">
+<div id="endereco" style="padding: 6px; height: 532px;">
     <label><strong>Endereço para entrega</strong></label>
     <font size="2"></font>
     <table>
@@ -10,8 +10,9 @@
         <tr>
             <td>
                 <div>
-                    <font size="2">{{end}}</font>
-                    <label>Numero</label>
+                    <textarea type="text" style="width: 294px; height: 60px;" ng-model="end"></textarea>
+                    <!--font size="2">{{end}}</font-->
+                    <font size="2"><strong>Numero</strong></font>
                     <input type="number" class="input-medium"  ng-model="numero" placeholder="informe o numero"/>
                 </div>
             </td>
@@ -25,7 +26,7 @@
             <td style="padding: 10px;">
                 <input type="radio" name="pgto" ng-model="pgtoTipo" value="cartão" id="pgtoCartao"/> <font size="2">Cartão</font>
             </td>
-            <label>Cartões</label>
+            <font size="2"><strong>Cartões</strong></font>
             <td style="padding: 10px;">
                 <select ng-model="cartao" style="width: 160px;">
                     <option value="Visa">Visa</option>
@@ -44,7 +45,7 @@
         </tr>
     </table>
     <hr />
-    <label> <strong>Observação</strong> </label>
+    <font size="2"><strong>Observação</strong> </label>
     <textarea cols="100" lins="10" style="width: 294px;" ng-model="observacao"></textarea>
     <table align="right" ng-controller="CarrinhoCtrl">
         <tr>

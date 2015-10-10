@@ -20,6 +20,10 @@ body{
     overflow: auto;
 
 }
+
+#containerPedido{
+    background-color: #ffffff;
+}
 #cabecalho{
 		height: 42px;;
 		width: 100%;

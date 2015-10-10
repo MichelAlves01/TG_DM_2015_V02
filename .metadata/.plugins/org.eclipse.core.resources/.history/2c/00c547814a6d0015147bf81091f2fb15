@@ -12,20 +12,21 @@ import delivery.model.ItemProduto;
 public class ItemService {
 	
 	private static ItemImpl itemImpl;
-	
-	public ItemService(){
-		itemImpl = new ItemImpl();
+	public ItemImpl(){
+		itemImpl = ItemImpl();
 	}
 	public void cadastrarItemService(final Item item){
+		itemImpl = new ItemImpl();
 		itemImpl.cadastrarItemDAO(item);
 	}
 	
 	public void atualizarItemService(final Item item ){
+		itemImpl = new ItemImpl();
 		itemImpl.atualizarItemDAO(item);
 	}
 	
-	public void excluirItemProdutoService(int idItem){
-		itemImpl.excluirProdutoDAO(idItem);
+	public void excluirItemProdutoService(){
+		
 	}	
 	
 	public List<ItemProduto> getItensType(final List<ItemProduto> itens,final boolean type){

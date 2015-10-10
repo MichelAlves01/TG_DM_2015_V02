@@ -1,7 +1,7 @@
 (function(){
 	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives','mobService']);
     
-    var urlBase = 'http://192.168.0.11:8080';
+    var urlBase = 'http://192.168.0.10:8080';
     var empresasJson = null;
     var latitude = null;
     var longitude = null;
