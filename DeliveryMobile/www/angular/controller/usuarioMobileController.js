@@ -1,6 +1,8 @@
 (function(){
 	var app = angular.module('usuarioMobile' , []);
-	var urlBase = 'http://192.168.0.10:8080';
+	var ip = location.host;
+    ip = ip.split(':');
+    var urlBase = 'http://'+ip[0]+':8080';
 
 
 	app.controller('usuarioCtrl', function($scope,$http){

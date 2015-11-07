@@ -47,7 +47,7 @@
 		      		<table>
 			    		<tr>
 			    			<td>
-						      	<div id="pedido-container" data-ng-init="calPrecoTotal(pedido.itensPedido)">
+						      	<div id="pedido-container" data-ng-init="calPrecoTotal(pedido.itensPedido.produto)">
 							        <font>Itens do Pedido</font>
 							        <p>
 								 		<ul ng-repeat="itens in pedido.itensPedido track by itens.produto.id">

@@ -148,12 +148,11 @@
  		FROM 
  				empresa 
  		WHERE
- 				(latitude * 110.574) + raio_entrega >= (#{latitude} * 110.574) and 
- 				(#{latitude} * 110.574) >= (latitude * 110.574) - raio_entrega and 
- 				((longitude * 111.320) * cos(longitude) * -1) + raio_entrega >= (#{longitude} * 111.320) * cos(longitude) * -1 and
- 				(#{longitude} * 111.320) * cos(longitude) * -1 >= ((longitude * 111.320) * cos(longitude) * -1) - raio_entrega
- 				
- 				
+ 				(latitude * 111) + raio_entrega >= (#{latitude} * 111) and 
+ 				(#{latitude} * 111) >= (latitude * 111) - raio_entrega and 
+ 				((longitude * 111) * cos(longitude) * -1) + raio_entrega >= (#{longitude} * 111) * cos(longitude) * -1 and
+ 				(#{longitude} * 111) * cos(longitude) * -1 >= ((longitude * 111) * cos(longitude) * -1) - raio_entrega 
+ 				and status != 2				
  	</select>
  	
  	

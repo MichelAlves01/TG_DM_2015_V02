@@ -1,5 +1,8 @@
 <div id="endereco" style="padding: 6px; height: 532px;">
-    <label><strong>Endereço para entrega</strong></label>
+    <div class="pedido-titulos">
+        <label><strong>Endereço para entrega</strong></label>
+    </div>
+    
     <font size="2"></font>
     <table>
         <tr>
@@ -10,7 +13,7 @@
         <tr>
             <td>
                 <div>
-                    <textarea type="text" style="width: 294px; height: 60px;" ng-model="end"></textarea>
+                    <textarea type="text" style="width: 294px; height: 60px;" ng-model="end" ng-click="endAdvertise();"></textarea>
                     <!--font size="2">{{end}}</font-->
                     <font size="2"><strong>Numero</strong></font>
                     <input type="number" class="input-medium"  ng-model="numero" placeholder="informe o numero"/>
@@ -19,7 +22,9 @@
         </tr>
     </table>
     <hr />
-    <label><strong>Forma de pagamento</strong></label>
+    <div class="pedido-titulos">
+        <label><strong>Forma de pagamento</strong></label>
+    </div>
     <font size="3"></font>
     <table>
         <tr style="height: 30px; border-bottom: 1px solid #dddddd;">

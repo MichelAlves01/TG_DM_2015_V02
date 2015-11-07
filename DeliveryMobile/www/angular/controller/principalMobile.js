@@ -1,12 +1,14 @@
 (function(){
 	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives','mobService']);
-    
-    var urlBase = 'http://192.168.0.10:8080';
+    var ip = location.host;
+    ip = ip.split(':');
+    var urlBase = 'http://'+ip[0]+':8080';
     var empresasJson = null;
     var latitude = null;
     var longitude = null;
     var showCar = false;
     var deviceheight = 0;
+    var carrinho = 0;
     nivel = 1;
     
     
@@ -92,7 +94,7 @@
                 if(distancia > empresasJson[i].raio){                    
                     $('#emp' + empresasJson[i].cpfCnpj + 'tipo').hide();
                 }
-                $('#emp' + empresasJson[i].cpfCnpj + 'dist').text(distancia.toPrecision(4) + " km");
+                $('#emp' + empresasJson[i].cpfCnpj + 'dist').text(distancia.toPrecision(4));
                 var avaliacao = empresasJson[i].avaliacao.split(",");
                 $('#emp' + empresasJson[i].cpfCnpj +'estrelas').raty({ score: avaliacao[0], readOnly : true,});
                 $('#emp' + empresasJson[i].cpfCnpj + 'aval').text(avaliacao[0].substring(0,4));
@@ -102,13 +104,16 @@
         };
         
         $scope.getEmpresasProdutosController = function(){
+            $scope.nomeUsuario = window.localStorage.getItem('nome');
             deviceheight = window.orientation == 0 ? window.screen.height : window.screen.width;
             if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
                 deviceheight = deviceheight / window.devicePixelRatio;
             }
-                var carrinho = deviceheight/5;
+            
+                carrinho = deviceheight/5;
                 $('#carrinho').css('height', carrinho);
                 $('#comanda').css('height', carrinho);
+                $('#containerPr').css('height', deviceheight);
                 $('#containerPr').css('height', deviceheight);
 
             var onSuccess = function(position) {
@@ -169,10 +174,10 @@
         }
         
         function calcDistancia(latEmp, longEmp, latMob, longMob){
-            latMobKm = latMob * 110.574;
-            longMobKm = longMob * (111.320 * Math.cos(longEmp));
-            latEmpKm = latEmp * 110.574;
-            longEmpKm = longEmp * (111.320 * Math.cos(longEmp));
+            latMobKm = latMob * 113.1;
+            longMobKm = longMob * (113.1 * Math.cos(longEmp));
+            latEmpKm = latEmp * 113.1;
+            longEmpKm = longEmp * (113.1 * Math.cos(longEmp));
             latEmpKm = convertPositivo(latEmpKm);
             latMobKm = convertPositivo(latMobKm);
             var distLat = latEmpKm - latMobKm;
@@ -220,12 +225,14 @@
                     $("#containerPedido").animate({height: '79%'});
                 }
             }
-            
+                
         }
         $scope.comandaConteudo = function(){
             if(!showCar){
                 var heightComanda = deviceheight + 'px';
                 $('#comandaConteudo').animate({height: heightComanda});
+                $('#comandaConteudo').css('position','relative');
+                $('#comandaConteudo').css('top', carrinho);
                 visibilityCarrinho(nivel , showCar);
                  $('#comandaConteudo').show();
                 $('#comandaConteudo').css('overflow' , 'auto');
@@ -239,9 +246,12 @@
             
         };
         
-       
+       /* ######################## compras ############################## -->*/
          $scope.addProduto = function(empresa, produto, quantidade ){
-            
+            if(quantidade < 1){
+                alert('Escolha quantidade valida');
+                return;
+            }
             if($scope.carrinho == null){
                 $scope.carrinho = jQuery.extend({}, empresa);
                 $scope.carrinho.produto = [];
@@ -281,7 +291,15 @@
            $.unblockUI(); 
         }
         $scope.finalizarCompra = function(){
-           visibilityControle( 3 ); 
+           
+            if($scope.carrinho != null){
+                visibilityControle( 3 );
+                $scope.comandaConteudo();
+                alert('verifique se seu endereço está correto');
+            } else {
+                alert('Escolha algum produto para finalizar a compra'); 
+            }
+               
         }
         
         $scope.enviarPedido = function(){
@@ -326,6 +344,10 @@
             for(var i=0 ; i < empresasJson.length ; i++){
                         $('#emp' + empresasJson[i].cpfCnpj + 'tipo').show();
             }
+        }
+        
+        $scope.endAdvertise = function(){
+            alert('Ao alterar a localidade de entrega o pedido pode ser rejeitado se estiver fora do raio de entrega da empresa!');
         }
         
         

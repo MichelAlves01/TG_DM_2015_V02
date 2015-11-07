@@ -1,6 +1,6 @@
 (function(){
 	
-	var app = angular.module('itemService' , ['produtoService']);
+	var app = angular.module('itemService' , []);
 
 	var urlBase = 'http://localhost:8080';
 

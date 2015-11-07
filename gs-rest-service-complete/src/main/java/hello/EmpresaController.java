@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import delivery.api.mapper.CidadeImpl;
 import delivery.api.mapper.EmpresaImpl;
+import delivery.api.mapper.PedidoImpl;
 import delivery.api.mapper.UserImpl;
 import delivery.model.Cidade;
 import delivery.model.Empresa;
+import delivery.model.Pedido;
 import delivery.model.UserRole;
 import delivery.model.User;
 import delivery.service.DELIVERY_SERVICE.EmpresaService;
@@ -145,9 +147,18 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/excluirEmpresaController", method=RequestMethod.POST) 
-	public void excluirEmpresaController(@RequestParam(value="cpfCnpj") final String cpfCnpj){
-		empresaImpl = new EmpresaImpl();
-		empresaImpl.excluirEmpresaDAO(cpfCnpj);	
+	public boolean excluirEmpresaController(@RequestParam(value="cpfCnpj") final String cpfCnpj){
+		final PedidoImpl pedidoImpl = new PedidoImpl();
+		List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
+		//verifica se a empresa possui pedidos abertos antes de excluir
+		if(pedidos == null || pedidos.isEmpty()){
+			return false;
+		} else {
+			empresaImpl = new EmpresaImpl();
+			empresaImpl.excluirEmpresaDAO(cpfCnpj);
+			return true;
+		}
+		
 	}
 	
 	@RequestMapping(value="/definirRaioController" , method=RequestMethod.GET)

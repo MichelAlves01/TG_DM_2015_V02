@@ -20,13 +20,11 @@
 <fullyQualifiedTypeName name="com.google.common.reflect.TypeToken"/>
 <fullyQualifiedTypeName name="ch.qos.logback.core.subst.Token.Type"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonSubTypes.Type"/>
-<fullyQualifiedTypeName name="delivery.model.Pedido"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="delivery.service.DELIVERY_SERVICE.PedidoService"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="delivery.model.ItemPedido"/>
-<fullyQualifiedTypeName name="delivery.api.mapper.PedidoImpl"/>
 <fullyQualifiedTypeName name="delivery.model.Produto"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.ViewControllerRegistry"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="delivery.model.UsuarioMob"/>
 <fullyQualifiedTypeName name="delivery.model.ItemProduto"/>
 <fullyQualifiedTypeName name="delivery.api.mapper.ItemProdutoImpl"/>
+<fullyQualifiedTypeName name="delivery.api.mapper.PedidoImpl"/>
+<fullyQualifiedTypeName name="delivery.model.Pedido"/>
 </qualifiedTypeNameHistroy>

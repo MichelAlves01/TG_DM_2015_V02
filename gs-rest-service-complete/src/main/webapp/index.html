@@ -7,7 +7,7 @@
 			<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-			<script type="text/javascript" src="angular/controller/empresaController.js"></script>			
+			<script type="text/javascript" src="angular/controller/empresaController.js"></script>
 			<script type="text/javascript" src="angular/controller/PrincipalController.js"></script>
 			<script type="text/javascript" src="angular/controller/cadastroEmpresaController.js"></script>
 			<script type="text/javascript" src="angular/controller/pedidoController.js"></script>
@@ -19,7 +19,7 @@
 			<script type="text/javascript" src="angular/directives/directiveLoginPage.js"></script>
 			<script type="text/javascript" src="angular/directives/directiveCadastroEmpresa.js"></script>
 			<script type="text/javascript" src="angular/directives/directivePrincipal.js"></script>
-			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>			
+			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 			<script type="text/javascript" src="../js/date.js"></script>
 			<script type='text/javascript' src="../js/jquery.weekcalendar.js"></script>
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap.css">
@@ -27,7 +27,7 @@
 			<link rel="stylesheet" type="text/css" href=" css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href=" css/principal.css">
 			<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-			
+
 
 			<script type="text/javascript">
 				/*Gerencia o efeito sanfona*/
@@ -44,24 +44,24 @@
 			<script type="text/javascript">
 						$(".dropdown-toggle").dropdown();
 						$('#element').tooltip('show');
-						$(".collapse").collapse('dropdown-toggle');							
+						$(".collapse").collapse('dropdown-toggle');
 			</script>
 
 			<script type="text/javascript">
-				$(document).ready(function() { 
+				$(document).ready(function() {
 					 $('#cep').keypress(function(e) {
 						if(e.which == 13){
-							$.blockUI({ message: $('#esperarCep') }); 
-						} 
+							$.blockUI({ message: $('#esperarCep') });
+						}
 						console.log($('#bairro').value);
-						setTimeout($.unblockUI, 10000); 
-						});    
-				}); 
+						setTimeout($.unblockUI, 10000);
+						});
+				});
 			</script>
 
 			<script type="text/javascript">
 			function test(id){
-					console.log('id : ' + id);		    
+					console.log('id : ' + id);
 				$( "#itens-produto" + id ).droppable({
 						activeClass: "ui-state-default",
 							hoverClass: "ui-state-hover",
@@ -116,7 +116,7 @@
 			<div id="centro">
 			<div id="sub-cabecalho"></div>
 				   <div id="form">
-				   		<div id="form-title"> 
+				   		<div id="form-title">
 				   			<label>
 				   				<table>
 				   					<tr>
@@ -133,25 +133,25 @@
 				   						</td>
 				   					</tr>
 				   				</table>
-				   				
+
 				   			</label>
 				   		</div>
-				   		
+
 				   			<div class="tabbable tabs-left" >
 							  <ul class="nav nav-tabs" id="painel-esquerda-cadastro" >
-							    
+
 							    <li class="" id="cadastro">
 							    	<a href="#tab-cadastro" data-toggle="tab">
 							    		<font color="#48990E"><i class="icon-pencil"></i> Cadastrar </font>
 							    	</a>
 							    </li>
-	    						
+
 	    						<li class="" id="atualizar">
 	    							<a href="#tab-update" data-toggle="tab">
 	    								<font color="#48990E"><i class="icon-edit"></i> Atualizar</font>
 	    							</a>
 	    						</li>
-	    						
+
 	    						<li class="" id="excluir">
 	    							<a href="#tab-excluir" data-toggle="tab">
 	    								<font color="#48990E"><i class="icon-eye-open"></i> Conta</font>
@@ -159,13 +159,13 @@
 	    						</li>
 
 							  </ul>
-			
+
 							  <div class="tab-content">
 							  <div class="tab-pane" id="tab-cadastro"  data-ng-init="getLatitudeLongitude()">
 								 <div preenchido></div>
 								  <table>
 								  	<tr>
-								  		<td>  
+								  		<td>
 										   	<div id="form-cadastro" cadastro></div>
 								  		</td>
 								  		<td>
@@ -180,7 +180,7 @@
 							   <div class="tab-pane" id="tab-update" data-ng-init="getLatitudeLongitude()" >
 								  <table>
 								  	<tr>
-								  		<td>  
+								  		<td>
 										   	<div id="form-cadastro" atualizar></div>
 								  		</td>
 								  		<td>
@@ -197,13 +197,13 @@
 							   </div>
 							  </div>
 
-							</div>			   		
+							</div>
 					</div>
 		</div>
 	</div>
 	</div>
 
-<!--	
+<!--
 		#################################################################################################################################
 		###################################################  	Pagina Principal 		#################################################
 		#################################################################################################################################
@@ -216,9 +216,9 @@
 			<div id="sub-cabecalho"></div>
 				<!--Código formulario principal-->
 				<div id="form-main"   ng-controller="itemCtrl">
-				   	<div id="form-title"> 
+				   	<div id="form-title">
 				   		<label><font color="#ffffff">{{empresa.nome}}</font></label>
-				   	</div>	
+				   	</div>
 				   	<div class="tabbable tabs-left" ng-controller="mapaRaio" >
 						<ul class="nav nav-tabs" id="painel-esquerda" >
 							<li id="pedidoOp">
@@ -237,7 +237,7 @@
 	    						</a>
 	    					</li>
 						</ul>
-					
+
 					<div class="tab-content">
 							<div class="tab-pane" id="tab1" >
 							  	<div pedido></div>
@@ -246,7 +246,7 @@
 								<div produto></div>
 							</div>
 							<div class="tab-pane" id="tab4">
-								<div  mapatab></div>			     		 
+								<div  mapatab></div>
 							</div>
 					</div>
 				</div>
@@ -258,4 +258,3 @@
 </div>
 </body>
 </html>
-

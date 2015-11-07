@@ -12,6 +12,7 @@
                                         <table>
                                             <tr>
                                                 <td style="width: 100px">
+                                                    <font style="font-size: 10px; color: #999999">Distância </font><br />
                                                     <font style="font-size: 10px; color: #999999" id="emp{{empresa.cpfCnpj}}dist"></font>                                                 </td>
                                                 <td style="width: 100px; vertical-align: right">
                                                     <font style="font-size: 14px; color: #555555" id="emp{{empresa.cpfCnpj}}aval"></font> 
@@ -24,7 +25,7 @@
                                         </table>
                                     </td>
                                     <td>
-                                        <img src="img/neri_lanches.jpg" class="img-circle" style="height: 50px; width: 50px;">
+                                        <img src="img/delivery.jpg" class="img-circle" style="height: 50px; width: 50px;">
                                     </td>
                                 </tr>
                             </table>  
@@ -60,7 +61,7 @@
                                                     quantidade : 
                                                 </td>
                                                 <td style="padding: 10px;">
-                                                    <input type="number" ng-model="quantidade" style="width: 60px; height: 30px" />
+                                                    <input type="number" ng-model="quantidade" ng-keypress="validaQtde()" style="width: 60px; height: 30px" />
                                                 </td>
                                             </tr>
                                             <tr>

@@ -56,13 +56,17 @@
                             <button class="btn" style="margin: 0px; width: 60px;" ng-click="voltar()"><img src="img/chevron-left.png" style="height: 20px;"/></button>
                         </td>
                         <td style="width: 50%">
-                            <center><h4>
-                                 Delivery market 
-                            </h4></center>
+                            <center><h5>
+                                 {{'Delivery market'}} 
+                            </h5></center>
                         </td>
                         <td>
                             
-                            <button class="btn" ng-click="showUsuario();" style="margin: 0px; width: 120px;"><img src="img/user.png"  style="height: 20px;"> username</button>
+                            <button class="btn" ng-click="showUsuario();" style="margin: 0px; width: 120px;"><img src="img/user.png"  style="height: 20px;">                        
+                                <font ng-if="nomeUsuario != null">{{nomeUsuario}}</font>
+                                <font ng-if="nomeUsuario == null">username</font>
+                                <font></font>
+                            </button>
                         </td>
                     </tr>
                 </table>

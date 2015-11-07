@@ -12,7 +12,7 @@
   var repeat = 0;
   var senhaStatus = false;
   /*
-    Controller que contem todas funções 
+    Controller que contem todas funções
     utilizadas na pagina de login e cadastro inicial
   */
   app.controller('cadastroEmpresaInicio', function($scope, $http, $rootScope, empresa) {
@@ -23,8 +23,8 @@
         var latLongTest = null;
       var cpfExiste = false;
       $rootScope.tabLoaderControl = 'login';
-      
-      //Acessa o servidor e adiciona as informações iniciais da empresa 
+
+      //Acessa o servidor e adiciona as informações iniciais da empresa
         $scope.iniciaCadastroEmpresa = function (){
           isLogin = false;
           isCadastro = true;
@@ -48,46 +48,46 @@
                                   if($scope.empresa.tipo != null){
                                     depoisCadastro = true;
                                     latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
-                                    
+
                                   }
-                                }            
+                                }
                   });
               } else {
                 if(!statusCpfCnpj){
-                  $.growlUI('CPF ou CNPJ invalido', 'verifique e tente novamente', 'E'); 
+                  $.growlUI('CPF ou CNPJ invalido', 'verifique e tente novamente', 'E');
                 }
             }
-        } 
+        }
 
 
         /*  Esta função recebe como parametro o cpf ou cnpj
-          e verica se existe ou não 
-          retornando um boolean 
+          e verica se existe ou não
+          retornando um boolean
         */
         $scope.validaCpfCnpj = function(){
-          //verifica se o campo cpf não esta nulo 
+          //verifica se o campo cpf não esta nulo
           if($scope.cpfCnpj != null){
-            //substitui letras ou caracteres por '' caso o usuario digite. 
+            //substitui letras ou caracteres por '' caso o usuario digite.
             $scope.cpfCnpj = $scope.cpfCnpj.replace(/[^0-9]/g,'');
             console.log($scope.cpfCnpj);
           }
           //Se o tamanho for igual verifica se um cpf valido
           if($scope.cpfCnpj.length == 11){
             var strCPF = $scope.cpfCnpj;
-            var Soma; 
-            var Resto; 
-            Soma = 0; 
+            var Soma;
+            var Resto;
+            Soma = 0;
             if (strCPF == "00000000000") return false;
-            for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); Resto = (Soma * 10) % 11;             
-            if ((Resto == 10) || (Resto == 11)) Resto = 0; 
-              if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;              
-              Soma = 0; 
-              for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i); Resto = (Soma * 10) % 11;              
-              if ((Resto == 10) || (Resto == 11)) Resto = 0; 
-              if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false; 
-              statusCpfCnpj = true; 
-              return true;            
-          } else  
+            for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); Resto = (Soma * 10) % 11;
+            if ((Resto == 10) || (Resto == 11)) Resto = 0;
+              if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+              Soma = 0;
+              for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i); Resto = (Soma * 10) % 11;
+              if ((Resto == 10) || (Resto == 11)) Resto = 0;
+              if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+              statusCpfCnpj = true;
+              return true;
+          } else
           //caso o tamanho da string for igual verifica se é um CNPJ valido.
           if($scope.cpfCnpj.length == 14){
             var cnpj = $scope.cpfCnpj;
@@ -96,15 +96,15 @@
             if (cnpj.length != 14)
                 return false;
             // LINHA 10 - Elimina CNPJs invalidos conhecidos
-            if (cnpj == "00000000000000" || 
-                cnpj == "11111111111111" || 
-                cnpj == "22222222222222" || 
-                cnpj == "33333333333333" || 
-                cnpj == "44444444444444" || 
-                cnpj == "55555555555555" || 
-                cnpj == "66666666666666" || 
-                cnpj == "77777777777777" || 
-                cnpj == "88888888888888" || 
+            if (cnpj == "00000000000000" ||
+                cnpj == "11111111111111" ||
+                cnpj == "22222222222222" ||
+                cnpj == "33333333333333" ||
+                cnpj == "44444444444444" ||
+                cnpj == "55555555555555" ||
+                cnpj == "66666666666666" ||
+                cnpj == "77777777777777" ||
+                cnpj == "88888888888888" ||
                 cnpj == "99999999999999")
                 return false; // LINHA 21
 
@@ -135,16 +135,16 @@
             resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
             if (resultado != digitos.charAt(1))
                   return false; // LINHA 49
-            statusCpfCnpj = true; 
+            statusCpfCnpj = true;
             return true; // LINHA 51
 
         } else {
           statusCpfCnpj = false;
-        }         
+        }
         }
 
         /*
-          retorna o valor boolean que foi incrementado 
+          retorna o valor boolean que foi incrementado
           durante a verificação do CPF ou CNPJ no metodo acima.
         */
         $scope.isValidCpfCnpj = function(){
@@ -162,7 +162,7 @@
           $('.principal').hide();
           $('#pedidoOp').removeClass('active');
           $('#tab1').removeClass('active');
-          $('#cabecalho-inicio').show();        
+          $('#cabecalho-inicio').show();
         } else if(visible == 'cadastro'){
           $('.login').hide();
           $('.cadastro').show();
@@ -197,9 +197,9 @@
     }
 
     /*
-      Controller que executa as funções finais para 
-      o cadastro da empresa assim como vizualização  
-      atualização e exclusão da conta. 
+      Controller que executa as funções finais para
+      o cadastro da empresa assim como vizualização
+      atualização e exclusão da conta.
     */
     app.controller('EmpresaCtrl', function($scope, $http , empresa) {
        var fieldsValid = true;
@@ -212,16 +212,16 @@
                   setTimeout(function(){
                     $scope.empresa = data;
                 cpfCnpj = data.cpfCnpj;
-                if($scope.empresa != ""){
+                if($scope.empresa.nome != null){
                   visibilityControl('principal' , false);
                   $scope.getPedidosController(cpfCnpj);
                 } else {
-                  $.growlUI('Senha ou usuario incorreto', 'verifique e tente novamente', 'E'); 
+                  $.growlUI('Senha ou usuario incorreto', 'verifique e tente novamente', 'E');
                 }
-                
+
                 /*
                   se o tipo ainda estiver nulo ativas apenas aba de cadastro
-                  pois a empresa ainda não esta cadastrada senão vai para a tela 
+                  pois a empresa ainda não esta cadastrada senão vai para a tela
                   principal.
                 */
                 if($scope.empresa.tipo == null){
@@ -238,12 +238,12 @@
                     depoisCadastro = true;
                     $('#tab-cadastro').removeClass( "active" );
                     latLong = latLong = new google.maps.LatLng($scope.empresa.latitude,$scope.empresa.longitude);
-                    
-                
-                
-                  }, 1000); 
-                
-            });    
+
+
+
+                  }, 1000);
+
+            });
         }
 
         $scope.logout = function(){
@@ -262,7 +262,7 @@
         }
 
         $scope.getPedidosController = function(cpfCnpj){
-      
+
             if(repeat == 0){
               setTimeout(function(){
                 var data = $.param({cpfCnpj: $scope.empresa.cpfCnpj});
@@ -281,11 +281,11 @@
             }, 10000);
       }
       /*
-        verifica quais abas devem estar ativas 
-        durante o cadastro e recupera os dados iniciais do 
+        verifica quais abas devem estar ativas
+        durante o cadastro e recupera os dados iniciais do
         cadastro informados anteriormente na pagina de login.
       */
-      
+
 
       $scope.tabLoaderControl = function(){
 
@@ -294,7 +294,7 @@
       $scope.starting = function(){
 
           $http.get(urlBase + '/verificarLogin').success(function(data , status){
-            
+
             if(data != ""){
               visibilityControl('principal' , false);
               $scope.getPedidosController();
@@ -303,37 +303,37 @@
               visibilityControl('login' , false);
             }
           });
-          
-          
+
+
           /*
             se o tipo ainda estiver nulo ativas apenas aba de cadastro
-            pois a empresa ainda não esta cadastrada senão vai para a tela 
+            pois a empresa ainda não esta cadastrada senão vai para a tela
             principal.
           */
 
-            
-  
+
+
               depoisCadastro = true;
               $('#tab-cadastro').removeClass( "active" );
-              
 
-          
+
+
         }
 
 
 
-       
+
 
       /*
-        verifica se todos os campos estão validos e retorna 
+        verifica se todos os campos estão validos e retorna
         um boolean de verificação sendo true quando todos
         os campos foram preenchidos.
       */
       function setValidFields() {
         if($scope.tipo != null &&
         $scope.cidade != null &&
-        $scope.bairro != null && 
-        $scope.endereco != null && 
+        $scope.bairro != null &&
+        $scope.endereco != null &&
         $scope.numero != null &&
         $scope.cep != null &&
         $scope.telFixo != null &&
@@ -347,13 +347,13 @@
         }
 
         return fieldsValid;
-        
+
       }
 
       /**
       * Envia todos os dados informados para a API(servidor) que
-      * persistira na base de dados , caso houver campos nulos 
-      * uma mensagem de erro será exibida.  
+      * persistira na base de dados , caso houver campos nulos
+      * uma mensagem de erro será exibida.
       */
       $scope.executarCadastro = function(){
         if(setValidFields()){
@@ -364,8 +364,8 @@
           var telFixo = $scope.telFixo;
           var telMovel = $scope.telMovel;
           var email = $scope.email;
-          var senha = $scope.senha;   
-          var data = $.param({tipo: tipo, 
+          var senha = $scope.senha;
+          var data = $.param({tipo: tipo,
                     idCidade: cidade,
                     endereco: endereco,
                     email: email,
@@ -375,9 +375,9 @@
                     latitude: latitude,
                     longitude: longitude,
                     senha: senha});
-                
+
                 console.log("enviando para o servidor");
-                
+
                   $http.post(urlBase + '/cadastrarEmpresaController?' + data).success(function(data,status){
                     setTimeout(function(){
                     $scope.empresa = data;
@@ -394,34 +394,34 @@
                   $('#tab4').removeClass('active');
                   visibilityControl('principal' , false);
                   $scope.getLatitudeLongitude();
-                
-                
+
+
         } else {
           console.log("Existem campos não preenchido");
           $.growlUI('Erro ao cadastrar','Preencha todos os campos', 'E');
           for(s=0 ; s<5;s++){
             loop(i = 0);
           }
-          
-        } 
+
+        }
       }
 
-      
+
       function loop(i){
         i++;
         var iconAnimated = $('#animate' + i);
         console.log("deu bom" + i);
         iconAnimated.animate({top: '8px'},"slow");
         iconAnimated.animate({top: '0px'},"slow");
-          
+
         if(i < 11){
-          loop(i);  
+          loop(i);
         }
-        
-        }       
+
+        }
 
       /*
-        Sera executado ao iniciar a pagina principal retornando 
+        Sera executado ao iniciar a pagina principal retornando
         todas os estados e cidades do Brasil.
       */
       $scope.getEstados = function(){
@@ -430,16 +430,16 @@
           $scope.estados = data;
           estados = data;
         })
-      } 
-      
+      }
+
     }
 
     /*
-      Verifica o valor definido no campo estado e adiciona no 
+      Verifica o valor definido no campo estado e adiciona no
       scope cidades todas as cidades referente ao estado.
     */
     $scope.getCidades = function(){
-      if($scope.estado != null){      
+      if($scope.estado != null){
         for(i=0;i<estados.length;i++){
           console.log($scope.estado.id +" == "+ estados[i].id);
           if($scope.estado.id == estados[i].id){
@@ -451,10 +451,10 @@
 
     /*
       Obtem informações de latitude e longitude e atualiza o mapa,
-      tambem mostra o mapa na tela com um marcador no endereço informado.  
+      tambem mostra o mapa na tela com um marcador no endereço informado.
     */
     $scope.getLatitudeLongitude = function(){
-      
+
           //inicia o mapa com uma localização padrão.
           if(latLong == null){
             latLong = new google.maps.LatLng(-23.5505199,-46.63330939999997);
@@ -468,7 +468,7 @@
             } else {
               valorZoom = 15;
             }
-          
+
           //redireciona o mapa para o endereço inicial.
           var mapOptions = {
               zoom: valorZoom,
@@ -502,11 +502,11 @@
                 map.setCenter(results[0].geometry.location);
                 map2.setCenter(results[0].geometry.location);
               latLong = results[0].geometry.location;
-              var resLatLong = latLong.toString().split(","); 
-              latitude = resLatLong[0].replace("(", ""); 
+              var resLatLong = latLong.toString().split(",");
+              latitude = resLatLong[0].replace("(", "");
               longitude = resLatLong[1].replace(")", "");
 
-            if(address != "Brasil , Brasilia"){ 
+            if(address != "Brasil , Brasilia"){
             var marker = new google.maps.Marker({
                position: latLong,
                map: map,
@@ -521,9 +521,9 @@
             });
            }
 
-            
 
-          
+
+
 
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
@@ -533,20 +533,20 @@
         }, 100);
     }
 
-    
+
     /*
       Validaçoes de todos campos no cadastro de empresas, se
-      e quando for false mostra os icones e mensagem, mostrando 
+      e quando for false mostra os icones e mensagem, mostrando
       ao usuario os campos corretos e os que estão errados.
     */
-    $scope.isValidAll = function(){ 
+    $scope.isValidAll = function(){
         return fieldsValid;
     }
 
     /*
       verifica se o campo tipo não esta nulo.
     */
-    $scope.isValidTipo = function(){      
+    $scope.isValidTipo = function(){
       if($scope.tipo != null){
         return true;
       } else {
@@ -589,12 +589,12 @@
     }
 
     /*
-      envia o valor do campo cep como parametro para o 
+      envia o valor do campo cep como parametro para o
       endereço < http://cep.correiocontrol.com.br/ > o qual
       retornará um JSON com os dados do CEP(nome cidade, sigla estado e nome da rua)
     */
     $scope.verificarCep = function(cep){
-        
+
         if(cepValue != null && cep != cepValue.cep){
           cepValue = null;
         }
@@ -605,24 +605,24 @@
           });
 
             $scope.endereco = cepValue.logradouro;
-            $scope.bairro = cepValue.bairro;      
-      
+            $scope.bairro = cepValue.bairro;
+
             for(i=0 ; i<estados.length ; i++){
               if(estados[i].sigla == cepValue.uf){
                 $scope.estado = estados[i];
-                $scope.cidades = estados[i].cidade; 
+                $scope.cidades = estados[i].cidade;
                 cidades = estados[i].cidade;
                   for(k=0 ; k< cidades.length ; k++){
                     if(cidades[k].nome == cepValue.localidade){
                       console.log(cidades[k].nome);
-                      $scope.cidade = cidades[k]; 
+                      $scope.cidade = cidades[k];
                     }
                   }
               }
             }
         }
-      
-        
+
+
     }
 
 
@@ -630,7 +630,7 @@
       verifica se o campo bairro está nulo
     */
     $scope.isValidBairro = function(){
-      if($scope.bairro != null){    
+      if($scope.bairro != null){
           return true;
         } else {
           return false;
@@ -659,7 +659,7 @@
           $scope.telFixo = $scope.telFixo.length == 1 && '(' + $scope.telFixo || $scope.telFixo;
           $scope.telFixo = $scope.telFixo.length == 3 && $scope.telFixo + ') ' || $scope.telFixo;
           $scope.telFixo = $scope.telFixo.length == 9 && $scope.telFixo + '-' || $scope.telFixo;
-        }  
+        }
         return true;
       } else {
         return false;
@@ -700,9 +700,9 @@
       também se as senhas são iguais.
     */
     $scope.isValidSenha = function(){
-      if( $scope.senha != null && 
-        $scope.senha == $scope.confirmaSenha && 
-        $scope.senha.length > 8 && 
+      if( $scope.senha != null &&
+        $scope.senha == $scope.confirmaSenha &&
+        $scope.senha.length > 8 &&
         $scope.senha.length < 64){
         return true;
         senhaStatus = true;
@@ -715,15 +715,15 @@
     /*
       retorna o resultado da variavel de verificação boolen
       que retorna true quando o usuario ja possue um cadastro,
-      esta verivel permite alternar entre mostrar tela principal e tela de 
-      cadastro. 
+      esta verivel permite alternar entre mostrar tela principal e tela de
+      cadastro.
     */
     $scope.depoisCadastro = function(){
       return depoisCadastro;
     }
-    
+
     /*
-      Esta função permite recuperar os dados da empresa 
+      Esta função permite recuperar os dados da empresa
       de acordo com o cpf ou cnpj informado.
     */
     $scope.getEmpresaController = function(cpfCnpj){
@@ -752,7 +752,7 @@
       }
 
       /*
-        Executa a atualização dos dados se todos os campos 
+        Executa a atualização dos dados se todos os campos
         estiverem preenchidos , senão mostra mensagem de erro ao usuario.
       */
       $scope.executaAtualizacao = function(){
@@ -765,10 +765,10 @@
           var cep = $scope.cep;
           var telFixo = $scope.telFixo;
           var telMovel = $scope.telMovel;
-          var email = $scope.email;   
+          var email = $scope.email;
           var data = $.param({cpfCnpj: cpfCnpj,
                     nome: nome,
-                    tipo: tipo, 
+                    tipo: tipo,
                     idCidade: cidade,
                     endereco: endereco,
                     email: email,
@@ -777,7 +777,7 @@
                     cep: cep,
                     latitude: latitude,
                     longitude: longitude});
-                
+
                 console.log("enviando para o servidor");
                 $http.post(urlBase + '/atualizarEmpresaController?' + data).success(function(data,status){
                   $scope.empresa = data;
@@ -801,8 +801,8 @@
       function setValidFields() {
         if($scope.tipo != null &&
         $scope.cidade != null &&
-        $scope.bairro != null && 
-        $scope.endereco != null && 
+        $scope.bairro != null &&
+        $scope.endereco != null &&
         $scope.numero != null &&
         $scope.cep != null &&
         $scope.telFixo != null &&
@@ -815,30 +815,36 @@
         }
 
         return fieldsValid;
-        
+
       }
 
       /*
-        Esta função atualiza o status da empresa para 1, inativando o acesso do 
-        usurio a conta e o redireciona para a tela de login. 
+        Esta função atualiza o status da empresa para 1, inativando o acesso do
+        usurio a conta e o redireciona para a tela de login.
       */
       $scope.excluirEmpresa = function(){
         var data = $.param({cpfCnpj: $scope.cpfCnpj});
 
         $http.post(urlBase + '/excluirEmpresaController?' + data).success(function(data,status){
-          visibilityControl('login' , false);
-          $.unblockUI();
+          if(data == true){
+              visibilityControl('login' , false);
+              $.unblockUI();
+          } else {
+              $.unblockUI();
+              $.growlUI('Erro ao excluir','Existem pedidos pendentes','E');
+          }
+         
         });
-        
+
       }
 
       $scope.setEmpresa = function(empresa){
         $scope.empresa = empresa;
       }
-      
+
 
     });
-  
+
   app.factory('empresa', function () {
       return { cpfCnpj: '' };
   });
@@ -848,7 +854,7 @@
   });
 
 
- 
+
 
 
 })();

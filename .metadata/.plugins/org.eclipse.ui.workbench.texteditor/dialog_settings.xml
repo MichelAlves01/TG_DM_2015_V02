@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value=".permitAll()" key="selection"/>
+		<item value="excluir" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="excluir"/>
 			<item value=".hasAnyRole(&quot;ROLE_ANONYMOUS&quot;)"/>
 			<item value="ROLE_ADMIN"/>
 			<item value="&quot;ADMIN&quot;"/>
@@ -15,7 +16,6 @@
 			<item value="getEmpresa"/>
 			<item value="cadastrarPedido"/>
 			<item value="produto"/>
-			<item value="@RequestWrapper "/>
 		</list>
 		<list key="replacehistory">
 			<item value=".permitAll()"/>
