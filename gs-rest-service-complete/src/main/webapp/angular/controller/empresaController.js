@@ -157,26 +157,39 @@
     function visibilityControl(visible , cadastro){
 
         if(visible == 'login'){
+
           $('.login').show();
           $('.cadastro').hide();
           $('.principal').hide();
-          $('#pedidoOp').removeClass('active');
-          $('#tab1').removeClass('active');
           $('#cabecalho-inicio').show();
+
         } else if(visible == 'cadastro'){
+
           $('.login').hide();
           $('.cadastro').show();
           $('.principal').hide();
-          $('#pedidoOp').removeClass('active');
-          $('#tab1').removeClass('active');
           $('#cabecalho-inicio').show();
           visiblityCadastro(cadastro);
+
         } else if(visible == 'principal'){
+
           $('.login').hide();
           $('.cadastro').hide();
           $('.principal').removeAttr('style');
-          $('#pedidoOp').toggleClass('active');
-          $('#tab1').toggleClass('active');
+          if( $('#pedidoOp').attr('class') == null || ($('#pedidoOp').attr('class').indexOf('active') === -1 &&  
+              $('#produtoOp').attr('class').indexOf('active') === -1 && 
+              $('#mapaOp').attr('class').indexOf('active') === -1)){
+            
+                 $('#pedidoOp').toggleClass('active');
+          } 
+
+          if( $('#tab1').attr('class') == null || ($('#tab1').attr('class').indexOf('active') === -1 && 
+              $('#tab3').attr('class').indexOf('active') === -1 && 
+              $('#tab4').attr('class').indexOf('active') === -1)){
+
+                $('#tab1').toggleClass('active');
+          }
+
           $('#cabecalho-inicio').hide();
         }
       }
@@ -186,11 +199,13 @@
         $("#cadastro").removeAttr("disabled");
         $("#atualizar").hide();
         $("#excluir").hide();
-        $('#tab-update').removeClass( "active" );
         $('#tab-cadastro').toggleClass( "active" );
       } else {
         $("#cadastro").hide();
-          $("#atualizar").toggleClass( "active" );
+          if($('#atualizar').attr('class').indexOf('active') === -1 && $('#excluir').attr('class').indexOf('active') === -1){
+              $("#atualizar").toggleClass( "active" );
+          }
+          
           $("#excluir").show();
           $('#tab-update').toggleClass( "active" );
       }
@@ -280,16 +295,7 @@
               $scope.getPedidosController();
             }, 10000);
       }
-      /*
-        verifica quais abas devem estar ativas
-        durante o cadastro e recupera os dados iniciais do
-        cadastro informados anteriormente na pagina de login.
-      */
 
-
-      $scope.tabLoaderControl = function(){
-
-      }
 
       $scope.starting = function(){
 
@@ -384,7 +390,7 @@
                     $scope.nome = data.nome;
                     $scope.cpfCnpj = data.cpfCnpj;
                     $.growlUI('Cadastrado com sucesso' , '', 'C');
-                    $('#popOverMapa').popover('show')
+                    $scope.logout();
                   } , 100);
                   });
 

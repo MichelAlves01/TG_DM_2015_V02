@@ -2,13 +2,19 @@
 	var app = angular.module('principalMobile' , ['usuarioMobile','mobileDirectives','mobService']);
     var ip = location.host;
     ip = ip.split(':');
-    var urlBase = 'http://'+ip[0]+':8080';
+    if(ip != null){
+        var urlBase = 'http://'+ip[0]+':8080';
+    } else {
+        var urlBase = 'http://192.168.0.100:8080'
+    }
+    
     var empresasJson = null;
     var latitude = null;
     var longitude = null;
     var showCar = false;
     var deviceheight = 0;
     var carrinho = 0;
+    var enderecoAlter = false;
     nivel = 1;
     
     
@@ -303,9 +309,7 @@
         }
         
         $scope.enviarPedido = function(){
-       
-            alert("numero : " + $scope.numero +"\npagto : " + $scope.pgtoTipo + "\ntroco : " +$scope.troco 
-                 + "observacao : " + $scope.observacao +"$scope.cartao :  "+ $scope.cartao);
+            
             var endereco = $scope.end.split(",");
             $scope.end = "";
             for(var i=0 ; i<endereco.length ; i++){
@@ -331,8 +335,43 @@
                                 idUsuario: localStorage.getItem('email'),
                                 produto: JSON.stringify($scope.carrinho.produto)});
            
-            this.cadastrarPedido(data);
-            $scope.numero = "";
+            /*
+                Criando a mensagem de confirmação
+            */
+            var msgConfirmação;
+            if($scope.end != null){          
+                msgConfirmação = "\nEndereço para entrega : " + $scope.end             
+            } else {
+                alert("Por favor insira um endereço para entrega");
+                return;
+            }
+            if($scope.pgtoTipo != null){
+                msgConfirmação = msgConfirmação + "\npagto : " + $scope.pgtoTipo
+            }
+            if($scope.troco != null){
+                msgConfirmação = msgConfirmação + "\ntroco : " +$scope.troco
+            }
+            if($scope.observacao){
+                msgConfirmação = msgConfirmação + "\nobservacao : " + $scope.observacao
+            }
+            if($scope.cartao != null){
+                msgConfirmação = msgConfirmação + "\n$scope.cartao :  " + $scope.cartao
+            }
+            if($scope.cartão == null && $scope.cartao == null ){
+                alert("Escolha uma forma de pagamento");
+                return;
+            }
+            
+             var r = confirm(msgConfirmação);
+            if (r == true) {
+                this.cadastrarPedido(data);
+                $scope.numero = endereco  = pgtoObs = observacao = "" ;
+                $scope.carrinho = null;
+                visibilityControle(2);
+                $scope.limparCarrinho();
+            }
+       
+  
         }
         
         $scope.inicio = function(){
@@ -347,7 +386,12 @@
         }
         
         $scope.endAdvertise = function(){
-            alert('Ao alterar a localidade de entrega o pedido pode ser rejeitado se estiver fora do raio de entrega da empresa!');
+            if(!enderecoAlter){
+                alert('Ao alterar a localidade de entrega o pedido pode ser rejeitado se estiver fora do raio de entrega da empresa!');
+                enderecoAlter = true;
+            }
+            
+            
         }
         
         

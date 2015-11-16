@@ -152,11 +152,11 @@ public class EmpresaController {
 		List<Pedido> pedidos = pedidoImpl.getPedidosDAO(cpfCnpj);
 		//verifica se a empresa possui pedidos abertos antes de excluir
 		if(pedidos == null || pedidos.isEmpty()){
-			return false;
-		} else {
 			empresaImpl = new EmpresaImpl();
 			empresaImpl.excluirEmpresaDAO(cpfCnpj);
 			return true;
+		} else {
+			return false;
 		}
 		
 	}

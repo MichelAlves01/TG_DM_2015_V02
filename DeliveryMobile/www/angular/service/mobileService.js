@@ -2,7 +2,11 @@
     var app = angular.module('mobService' , []);
     var ip = location.host;
     ip = ip.split(':');
-    var urlBase = 'http://'+ip[0]+':8080';
+     if(ip != null){
+        var urlBase = 'http://'+ip[0]+':8080';
+    } else {
+        var urlBase = 'http://192.168.0.100:8080'
+    }
     
       app.controller('CarrinhoCtrl' , ['$scope','$http' , '$log', function($scope, $http, $log){
         $scope.cadastrarPedido = function(data){
