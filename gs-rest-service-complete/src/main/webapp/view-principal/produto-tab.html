@@ -44,7 +44,7 @@
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPrecoProduto()"></i>
 											<i class="icon-ok" ng-show="validarPrecoProduto()"></i>
 										</font></label>
-				      					<input type="text" ng-model="precoProd" id="preco" ng-change="validarPrecoProduto()" class="input-small"></td>
+				      					<input type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"  ng-model="precoProd" id="preco" ng-change="validarPrecoProduto()" class="input-small"></td>
 				      			</tr>
 				      			<tr>
 				      				<td>
@@ -108,7 +108,7 @@
 					      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPrecoProduto()"></i>
 												<i class="icon-ok" ng-show="validarPrecoProduto()"></i>
 											</font></label>
-					      					<input type="text" ng-model="produto.preco" ng-change="validarPrecoProduto()" class="input-small"></td>
+					      					<input type="number" ng-model="produto.preco" ng-change="validarPrecoProduto()" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" class="input-small"></td>
 					      			</tr>
 					      			<tr>
 					      				<td>
@@ -193,7 +193,7 @@
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPreco()"></i>
 											<i class="icon-ok" ng-show="validarPreco()"></i>
 										</font></label>
-				      					<input type="text" ng-model="preco" ng-change="validarPreco()" class="input-small"></td>
+				      					<input type="number" ng-model="preco" ng-change="validarPreco()" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" class="input-small"></td>
 				      			</tr>
 				      			<tr>
 				      				<td>
@@ -262,7 +262,7 @@
 				      					 	<i id="animate1" style="position: relative;"  style="position: relative;" class="icon-hand-down" ng-hide="validarPreco()"></i>
 											<i class="icon-ok" ng-show="validarPreco()"></i>
 										</font></label>
-				      					<input type="text" ng-model="item.preco" ng-change="validarPreco()" class="input-small"></td>
+				      					<input type="number" ng-model="item.preco" ng-change="validarPreco()" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" class="input-small"></td>
 				      			</tr>
 				      			<tr>
 				      				<td>

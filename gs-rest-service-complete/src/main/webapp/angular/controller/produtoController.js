@@ -4,6 +4,10 @@
 	var toggleUpdate = true;
 	var urlBase = 'http://localhost:8080';
 
+	app.run(function($locale){
+    	$locale.NUMBER_FORMATS.GROUP_SEP = '.';
+    	$locale.NUMBER_FORMATS.DECIMAL_SEP = ',';
+	});
 	app.controller('produtoCtrl' , function($scope,$http, empresa){
 		var toggleCadastro = true;
 		var validAll = true;
@@ -41,9 +45,8 @@
 		}
 
 		$scope.validarPrecoProduto = function(){
-			if($scope.precoProd != null){
-				$scope.precoProd = "R$ " +  $scope.precoProd.replace(/[^0-9^()^]/g,'');;
-				$scope.precoProd = $scope.precoProd.replace('R$ R$ ', 'R$ ');
+			if($scope.precoProd != null && isNaN($scope.precoProd) == false){
+				$scope.precoProd = "R$ " +  $scope.precoProd.replace(/[^0-9^()^]/g,'');;				
 				return true;
 			} else {
 				return false;
@@ -74,7 +77,6 @@
 
 		$scope.cadastrarProdutoController = function(descricao, preco){
 			if(validaCamposProduto(descricao, preco)){
-				var preco = preco.replace('R$ ', '');
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarProdutoController?' + data).success(function(data,status){	
@@ -96,7 +98,7 @@
 
 		function validaCamposProduto(descricao,preco){
 			if(descricao != null &&
-				preco != null){
+				preco != null && isNaN(preco) == false){
 				return true;	
 			} else {
 				return false;

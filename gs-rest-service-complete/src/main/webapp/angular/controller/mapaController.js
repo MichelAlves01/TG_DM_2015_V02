@@ -54,8 +54,8 @@
 
 		 function getZoom(){
 					var zoom; 
-					if(raio >= 4){
-						minus = Math.round( (raio / 10)  + 2);
+					if(raio >= 1){
+						minus = Math.round( (raio / 10)  + 1);
 				  		zoom = 14 - minus; 		
 				  	}
 

@@ -27,11 +27,11 @@
 		}
 
 
-		$scope.calPrecoTotal = function(produtos){
+		$scope.calPrecoTotal = function(itens){
 			$scope.total = 0;
-			if(produtos != null){
-				for (var i=0 ; i<produtos.length ; i++) {
-					$scope.total += produtos[i].produto.preco * produtos[i].quantidade;
+			if(itens != null && itens.length > 0){
+				for (var i=0 ; i<itens.length ; i++) {
+					$scope.total += itens[i].produto.preco * itens[i].quantidade;
 				};
 			}
 		}

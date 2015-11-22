@@ -75,7 +75,6 @@
 		// realiza cadastro de Item 
 		$scope.cadastrarItemController = function(descricao,preco){
 			if(validaCampos(descricao,preco)){
-				var preco = preco.replace('R$ ', '');
 				var cpfCnpj = $scope.empresa.cpfCnpj;
 				var data = $.param({descricao: descricao , preco: preco , cpfCnpj: cpfCnpj });
 				$http.post(urlBase + '/cadastrarItemController?' + data).success(function(data,status){
@@ -97,7 +96,7 @@
 
 		function validaCampos(descricao,preco){
 			if(preco != null &&
-				descricao != null){
+				descricao != null && isNaN(preco) == false){
 				return true;	
 			} else {
 				return false;

@@ -13,6 +13,11 @@
              $log.info(data);
             var res = $http.post(urlBase + '/cadastrarPedidoController?' + data).success(function(data, status){
                 $log.info('Sucesso');
+                if(status == 200){
+                     alert('Pedido enviado com sucesso');
+                } else {
+                    alert('Houve um erro durante o envio do pedido');
+                };
             });
         };
         

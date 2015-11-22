@@ -16,7 +16,11 @@
     var carrinho = 0;
     var enderecoAlter = false;
     nivel = 1;
-    
+
+    app.run(function($locale){
+    	$locale.NUMBER_FORMATS.GROUP_SEP = '.';
+    	$locale.NUMBER_FORMATS.DECIMAL_SEP = ',';
+	});
     
     app.controller('principalCtrl' , function($scope,$http){
         $http.defaults.headers.post["Content-Type"] = "application/jsonp";
@@ -180,10 +184,10 @@
         }
         
         function calcDistancia(latEmp, longEmp, latMob, longMob){
-            latMobKm = latMob * 113.1;
-            longMobKm = longMob * (113.1 * Math.cos(longEmp));
-            latEmpKm = latEmp * 113.1;
-            longEmpKm = longEmp * (113.1 * Math.cos(longEmp));
+            latMobKm = latMob * 111.1;
+            longMobKm = longMob * (111.1 * Math.cos(longEmp));
+            latEmpKm = latEmp * 111.1;
+            longEmpKm = longEmp * (111.1 * Math.cos(longEmp));
             latEmpKm = convertPositivo(latEmpKm);
             latMobKm = convertPositivo(latMobKm);
             var distLat = latEmpKm - latMobKm;
@@ -357,7 +361,7 @@
             if($scope.cartao != null){
                 msgConfirmação = msgConfirmação + "\n$scope.cartao :  " + $scope.cartao
             }
-            if($scope.cartão == null && $scope.cartao == null ){
+            if(($scope.cartao == null && $scope.pgtoTipo) && ($scope.troco == null && $scope.pgtoTipo)){
                 alert("Escolha uma forma de pagamento");
                 return;
             }
@@ -365,13 +369,11 @@
              var r = confirm(msgConfirmação);
             if (r == true) {
                 this.cadastrarPedido(data);
-                $scope.numero = endereco  = pgtoObs = observacao = "" ;
-                $scope.carrinho = null;
-                visibilityControle(2);
-                $scope.limparCarrinho();
+                    $scope.numero = endereco  = pgtoObs = observacao = "" ;
+                    $scope.carrinho = null;
+                    visibilityControle(2);
+                    $scope.limparCarrinho();
             }
-       
-  
         }
         
         $scope.inicio = function(){
